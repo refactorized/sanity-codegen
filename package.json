@@ -1,0 +1,15 @@
+{
+  "name": "austen-riggs-center",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "workspaces": [
+    "web",
+    "sanity"
+  ],
+  "devDependencies": {
+    "@hzdg/eslint-config": "^2.0.2",
+    "eslint": "^7.26.0",
+    "prettier": "^2.3.0"
+  }
+}
