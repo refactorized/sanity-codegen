@@ -139,16 +139,34 @@ sanity init
 Use the CLI to create a new project, the API can be publicly accessible (it's
 read-only). Select the clean project template, or another if you like.
 
-1. locally install sanity to /sanity
-2. link up projects
-3. start with a basic schema
-4. run sanity and add data
+### set up sanity studio in netlify
 
-## more web
+netlify does not have a global sanity cli set up so we need to add the package
+locally too
 
-1. install styling? (maybe this is another section
-2. create static page
-3. create pagebuilder template stuff
-4. execute
+```sh
+yarn add @sanity/cli
+```
 
-## sources
+add this `netlify.toml`:
+
+```ini
+[build]
+command = "yarn build"
+publish = "dist"
+
+[build.environment]
+NETLIFY_USE_YARN = "true"
+
+# studio does all routing client side - rediect everything to the SPA root.
+[[redirects]]
+from = "/*"
+status = 200
+to = "/"
+```
+
+dont't forget to:
+
+- set base dir to `sanity/`
+  - set output dir to `sanity/dist/` if you want, but it is overridden by `netlify.toml`
+- add `GITHUB_TOKEN` env var
