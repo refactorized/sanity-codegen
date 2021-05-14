@@ -34,7 +34,7 @@ export default function Home() {
           >
             Search
           </Label>
-          <Input defaultValue="Search" placeholder="Search" />
+          <Input placeholder="Search" />
         </Box>
         {/* TESTING THEME-UI */}
 
