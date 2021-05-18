@@ -1,6 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+
+{
+  /* TESTING THEME-UI */
+}
+import {Box, Label, Input} from 'theme-ui';
 
 export default function Home() {
   return (
@@ -20,6 +25,18 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+        {/* TESTING THEME-UI */}
+        <Box>
+          <Label
+            htmlFor="search"
+            sx={{display: 'inherit', textAlign: 'center', mb: 2}}
+          >
+            Search
+          </Label>
+          <Input placeholder="Search" />
+        </Box>
+        {/* TESTING THEME-UI */}
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -65,5 +82,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
