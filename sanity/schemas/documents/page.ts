@@ -15,6 +15,13 @@ export default {
       title: 'Title',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Page sections',
