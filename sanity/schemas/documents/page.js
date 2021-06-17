@@ -22,14 +22,6 @@ export default {
       },
     },
     {
-      name: 'content',
-      type: 'array',
-      title: 'Page sections',
-      description: 'the block components that make up the page body',
-      // TODO: automate the population of this field via magic.js
-      of: [{type: 'placeholderText'}, {type: 'placeholderImage'}],
-    },
-    {
       name: 'description',
       type: 'text',
       title: 'Description',
@@ -42,6 +34,14 @@ export default {
       title: 'Open Graph Image',
       description: 'Image for sharing previews on Facebook, Twitter etc.',
       fieldset: 'metadata',
+    },
+    {
+      name: 'blocks',
+      type: 'array',
+      title: 'Content Blocks',
+      description: 'the block components that make up the page body',
+      // TODO: automate the population of this field via magic.js
+      of: [{type: 'placeholder'}, {type: 'prose'}],
     },
   ],
 

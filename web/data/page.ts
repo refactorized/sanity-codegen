@@ -20,11 +20,20 @@ export const getPaths = () => {
     });
 };
 // async await style
-export const getPageData = async (slug: string) => {
+export const getPageData = async (slug: string): Promise<PageDocument> => {
   const pageDataQuery = groq`*[_type == "page" && slug.current == "home"]`;
   try {
     const results = await client.fetch(pageDataQuery);
-    return JSON.stringify(results, null, 2);
+    if (results.length !== 1) {
+      return null;
+    }
+    // // refine results
+    // const page = results[0].page
+    // // todo sanity types d.ts
+    // const blocks = page.blocks.map( (block: unknown): => {})
+    // )
+
+    return results[0];
   } catch (err) {
     throw new Error(err);
   }

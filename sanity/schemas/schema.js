@@ -8,8 +8,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 
 //objects
-import placeholderText from './objects/placeholderText';
-import placeholderImage from './objects/placeholderImage';
+import placeholder from './objects/placeholder';
+import prose from './objects/prose';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -17,10 +17,5 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    page,
-    placeholderText,
-    placeholderImage,
-    /* Your types here! */
-  ]),
+  types: schemaTypes.concat([page, placeholder, prose]),
 });

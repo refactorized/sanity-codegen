@@ -1,4 +1,6 @@
 import {getPaths, getPageData} from '../data/page';
+import MapComponents from '../components/MapComponents';
+import Layout from '../components/Layout';
 
 export async function getStaticPaths() {
   const paths = await getPaths();
@@ -12,15 +14,17 @@ export const getStaticProps = async ({params}: {params: {slug: string}}) => {
   const pageData = await getPageData(params.slug);
   return {
     props: {
-      content: pageData,
+      page: pageData,
     },
   };
 };
 
-const Page = (props) => (
-  <>
-    <pre>{props.content}</pre>
-  </>
-);
+const SlugPage = (props) => {
+  return (
+    <Layout>
+      <MapComponents blocks={props.page.blocks} />
+    </Layout>
+  );
+};
 
-export default Page;
+export default SlugPage;
