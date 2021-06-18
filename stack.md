@@ -170,3 +170,9 @@ dont't forget to:
 - set base dir to `sanity/`
   - set output dir to `sanity/dist/` if you want, but it is overridden by `netlify.toml`
 - add `GITHUB_TOKEN` env var
+
+##todo
+
+- styled components (inc babel plugin)
+- storybook
+- styled system

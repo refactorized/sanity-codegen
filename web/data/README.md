@@ -1,3 +1,7 @@
+# Work in Progress
+
+this is hella-WIP and will be changing/expanding
+
 # Data Layer
 
 This layer exists to contain the bulk of data/api functionality and reasonably
