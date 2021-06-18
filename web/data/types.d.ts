@@ -6,12 +6,16 @@ type SanityDocument = {
   _updatedAt: Date;
 };
 
-interface PlaceholderBlock {
+interface BlockBase {
+  _key: string;
+}
+
+interface PlaceholderBlock extends BlockBase {
   blockType: 'placeholder';
   text: string;
 }
 
-interface ProseBlock {
+interface ProseBlock extends BlockBase {
   blockType: 'prose';
   content: any[];
 }

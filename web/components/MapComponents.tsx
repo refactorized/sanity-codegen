@@ -5,10 +5,10 @@ import ProseBlock from './ProseBlock';
 const MapComponents = ({blocks}: {blocks: PageBlock[]}) => {
   const components = blocks.map((block) => {
     if (block.blockType === 'placeholder') {
-      return <div key={block._key}>{block.text}</div>; /////////////////////////////////////////// key - add it to block type
+      return <div key={block._key}>{block.text}</div>;
     }
     if (block.blockType === 'prose') {
-      return <ProseBlock block={block} />;
+      return <ProseBlock key={block._key} block={block} />;
     }
     return <div>unknown block type</div>;
   });
