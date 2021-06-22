@@ -19,4 +19,6 @@ PhoneDefault.args = {
   tel: '123.456.7890',
   fontSize: '16px',
   fontWeight: 'regular',
+  fontColor: 'text',
+  hoverColor: 'navy',
 };

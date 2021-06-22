@@ -13,6 +13,7 @@ export default {
     green: '#71976B',
     sky: '#E7EDF5',
     orange: '#D15D34',
+    black: '#000000'
   },
 
   lineHeights: {
@@ -24,7 +25,7 @@ export default {
   letterSpacings: [-3, -2, -1, -0.5, 0, 1],
 
   fonts: {
-    body: 'Mrs. Eaves XL Serif OT',
+    body: 'Mrs Eaves XL Serif OT',
     headline: 'Proxima Nova',
   },
 
