@@ -4,7 +4,7 @@ import theme from '../../themes/theme';
 import {Phone} from './index.tsx';
 
 export default {
-  title: 'Example/PhoneComponents/Phone',
+  title: 'Components/PhoneComponents/Phone',
   component: {Phone},
 };
 

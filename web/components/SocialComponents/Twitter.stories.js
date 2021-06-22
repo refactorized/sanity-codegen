@@ -3,7 +3,7 @@ import React from 'react';
 import {Twitter} from './index.tsx';
 
 export default {
-  title: 'Example/SocialComponents/Twitter',
+  title: 'Components/SocialComponents/Twitter',
   component: {Twitter},
 };
 

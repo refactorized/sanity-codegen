@@ -4,7 +4,7 @@ import theme from '../../themes/theme';
 import {AdmissionsCallout} from './index.tsx';
 
 export default {
-  title: 'Example/AdmissionsCallout',
+  title: 'Components/AdmissionsCallout',
   component: AdmissionsCallout,
 };
 

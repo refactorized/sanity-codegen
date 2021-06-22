@@ -4,7 +4,7 @@ import theme from '../../themes/theme';
 import {PreFooterBlock} from './index.tsx';
 
 export default {
-  title: 'Example/PreFooterBlock',
+  title: 'Components/PreFooterBlock',
   component: PreFooterBlock,
 };
 

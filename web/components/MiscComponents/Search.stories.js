@@ -3,7 +3,7 @@ import React from 'react';
 import {Search} from './index.tsx';
 
 export default {
-  title: 'Example/MiscComponents/Search',
+  title: 'Components/MiscComponents/Search',
   component: {Search},
 };
 

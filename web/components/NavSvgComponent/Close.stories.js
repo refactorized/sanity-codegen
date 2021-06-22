@@ -3,7 +3,7 @@ import React from 'react';
 import {Close} from './index.tsx';
 
 export default {
-  title: 'Example/NavSvgComponents/Close',
+  title: 'Components/NavSvgComponents/Close',
   component: {Close},
 };
 
