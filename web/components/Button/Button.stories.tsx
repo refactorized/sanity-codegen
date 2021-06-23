@@ -20,7 +20,8 @@ const Template: Story<ComponentProps<typeof Button>> = (args) => (
 export const Solid = Template.bind({});
 Solid.args = {
   variant: 'solid',
-  label: 'Medium',
+  label: 'Learn About Us',
   url: '#',
   size: 'medium',
+  arrowColor: 'white',
 };

@@ -98,10 +98,12 @@ export const AdmissionsCallout = ({
               mt="20px"
             >
               <Button
-                variant="solid"
+                variant="secondary"
                 label={btnText}
                 url={btnUrl}
                 size="medium"
+                arrow={true}
+                arrowColor="#D15D34"
               />
               <Phone
                 tel={phoneNumber}

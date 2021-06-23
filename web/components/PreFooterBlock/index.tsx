@@ -54,7 +54,14 @@ export const PreFooterBlock = ({
         alignItems={['flex-start', 'center']}
         mt="20px"
       >
-        <Button variant="solid" label={btnText} url={btnUrl} size="medium" />
+        <Button
+          variant="solid"
+          label={btnText}
+          url={btnUrl}
+          size="medium"
+          arrow={true}
+          arrowColor="white"
+        />
         <Phone
           tel={phoneNumber}
           fontSize={2}

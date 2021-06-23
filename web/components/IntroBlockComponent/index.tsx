@@ -34,7 +34,14 @@ export const IntroBlock = ({
           >
             {description}
           </Text>
-          <Button variant="solid" label={btnText} url={btnUrl} size="medium" />
+          <Button
+            variant="solid"
+            label={btnText}
+            url={btnUrl}
+            size="medium"
+            arrow={true}
+            arrowColor="white"
+          />
         </div>
       </StyledContentContainer>
     </StyledContainer>
