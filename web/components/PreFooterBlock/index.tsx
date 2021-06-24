@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {color, flexbox, typography, space, border} from 'styled-system';
+import {color, flexbox, typography, space, border, layout} from 'styled-system';
 import {Phone} from '../PhoneComponent';
 import {Button} from '../Button';
 export interface PreFooterBlockProps {
@@ -29,7 +29,7 @@ export const PreFooterBlock = ({
       <div>
         <StyledHeadline
           m={0}
-          fontSize={[3, 5]}
+          fontSize={['20px', '24px', '43px']}
           fontWeight="regular"
           fontFamily="body"
           letterSpacing="-0.01em"
@@ -39,11 +39,12 @@ export const PreFooterBlock = ({
         </StyledHeadline>
         <div>
           <StyledDescription
-            fontSize={2}
+            fontSize={['16px', '14px', '16px']}
             fontWeight="regular"
             fontFamily="headline"
             letterSpacing="-0.015em"
             lineHeight="26px"
+            maxWidth={['300px', '300px', 'none']}
           >
             {description}
           </StyledDescription>
@@ -89,6 +90,7 @@ const StyledHeadline = styled.h1`
 
 const StyledDescription = styled.h2`
   ${typography}
+  ${layout}
 `;
 const StyledSection = styled.div`
   display: flex;

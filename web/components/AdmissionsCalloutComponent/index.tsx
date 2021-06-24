@@ -70,7 +70,7 @@ export const AdmissionsCallout = ({
           >
             <div>
               <StyledHeadline
-                m={0}
+                m={['10px 0', '0']}
                 fontSize={['20px', '24px', '27px']}
                 fontWeight="regular"
                 fontFamily="body"
