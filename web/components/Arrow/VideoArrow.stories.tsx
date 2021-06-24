@@ -2,23 +2,24 @@ import React, {ComponentProps} from 'react';
 
 import {Story} from '@storybook/react';
 
-import {RightArrowNoLine} from './index';
+import {VideoArrow} from './index';
 import {ThemeProvider} from 'styled-components';
 import theme from '../../themes/theme';
 
 export default {
   title: 'Components/Arrow',
-  component: RightArrowNoLine,
+  component: VideoArrow,
 };
 
-const Template: Story<ComponentProps<typeof RightArrowNoLine>> = (args) => (
+const Template: Story<ComponentProps<typeof VideoArrow>> = (args) => (
   <ThemeProvider theme={theme}>
-    <RightArrowNoLine {...args} />
+    <VideoArrow {...args} />
   </ThemeProvider>
 );
 
-export const RightNoLine = Template.bind({});
-RightNoLine.args = {
-  stroke: '#111',
-  size: 14,
+export const VideoArr = Template.bind({});
+VideoArr.args = {
+  arrowColor: 'white',
+  circleColor: '#1B76B0',
+  size: 58,
 };

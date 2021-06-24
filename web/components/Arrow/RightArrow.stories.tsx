@@ -20,6 +20,6 @@ const Template: Story<ComponentProps<typeof RightArrow>> = (args) => (
 export const RightArr = Template.bind({});
 RightArr.args = {
   stroke: '#111',
-  width: 24,
-  height: 25,
+  size: 24,
+  hoverColor: '#71976B',
 };

@@ -6,26 +6,56 @@ import {color} from 'styled-system';
 
 interface ArrowProps {
   stroke?: string;
-  width?: number;
-  height?: number;
+  size?: number;
+  hoverColor?: string;
+}
+
+interface VideoArrowProps {
+  arrowColor?: string;
+  circleColor?: string;
+  size?: number;
 }
 
 interface CircleArrowProps {
   arrowColor?: string;
   circleColor?: string;
-  width?: number;
-  height?: number;
+  size?: number;
 }
+
+export const CircleArrow = ({
+  arrowColor = 'white',
+  circleColor = '#71976B',
+  size = 25,
+}: CircleArrowProps) => {
+  return (
+    <svg
+      width={size}
+      viewBox="0 0 27 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="13.5" cy="14.459" r="13.5" fill={circleColor} />
+      <path d="M11.75 18.46l4.5-4.5-4.5-4.5" fill={circleColor} />
+      <path
+        d="M11.75 18.46l4.5-4.5-4.5-4.5"
+        stroke={arrowColor}
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 
 export const LeftArrow = ({
   stroke = 'black',
-  width = 24,
-  height = 24,
+  size = 24,
+  hoverColor = '#71976B',
 }: ArrowProps) => {
   return (
-    <svg
-      width={width}
-      height={height}
+    <StyledSVG
+      width={size}
+      hoverColor={hoverColor}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -44,19 +74,19 @@ export const LeftArrow = ({
         stroke-linecap="round"
         stroke-linejoin="round"
       />
-    </svg>
+    </StyledSVG>
   );
 };
 
 export const RightArrow = ({
   stroke = 'black',
-  width = 24,
-  height = 25,
+  size = 24,
+  hoverColor = '#71976B',
 }: ArrowProps) => {
   return (
-    <svg
-      width={width}
-      height={height}
+    <StyledSVG
+      width={size}
+      hoverColor={hoverColor}
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -75,19 +105,14 @@ export const RightArrow = ({
         stroke-linecap="round"
         stroke-linejoin="round"
       />
-    </svg>
+    </StyledSVG>
   );
 };
 
-export const RightArrowNoLine = ({
-  stroke = '#111',
-  width = 8,
-  height = 14,
-}: ArrowProps) => {
+export const RightArrowNoLine = ({stroke = '#111', size = 8}: ArrowProps) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
       viewBox="0 0 8 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -103,16 +128,14 @@ export const RightArrowNoLine = ({
   );
 };
 
-export const CircleArrow = ({
+export const VideoArrow = ({
   arrowColor = 'white',
   circleColor = '#1B76B0',
-  width = 58,
-  height = 58,
-}: CircleArrowProps) => {
+  size = 58,
+}: VideoArrowProps) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
       viewBox="0 0 58 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -125,3 +148,18 @@ export const CircleArrow = ({
     </svg>
   );
 };
+
+const StyledSVG = styled.svg`
+  ${(props: {color: string; hoverColor: string}) =>
+    css`
+      path {
+        stroke: ${props.color};
+        transition: ease-in 0.2s;
+      }
+      &:hover {
+        path {
+          stroke: ${props.hoverColor};
+        }
+      }
+    `}
+`;

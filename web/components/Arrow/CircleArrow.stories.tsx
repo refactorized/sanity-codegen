@@ -20,7 +20,6 @@ const Template: Story<ComponentProps<typeof CircleArrow>> = (args) => (
 export const CircleArr = Template.bind({});
 CircleArr.args = {
   arrowColor: 'white',
-  circleColor: '#1B76B0',
-  width: 58,
-  height: 58,
+  circleColor: '#71976B',
+  size: 58,
 };
