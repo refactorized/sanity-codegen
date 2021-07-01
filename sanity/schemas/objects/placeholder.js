@@ -1,5 +1,3 @@
-import {string} from 'prop-types';
-
 const placeholder = {
   type: 'object',
   name: 'placeholder',

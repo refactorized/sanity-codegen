@@ -1,5 +1,5 @@
-import sanityClient from '@sanity/client';
-import config from '../../config';
+const sanityClient = require('@sanity/client');
+const config = require('../config');
 
 const client = sanityClient({
   projectId: config.sanity.projectId,
@@ -8,4 +8,4 @@ const client = sanityClient({
   useCdn: false, // `false` if you want to ensure fresh data
 });
 
-export default client;
+module.exports = client;

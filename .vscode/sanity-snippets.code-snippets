@@ -1,0 +1,14 @@
+{
+	"sanity schema field": {
+		"prefix": "/field",
+		"body": [
+			"{",
+			"  name: '$1',",
+			"  type: '${2|string,block,boolean,date,datetime,document,file,geopoint,image,number,object,reference,slug,span,text,url|}',",
+			"  title: '$3',",
+			"},"
+		],
+		"description": "basic sanity field entry",
+	}
+}
+
