@@ -9,7 +9,8 @@ const config = {
       process.env.SANITY_DATASET ||
       process.env.SANITY_STUDIO_API_DATASET ||
       'production',
+    token: process.env.SANITY_TOKEN || null,
   },
 };
 
-export default config;
+module.exports = config;
