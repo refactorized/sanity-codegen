@@ -12,6 +12,7 @@ const config = {
       process.env.SANITY_DATASET ||
       process.env.SANITY_STUDIO_API_DATASET ||
       'production',
+    token: process.env.SANITY_TOKEN || null,
   },
   flags: {
     guides: `${process.env.DEBUG_GUIDES}`.toLowerCase === 'true',
@@ -20,4 +21,4 @@ const config = {
   dev,
 };
 
-export default config;
+module.exports = config;

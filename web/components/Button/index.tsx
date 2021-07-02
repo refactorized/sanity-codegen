@@ -1,10 +1,10 @@
 import {MouseEventHandler} from 'react';
 import styled from 'styled-components';
-import {color, space, typography, flexbox, variant} from 'styled-system';
-import {solid, outlined, text} from '../../themes/variants/buttons';
-import Image from 'next/image';
+import {color, space, typography, variant} from 'styled-system';
+import {solid, outlined, text, secondary} from '../../themes/variants/buttons';
+import {RightArrowNoLine} from '../Arrow/index';
 
-type ButtonVariants = 'solid' | 'outlined' | 'text';
+type ButtonVariants = 'solid' | 'outlined' | 'text' | 'secondary';
 type SizeVariants = 'large' | 'medium' | 'small';
 
 export interface ButtonProps {
@@ -15,15 +15,27 @@ export interface ButtonProps {
   onClickHandler?: MouseEventHandler<HTMLButtonElement>;
   label: string;
   size: SizeVariants;
+  arrow: Boolean;
+  arrowColor: string;
 }
 
 /*** STYLING ***/
+const StyledWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+`;
+
+const StyledSpan = styled.span`
+  ${space}
+  ${typography}
+`;
 const StyledButton = styled.button`
   ${variant({
     variants: {
       solid,
       outlined,
       text,
+      secondary,
     },
   })}
   ${color}
@@ -37,6 +49,7 @@ const StyledButtonLink = styled.a`
       solid,
       outlined,
       text,
+      secondary,
     },
   })}
   ${color}
@@ -48,26 +61,24 @@ export const Button = ({
   variant = 'solid',
   url,
   onClickHandler,
-  label = 'Button',
+  label = 'Learn About Us',
   size = 'medium',
+  arrow = true,
+  arrowColor = 'black',
 }: ButtonProps): JSX.Element => {
-  return url ? (
-    <StyledButtonLink
-      href={url}
-      variant={variant}
-      py={size === 'large' ? 3 : size === 'small' ? 1 : 2}
-      px={size === 'large' ? 3 : 2}
-    >
-      {label}
-    </StyledButtonLink>
-  ) : (
-    <StyledButton
-      onClick={onClickHandler}
-      variant={variant}
-      py={size === 'large' ? 3 : size === 'small' ? 1 : 2}
-      px={size === 'large' ? 3 : 2}
-    >
-      {label}
-    </StyledButton>
+  return (
+    <StyledWrapper>
+      {url ? (
+        <StyledButtonLink href={url} variant={variant}>
+          <StyledSpan mr={3}>{label}</StyledSpan>
+          {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
+        </StyledButtonLink>
+      ) : (
+        <StyledButton onClick={onClickHandler} variant={variant}>
+          <StyledSpan mr={3}>{label}</StyledSpan>
+          {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
+        </StyledButton>
+      )}
+    </StyledWrapper>
   );
 };

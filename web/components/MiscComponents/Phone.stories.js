@@ -3,7 +3,7 @@ import React from 'react';
 import {Phone} from './index.tsx';
 
 export default {
-  title: 'Example/MiscComponents/Phone',
+  title: 'Components/MiscComponents/Phone',
   component: {Phone},
 };
 

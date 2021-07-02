@@ -3,7 +3,7 @@ import React from 'react';
 import {HamburgerMenu} from './index.tsx';
 
 export default {
-  title: 'Example/NavSvgComponents/HamburgerMenu',
+  title: 'Components/NavSvgComponents/HamburgerMenu',
   component: {HamburgerMenu},
 };
 

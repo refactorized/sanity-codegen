@@ -4,18 +4,23 @@ import {color, space, typography} from 'styled-system';
 
 interface PhoneComponentProps {
   tel: string;
-  fontSize: string;
+  fontSize: string | number;
   fontWeight: string;
+  fontColor: string;
+  hoverColor: string;
 }
 
 export const Phone = ({
   tel = '123.456.7890',
   fontSize = '16px',
   fontWeight = 'regular',
+  fontColor = 'text',
+  hoverColor = 'navy',
 }: PhoneComponentProps): JSX.Element => {
   return (
     <PhoneContainer
-      color="text"
+      color={fontColor}
+      hoverColor={hoverColor}
       fontFamily="headline"
       fontSize={fontSize}
       fontWeight={fontWeight}
@@ -31,4 +36,8 @@ const PhoneContainer = styled.a`
   ${space}
   ${typography}
   text-decoration: none;
+  transition: ease-in 0.15s;
+  &:hover {
+    color: ${(props: PhoneComponentProps) => props.hoverColor};
+  }
 `;

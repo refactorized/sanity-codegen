@@ -3,7 +3,7 @@ import React from 'react';
 import {Facebook} from './index.tsx';
 
 export default {
-  title: 'Example/SocialComponents/Facebook',
+  title: 'Components/SocialComponents/Facebook',
   component: {Facebook},
 };
 

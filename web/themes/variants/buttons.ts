@@ -1,8 +1,7 @@
 export const solid = {
   backgroundColor: 'blue',
   color: 'background',
-  fontSize: 2,
-  borderRadius: '4px',
+  fontSize: [1,2],
   letterSpacing: 4,
   border: `1px solid`,
   borderColor: 'blue',
@@ -13,10 +12,13 @@ export const solid = {
           border-color 0.3s ease-in-out`,
 
   ':not(:disabled):hover': {
-    bg: 'navy',
-    color: 'background',
+    bg: '#133453',
+    borderColor: '#133453',
   },
-  fontFamily: 'inherit',
+  fontFamily: 'headline',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 
   ':disabled': {
     border: 'none',
@@ -24,6 +26,43 @@ export const solid = {
     bg: 'backgroundDisabled',
   },
   fontWeight: 'bold',
+  px: [3,3],
+  py: [2,3],
+  lineHeight: 'heading',
+};
+
+export const secondary = {
+  backgroundColor: 'white',
+  color: 'black',
+  fontSize: [1,2],
+  letterSpacing: 4,
+  border: `1px solid`,
+  borderColor: 'white',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  transition: `color 0.3s ease-in-out,
+          background-color 0.3s ease-in-out,
+          border-color 0.3s ease-in-out`,
+
+  ':not(:disabled):hover': {
+    bg: '#e2985b',
+    borderColor: '#e2985b',
+  },
+  fontFamily: 'headline',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  ':disabled': {
+    border: 'none',
+    cursor: 'default',
+    bg: 'backgroundDisabled',
+  },
+  fontWeight: 'bold',
+  px: [2,2],
+  py: [2,3],
+  lineHeight: 'heading',
+  stroke: '#D15D34'
 };
 
 export const outlined = {

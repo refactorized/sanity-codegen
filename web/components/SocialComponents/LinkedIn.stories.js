@@ -3,7 +3,7 @@ import React from 'react';
 import {LinkedIn} from './index.tsx';
 
 export default {
-  title: 'Example/SocialComponents/LinkedIn',
+  title: 'Components/SocialComponents/LinkedIn',
   component: {LinkedIn},
 };
 

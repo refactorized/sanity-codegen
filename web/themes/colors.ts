@@ -9,7 +9,8 @@ export type ThemeColorName =
   | 'cream'
   | 'green'
   | 'sky'
-  | 'orange';
+  | 'orange'
+  | 'black';
 
 export type ThemeColorList = {
   [index in ThemeColorName]: string;
@@ -27,6 +28,7 @@ const colors: ThemeColorList = {
   green: '#71976B',
   sky: '#E7EDF5',
   orange: '#D15D34',
+  black: '#000000',
 };
 
 export default colors;

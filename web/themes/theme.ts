@@ -69,7 +69,7 @@ const theme: Theme = {
   letterSpacings: [-3, -2, -1, -0.5, 0, 1],
 
   fonts: {
-    body: 'Mrs. Eaves XL Serif OT',
+    body: 'Mrs Eaves XL Serif OT',
     headline: 'Proxima Nova',
   },
 
