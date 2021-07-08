@@ -1,9 +1,11 @@
+//todo: decide best way to export types, (here, types file, individually, ambient)
 export {default} from './theme';
 export type {Theme as Theme} from './theme';
 export type {ThemeColorList, ThemeColorName} from './colors';
+export {default as query} from './query';
 
-import {Theme} from './theme'; // make Theme type available in this module
-
+// also import Theme Type here
+import {Theme} from './theme';
 export interface PropsWithTheme {
   theme: Theme;
 }

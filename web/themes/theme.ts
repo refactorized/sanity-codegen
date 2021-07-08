@@ -1,20 +1,35 @@
 import * as buttons from './variants/buttons';
 import colors, {ThemeColorList} from './colors';
 
-type spaceScale = number[] & {
-  sm: number;
-  md: number;
-  lg: number;
-  xl: number;
-  x5: number;
-  x6: number;
-  x7: number;
-  x8: number;
-  x10: number;
-  x12: number;
-};
+type ThemeSpaceName =
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'x5'
+  | 'x6'
+  | 'x7'
+  | 'x8'
+  | 'x10'
+  | 'x12';
+
+export type ThemeBreakpointName = 'tablet' | 'desktop' | 'max';
+
+// combined array scale with named keys
+export type ThemeSpaceScale = number[] &
+  {
+    [index in ThemeSpaceName]: number;
+  };
+
+// combined array scale with named keys
+export type ThemeBreakpointScale = number[] &
+  {
+    [index in ThemeBreakpointName]: number;
+  };
 
 export type Theme = {
+  breakpoints: ThemeBreakpointScale;
+  buttons: any;
   colors: ThemeColorList;
   lineHeights: {
     body: number;
@@ -35,44 +50,46 @@ export type Theme = {
   };
   fontSizes: number[];
   fontSize: number[];
-  space: spaceScale;
-  spaces: spaceScale;
-  buttons: any;
+  space: ThemeSpaceScale;
+  spaces: ThemeSpaceScale;
 };
 
-//                     0  1   2   3   4   5   6   7   8   9  10
-const spaceArr: any = [0, 8, 16, 32, 40, 48, 56, 64, 72, 80, 96];
-spaceArr.sm = spaceArr[1];
-spaceArr.md = spaceArr[2];
-spaceArr.lg = spaceArr[3];
-spaceArr.xl = spaceArr[4];
-spaceArr.x5 = spaceArr[5];
-spaceArr.x6 = spaceArr[6];
-spaceArr.x7 = spaceArr[7];
-spaceArr.x8 = spaceArr[8];
-spaceArr.x10 = spaceArr[9];
-spaceArr.x12 = spaceArr[10];
+//             0  1   2   3   4   5   6   7   8   9  10
+const space = [0, 8, 16, 32, 40, 48, 56, 64, 72, 80, 96] as ThemeSpaceScale;
+space.sm = space[1];
+space.md = space[2];
+space.lg = space[3];
+space.xl = space[4];
+space.x5 = space[5];
+space.x6 = space[6];
+space.x7 = space[7];
+space.x8 = space[8];
+space.x10 = space[9];
+space.x12 = space[10];
 
-const space: spaceScale = spaceArr;
+const breakpoints = [768, 1024, 1440] as ThemeBreakpointScale;
+breakpoints.tablet = breakpoints[0];
+breakpoints.desktop = breakpoints[1];
+breakpoints.max = breakpoints[2];
 
 //                [ 0   1   2   3   4   5   6   7]
 const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64];
 
 const theme: Theme = {
+  breakpoints,
+  buttons,
   colors,
   lineHeights: {
     body: 1.5,
     heading: 1.25,
     headingSecondary: 1.125,
   },
-
-  letterSpacings: [-3, -2, -1, -0.5, 0, 1],
-
   fonts: {
     body: 'Mrs Eaves XL Serif OT',
     headline: 'Proxima Nova',
   },
-
+  fontSizes,
+  fontSize: fontSizes, // renamed fontSize to fontSizes
   fontWeights: {
     bold: 700,
     semiBold: 600,
@@ -80,16 +97,9 @@ const theme: Theme = {
     regular: 400,
     light: 300,
   },
-
-  // renamed fontSize to fontSizes
-  fontSizes,
-  fontSize: fontSizes,
-
-  // renamed spaces to space ()
+  letterSpacings: [-3, -2, -1, -0.5, 0, 1],
   space,
-  spaces: space,
-
-  buttons,
+  spaces: space, // renamed spaces to space ()
 };
 
 export default theme;

@@ -3,7 +3,7 @@
  * import them from this file.
  */
 
-const prod = false; //todo: ///////////////////// UPDATE THIS //////////////////
+const prod = process.env.NODE_ENV === 'production';
 const dev = !prod;
 const config = {
   sanity: {
