@@ -1,7 +1,7 @@
 import * as buttons from './variants/buttons';
 import colors, {ThemeColorList} from './colors';
 
-type ThemeSpaceName =
+export type ThemeSpaceName =
   | 'sm'
   | 'md'
   | 'lg'

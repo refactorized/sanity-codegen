@@ -1,17 +1,15 @@
 import theme, {ThemeColorName} from './';
 import {default as queryObj} from './query';
-import {ThemeBreakpointName} from './theme';
-/**
- * for when you just need a color string
- * @param color - Theme color name
- * @returns css color string, e.g. '#663399'
- */
-export const color = (color: ThemeColorName) => () => theme.colors[color];
+import {ThemeBreakpointName, ThemeSpaceName} from './theme';
 
-const atLeast = (breakpoint: ThemeBreakpointName) => (/*props*/) =>
+export const color = (name: ThemeColorName) => () => theme.colors[name];
+
+export const space = (name: ThemeSpaceName) => () => theme.spaces[name];
+
+const atLeast = (breakpoint: ThemeBreakpointName) => () =>
   queryObj.atLeast[breakpoint];
 
-const below = (breakpoint: ThemeBreakpointName) => (/*props*/) =>
+const below = (breakpoint: ThemeBreakpointName) => () =>
   queryObj.below[breakpoint];
 
 export const query = {
