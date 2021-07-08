@@ -6,6 +6,7 @@ import config from '../../config';
 const MapComponents = ({blocks}: {blocks: PageBlock[]}) => {
   if (!blocks?.length) {
     if (config.dev) {
+      // TODO: build and use unified logging module.
       console.error('invalid or empty blocks passed to <MapComponents>', {
         blocks,
       });
