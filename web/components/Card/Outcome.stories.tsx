@@ -5,6 +5,11 @@ import {ThemeProvider} from 'styled-components';
 import {StatCard} from './index';
 import theme from '../../themes/theme';
 
+export default {
+    title: 'Components/Cards',
+    component: StatCard,
+};
+
 const Template: Story<ComponentProps<typeof StatCard>> = (args) => (
     <ThemeProvider theme={theme}>
       <StatCard {...args} />
@@ -13,5 +18,7 @@ const Template: Story<ComponentProps<typeof StatCard>> = (args) => (
   
   export const Outcome = Template.bind({});
   Outcome.args = {
-    // stuff for the card
+    backgroundColor: '#1B76B0',
+    statisticText: '94%',
+    baselineText: 'Satisfaction rate with Riggs’s individual psychotherapy, as reported by discharged patients.'
   };
