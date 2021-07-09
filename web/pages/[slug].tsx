@@ -1,6 +1,7 @@
 import {getPaths, getPageData} from '../data/page';
 import MapComponents from '../components/MapComponents';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
+import theme from '../themes';
 
 export async function getStaticPaths() {
   const paths = await getPaths();
