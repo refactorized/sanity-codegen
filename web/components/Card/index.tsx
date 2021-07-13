@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {color, space, typography, flexbox, layout, shadow} from 'styled-system';
+import {CircleArrow} from '../Arrow/index';
 import {SingleQuote, PuzzlePerson} from './CardIcons';
 
 export interface StatCardProps {
@@ -10,6 +11,8 @@ export interface StatCardProps {
 
 export interface TestimonialCardProps {
     testimonialText: string,
+    patientName: string,
+    patientPhotoPath: string,
 };
 
 const CardContainer = styled.div`
@@ -21,6 +24,7 @@ const CardContainer = styled.div`
     border-radius: 4px;
     padding: 46px;
     box-sizing: border-box;
+    font-family: Proxima Nova;
 `;
 
 const BaselineContainer = styled.div`
@@ -44,10 +48,41 @@ const StatisticText = styled.div`
 
 const TestimonialText = styled.div`
     margin-top: 47px;
-    font-family: Proxima Nova;
     font-style: italic;
     font-size: 18px;
     line-height: 25px;
+`;
+
+const PatientLine = styled.div`
+    display: flex;
+    margin-top: 21px;
+    align-items: center;
+`;
+
+const PatientPhoto = styled.div`
+    ${color}
+    width: 45px;
+    height: 45px;
+    border-radius: 23px;
+    background-color: #ddd;
+    display: inline-block;
+`;
+
+const PatientName = styled.div`
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(113, 151, 107, 1);
+    text-transform: capitalize;
+    margin-left: 12px;
+`;
+
+const MoreCTA = styled.div`
+    position: absolute;
+    bottom: 37px;
+    left: 49px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    weight: 700;
 `;
 
 export const StatCard = ({ backgroundColor, baselineText, statisticText }: StatCardProps): JSX.Element => {
@@ -64,11 +99,18 @@ export const StatCard = ({ backgroundColor, baselineText, statisticText }: StatC
     </CardContainer>;
 };
 
-export const TestimonialCard = ({testimonialText}: TestimonialCardProps): JSX.Element => {
+export const TestimonialCard = ({testimonialText, patientName, patientPhotoPath}: TestimonialCardProps): JSX.Element => {
     return <CardContainer bg="#fff" color="#484848" boxShadow='0px 8px 15px 0px rgba(0, 0, 0, 0.1)'>
         <SingleQuote />
         <SingleQuote />
         <TestimonialText>{testimonialText}</TestimonialText>
+        <PatientLine>
+            <PatientPhoto background={patientPhotoPath}></PatientPhoto>
+            <PatientName>- {patientName}</PatientName>
+        </PatientLine>
+        <MoreCTA>
+            More Patient Outcomes <CircleArrow />
+        </MoreCTA>
     </CardContainer>;
 };
 
