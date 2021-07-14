@@ -30,6 +30,8 @@ const CardContainer = styled.div`
     padding: 46px;
     box-sizing: border-box;
     font-family: Proxima Nova;
+    margin-right: 24px;
+    flex-shrink: 0;
 `;
 
 const BaselineContainer = styled.div`

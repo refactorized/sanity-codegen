@@ -10,10 +10,17 @@ const CarouselContainer = styled.div`
 const CarouselHeader = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 `;
 
 const Title = styled.div`
-
+    font-family: Mrs Eaves XL Serif OT;
+    font-size: 43px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: -0.01em;
+    text-align: left;
 `;
 
 const CarouselNav = styled.div`
@@ -23,9 +30,9 @@ const CarouselNav = styled.div`
 const ListContainer = styled.div`
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
+    padding-bottom: 16px;
 `;
 
 function isStatCard(card: any): card is StatCardProps {
