@@ -109,7 +109,7 @@ export const StatCard = ({ backgroundColor, baselineText, statisticText, icon}: 
 export const TestimonialCard = ({testimonialText, patientName, patientPhotoPath}: TestimonialCardProps): JSX.Element => {
     return <CardContainer bg="#fff" color="#484848" boxShadow='0px 8px 15px 0px rgba(0, 0, 0, 0.1)'>
         <SingleQuote />
-        <SingleQuote />
+        <SingleQuote style={{marginLeft: '8px'}} />
         <TestimonialText>{testimonialText}</TestimonialText>
         <PatientLine>
             <PatientPhoto background={patientPhotoPath}></PatientPhoto>
