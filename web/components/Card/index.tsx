@@ -3,10 +3,15 @@ import {color, space, typography, flexbox, layout, shadow} from 'styled-system';
 import {CircleArrow} from '../Arrow/index';
 import {SingleQuote, PuzzlePerson} from './CardIcons';
 
+enum CardIconSelect {
+    PuzzlePerson
+}
+
 export interface StatCardProps {
     backgroundColor: string,
     baselineText: string,
     statisticText: string,
+    icon: CardIconSelect,
 };
 
 export interface TestimonialCardProps {
@@ -85,7 +90,7 @@ const MoreCTA = styled.div`
     weight: 700;
 `;
 
-export const StatCard = ({ backgroundColor, baselineText, statisticText }: StatCardProps): JSX.Element => {
+export const StatCard = ({ backgroundColor, baselineText, statisticText, icon}: StatCardProps): JSX.Element => {
     return <CardContainer bg={backgroundColor} color="#fff">
         <PuzzlePerson />
         <BaselineContainer>
