@@ -6,7 +6,7 @@ import {TestimonialCard} from './index';
 import theme from '../../themes/theme';
 
 export default {
-    title: 'Components/Cards',
+    title: 'Components/Cards (wip)/Testimonial (wip)',
     component: TestimonialCard,
 };
 

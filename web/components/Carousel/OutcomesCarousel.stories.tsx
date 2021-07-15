@@ -6,7 +6,7 @@ import {OutcomesCarousel} from '../Carousel/index';
 import theme from '../../themes/theme';
 
 export default {
-    title: 'Components/Carousel',
+    title: 'Components/Carousel (wip)',
     component: OutcomesCarousel,
 };
 

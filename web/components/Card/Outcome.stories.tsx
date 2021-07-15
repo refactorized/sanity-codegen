@@ -6,8 +6,9 @@ import {StatCard} from './index';
 import theme from '../../themes/theme';
 
 export default {
-    title: 'Components/Cards',
+    title: 'Components/Cards (wip)/Stat (wip)',
     component: StatCard,
+    label: 'wip',
 };
 
 const Template: Story<ComponentProps<typeof StatCard>> = (args) => (
