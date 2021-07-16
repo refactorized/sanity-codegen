@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import theme, {ThemeColorName} from '../../themes';
 import {query, space} from '../../themes/fn';
+import config from '../../../config';
 
 interface BlockComponentProps {
   narrow?: boolean;
@@ -17,7 +18,9 @@ const bgcolor = ({background}: BlockComponentProps) => {
 
 // set tablet+ padding for regular / narrow layouts
 const paddingVariants = ({narrow}: BlockComponentProps) => {
-  return narrow ? {padding: space('marginWide')} : {padding: space('margin')};
+  return narrow
+    ? {padding: space('marginWide')()}
+    : {padding: space('margin')()};
 };
 
 const Block = styled.div<BlockComponentProps>`
@@ -30,6 +33,11 @@ const Block = styled.div<BlockComponentProps>`
   @media (${query.atLeast('tablet')}) {
     ${paddingVariants}
   }
+  color: ${({theme}) => theme.colors.navy};
 `;
+
+const whatevs = () => {
+  return <Block narrow background={'orange'} />;
+};
 
 export default Block;
