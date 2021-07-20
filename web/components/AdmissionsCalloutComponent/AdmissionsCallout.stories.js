@@ -24,7 +24,8 @@ DefaultBlock.args = {
   relational, patient-driven behavioral treatment approach addresses
   underlying issues, not just symptoms.`,
   btnText: `Contact Admissions`,
-  btnText: `Contact Admissions`,
   btnUrl: `#`,
+  boxlessbtnText: `Learn More About Admissions`,
+  boxlessbtnUrl: `google.com`,
   phoneNumber: '866-255-1921',
 };
