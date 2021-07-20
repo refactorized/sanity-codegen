@@ -11,8 +11,8 @@ export type ThemeQueryMethods = {
   atLeast: ThemeWidthQuery;
 };
 
-const belowFn = (px: number) => `max-width: ${px - 1}px`;
-const atLeastFn = (px: number) => `min-width: ${px}px`;
+const belowFn = (brk: string) => `max-width: calc(${brk}-1px)`;
+const atLeastFn = (brk: string) => `min-width: ${brk}`;
 
 // note that these constants will also include '0'-'10' which are extra-typal
 const belowConstants = Object.fromEntries(

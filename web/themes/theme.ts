@@ -25,9 +25,9 @@ export type ThemeSpaceScale = number[] &
   };
 
 // combined array scale with named keys
-export type ThemeBreakpointScale = number[] &
+export type ThemeBreakpointScale = string[] &
   {
-    [index in ThemeBreakpointName]: number;
+    [index in ThemeBreakpointName]: string;
   };
 
 export type Theme = {
@@ -73,7 +73,7 @@ space.margin = 80;
 space.marginMobile = 20;
 space.marginWide = 200;
 
-const breakpoints = [768, 1024, 1440] as ThemeBreakpointScale;
+const breakpoints = ['768px', '1024px', '1440px'] as ThemeBreakpointScale;
 breakpoints.tablet = breakpoints[0];
 breakpoints.desktop = breakpoints[1];
 breakpoints.max = breakpoints[2];
