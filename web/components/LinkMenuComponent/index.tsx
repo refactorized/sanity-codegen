@@ -145,7 +145,7 @@ const StyledBoxEdit = styled.div`
   column-gap: 28.5px;
   break-inside: avoid;
 
-  @media (max-width: 768px) {
+  @media (max-width: 760px) {
     column-count: inherit;
   }
 `;
