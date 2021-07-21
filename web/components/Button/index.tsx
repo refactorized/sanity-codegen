@@ -70,12 +70,12 @@ export const Button = ({
     <StyledWrapper>
       {url ? (
         <StyledButtonLink href={url} variant={variant}>
-          <StyledSpan mr={3}>{label}</StyledSpan>
+          <StyledSpan mr={2}>{label}</StyledSpan>
           {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
         </StyledButtonLink>
       ) : (
         <StyledButton onClick={onClickHandler} variant={variant}>
-          <StyledSpan mr={3}>{label}</StyledSpan>
+          <StyledSpan mr={2}>{label}</StyledSpan>
           {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
         </StyledButton>
       )}

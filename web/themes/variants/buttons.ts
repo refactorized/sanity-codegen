@@ -1,7 +1,7 @@
 export const solid = {
   backgroundColor: 'blue',
   color: 'background',
-  fontSize: [1,2],
+  fontSize: 0,
   letterSpacing: 4,
   border: `1px solid`,
   borderColor: 'blue',
@@ -26,15 +26,15 @@ export const solid = {
     bg: 'backgroundDisabled',
   },
   fontWeight: 'bold',
-  px: [3,3],
-  py: [2,3],
+  px: [2, 2],
+  py: [1, 2],
   lineHeight: 'heading',
 };
 
 export const secondary = {
   backgroundColor: 'white',
   color: 'black',
-  fontSize: [1,2],
+  fontSize: 0,
   letterSpacing: 4,
   border: `1px solid`,
   borderColor: 'white',
@@ -59,10 +59,10 @@ export const secondary = {
     bg: 'backgroundDisabled',
   },
   fontWeight: 'bold',
-  px: [2,2],
-  py: [2,3],
+  px: [1, 2],
+  py: [2, 2],
   lineHeight: 'heading',
-  stroke: '#D15D34'
+  stroke: '#D15D34',
 };
 
 export const outlined = {

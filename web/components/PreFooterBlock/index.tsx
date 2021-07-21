@@ -18,7 +18,8 @@ export const PreFooterBlock = ({
   phoneNumber = '866-255-1921',
 }: PreFooterBlockProps): JSX.Element => {
   return (
-    <StyledContainer
+    <StyledBox
+      display="flex"
       flexDirection={['column', 'row']}
       justifyContent="space-between"
       p={['22px', '45px 60px']}
@@ -50,9 +51,11 @@ export const PreFooterBlock = ({
           </StyledDescription>
         </div>
       </div>
-      <StyledSection
+      <StyledBoxEdit
+        display="flex"
         flexDirection={['column', 'row']}
         alignItems={['flex-start', 'center']}
+        gap="20px"
         mt="20px"
       >
         <Button
@@ -70,17 +73,24 @@ export const PreFooterBlock = ({
           fontColor="secondary"
           hoverColor="black"
         />
-      </StyledSection>
-    </StyledContainer>
+      </StyledBoxEdit>
+    </StyledBox>
   );
 };
 
-const StyledContainer = styled.div`
-  display: flex;
+const StyledBox = styled.div`
+  ${layout}
   ${flexbox}
   ${color}
+  ${typography}
   ${space}
-   ${border}
+  ${border}
+`;
+const StyledBoxEdit = styled.div`
+  ${layout}
+  ${flexbox}
+  ${space}
+  gap: 20px;
 `;
 
 const StyledHeadline = styled.h1`
@@ -91,10 +101,4 @@ const StyledHeadline = styled.h1`
 const StyledDescription = styled.h2`
   ${typography}
   ${layout}
-`;
-const StyledSection = styled.div`
-  display: flex;
-  ${flexbox}
-  gap: 20px;
-  ${space}
 `;
