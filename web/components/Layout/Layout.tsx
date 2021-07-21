@@ -1,7 +1,9 @@
+import {ThemeProvider} from 'styled-components';
+import theme, {Theme} from '../../themes';
 import React from 'react';
 import styled from 'styled-components';
 
-const Layout = styled.div`
+const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -13,4 +15,16 @@ const Layout = styled.div`
   left: 0;
 `;
 
+interface LayoutProps {
+  theme?: Theme;
+}
+
+const Layout: React.FC<LayoutProps> = (props) => {
+  const _theme = props.theme || theme;
+  return (
+    <ThemeProvider theme={_theme}>
+      <Container {...props} />
+    </ThemeProvider>
+  );
+};
 export default Layout;
