@@ -27,8 +27,6 @@ const paddingVariants = ({narrow, theme}: BlockComponentProps) => {
       };
 };
 
-console.log('query:', `${query.atLeast('tablet')()}`);
-
 const Block = styled.div<BlockComponentProps>`
   box-sizing: border-box; // allows padding to size inner content
   width: 100%;

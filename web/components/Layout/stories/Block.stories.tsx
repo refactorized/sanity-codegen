@@ -33,11 +33,3 @@ export const Blocks: Story = () => {
     </Layout>
   );
 };
-
-// export const Standard = Template.bind({});
-// Standard.args = {background: 'blue'};
-
-// export const Narrow = Template.bind({});
-// Narrow.args = {background: 'green', narrow: true};
-
-// export const Narrow = tpl({background: 'green', narrow: true});
