@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import theme, {ThemeColorName} from '../../themes';
+import theme, {Theme, ThemeColorName} from '../../themes';
 import {query, space} from '../../themes/fn';
 
-interface BlockComponentProps {
+export interface BlockComponentProps {
   narrow?: boolean;
   background?: ThemeColorName;
+  theme?: Theme;
 }
 
 // set background color, but only if specified
@@ -16,9 +17,17 @@ const bgcolor = ({background}: BlockComponentProps) => {
 };
 
 // set tablet+ padding for regular / narrow layouts
-const paddingVariants = ({narrow}: BlockComponentProps) => {
-  return narrow ? {padding: space('marginWide')} : {padding: space('margin')};
+const paddingVariants = ({narrow, theme}: BlockComponentProps) => {
+  return narrow
+    ? {
+        padding: `${theme.space.margin}px calc(${theme.space.marginWide}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`,
+      }
+    : {
+        padding: `${theme.space.margin}px calc(${theme.space.margin}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`,
+      };
 };
+
+console.log('query:', `${query.atLeast('tablet')()}`);
 
 const Block = styled.div<BlockComponentProps>`
   box-sizing: border-box; // allows padding to size inner content

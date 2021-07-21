@@ -4,7 +4,7 @@ import {ThemeBreakpointName, ThemeSpaceName} from './theme';
 
 export const color = (name: ThemeColorName) => () => theme.colors[name];
 
-export const space = (name: ThemeSpaceName) => () => theme.spaces[name];
+export const space = (name: ThemeSpaceName) => () => `${theme.spaces[name]}px`;
 
 const atLeast = (breakpoint: ThemeBreakpointName) => () =>
   queryObj.atLeast[breakpoint];
