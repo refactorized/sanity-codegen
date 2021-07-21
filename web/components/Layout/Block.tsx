@@ -18,13 +18,14 @@ const bgcolor = ({background}: BlockComponentProps) => {
 
 // set tablet+ padding for regular / narrow layouts
 const paddingVariants = ({narrow, theme}: BlockComponentProps) => {
-  return narrow
-    ? {
-        padding: `${theme.space.margin}px calc(${theme.space.marginWide}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`,
-      }
-    : {
-        padding: `${theme.space.margin}px calc(${theme.space.margin}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`,
-      };
+  // calculate padding in order to lock virtual max width
+  const widthPadding = (marginPx: number) =>
+    `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`;
+  return {
+    padding: `${theme.space.margin}px ${widthPadding(
+      narrow ? theme.space.marginWide : theme.space.margin,
+    )}`,
+  };
 };
 
 const Block = styled.div<BlockComponentProps>`
