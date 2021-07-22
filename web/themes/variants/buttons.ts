@@ -29,6 +29,7 @@ export const solid = {
   px: [2, 2],
   py: [1, 2],
   lineHeight: 'heading',
+  whiteSpace: 'nowrap',
 };
 
 export const secondary = {
@@ -63,6 +64,7 @@ export const secondary = {
   py: [2, 2],
   lineHeight: 'heading',
   stroke: '#D15D34',
+  whiteSpace: 'nowrap',
 };
 
 export const outlined = {
@@ -74,7 +76,13 @@ export const outlined = {
 
 export const text = {
   ...solid,
-  color: 'primary',
+  color: 'secondary',
   bg: 'transparent',
   borderColor: 'transparent',
+  px: 0,
+  py: 0,
+  ':not(:disabled):hover': {
+    bg: 'transparent',
+    borderColor: 'transparent',
+  },
 };

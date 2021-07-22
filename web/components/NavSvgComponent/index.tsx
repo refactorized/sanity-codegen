@@ -3,8 +3,8 @@ import styled, {css} from 'styled-components';
 
 export interface NavSvgComponentsProps {
   color: string;
-  hoverColor: string;
-  link: string;
+  hoverColor?: string;
+  link?: string;
   size: string;
 }
 
@@ -61,8 +61,8 @@ export const HamburgerMenu = ({
 
 export const Close = ({
   color = 'black',
-  hoverColor = 'grey',
-  link = 'https://www.google.com',
+  hoverColor = '',
+  link = '',
   size = '36',
 }: NavSvgComponentsProps): JSX.Element => {
   return (
