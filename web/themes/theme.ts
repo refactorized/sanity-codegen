@@ -91,8 +91,8 @@ const theme: Theme = {
     headingSecondary: 1.125,
   },
   fonts: {
-    body: 'Mrs Eaves XL Serif OT',
-    headline: 'Proxima Nova',
+    body: 'mrs-eaves-xl-serif',
+    headline: 'proxima-nova',
   },
   fontSizes,
   fontSize: fontSizes, // renamed fontSize to fontSizes
