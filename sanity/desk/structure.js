@@ -9,9 +9,10 @@ export default () =>
   S.list()
     .title('Base')
     .items([
-      S.listItem().title('Site Settings').child(
-        S.document().schemaType('siteConfig'),
-        //.documentId('b5e0f3bf-cf0b-413d-b5fc-bb23185c27ad'),
-      ),
+      S.listItem()
+        .title('Site Settings')
+        .child(
+          S.document().schemaType('siteConfig').documentId('ID_SITE_CONFIG'),
+        ),
       ...S.documentTypeListItems().filter(isSingletonDocType),
     ]);

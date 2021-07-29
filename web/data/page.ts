@@ -1,4 +1,5 @@
-import client from './sanityClient';
+import client, {fetchOne} from './sanityClient';
+import {handler} from '../util/logging';
 import groq from 'groq';
 
 // promise style
@@ -19,22 +20,22 @@ export const getPaths = () => {
       throw new Error(err);
     });
 };
+
 // async await style
 export const getPageData = async (slug: string): Promise<PageDocument> => {
-  const pageDataQuery = groq`*[_type == "page" && slug.current == "home"]`;
+  const query = groq`*[_type == "page" && slug.current == "${slug}"]`;
+
   try {
-    const results = await client.fetch(pageDataQuery);
-    if (results.length !== 1) {
-      return null;
-    }
+    const pageData = await fetchOne(query);
+
     // // refine results
     // const page = results[0].page
     // // todo sanity types d.ts
     // const blocks = page.blocks.map( (block: unknown): => {})
     // )
-
-    return results[0];
+    return pageData as PageDocument;
   } catch (err) {
-    throw new Error(err);
+    handler(err);
+    return null;
   }
 };

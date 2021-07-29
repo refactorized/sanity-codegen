@@ -50,5 +50,5 @@ interface SiteConfig {
   austinRiggs: string;
 }
 
-const siteCfg: siteConfig = cfg;
-const Footer = ({siteCfg}: {siteCfg: siteConfig}) => {};
+// const siteCfg: siteConfig = cfg;
+// const Footer = ({siteCfg}: {siteCfg: siteConfig}) => {};

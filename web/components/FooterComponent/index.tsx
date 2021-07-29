@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {FC} from 'react';
 import {
   space,
   typography,
@@ -12,22 +13,22 @@ import {
 import {Address} from './address';
 import {Facebook, Twitter, LinkedIn} from '../SocialComponents';
 
-// *************
-// FOR STRICT FOOTER PROPS
-// CHECK IN THE data/types.d.ts FILE
-// LINES 30-54
-// *************
+interface FooterProps {
+  siteConfig: SiteConfig;
+}
 
-export const Footer = ({
-  AddressLine1,
-  AddressLine2,
-  email,
-  phone,
-  fax,
-  footerConfig,
-  privatePolicy,
-  austinRiggs,
-}: SiteConfig): JSX.Element => {
+export const Footer: FC<FooterProps> = ({siteConfig}) => {
+  const {
+    AddressLine1,
+    AddressLine2,
+    email,
+    phone,
+    fax,
+    footerConfig,
+    privatePolicy,
+    austinRiggs,
+  } = siteConfig;
+
   // Created ColumnArr for Functional Usage
   // Used in Lines 147 & 232
   const columnArr = [
@@ -40,7 +41,7 @@ export const Footer = ({
   // Styled Systems Styling Repetition
   const columnData = (colObj: any) => {
     return colObj.map((x: any) => (
-      <div>
+      <div key={x._key}>
         {x.map((x: any, i: number) =>
           i === 0 ? (
             <StyledLink
@@ -150,6 +151,7 @@ export const Footer = ({
                 m="0"
                 color="text"
                 href={x[0].slug.current}
+                key={x._key}
               >
                 {x[0].title}
               </StyledLink>
