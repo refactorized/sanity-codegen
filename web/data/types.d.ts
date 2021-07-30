@@ -6,25 +6,26 @@ type SanityDocument = {
   _updatedAt: Date;
 };
 
-interface BlockBase {
+interface PageBlockData {
+  blockType: string;
   _key: string;
 }
 
-interface PlaceholderBlock extends BlockBase {
-  blockType: 'placeholder';
-  text: string;
-}
+// interface PlaceholderBlockData extends PageBlockData {
+//   blockType: 'placeholder';
+//   text: string;
+// }
 
-interface ProseBlock extends BlockBase {
-  blockType: 'prose';
-  content: any[];
-}
+// interface ProseBlockData extends PageBlockData {
+//   blockType: 'prose';
+//   content: any[];
+// }
 
-// todo: investigate automation of this - see https://github.com/RyanCavanaugh/dts-dom
-type PageBlock = ProseBlock | PlaceholderBlock;
+// // todo: investigate automation of this - see https://github.com/RyanCavanaugh/dts-dom
+// type AnyPageBlockData = PlaceholderBlockData | ProseBlockData;
 
 interface PageDocument extends SanityDocument {
-  blocks: PageBlock[];
+  blocks: PageBlockData[];
 }
 
 interface FooterLink {

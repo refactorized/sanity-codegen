@@ -1,13 +1,14 @@
-import ProseBlock from './ProseBlock';
-import config from '../../config';
+import {_map as mapProseBlock} from '../ProseBlock/';
+import config from '../../../config';
+import log from '../../util/logging';
+import type {AnyBlockData} from '../../data/blocks/AnyBlockData';
 
 // Step one: make this file massive and put everything here
 // Step two: divide and conquer
-const MapComponents = ({blocks}: {blocks: PageBlock[]}) => {
+const MapComponents = ({blocks}: {blocks: AnyBlockData[]}) => {
   if (!blocks?.length) {
     if (config.dev) {
-      // TODO: build and use unified logging module.
-      console.error('invalid or empty blocks passed to <MapComponents>', {
+      log.error('invalid or empty blocks passed to <MapComponents>', {
         blocks,
       });
     }
@@ -18,7 +19,7 @@ const MapComponents = ({blocks}: {blocks: PageBlock[]}) => {
       return <div key={block._key}>{block.text}</div>;
     }
     if (block.blockType === 'prose') {
-      return <ProseBlock key={block._key} block={block} />;
+      return mapProseBlock(block);
     }
     return <div>unknown block type</div>;
   });

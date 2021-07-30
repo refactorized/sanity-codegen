@@ -25,5 +25,10 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "paths": {
+    "@components/*":["components/*"],
+    "@data/*":["data/*"],
+    "@theme/*":["themes/*"]
+  }
 }

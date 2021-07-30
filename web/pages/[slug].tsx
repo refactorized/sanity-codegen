@@ -1,6 +1,6 @@
 import {getPaths, getPageData} from '../data/page';
 import getSiteConfig from '../data/siteConfig';
-import MapComponents from '../components/MapComponents';
+import MapComponents from '../components/BlockMapper/BlockMapper';
 import Layout from '../components/Layout/Layout';
 import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
