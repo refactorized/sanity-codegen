@@ -1,7 +1,7 @@
 const introBlock = {
   name: 'introBlock',
   type: 'document',
-  title: 'Into Block',
+  title: 'Intro Block',
   fields: [
     {
       name: 'blockType',
