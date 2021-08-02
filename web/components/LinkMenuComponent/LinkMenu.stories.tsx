@@ -19,7 +19,7 @@ const Template: Story<ComponentProps<typeof LinkMenuComponent>> = (args) => (
 
 export const DefaultSetup = Template.bind({});
 DefaultSetup.args = {
-  imgUrl: '/text-and-img-block.jpg',
+  imgUrl: '/link-menu-stub.jpg',
   header: siteConfig.headline,
   description: siteConfig.copy,
   btnText: siteConfig.cta.title,

@@ -41,7 +41,17 @@ export default {
       title: 'Content Blocks',
       description: 'the block components that make up the page body',
       // TODO: automate the population of this field via magic.js
-      of: [{type: 'placeholder'}, {type: 'prose'}],
+      of: [
+        {type: 'admissionsCallout'},
+        {type: 'carousel'},
+        {type: 'flexCollar'},
+        {type: 'introBlock'},
+        {type: 'linkMenu'},
+        {type: 'placeholder'},
+        {type: 'preFooter'},
+        {type: 'prose'},
+        {type: 'textAndImageBlock'},
+      ],
     },
   ],
 
