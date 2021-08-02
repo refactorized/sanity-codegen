@@ -1,12 +1,24 @@
 import styled from 'styled-components';
-import {color, space, typography, flexbox, layout, shadow} from 'styled-system';
-import theme from '../../themes';
+import {
+  color,
+  space,
+  typography,
+  flexbox,
+  layout,
+  shadow,
+  border,
+} from 'styled-system';
 import {LeftArrow, RightArrow} from '../Arrow/index';
 import StatCard, {
   StatCardProps,
   TestimonialCard,
   TestimonialCardProps,
 } from '../Card';
+import Slider from 'react-slick';
+import {Component, useRef} from 'react';
+import React from 'react';
+
+const Noop = () => null;
 
 const CarouselContainer = styled.div``;
 
@@ -14,6 +26,7 @@ const CarouselHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
+  align-items: center;
 `;
 
 const Title = styled.div`
@@ -26,14 +39,52 @@ const Title = styled.div`
   text-align: left;
 `;
 
-const CarouselNav = styled.div``;
-
-const ListContainer = styled.div`
+const CarouselNav = styled.div`
   display: flex;
-  flex-direction: row;
+`;
+
+const CarouselArrow = styled.div`
+  ${border}
+  ${space}
+  cursor: pointer;
+  height: 24px;
+`;
+
+export const ListContainer = styled.div`
+  position: relative;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   padding-bottom: 16px;
+
+  /* mobile single slide carousel */
+  padding-right: 40px;
+
+  /* larger sizes */
+
+  .slick-list {
+    overflow: visible;
+  }
+
+  .slick-track {
+    display: flex;
+    flex-wrap: nowrap;
+    z-index: 4;
+
+    div {
+      outline: none;
+    }
+  }
+
+  .slick-slide {
+    display: flex;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .slick-slide > div {
+    display: flex;
+    flex: 0 0 100%;
+  }
 `;
 
 function isStatCard(card: any): card is StatCardProps {
@@ -53,16 +104,48 @@ export const OutcomesCarousel = ({
   title,
   cards,
 }: OutcomesCarouselProps): JSX.Element => {
+  const ref = useRef({
+    slickNext: () => {},
+    slickPrev: () => {},
+  });
+
+  const onPrev = () => {
+    ref.current.slickPrev();
+  };
+
+  const onNext = () => {
+    ref.current.slickNext();
+  };
+
+  const SliderConfig = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    prevArrow: <Noop />,
+    nextArrow: <Noop />,
+    easing: 'ease-in-out',
+    slidesToScroll: 1,
+    variableWidth: true,
+  };
   return (
     <CarouselContainer>
       <CarouselHeader>
         <Title>{title}</Title>
         <CarouselNav>
-          <LeftArrow />
-          <RightArrow />
+          <CarouselArrow onClick={onPrev} paddingRight={'23px'}>
+            <LeftArrow />
+          </CarouselArrow>
+          <CarouselArrow
+            onClick={onNext}
+            paddingLeft={'23px'}
+            borderLeft={'solid 1px #000'}
+          >
+            <RightArrow />
+          </CarouselArrow>
         </CarouselNav>
       </CarouselHeader>
-      <ListContainer>
+      <ListContainer ref={ref} as={Slider} {...SliderConfig}>
         {cards &&
           cards.map(function (card, index) {
             if (isStatCard(card)) {
