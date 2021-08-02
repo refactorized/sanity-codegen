@@ -1,3 +1,4 @@
+import {FC} from 'react';
 import styled from 'styled-components';
 import {
   color,
@@ -9,28 +10,31 @@ import {
   layout,
 } from 'styled-system';
 
-export interface FlexCollarProps {
-  flexAsset: {
-    map: any;
-    category: string;
-    header: string;
-    image: string;
-    url: string;
-  };
+export interface flexCollarCard {
+  category: string;
+  header: string;
+  image: string;
+  // FIXME: we are not setting the url for the link in the component
+  // implementation below, and when we do hook it up, it should probably be a slug
+  // url: string; // this should
 }
 
-export const FlexCollar = ({flexAsset}: FlexCollarProps): JSX.Element => {
+export interface FlexCollarProps {
+  cards: flexCollarCard[];
+}
+
+export const FlexCollar: FC<FlexCollarProps> = ({cards}) => {
   return (
     <StyledBox
       p={[null, null, '0 80px']}
       display="flex"
       flexDirection={['column', 'row', null, null]}
     >
-      {flexAsset.map((x: any) => (
+      {cards.map((card) => (
         <StyledBox display="flex" pr="5px" m={['20px 0', null, null, null]}>
           <Image
             p="0 15px"
-            src={x.image}
+            src={card.image}
             width={62}
             height={['62px', '67px', '62px', null]}
           />
@@ -43,7 +47,7 @@ export const FlexCollar = ({flexAsset}: FlexCollarProps): JSX.Element => {
               pb={['0px', '5px', null, null]}
               m="0"
             >
-              {x.category}
+              {card.category}
             </StyledParagraph>
             <StyledLink textDecoration="none" p="0" m="0">
               <StyledHeader
@@ -55,7 +59,7 @@ export const FlexCollar = ({flexAsset}: FlexCollarProps): JSX.Element => {
                 color="navy"
                 m="0"
               >
-                {x.header}
+                {card.header}
               </StyledHeader>
             </StyledLink>
           </StyledBox>
