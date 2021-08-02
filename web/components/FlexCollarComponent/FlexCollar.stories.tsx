@@ -1,8 +1,8 @@
 import React from 'react';
-import siteConfig from './testData';
+import testData from './testData';
 import {ThemeProvider} from 'styled-components';
 import theme from '../../themes/theme';
-import {FlexCollar} from './index.tsx';
+import {FlexCollar} from '.';
 
 export default {
   title: 'Components/FlexCollar',
@@ -17,5 +17,5 @@ const Template = (args) => (
 
 export const DefaultBlock = Template.bind({});
 DefaultBlock.args = {
-  flexAsset: siteConfig.flexCollarConfig.links,
+  cards: testData.cards,
 };

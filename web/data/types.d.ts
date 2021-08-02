@@ -6,25 +6,13 @@ type SanityDocument = {
   _updatedAt: Date;
 };
 
-interface BlockBase {
+interface PageBlockData {
+  blockType: string;
   _key: string;
 }
 
-interface PlaceholderBlock extends BlockBase {
-  blockType: 'placeholder';
-  text: string;
-}
-
-interface ProseBlock extends BlockBase {
-  blockType: 'prose';
-  content: any[];
-}
-
-// todo: investigate automation of this - see https://github.com/RyanCavanaugh/dts-dom
-type PageBlock = ProseBlock | PlaceholderBlock;
-
 interface PageDocument extends SanityDocument {
-  blocks: PageBlock[];
+  blocks: PageBlockData[];
 }
 
 interface FooterLink {
@@ -50,5 +38,5 @@ interface SiteConfig {
   austinRiggs: string;
 }
 
-const siteCfg: siteConfig = cfg;
-const Footer = ({siteCfg}: {siteCfg: siteConfig}) => {};
+// const siteCfg: siteConfig = cfg;
+// const Footer = ({siteCfg}: {siteCfg: siteConfig}) => {};

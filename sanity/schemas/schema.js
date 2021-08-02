@@ -7,6 +7,16 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // documents
 import page from './documents/page';
 import siteConfig from './documents/siteConfig';
+import announcementBar from './documents/announcementBar';
+
+// pagebuilder block documents
+import admissionsCallout from './documents/admissionsCallout';
+import carousel from './documents/carousel';
+import flexCollar from './documents/flexCollar';
+import introBlock from './documents/introBlock';
+import linkMenu from './documents/linkMenu';
+import preFooter from './documents/preFooter';
+import textAndImageBlock from './documents/textAndImageBlock';
 
 // objects
 import footerConfig, {footerLink} from './objects/config/footerConfig';
@@ -21,8 +31,17 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     // documents
+    announcementBar,
     page,
     siteConfig,
+    // Page Builder block Documents
+    admissionsCallout,
+    carousel,
+    flexCollar,
+    introBlock,
+    linkMenu,
+    preFooter,
+    textAndImageBlock,
     // objects
     footerConfig,
     footerLink,
