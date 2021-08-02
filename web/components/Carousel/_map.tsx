@@ -1,5 +1,5 @@
-// import {OutcomesCarousel, OutcomesCarouselProps} from '.';
-// import CarouselBlockData from '@data/blocks/CarouselBlockData';
+import {OutcomesCarousel, OutcomesCarouselProps} from '.';
+import CarouselBlockData from '@data/blocks/CarouselBlockData';
 
 // const props = {
 //   title: 'Patient Outcomes & Results',
@@ -34,7 +34,6 @@
 //   <OutcomesCarousel key={block._key} {...props} />
 // );
 
-// export default _map;
+const _map = (block: CarouselBlockData) => null;
 
-const noop = () => null;
-export default noop;
+export default _map;
