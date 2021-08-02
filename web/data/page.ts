@@ -4,7 +4,7 @@ import groq from 'groq';
 
 // promise style
 export const getPaths = () => {
-  const pathQuery = groq`*[_type == "page"]`;
+  const pathQuery = groq`*[_type == "page"  && !(_id in path('drafts.**'))]`;
   return client
     .fetch(pathQuery)
     .then((results: any[]) => {
@@ -23,7 +23,7 @@ export const getPaths = () => {
 
 // async await style
 export const getPageData = async (slug: string): Promise<PageDocument> => {
-  const query = groq`*[_type == "page" && slug.current == "${slug}"]`;
+  const query = groq`*[_type == "page" && slug.current == "${slug}" && !(_id in path('drafts.**'))]`;
 
   try {
     const pageData = await fetchOne(query);

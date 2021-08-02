@@ -3,6 +3,7 @@ import {handler} from '../util/logging';
 import groq from 'groq';
 
 const getSiteConfig = async (): Promise<SiteConfig> => {
+  // matching in exact id also avoids drafts
   const query = groq`*[_type == "siteConfig" && _id=="ID_SITE_CONFIG"]`;
 
   try {
