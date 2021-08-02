@@ -11,19 +11,6 @@ interface PageBlockData {
   _key: string;
 }
 
-// interface PlaceholderBlockData extends PageBlockData {
-//   blockType: 'placeholder';
-//   text: string;
-// }
-
-// interface ProseBlockData extends PageBlockData {
-//   blockType: 'prose';
-//   content: any[];
-// }
-
-// // todo: investigate automation of this - see https://github.com/RyanCavanaugh/dts-dom
-// type AnyPageBlockData = PlaceholderBlockData | ProseBlockData;
-
 interface PageDocument extends SanityDocument {
   blocks: PageBlockData[];
 }

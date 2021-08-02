@@ -1,10 +1,8 @@
-import {_map as mapProseBlock} from '../ProseBlock/';
-import config from '../../../config';
-import log from '../../util/logging';
-import type {AnyBlockData} from '../../data/blocks/AnyBlockData';
+import {_map as mapProseBlock} from '@components/ProseBlock/';
+import config from '@cfg';
+import log from '@util/logging';
+import {AnyBlockData} from '@data/blocks/AnyBlockData';
 
-// Step one: make this file massive and put everything here
-// Step two: divide and conquer
 const MapComponents = ({blocks}: {blocks: AnyBlockData[]}) => {
   if (!blocks?.length) {
     if (config.dev) {
