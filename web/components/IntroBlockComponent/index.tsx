@@ -24,7 +24,7 @@ export const IntroBlock = ({
         textAlign="center"
       >
         <Text
-          fontFamily="header"
+          fontFamily="body"
           fontSize={['20px', '24px', '43px']}
           fontWeight="regular"
           lineHeight={['25px', '28px', '51px']}

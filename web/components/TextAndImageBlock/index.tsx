@@ -67,7 +67,7 @@ export const TextAndImageBlock = ({
   return (
     <Block>
       <Header
-        fontFamily="headline"
+        fontFamily="body"
         mx={[0]}
         mt={0}
         mb={[3, 3, 4]}
@@ -102,7 +102,12 @@ export const TextAndImageBlock = ({
           justifyContent="center"
           flexDirection="column"
         >
-          <Subheader m={0} fontFamily="Montserrat" fontSize={[0, '10px', 0]}>
+          <Subheader
+            fontFamily="headline"
+            fontWeight="bold"
+            m={0}
+            fontSize={[0, '10px', 0]}
+          >
             {subheader}
           </Subheader>
           <Text
