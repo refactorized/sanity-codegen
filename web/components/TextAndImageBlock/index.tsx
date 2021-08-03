@@ -10,7 +10,9 @@ import {
   letterSpacing,
 } from 'styled-system';
 import Image from 'next/image';
-import {Button} from '../../components/Button/index';
+import {Button} from '@components/Button/';
+import Block from '@components/Layout/Block';
+
 export interface TextAndImageBlockProps {
   header: string;
   imgUrls?: {
@@ -63,9 +65,9 @@ export const TextAndImageBlock = ({
   btnUrl = `#`,
 }: TextAndImageBlockProps): JSX.Element => {
   return (
-    <Box color="text" fontFamily="body" maxWidth={1440} m={'0 auto'}>
+    <Block>
       <Header
-        fontFamily="headline"
+        fontFamily="body"
         mx={[0]}
         mt={0}
         mb={[3, 3, 4]}
@@ -100,7 +102,12 @@ export const TextAndImageBlock = ({
           justifyContent="center"
           flexDirection="column"
         >
-          <Subheader m={0} fontFamily="Montserrat" fontSize={[0, '10px', 0]}>
+          <Subheader
+            fontFamily="headline"
+            fontWeight="bold"
+            m={0}
+            fontSize={[0, '10px', 0]}
+          >
             {subheader}
           </Subheader>
           <Text
@@ -123,6 +130,6 @@ export const TextAndImageBlock = ({
           />
         </Box>
       </Box>
-    </Box>
+    </Block>
   );
 };

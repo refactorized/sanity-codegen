@@ -22,6 +22,7 @@
       "@components/*":["components/*"],
       "@data/*":["data/*"],
       "@theme/*":["themes/*"],
+      "@theme":["themes"],
       "@util/*":["util/*"],
       "@cfg":["../config"]
     }

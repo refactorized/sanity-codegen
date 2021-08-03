@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   stories: ['../components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -16,6 +17,7 @@ module.exports = {
         }),
       }),
     );
+    config.resolve.plugins.push(new TsconfigPathsPlugin());
     return config;
   },
 };

@@ -40,4 +40,5 @@ const PhoneContainer = styled.a`
   &:hover {
     color: ${(props: PhoneComponentProps) => props.hoverColor};
   }
+  white-space: nowrap;
 `;

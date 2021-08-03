@@ -10,8 +10,9 @@ import {
   shadow,
 } from 'styled-system';
 import Image from 'next/image';
-import {Button} from '../../components/Button/index';
-import {CircleArrow} from '../../components/Arrow/index';
+import {Button} from '@components/Button/index';
+import {CircleArrow} from '@components/Arrow/index';
+import Block from '@components/Layout/Block';
 
 interface MenuLink {
   title: string;
@@ -39,89 +40,95 @@ export const LinkMenuComponent = ({
   linkConfig,
 }: LinkMenuComponentProps): JSX.Element => {
   return (
-    <StyledBox
-      color="text"
-      display="grid"
-      gridTemplateColumns={['100%', null, null, '35% 1fr']}
-      p={['20px', '50px', null, '80px']}
-      gridGap={['25px', '35px', null, '81px']}
-    >
-      <StyledImageContainer
-        backgroundColor="navy"
-        gridColumn={1}
-        display="block"
-        width="100%"
+    <Block>
+      <StyledBox
+        color="text"
+        display="grid"
+        gridTemplateColumns={['100%', null, '35% 1fr', null]}
+        gridGap={['25px', '35px', '81px', null]}
       >
-        <Image src={imgUrl} width={450} height="responsive" objectFit="cover" />
-      </StyledImageContainer>
-      <StyledBox>
-        <StyledBox maxWidth={['inherit', null, null, '660px']}>
-          <StyledHeadline
-            fontFamily="body"
-            fontSize={['30px', null, null, '43px']}
-            fontWeight="regular"
-            lineHeight={['36px', null, null, '51px']}
-            letterSpacing="-0.01em"
-            m="0 0 10px"
-          >
-            {header}
-          </StyledHeadline>
-          <StyledParagraph
-            fontFamily="headline"
-            fontSize="16px"
-            fontWeight="regular"
-            lineHeight="26px"
-            letterSpacing="-0.015em"
-          >
-            {description}
-          </StyledParagraph>
-          <StyledBoxEdit
-            display={['block', null, null, 'inline-block']}
-            m="20px 0px 40px"
-          >
-            {linkConfig.links.map((x) => (
-              <StyledLink
-                width={['inherit', null, null, '332px']}
-                max-width={['390px', null, null, 'inherit']}
-                height="60px"
-                background="white"
-                display="flex"
-                alignContent="center"
-                alignItems="center"
-                color="text"
-                boxShadow="0px 8px 11px rgba(0, 0, 0, 0.1)"
-                borderRadius="4px"
-                mb="20px"
-                href={x.slug.current}
-                key={x._key}
-              >
-                <StyledHeadline
-                  fontFamily="headline"
-                  fontSize={['16px', '14px', null, '18px']}
-                  fontWeight="bold"
-                  lineHeight={['26px', null, null, '22px']}
-                  letterSpacing="-0.015em"
-                  p="0 20px"
-                  m="0"
-                  maxWidth={['240px', '265px', null, null]}
+        <StyledImageContainer
+          backgroundColor="navy"
+          gridColumn={1}
+          display="block"
+          width="100%"
+        >
+          <Image
+            src={imgUrl}
+            width={450}
+            height="responsive"
+            objectFit="cover"
+          />
+        </StyledImageContainer>
+        <StyledBox>
+          <StyledBox maxWidth={['inherit', null, null, '660px']}>
+            <StyledHeadline
+              fontFamily="body"
+              fontSize={['30px', null, null, '43px']}
+              fontWeight="regular"
+              lineHeight={['36px', null, null, '51px']}
+              letterSpacing="-0.01em"
+              m="0 0 10px"
+            >
+              {header}
+            </StyledHeadline>
+            <StyledParagraph
+              fontFamily="headline"
+              fontSize="16px"
+              fontWeight="regular"
+              lineHeight="26px"
+              letterSpacing="-0.015em"
+            >
+              {description}
+            </StyledParagraph>
+            <StyledBoxEdit
+              display={['block', null, null, 'inline-block']}
+              m="20px 0px 40px"
+            >
+              {linkConfig.links.map((x) => (
+                <StyledLink
+                  width={['inherit', null, null, '332px']}
+                  max-width={['390px', null, null, 'inherit']}
+                  height="60px"
+                  background="white"
+                  display="flex"
+                  alignContent="center"
+                  alignItems="center"
+                  color="text"
+                  boxShadow="0px 8px 11px rgba(0, 0, 0, 0.1)"
+                  borderRadius="4px"
+                  mb="20px"
+                  href={x.slug.current}
+                  key={x._key}
                 >
-                  {x.title}
-                </StyledHeadline>
-                <CircleArrow />
-              </StyledLink>
-            ))}
-          </StyledBoxEdit>
+                  <StyledHeadline
+                    fontFamily="headline"
+                    fontSize={['16px', '14px', null, '18px']}
+                    fontWeight="bold"
+                    lineHeight={['26px', null, null, '22px']}
+                    letterSpacing="-0.015em"
+                    p="0 20px"
+                    m="0"
+                    maxWidth={['240px', '265px', null, null]}
+                  >
+                    {x.title}
+                  </StyledHeadline>
+                  <CircleArrow />
+                </StyledLink>
+              ))}
+            </StyledBoxEdit>
+          </StyledBox>
+          <Button
+            arrowColor="white"
+            arrow={true}
+            size="medium"
+            variant="solid"
+            url={btnUrl}
+            label={btnText}
+          />
         </StyledBox>
-        <Button
-          arrowColor="white"
-          arrow={true}
-          size="medium"
-          variant="solid"
-          url={btnUrl}
-          label={btnText}
-        />
       </StyledBox>
-    </StyledBox>
+    </Block>
   );
 };
 

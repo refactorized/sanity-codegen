@@ -12,6 +12,7 @@ import {
 } from 'styled-system';
 import {Address} from './address';
 import {Facebook, Twitter, LinkedIn} from '../SocialComponents';
+import {Block} from '@components/Layout';
 
 interface FooterProps {
   siteConfig: SiteConfig;
@@ -77,96 +78,39 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
   };
 
   return (
-    <StyledBox
-      fontFamily="headline"
-      bg="sky"
-      display="grid"
-      gridTemplateRows={['1fr 165px', '1fr 90px', null, null]}
-      p={['34px 19px 0', '50px 50px 0', null, '76px 76px 0px']}
-    >
+    <Block background="sky">
       <StyledBox
-        display={['none', null, null, 'grid']}
-        gridTemplateColumns="25% 12% 12% 11% 14% 12%"
-        gridGap="38px"
-        pb="140px"
-        borderBottom="rgba(0, 0, 0, 0.5) solid 1px"
+        fontFamily="headline"
+        display="grid"
+        gridTemplateRows={['1fr 165px', '1fr 90px', null, null]}
       >
-        {/* Pulling from Address Component I Created Located in Same File Folder */}
-        <Address
-          AddressLine1={AddressLine1}
-          AddressLine2={AddressLine2}
-          email={email}
-          phone={phone}
-          fax={fax}
-        />
-        {/* columnData iterates and renders Columns 1 - 4 */}
-        {columnData(columnArr.map((x) => x))}
-        <div>
-          {/* This is UNIQUE column 5 (has all fully bolded list compared to other columns)  */}
-          {footerConfig.col5.map((x) => (
-            <StyledLink
-              display="block"
-              fontSize={[0, null, null, 1]}
-              fontWeight="bold"
-              lineHeight={['22px', '24px', null, '30px']}
-              letterSpacing="-0.015em"
-              paddingBottom={['10px', '25px', null, 'initial']}
-              color="text"
-              href={x.slug.current}
-              key={x._key}
-            >
-              {x.title}
-            </StyledLink>
-          ))}
-        </div>
-      </StyledBox>
-      <StyledBox
-        display={['grid', null, null, 'none']}
-        gridTemplateColumns={['100%', '50% 55%', null, 'none']}
-        borderBottom="rgba(0, 0, 0, 0.5) solid 1px"
-      >
-        {/* Pulling from Address Component I Created Located in Same File Folder */}
-        <Address
-          AddressLine1={AddressLine1}
-          AddressLine2={AddressLine2}
-          email={email}
-          phone={phone}
-          fax={fax}
-        />
         <StyledBox
-          display={['grid', null, null, 'none']}
-          gridTemplateColumns="70% 30%;"
-          p={['20px 0', '0 0 15px', null]}
+          display={['none', null, null, 'grid']}
+          gridTemplateColumns="25% 12% 12% 11% 14% 12%"
+          gridGap="38px"
+          pb="140px"
+          borderBottom="rgba(0, 0, 0, 0.5) solid 1px"
         >
+          {/* Pulling from Address Component I Created Located in Same File Folder */}
+          <Address
+            AddressLine1={AddressLine1}
+            AddressLine2={AddressLine2}
+            email={email}
+            phone={phone}
+            fax={fax}
+          />
+          {/* columnData iterates and renders Columns 1 - 4 */}
+          {columnData(columnArr.map((x) => x))}
           <div>
-            {/* columnData iterates and renders Every First Item from Columns 1 - 4 */}
-            {columnArr.map((x: any) => (
-              <StyledLink
-                display="block"
-                fontSize={[0, 1, null, null]}
-                fontWeight="bold"
-                lineHeight={['22px', '24px', null, '30px']}
-                letterSpacing="-0.015em"
-                paddingBottom={['10px', '25px', null, 'initial']}
-                m="0"
-                color="text"
-                href={x[0].slug.current}
-                key={x._key}
-              >
-                {x[0].title}
-              </StyledLink>
-            ))}
-          </div>
-          <div>
+            {/* This is UNIQUE column 5 (has all fully bolded list compared to other columns)  */}
             {footerConfig.col5.map((x) => (
               <StyledLink
                 display="block"
-                fontSize={[0, 1, null, null]}
+                fontSize={[0, null, null, 1]}
                 fontWeight="bold"
                 lineHeight={['22px', '24px', null, '30px']}
                 letterSpacing="-0.015em"
                 paddingBottom={['10px', '25px', null, 'initial']}
-                m="0"
                 color="text"
                 href={x.slug.current}
                 key={x._key}
@@ -176,72 +120,129 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
             ))}
           </div>
         </StyledBox>
-      </StyledBox>
-      <StyledBox
-        display={['flex', 'grid', null, null]}
-        gridTemplateColumns={['none', 'repeat(3, 1fr)', null, '25% auto 30%']}
-        alignItems={['flex-start', 'center', null, null]}
-        flexDirection={['column-reverse', 'none', null, null]}
-        p={['20px 0', null, null, 'none']}
-      >
-        <StyledHeading
-          fontWeight="regular"
-          fontSize={0}
-          m="0"
-          lineHeight="24px"
-          letterSpacing="-0.015em"
-        >
-          © {new Date().getFullYear() + ' ' + austinRiggs}
-        </StyledHeading>
-        <StyledHeading
-          fontWeight="regular"
-          fontSize={0}
-          m="0"
-          lineHeight="24px"
-          letterSpacing="-0.015em"
-        >
-          {privatePolicy}
-        </StyledHeading>
         <StyledBox
-          display="flex"
-          alignItems="center"
-          gap="15px"
-          justifySelf={['inherit', 'self-end', null, null]}
-          p={['20px 0', 'initial', null, null]}
+          display={['grid', null, null, 'none']}
+          gridTemplateColumns={['100%', '50% 55%', null, 'none']}
+          borderBottom="rgba(0, 0, 0, 0.5) solid 1px"
+        >
+          {/* Pulling from Address Component I Created Located in Same File Folder */}
+          <Address
+            AddressLine1={AddressLine1}
+            AddressLine2={AddressLine2}
+            email={email}
+            phone={phone}
+            fax={fax}
+          />
+          <StyledBox
+            display={['grid', null, null, 'none']}
+            gridTemplateColumns="70% 30%;"
+            p={['20px 0', '0 0 15px', null]}
+          >
+            <div>
+              {/* columnData iterates and renders Every First Item from Columns 1 - 4 */}
+              {columnArr.map((x: any) => (
+                <StyledLink
+                  display="block"
+                  fontSize={[0, 1, null, null]}
+                  fontWeight="bold"
+                  lineHeight={['22px', '24px', null, '30px']}
+                  letterSpacing="-0.015em"
+                  paddingBottom={['10px', '25px', null, 'initial']}
+                  m="0"
+                  color="text"
+                  href={x[0].slug.current}
+                  key={x._key}
+                >
+                  {x[0].title}
+                </StyledLink>
+              ))}
+            </div>
+            <div>
+              {footerConfig.col5.map((x) => (
+                <StyledLink
+                  display="block"
+                  fontSize={[0, 1, null, null]}
+                  fontWeight="bold"
+                  lineHeight={['22px', '24px', null, '30px']}
+                  letterSpacing="-0.015em"
+                  paddingBottom={['10px', '25px', null, 'initial']}
+                  m="0"
+                  color="text"
+                  href={x.slug.current}
+                  key={x._key}
+                >
+                  {x.title}
+                </StyledLink>
+              ))}
+            </div>
+          </StyledBox>
+        </StyledBox>
+        <StyledBox
+          display={['flex', 'grid', null, null]}
+          gridTemplateColumns={['none', 'repeat(3, 1fr)', null, '25% auto 30%']}
+          alignItems={['flex-start', 'center', null, null]}
+          flexDirection={['column-reverse', 'none', null, null]}
+          p={['20px 0', null, null, 'none']}
         >
           <StyledHeading
-            fontWeight="bold"
+            fontWeight="regular"
             fontSize={0}
             m="0"
             lineHeight="24px"
             letterSpacing="-0.015em"
-            p={['0 10px 0 0', '0 20px', null]}
           >
-            Follow us:
+            © {new Date().getFullYear() + ' ' + austinRiggs}
           </StyledHeading>
-          <SocialContainer>
-            <Facebook
-              color="#204568"
-              hoverColor="black"
-              link="https://www.linkedIn.com"
-              size="38"
-            />
-            <Twitter
-              color="#204568"
-              hoverColor="black"
-              link="https://www.linkedIn.com"
-              size="38"
-            />
-            <LinkedIn
-              color="#204568"
-              hoverColor="black"
-              link="https://www.linkedIn.com"
-              size="38"
-            />
-          </SocialContainer>
+          <StyledHeading
+            fontWeight="regular"
+            fontSize={0}
+            m="0"
+            lineHeight="24px"
+            letterSpacing="-0.015em"
+          >
+            {privatePolicy}
+          </StyledHeading>
+          <StyledBox
+            display="flex"
+            alignItems="center"
+            gap="15px"
+            justifySelf={['inherit', 'self-end', null, null]}
+            p={['20px 0', 'initial', null, null]}
+          >
+            <StyledHeading
+              fontWeight="bold"
+              fontSize={0}
+              m="0"
+              lineHeight="24px"
+              letterSpacing="-0.015em"
+              p={['0 10px 0 0', '0 20px', null]}
+            >
+              Follow us:
+            </StyledHeading>
+            <SocialContainer>
+              <Facebook
+                color="#204568"
+                hoverColor="black"
+                link="https://www.linkedIn.com"
+                size="38"
+              />
+              <Twitter
+                color="#204568"
+                hoverColor="black"
+                link="https://www.linkedIn.com"
+                size="38"
+              />
+              <LinkedIn
+                color="#204568"
+                hoverColor="black"
+                link="https://www.linkedIn.com"
+                size="38"
+              />
+            </SocialContainer>
+          </StyledBox>
         </StyledBox>
       </StyledBox>
-    </StyledBox>
+    </Block>
   );
 };
 

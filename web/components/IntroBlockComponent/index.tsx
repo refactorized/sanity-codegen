@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {color, space, typography, flexbox, layout} from 'styled-system';
-import {Button} from '../Button';
+import {Button} from '@components/Button';
+import Block from '@components/Layout/Block';
 
 export interface IntroBlockProps {
   description: string;
@@ -15,12 +16,7 @@ export const IntroBlock = ({
   btnUrl = `#`,
 }: IntroBlockProps): JSX.Element => {
   return (
-    <StyledContainer
-      color="text"
-      bg="cream"
-      p={['45px 20px', '73px 80px', '89px 40px']}
-      fontFamily="body"
-    >
+    <Block background="cream" narrow>
       <StyledContentContainer
         flexDirection="column"
         justifyContent="center"
@@ -28,14 +24,12 @@ export const IntroBlock = ({
         textAlign="center"
       >
         <Text
-          fontFamily="header"
+          fontFamily="body"
           fontSize={['20px', '24px', '43px']}
           fontWeight="regular"
           lineHeight={['25px', '28px', '51px']}
           letterSpacing="-0.01em"
           textAlign="center"
-          mb={['35px', '45px']}
-          maxWidth="960px"
         >
           {description}
         </Text>
@@ -48,7 +42,7 @@ export const IntroBlock = ({
           arrowColor="white"
         />
       </StyledContentContainer>
-    </StyledContainer>
+    </Block>
   );
 };
 
