@@ -6,6 +6,7 @@ import {
   flexbox,
   layout,
   shadow,
+  border,
   system,
   position,
 } from 'styled-system';
@@ -29,6 +30,13 @@ export interface TestimonialCardProps {
   patientPhotoPath: string;
 }
 
+export interface ArticleCardProps {
+  image: string;
+  category: string;
+  headline: string;
+  date?: string;
+  description: string;
+}
 const QuoteDiv = styled.div`
   ${space}
   ${layout({
@@ -198,4 +206,114 @@ export const TestimonialCard = ({
   );
 };
 
+export const ArticleCard = ({
+  image,
+  category,
+  headline,
+  date,
+  description,
+}: ArticleCardProps): JSX.Element => {
+  return (
+    <StyledBox
+      display="flex"
+      flexDirection="column"
+      pr="5px"
+      m={['20px 0', null, null, null]}
+      width={['256px', '288px', null, '362px']}
+    >
+      <Image
+        src={image}
+        width={['256px', '288px', null, '362px']}
+        height={['180px', '176px', null, '221px']}
+        pb="13px"
+        borderRadius="4px"
+      />
+      <StyledBox>
+        <StyledParagraph
+          fontSize={['12px', '10px', null, '12px']}
+          fontWeight="bold"
+          fontFamily="headline"
+          letterSpacing="0.185em"
+          p={['5px 0', null, null, '7px 0']}
+          m="0"
+        >
+          {category}
+        </StyledParagraph>
+        <StyledLink textDecoration="none" p="0" m="0">
+          <StyledHeader
+            fontSize={['19px', '14px', null, '22px']}
+            fontWeight="bold"
+            fontFamily="headline"
+            letterSpacing={['-0.01em', null, null, '-0.01em']}
+            lineHeight={['25px', '16px', null, '25px']}
+            color="navy"
+            p={['5px 0', null, null, '7px 0']}
+            m="0"
+          >
+            {headline}
+          </StyledHeader>
+        </StyledLink>
+        <StyledHeader
+          display={['none', null, null, 'inherit']}
+          fontSize={['14px', '10px', null, '14px']}
+          fontWeight="normal"
+          fontFamily="headline"
+          letterSpacing={['-0.015em', null, null, '-0.015em']}
+          lineHeight={['26px', '16px', null, '26px']}
+          p={['5px 0', null, null, '7px 0']}
+          m="0"
+        >
+          {date}
+        </StyledHeader>
+        <StyledHeader
+          fontSize={['14px', null, null, '16px']}
+          fontWeight="normal"
+          fontFamily="headline"
+          letterSpacing={['-0.015em', null, null, '-0.015em']}
+          lineHeight={['26px', '16px', null, '26px']}
+          p={['5px 0', null, null, '7px 0']}
+          m="0"
+        >
+          {description}
+        </StyledHeader>
+      </StyledBox>
+    </StyledBox>
+  );
+};
+
 export default StatCard;
+
+const StyledBox = styled.div`
+  ${layout}
+  ${flexbox}
+  ${color}
+  ${typography}
+  ${space}
+`;
+
+const Image = styled.img`
+  ${typography}
+  ${space}
+  ${layout}
+  ${border}
+`;
+
+const StyledLink = styled.a`
+  ${typography}
+  ${space}
+  ${color}
+  cursor: pointer;
+`;
+
+const StyledHeader = styled.h1`
+  ${typography}
+  ${space}
+  ${color}
+  ${layout}
+`;
+
+const StyledParagraph = styled.p`
+  ${typography}
+  ${space}
+  text-transform: uppercase;
+`;
