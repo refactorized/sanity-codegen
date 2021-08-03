@@ -8,9 +8,10 @@ import {
   grid,
   layout,
 } from 'styled-system';
-import {CircleArrow} from '../../components/Arrow/index';
-import {Phone} from '../PhoneComponent';
-import {Button} from '../Button';
+import {CircleArrow} from '@components/Arrow/index';
+import {Phone} from '@components/PhoneComponent';
+import {Button} from '@components/Button';
+import Block from '@components/Layout/Block';
 
 export interface AdmissionsCalloutProps {
   contactHeader: string;
@@ -39,127 +40,128 @@ export const AdmissionsCallout = ({
   phoneNumber = '866-255-1921',
 }: AdmissionsCalloutProps): JSX.Element => {
   return (
-    <StyledBox
-      display="grid"
-      gridGap={['38px', '40px', '100px']}
-      gridTemplateColumns={['100%', 'repeat(2, 1fr)']}
-      p="100px 0"
-    >
+    <Block>
       <StyledBox
-        display="flex"
-        flexDirection="column"
-        alignContent="center"
-        justifySelf="flex-end"
-        maxWidth="486px"
+        display="grid"
+        gridGap={['38px', '40px', '100px']}
+        gridTemplateColumns={['100%', '1fr 1fr']}
       >
-        <StyledHeadline2
-          fontSize={['30px', '30px', '43px']}
-          fontWeight="regular"
-          fontFamily="body"
-          letterSpacing="-0.01em"
-          lineHeight={['36px', '51.39px']}
-          m="10px 0"
+        <StyledBox
+          display="flex"
+          flexDirection="column"
+          alignContent="center"
+          justifySelf={['center', 'flex-end']}
+          maxWidth="486px"
         >
-          {admissionHeader}
-        </StyledHeadline2>
-        <StyledParagraph
-          fontSize={['22px', '16px', '22px']}
-          fontWeight="regular"
-          fontFamily="headline"
-          letterSpacing="-0.015em"
-          lineHeight={['32px', '26px', '32px']}
-        >
-          {admissionDescription}
-        </StyledParagraph>
-        <StyledLink
-          href={boxlessbtnUrl}
-          display=" flex"
-          alignItems=" center"
-          color="text"
-          textDecorate="none"
-        >
-          <StyledBox
-            fontFamily="Proxima Nova"
-            fontSize="18px"
-            fontStyle="normal"
-            fontWeight="700"
-            lineHeight="19px"
+          <StyledHeadline2
+            fontSize={['30px', '30px', '43px']}
+            fontWeight="regular"
+            fontFamily="body"
+            letterSpacing="-0.01em"
+            lineHeight={['36px', '51.39px']}
+            m="10px 0"
+          >
+            {admissionHeader}
+          </StyledHeadline2>
+          <StyledParagraph
+            fontSize={['22px', '16px', '22px']}
+            fontWeight="regular"
+            fontFamily="headline"
             letterSpacing="-0.015em"
-            textAlign="left"
-            textDecorate="none"
-            mr="10px"
+            lineHeight={['32px', '26px', '32px']}
           >
-            {boxlessbtnText}
-          </StyledBox>
-          <CircleArrow />
-        </StyledLink>
-      </StyledBox>
-
-      <StyledBox
-        display="flex"
-        justifyContent={['center', 'center', 'flex-start']}
-        alignItems="center"
-      >
-        <StyledBox maxWidth="440px">
-          <StyledBox
-            display="flex"
-            flexDirection={['column']}
-            justifyContent="space-between"
-            p={['16px 22px', '16px 22px', '30px 48px']}
+            {admissionDescription}
+          </StyledParagraph>
+          <StyledLink
+            href={boxlessbtnUrl}
+            display=" flex"
+            alignItems=" center"
             color="text"
-            bg="yellow"
-            borderRadius={'4px'}
+            textDecorate="none"
           >
-            <div>
-              <StyledHeadline
-                m={['10px 0', '0']}
-                fontSize={['20px', '24px', '27px']}
-                fontWeight="regular"
-                fontFamily="body"
-                letterSpacing="-0.01em"
-                lineHeight={['24.5px', '51.39px']}
-              >
-                {contactHeader}
-              </StyledHeadline>
-              <div>
-                <StyledHeadline2
-                  fontSize={['16px', '14px', '16px']}
-                  fontWeight="regular"
-                  fontFamily="headline"
-                  letterSpacing="-0.015em"
-                  lineHeight={['26px', '20px', '26px']}
-                >
-                  {contactDescription}
-                </StyledHeadline2>
-              </div>
-            </div>
-            <StyledBoxEdit
-              display="flex"
-              flexDirection={['column', null, 'row']}
-              justifyContent="space-between"
-              alignItems={['flex-start', null, 'center']}
-              mt="5px"
+            <StyledBox
+              fontFamily="Proxima Nova"
+              fontSize="18px"
+              fontStyle="normal"
+              fontWeight="700"
+              lineHeight="19px"
+              letterSpacing="-0.015em"
+              textAlign="left"
+              textDecorate="none"
+              mr="10px"
             >
-              <Button
-                variant="secondary"
-                label={btnText}
-                url={btnUrl}
-                size="medium"
-                arrow={true}
-                arrowColor="#D15D34"
-              />
-              <Phone
-                tel={phoneNumber}
-                fontSize={2}
-                fontWeight="bold"
-                fontColor="text"
-                hoverColor="white"
-              />
-            </StyledBoxEdit>
+              {boxlessbtnText}
+            </StyledBox>
+            <CircleArrow />
+          </StyledLink>
+        </StyledBox>
+
+        <StyledBox
+          display="flex"
+          justifyContent={['center', 'center', 'flex-start']}
+          alignItems="center"
+        >
+          <StyledBox maxWidth="440px">
+            <StyledBox
+              display="flex"
+              flexDirection={['column']}
+              justifyContent="space-between"
+              p={['16px 22px', '16px 22px', '30px 48px']}
+              color="text"
+              bg="yellow"
+              borderRadius={'4px'}
+            >
+              <div>
+                <StyledHeadline
+                  m={['10px 0', '0']}
+                  fontSize={['20px', '24px', '27px']}
+                  fontWeight="regular"
+                  fontFamily="body"
+                  letterSpacing="-0.01em"
+                  lineHeight={['24.5px', '51.39px']}
+                >
+                  {contactHeader}
+                </StyledHeadline>
+                <div>
+                  <StyledHeadline2
+                    fontSize={['16px', '14px', '16px']}
+                    fontWeight="regular"
+                    fontFamily="headline"
+                    letterSpacing="-0.015em"
+                    lineHeight={['26px', '20px', '26px']}
+                  >
+                    {contactDescription}
+                  </StyledHeadline2>
+                </div>
+              </div>
+              <StyledBoxEdit
+                display="flex"
+                flexDirection={['column', null, 'row']}
+                justifyContent="space-between"
+                alignItems={['flex-start', null, 'center']}
+                mt="5px"
+              >
+                <Button
+                  variant="secondary"
+                  label={btnText}
+                  url={btnUrl}
+                  size="medium"
+                  arrow={true}
+                  arrowColor="#D15D34"
+                />
+                <Phone
+                  tel={phoneNumber}
+                  fontSize={2}
+                  fontWeight="bold"
+                  fontColor="text"
+                  hoverColor="white"
+                />
+              </StyledBoxEdit>
+            </StyledBox>
           </StyledBox>
         </StyledBox>
       </StyledBox>
-    </StyledBox>
+    </Block>
   );
 };
 
