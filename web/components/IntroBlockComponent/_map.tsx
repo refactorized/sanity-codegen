@@ -13,7 +13,7 @@ const _map = (block: IntroBlockData) => {
   const props: IntroBlockProps = {
     description: block.body,
     btnText: block.buttonText,
-    btnUrl: `block.buttonLink.current`,
+    btnUrl: block.buttonLink.current,
   };
   return <IntroBlock key={block._key} {...props} />;
 };
