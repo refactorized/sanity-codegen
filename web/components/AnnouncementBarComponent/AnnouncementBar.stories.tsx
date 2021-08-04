@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
-import {AnnouncementBar} from './index.tsx';
+import theme from '@theme';
+import {AnnouncementBar} from '.';
 
 export default {
   title: 'Components/AnnouncementBar',

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Search} from './index.tsx';
+import {Search} from '.';
 
 export default {
   title: 'Components/MiscComponents/Search',

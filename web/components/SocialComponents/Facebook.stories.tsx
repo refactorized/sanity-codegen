@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Facebook} from './index.tsx';
+import {Facebook} from '.';
 
 export default {
   title: 'Components/SocialComponents/Facebook',

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
-import {AdmissionsCallout} from './index.tsx';
+import theme from '@theme';
+import {AdmissionsCallout} from '.';
 
 export default {
   title: 'Components/AdmissionsCallout',

@@ -2,8 +2,8 @@ import React, {ComponentProps} from 'react';
 import {Story} from '@storybook/react';
 import {ThemeProvider} from 'styled-components';
 
-import {ArticleCard} from './index';
-import theme from '../../themes/theme';
+import {ArticleCard} from '.';
+import theme from '@theme';
 
 export default {
   title: 'Components/Cards',

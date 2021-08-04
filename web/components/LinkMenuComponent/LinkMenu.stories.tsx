@@ -2,9 +2,9 @@ import React, {ComponentProps} from 'react';
 import siteConfig from './testData';
 import {Story} from '@storybook/react';
 
-import {LinkMenuComponent} from './index';
+import {LinkMenuComponent} from '.';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
+import theme from '@theme';
 
 export default {
   title: 'Components/LinkMenuComponent',

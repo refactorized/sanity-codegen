@@ -2,7 +2,7 @@ import React, {ComponentProps} from 'react';
 
 import {Story} from '@storybook/react';
 
-import {TextAndImageBlock} from './index';
+import {TextAndImageBlock} from '.';
 import {ThemeProvider} from 'styled-components';
 import theme from '../../themes';
 
