@@ -1,6 +1,8 @@
 import {TextAndImageBlock} from '.';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
 
+import log from '@util/logging';
+
 // TODO: rearrange data into single var
 const props = {
   header: 'Fresh Insights and a Century of Expertise',
@@ -15,8 +17,9 @@ const props = {
   btnUrl: '#',
 };
 
-const _map = (block: TextAndImageBlockData) => (
-  <TextAndImageBlock key={block._key} {...props} />
-);
+const _map = (block: TextAndImageBlockData) => {
+  log.json(block);
+  return <TextAndImageBlock key={block._key} {...props} />;
+};
 
 export default _map;
