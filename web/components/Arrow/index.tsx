@@ -39,9 +39,9 @@ export const CircleArrow = ({
       <path
         d="M11.75 18.46l4.5-4.5-4.5-4.5"
         stroke={arrowColor}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -63,16 +63,16 @@ export const LeftArrow = ({
       <path
         d="M19 12.0001H5"
         stroke={stroke}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12 19.0001L5 12.0001L12 5.00008"
         stroke={stroke}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </StyledSVG>
   );
@@ -94,16 +94,16 @@ export const RightArrow = ({
       <path
         d="M5 12.3361L19 12.3361"
         stroke={stroke}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M12 5.33614L19 12.3361L12 19.3361"
         stroke={stroke}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </StyledSVG>
   );
@@ -120,9 +120,9 @@ export const RightArrowNoLine = ({stroke = '#111', size = 8}: ArrowProps) => {
       <path
         d="M1 13L7 7L1 1"
         stroke={stroke}
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
