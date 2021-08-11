@@ -44,8 +44,9 @@ export const LinkMenuComponent = ({
       <StyledBox
         color="text"
         display="grid"
-        gridTemplateColumns={['100%', null, '35% 1fr', null]}
-        gridGap={['25px', '35px', '81px', null]}
+        gridTemplateColumns={['100%', null, null, '35% 1fr']}
+        p={['20px', '50px', null, '80px']}
+        gridGap={['25px', '35px', null, '81px']}
       >
         <StyledImageContainer
           backgroundColor="navy"
@@ -162,7 +163,6 @@ const StyledImageContainer = styled.div`
   ${space}
   ${layout}
   ${grid}
-
   div {
     height: 757px;
     @media (max-width: 1024px) {
@@ -195,59 +195,18 @@ const StyledLink = styled.a`
   ${border}
   ${shadow}
 
-
-
   //Styled Systems Don't Support These Stylings
   /* Column Count Bug Resolution w/ Shadow */
   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
   page-break-inside: avoid; /* Firefox */
   break-inside: avoid; /* IE 10+ */
-
   break-inside: avoid;
   transform: translateZ(0);
-
   text-decoration: none;
   cursor: pointer;
+
   svg {
     position: absolute;
     right: 20px;
   }
 `;
-
-// const LinkButton = styled.a`
-//   /* Box Styling */
-//   width: 332px;
-//   height: 60px;
-//   background: #ffffff;
-//   cursor: pointer;
-
-//   /* Box Content Styling */
-//   display: flex;
-//   align-content: center;
-//   align-items: center;
-//   text-decoration: none;
-//   color: black;
-
-//   /* Menu Drop shadow */
-//   box-shadow: 0px 8px 11px rgba(0, 0, 0, 0.1);
-//   border-radius: 4px;
-
-//   /* Column Count Bug Resolution w/ Shadow */
-//   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
-//   page-break-inside: avoid; /* Firefox */
-//   break-inside: avoid; /* IE 10+ */
-
-//   margin-bottom: 20px;
-//   break-inside: avoid;
-//   transform: translateZ(0);
-
-//   svg {
-//     position: absolute;
-//     right: 20px;
-//   }
-
-//   @media (max-width: 1025px) {
-//     max-width: 390px;
-//     width: inherit;
-//   }
-// `;
