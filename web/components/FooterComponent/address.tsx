@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {space, typography, color, layout} from 'styled-system';
+import {ArcLogo} from '@components/ArcComponent';
 
 export interface AddressProps {
   AddressLine1: string;
@@ -18,9 +19,14 @@ export const Address = ({
 }: AddressProps): JSX.Element => {
   return (
     <div>
-      {/* The Styled Title is a placeholder for the Austin Riggs Logo */}
-      <StyledTitle>Austen riggs Center</StyledTitle>
-      {/* The Styled Title is a placeholder for the Austin Riggs Logo */}
+      <StyledBox
+        display="block"
+        pb={['25px', '20px', null, '20px']}
+        maxWidth={['300px', '250px', '200px', '300px']}
+        lineHeight={['33px', '20px', '0px', '33px']}
+      >
+        <ArcLogo />
+      </StyledBox>
 
       <StyledLink
         display="block"
@@ -74,29 +80,12 @@ export const Address = ({
   );
 };
 
-// IGNORE THIS STYLED COMPONENT SINCE THIS WILL BE DELETED AFTER
-// RECEIVING LOGO FROM JACKIE/+DANA. IT'S A PLACEHOLDER
-// (So it doesn't look so hideous)!
-const StyledTitle = styled.h2`
-  font-size: 27px;
-  font-weight: 100;
-  line-height: 33px;
-  letter-spacing: 0em;
-  text-transform: uppercase;
-  margin-top: 0;
-
-  @media (max-width: 1024px) {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 22px;
-  }
-  @media (max-width: 768px) {
-    font-size: 25px;
-    font-weight: 300;
-    line-height: 31px;
-  }
+const StyledBox = styled.div`
+  ${typography}
+  ${space}
+  ${color}
+  ${layout}
 `;
-//----------------------------
 
 const StyledLink = styled.a`
   font-size: 20px;
