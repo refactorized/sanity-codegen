@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {LinkedIn} from './index.tsx';
+import {LinkedIn} from '.';
 
 export default {
   title: 'Components/SocialComponents/LinkedIn',

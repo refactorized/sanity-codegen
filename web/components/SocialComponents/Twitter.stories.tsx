@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Twitter} from './index.tsx';
+import {Twitter} from '.';
 
 export default {
   title: 'Components/SocialComponents/Twitter',

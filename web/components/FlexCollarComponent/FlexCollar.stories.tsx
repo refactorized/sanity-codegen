@@ -1,7 +1,7 @@
 import React from 'react';
 import testData from './testData';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
+import theme from '@theme';
 import {FlexCollar} from '.';
 
 export default {

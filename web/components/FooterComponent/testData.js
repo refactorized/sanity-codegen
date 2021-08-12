@@ -8,6 +8,7 @@ export default {
   _updatedAt: '2021-06-30T21:31:38Z',
   email: 'info@austenriggs.org',
   fax: '413.298.4020',
+  austinRiggs: 'The Austen Riggs Center',
   footerConfig: {
     _type: 'footerConfig',
     col1: [

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
-import {PreFooterBlock} from './index.tsx';
+import theme from '@theme';
+import {PreFooterBlock} from '.';
 
 export default {
   title: 'Components/PreFooterBlock',

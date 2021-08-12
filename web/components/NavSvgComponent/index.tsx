@@ -30,9 +30,9 @@ export const HamburgerMenu = ({
               <path
                 d="M1 1.5h18M1 7h18M1 12.5h18"
                 stroke={color}
-                stroke-width="2"
+                strokeWidth="2"
                 stroke-miterlimit="16"
-                stroke-linecap="round"
+                strokeLinecap="round"
               />
             </StyledPATH>
           </span>
@@ -48,9 +48,9 @@ export const HamburgerMenu = ({
             <path
               d="M1 1.5h18M1 7h18M1 12.5h18"
               stroke={color}
-              stroke-width="2"
+              strokeWidth="2"
               stroke-miterlimit="16"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </svg>
         </span>
@@ -80,9 +80,9 @@ export const Close = ({
             >
               <path
                 d="M16.95 7.05l-9.9 9.9M7.05 7.05l9.9 9.9"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </StyledPATH>
           </span>
@@ -98,9 +98,9 @@ export const Close = ({
             <path
               d="M16.95 7.05l-9.9 9.9M7.05 7.05l9.9 9.9"
               stroke={color}
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </span>

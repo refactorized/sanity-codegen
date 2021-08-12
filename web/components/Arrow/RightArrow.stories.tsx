@@ -2,9 +2,9 @@ import React, {ComponentProps} from 'react';
 
 import {Story} from '@storybook/react';
 
-import {RightArrow} from './index';
+import {RightArrow} from '.';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
+import theme from '@theme';
 
 export default {
   title: 'Components/Arrow',

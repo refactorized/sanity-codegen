@@ -32,9 +32,9 @@ export const Search = ({
               <path
                 d="M6.417 11.083a4.667 4.667 0 100-9.333 4.667 4.667 0 000 9.333zM12.25 12.25L9.713 9.712"
                 stroke="#1B76B0"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </StyledPATH>
           </span>
@@ -50,9 +50,9 @@ export const Search = ({
             <path
               d="M6.417 11.083a4.667 4.667 0 100-9.333 4.667 4.667 0 000 9.333zM12.25 12.25L9.713 9.712"
               stroke={color}
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </span>

@@ -2,9 +2,9 @@ import React, {ComponentProps} from 'react';
 
 import {Story} from '@storybook/react';
 
-import {StickyCta, StoryContainer} from './index';
+import {StickyCta, StoryContainer} from '.';
 import {ThemeProvider} from 'styled-components';
-import theme from '../../themes/theme';
+import theme from '@theme';
 
 export default {
   title: 'Components/StickyCTA',

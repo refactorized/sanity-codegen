@@ -3,7 +3,7 @@ import {Story} from '@storybook/react';
 import {ThemeProvider} from 'styled-components';
 
 import {OutcomesCarousel} from '../Carousel/index';
-import theme from '../../themes/theme';
+import theme from '@theme';
 
 export default {
   title: 'Components/Carousel',

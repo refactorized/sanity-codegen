@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Close} from './index.tsx';
+import {Close} from '.';
 
 export default {
   title: 'Components/NavSvgComponents/Close',

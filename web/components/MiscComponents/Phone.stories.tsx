@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Phone} from './index.tsx';
+import {Phone} from '.';
 
 export default {
   title: 'Components/MiscComponents/Phone',
