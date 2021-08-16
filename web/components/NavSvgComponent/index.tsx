@@ -17,7 +17,14 @@ export const HamburgerMenu = ({
   return (
     <>
       {link ? (
-        <a href={link} target="_blank" rel="noopener noreferrer">
+        <a
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <span>
             <StyledPATH
               hoverColor={hoverColor}
