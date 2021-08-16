@@ -23,6 +23,7 @@ export interface TextAndImageBlockProps {
   caption: string;
   btnText?: string;
   btnUrl?: string;
+  reverse?: boolean;
 }
 
 /*** STYLING ***/
@@ -47,6 +48,13 @@ const Subheader = styled.h2`
   ${space}
   ${typography}
   text-transform: uppercase;
+`;
+
+// For No Top Header Variant
+const InnerHeader = styled.h1`
+  ${color}
+  ${space}
+  ${typography}
 `;
 
 const Text = styled.p`
@@ -114,6 +122,77 @@ export const TextAndImageBlock = ({
             lineHeight={['body', 'body', 'heading']}
             mt={[2, 1, 4]}
             mb={[4, 2, 4]}
+            fontSize={[1, 0, 3]}
+            fontFamily="headline"
+            letterSpacing={3}
+          >
+            {caption}
+          </Text>
+          <Button
+            arrowColor="white"
+            arrow={true}
+            size="medium"
+            variant="solid"
+            url={btnUrl}
+            label={btnText}
+          />
+        </Box>
+      </Box>
+    </Block>
+  );
+};
+
+export const TextAndImageBlockNoTopHeader = ({
+  header,
+  imgUrls,
+  caption = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+  btnText = `Button Text`,
+  btnUrl = `#`,
+  reverse,
+}: TextAndImageBlockProps): JSX.Element => {
+  return (
+    <Block>
+      <Box
+        display="grid"
+        gridTemplateColumns={
+          reverse
+            ? [
+                '1fr',
+                'minmax(280px, 450px) minmax(368px,1fr)',
+                'minmax(453px, 1fr) minmax(auto,743px)',
+              ]
+            : [
+                '1fr',
+                'minmax(368px,1fr) minmax(280px, 450px)',
+                'minmax(auto,743px) minmax(453px, 1fr)',
+              ]
+        }
+        gridRowGap={0}
+        gridColumnGap={[0, 3, 6]}
+      >
+        <Box display={['none', 'none', 'block']} width="100%">
+          <Image src={imgUrls.desktop} width={743} height={419} />
+        </Box>
+        <Box gridColumn={1} display={['none', 'block', 'none']} width="100%">
+          <Image src={imgUrls.mobile} width={368} height={207.53} />
+        </Box>
+        <Box gridColumn={1} display={['block', 'none', 'none']} width="100%">
+          <Image src={imgUrls.mobile} width={280} height={304} />
+        </Box>
+        <Box
+          mt={[2, 0, 0]}
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          gridRow={reverse ? 1 : 'unset'}
+        >
+          <InnerHeader fontFamily="body" m={0} fontSize={[4, 3, 5]}>
+            {header}
+          </InnerHeader>
+          <Text
+            lineHeight={['body', 'body', 'heading']}
+            mt={[2, 1, 4]}
+            mb={[2, 2, 4]}
             fontSize={[1, 0, 3]}
             fontFamily="headline"
             letterSpacing={3}
