@@ -1,4 +1,4 @@
-import client, {fetchOne} from './sanityClient';
+import client, {fetchOne, replaceReferences} from './sanityClient';
 import {handler} from '../util/logging';
 import groq from 'groq';
 
@@ -27,12 +27,8 @@ export const getPageData = async (slug: string): Promise<PageDocument> => {
 
   try {
     const pageData = await fetchOne(query);
+    await replaceReferences(pageData); // mutates pageData
 
-    // // refine results
-    // const page = results[0].page
-    // // todo sanity types d.ts
-    // const blocks = page.blocks.map( (block: unknown): => {})
-    // )
     return pageData as PageDocument;
   } catch (err) {
     handler(err);

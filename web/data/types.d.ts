@@ -7,7 +7,8 @@ type SanityDocument = {
 };
 
 interface PageBlockData {
-  blockType: string;
+  blockType: string; // TODO: blocktype->_type
+  _type: string;
   _key: string;
 }
 
