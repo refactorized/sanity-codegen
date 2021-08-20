@@ -95,7 +95,7 @@ export const StickyCta = ({
       {visible && (
         <Link href={url} passHref={true}>
           <Cta
-            fontFamily="headline"
+            fontFamily="body"
             color="background"
             position="absolute"
             p={2}

@@ -21,7 +21,7 @@ export const Phone = ({
     <PhoneContainer
       color={fontColor}
       hoverColor={hoverColor}
-      fontFamily="headline"
+      fontFamily="body"
       fontSize={fontSize}
       fontWeight={fontWeight}
       href={'tel:' + tel}

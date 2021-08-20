@@ -56,7 +56,7 @@ export const AdmissionsCallout = ({
           <StyledHeadline2
             fontSize={['30px', '30px', '43px']}
             fontWeight="regular"
-            fontFamily="body"
+            fontFamily="headline"
             letterSpacing="-0.01em"
             lineHeight={['36px', '51.39px']}
             m="10px 0"
@@ -66,7 +66,7 @@ export const AdmissionsCallout = ({
           <StyledParagraph
             fontSize={['22px', '16px', '22px']}
             fontWeight="regular"
-            fontFamily="headline"
+            fontFamily="body"
             letterSpacing="-0.015em"
             lineHeight={['32px', '26px', '32px']}
           >
@@ -80,7 +80,7 @@ export const AdmissionsCallout = ({
             textDecorate="none"
           >
             <StyledBox
-              fontFamily="Proxima Nova"
+              fontFamily="body"
               fontSize="18px"
               fontStyle="normal"
               fontWeight="700"
@@ -116,7 +116,7 @@ export const AdmissionsCallout = ({
                   m={['10px 0', '0']}
                   fontSize={['20px', '24px', '27px']}
                   fontWeight="regular"
-                  fontFamily="body"
+                  fontFamily="headline"
                   letterSpacing="-0.01em"
                   lineHeight={['24.5px', '51.39px']}
                 >
@@ -126,7 +126,7 @@ export const AdmissionsCallout = ({
                   <StyledHeadline2
                     fontSize={['16px', '14px', '16px']}
                     fontWeight="regular"
-                    fontFamily="headline"
+                    fontFamily="body"
                     letterSpacing="-0.015em"
                     lineHeight={['26px', '20px', '26px']}
                   >

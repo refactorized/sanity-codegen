@@ -7,7 +7,7 @@ import {useRouter} from 'next/router';
 import {BackButton} from './BackButton';
 import {Search, Phone} from '../MiscComponents/index';
 import {HamburgerMenu} from '../NavSvgComponent/index';
-import {Logo} from '../Logo/index'
+import {Logo} from '../Logo/index';
 import {RightArrowNoLine} from '../Arrow/index';
 import {color, space, query} from '../../themes/fn';
 
@@ -56,8 +56,6 @@ const StyledMobileFlex = styled.div`
 
 /** Logo */
 const StyledLogoWrapper = styled.div`
-  
-
   svg {
     width: 161px;
   }
@@ -152,10 +150,13 @@ const StyledMobileBottomAdditionalLinksRowCell = styled.a`
 
 const StyledMobileBottomBottomBodyLinkArrowWrapper = styled.span``;
 
-export const MobileMenu = ({links, featuredLink,
+export const MobileMenu = ({
+  links,
+  featuredLink,
   phone,
   logInLink,
-  registerLink,}: NavigationProps,): JSX.Element => {
+  registerLink,
+}: NavigationProps): JSX.Element => {
   const [showNavBottomMobile, handleShowNavBottomMobile] = useState(false);
   const [menuLevel, handleMenuLevel] = useState(1);
   const [currentParent, handleCurrentParent] = useState('');
@@ -181,11 +182,11 @@ export const MobileMenu = ({links, featuredLink,
         {/*** TEMP - Needs to be replaced by SVG Logo */}
         {menuLevel === 1 ? (
           <StyledLogoWrapper>
-          <Link href='/'>
-          <a>
-          <Logo />
-          </a>
-          </Link>
+            <Link href="/">
+              <a>
+                <Logo />
+              </a>
+            </Link>
           </StyledLogoWrapper>
         ) : (
           <BackButton
@@ -211,9 +212,9 @@ export const MobileMenu = ({links, featuredLink,
           menuLevel={menuLevel}
           handleCurrentParent={handleCurrentParent}
           featuredLink={featuredLink}
-        phone={phone}
-        logInLink={logInLink}
-        registerLink={registerLink}
+          phone={phone}
+          logInLink={logInLink}
+          registerLink={registerLink}
         />
       </StyledMobileBottomWrapper>
     </StyledMobileMenuWrapper>
@@ -292,50 +293,65 @@ export const NavigationMobileBottom = ({
 
   return (
     <>
-      <StyledMobileBottomBody show={show} fontFamily="headline">
+      <StyledMobileBottomBody show={show} fontFamily="body">
         {/** Primary Nav Links */}
-        <StyledMobileBottomBodyLinkList fontFamily="headline">
+        <StyledMobileBottomBodyLinkList fontFamily="body">
           {renderItems(links)}
           <StyledMobileBottomAdditionalLinks>
             <StyledMobileBottomAdditionalLinksRow fontSize={0}>
-              {phone && <StyledMobileBottomAdditionalLinksRowCell border={true}>
-                <Phone color="#D15D34" hoverColor="#D15D34" link="" size="12" />{' '}
-                <Link
-                href={`tel:+1${phone
-                  .replace('.', '')
-                  .replace('-', '')
-                  .replace(' ', '')}`}
-              >
-                <a>{phone}</a>
-              </Link>
-              </StyledMobileBottomAdditionalLinksRowCell>}
-              {featuredLink && <StyledMobileBottomAdditionalLinksRowCell>
-                <Link href={featuredLink.url}>
-                <a>{featuredLink.label}</a>
-              </Link>
-              </StyledMobileBottomAdditionalLinksRowCell>}
+              {phone && (
+                <StyledMobileBottomAdditionalLinksRowCell border={true}>
+                  <Phone
+                    color="#D15D34"
+                    hoverColor="#D15D34"
+                    link=""
+                    size="12"
+                  />{' '}
+                  <Link
+                    href={`tel:+1${phone
+                      .replace('.', '')
+                      .replace('-', '')
+                      .replace(' ', '')}`}
+                  >
+                    <a>{phone}</a>
+                  </Link>
+                </StyledMobileBottomAdditionalLinksRowCell>
+              )}
+              {featuredLink && (
+                <StyledMobileBottomAdditionalLinksRowCell>
+                  <Link href={featuredLink.url}>
+                    <a>{featuredLink.label}</a>
+                  </Link>
+                </StyledMobileBottomAdditionalLinksRowCell>
+              )}
             </StyledMobileBottomAdditionalLinksRow>
             <StyledMobileBottomAdditionalLinksRow fontSize={0} last={true}>
-              {logInLink && <StyledMobileBottomAdditionalLinksRowCell mr={true}>
-                <span className="add-right-margin"><Link href={logInLink.url}>
-                <a>{logInLink.label}</a>
-              </Link></span>
-              </StyledMobileBottomAdditionalLinksRowCell>}
-              {registerLink && <StyledMobileBottomAdditionalLinksRowCell>
-                <Link href={registerLink.url}>
-                <a>{registerLink.label}</a>
-              </Link>
-              </StyledMobileBottomAdditionalLinksRowCell>}
+              {logInLink && (
+                <StyledMobileBottomAdditionalLinksRowCell mr={true}>
+                  <span className="add-right-margin">
+                    <Link href={logInLink.url}>
+                      <a>{logInLink.label}</a>
+                    </Link>
+                  </span>
+                </StyledMobileBottomAdditionalLinksRowCell>
+              )}
+              {registerLink && (
+                <StyledMobileBottomAdditionalLinksRowCell>
+                  <Link href={registerLink.url}>
+                    <a>{registerLink.label}</a>
+                  </Link>
+                </StyledMobileBottomAdditionalLinksRowCell>
+              )}
             </StyledMobileBottomAdditionalLinksRow>
           </StyledMobileBottomAdditionalLinks>
         </StyledMobileBottomBodyLinkList>
         <StyledMobileBottomBodyAdditional show={menuLevel >= 2}>
-          <StyledMobileBottomBodyLinkList fontFamily="headline">
+          <StyledMobileBottomBodyLinkList fontFamily="body">
             {renderSubmenuItems(subMenuItems[1])}
           </StyledMobileBottomBodyLinkList>
         </StyledMobileBottomBodyAdditional>
         <StyledMobileBottomBodyAdditional show={menuLevel >= 3}>
-          <StyledMobileBottomBodyLinkList fontFamily="headline">
+          <StyledMobileBottomBodyLinkList fontFamily="body">
             {renderSubmenuItems(subMenuItems[2])}
           </StyledMobileBottomBodyLinkList>
         </StyledMobileBottomBodyAdditional>

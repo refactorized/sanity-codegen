@@ -64,7 +64,7 @@ export const LinkMenuComponent = ({
         <StyledBox>
           <StyledBox maxWidth={['inherit', null, null, '660px']}>
             <StyledHeadline
-              fontFamily="body"
+              fontFamily="headline"
               fontSize={['30px', null, null, '43px']}
               fontWeight="regular"
               lineHeight={['36px', null, null, '51px']}
@@ -74,7 +74,7 @@ export const LinkMenuComponent = ({
               {header}
             </StyledHeadline>
             <StyledParagraph
-              fontFamily="headline"
+              fontFamily="body"
               fontSize="16px"
               fontWeight="regular"
               lineHeight="26px"
@@ -103,7 +103,7 @@ export const LinkMenuComponent = ({
                   key={x._key}
                 >
                   <StyledHeadline
-                    fontFamily="headline"
+                    fontFamily="body"
                     fontSize={['16px', '14px', null, '18px']}
                     fontWeight="bold"
                     lineHeight={['26px', null, null, '22px']}

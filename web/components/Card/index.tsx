@@ -143,16 +143,13 @@ export const StatCard = ({
         right={['32px', '32px', '46px']}
         bottom={['25px', '25px', '46px']}
       >
-        <StatisticText
-          fontSize={['56px', '56px', '80px']}
-          fontFamily="headline"
-        >
+        <StatisticText fontSize={['56px', '56px', '80px']} fontFamily="body">
           {statisticText}
         </StatisticText>
         <BaselineText
           fontSize={['14px', '14px', '18px']}
           lineHeight={['20px', '20px', '28px']}
-          fontFamily="headline"
+          fontFamily="body"
         >
           {baselineText}
         </BaselineText>
@@ -239,7 +236,7 @@ export const ArticleCard = ({
         <StyledParagraph
           fontSize={['12px', '10px', null, '12px']}
           fontWeight="bold"
-          fontFamily="headline"
+          fontFamily="body"
           letterSpacing="0.185em"
           p={['5px 0', null, null, '7px 0']}
           m="0"
@@ -250,7 +247,7 @@ export const ArticleCard = ({
           <StyledHeader
             fontSize={['19px', '14px', null, '22px']}
             fontWeight="bold"
-            fontFamily="headline"
+            fontFamily="body"
             letterSpacing={['-0.01em', null, null, '-0.01em']}
             lineHeight={['25px', '16px', null, '25px']}
             color="navy"
@@ -264,7 +261,7 @@ export const ArticleCard = ({
           display={['none', null, null, 'inherit']}
           fontSize={['14px', '10px', null, '14px']}
           fontWeight="normal"
-          fontFamily="headline"
+          fontFamily="body"
           letterSpacing={['-0.015em', null, null, '-0.015em']}
           lineHeight={['26px', '16px', null, '26px']}
           p={['5px 0', null, null, '7px 0']}
@@ -275,7 +272,7 @@ export const ArticleCard = ({
         <StyledHeader
           fontSize={['14px', null, null, '16px']}
           fontWeight="normal"
-          fontFamily="headline"
+          fontFamily="body"
           letterSpacing={['-0.015em', null, null, '-0.015em']}
           lineHeight={['26px', '16px', null, '26px']}
           p={['5px 0', null, null, '7px 0']}

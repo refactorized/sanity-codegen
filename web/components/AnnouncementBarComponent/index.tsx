@@ -46,7 +46,7 @@ export const AnnouncementBar = ({
               verticalAlign="middle"
               fontSize={['14px', null, null, '16px']}
               fontWeight="bold"
-              fontFamily="headline"
+              fontFamily="body"
               lineHeight={['17px', null, null, '19px']}
             >
               {header}

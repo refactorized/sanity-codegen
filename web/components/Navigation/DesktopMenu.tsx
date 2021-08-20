@@ -4,7 +4,7 @@ import {typography} from 'styled-system';
 
 import Link from 'next/link';
 import {Search, Phone} from '../MiscComponents/index';
-import {Logo} from '../Logo/index'
+import {Logo} from '../Logo/index';
 import {color, space, query} from '../../themes/fn';
 
 import {NavigationProps} from './index';
@@ -35,7 +35,7 @@ const StyledTopSection = styled.div`
 `;
 
 const StyledTopRightSection = styled.ul`
-${typography}
+  ${typography}
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,8 +76,6 @@ const StyledLink = styled.li`
   text-transform: uppercase;
   border-bottom: 4px solid transparent;
   position: relative;
-  
-  
 
   .StyledSubLinkWrapper {
     position: absolute;
@@ -104,9 +102,8 @@ const StyledLink = styled.li`
   }
 
   @media (${query.below('max')}) {
-    margin-right: ${space('md')}
+    margin-right: ${space('md')};
   }
-  
 `;
 
 const StyledSubLink = styled.li`
@@ -172,12 +169,12 @@ export const DesktopMenu = ({
   };
 
   return (
-    <StyledDesktopMenuWrapper fontFamily="headline">
+    <StyledDesktopMenuWrapper fontFamily="body">
       <StyledTopSection>
-      <Link href='/'>
-        <a>
-        <Logo />
-        </a>
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
         </Link>
         <StyledTopRightSection fontSize={0}>
           <StyledTopRightSectionItem>
@@ -191,7 +188,7 @@ export const DesktopMenu = ({
             </StyledTopRightSectionItem>
           )}
           {registerLink && (
-            <StyledTopRightSectionItem >
+            <StyledTopRightSectionItem>
               <Link href={registerLink.url}>
                 <a>{registerLink.label}</a>
               </Link>

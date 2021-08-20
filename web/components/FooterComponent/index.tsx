@@ -80,7 +80,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
   return (
     <Block background="sky">
       <StyledBox
-        fontFamily="headline"
+        fontFamily="body"
         display="grid"
         gridTemplateRows={['1fr 165px', '1fr 90px', null, null]}
       >

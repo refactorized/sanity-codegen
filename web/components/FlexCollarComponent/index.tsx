@@ -44,7 +44,7 @@ export const FlexCollar = ({cards}: FlexCollarProps) => {
               <StyledParagraph
                 fontSize={['10px', null, null, '12px']}
                 fontWeight="bold"
-                fontFamily="headline"
+                fontFamily="body"
                 letterSpacing="0.185em"
                 pb={['0px', '5px', null, null]}
                 m="0"
@@ -55,7 +55,7 @@ export const FlexCollar = ({cards}: FlexCollarProps) => {
                 <StyledHeader
                   fontSize={['14px', '12px', null, '16px']}
                   fontWeight="bold"
-                  fontFamily="headline"
+                  fontFamily="body"
                   letterSpacing={['-0.01em', null, null, '-0.015em']}
                   lineHeight={['16px', '14px', null, '18px']}
                   color="navy"

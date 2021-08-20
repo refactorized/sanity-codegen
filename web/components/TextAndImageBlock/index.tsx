@@ -75,7 +75,7 @@ export const TextAndImageBlock = ({
   return (
     <Block>
       <Header
-        fontFamily="body"
+        fontFamily="headline"
         mx={[0]}
         mt={0}
         mb={[3, 3, 4]}
@@ -111,7 +111,7 @@ export const TextAndImageBlock = ({
           flexDirection="column"
         >
           <Subheader
-            fontFamily="headline"
+            fontFamily="body"
             fontWeight="bold"
             m={0}
             fontSize={[0, '10px', 0]}
@@ -123,7 +123,7 @@ export const TextAndImageBlock = ({
             mt={[2, 1, 4]}
             mb={[4, 2, 4]}
             fontSize={[1, 0, 3]}
-            fontFamily="headline"
+            fontFamily="body"
             letterSpacing={3}
           >
             {caption}
@@ -186,7 +186,7 @@ export const TextAndImageBlockNoTopHeader = ({
           flexDirection="column"
           gridRow={reverse ? 1 : 'unset'}
         >
-          <InnerHeader fontFamily="body" m={0} fontSize={[4, 3, 5]}>
+          <InnerHeader fontFamily="headline" m={0} fontSize={[4, 3, 5]}>
             {header}
           </InnerHeader>
           <Text
@@ -194,7 +194,7 @@ export const TextAndImageBlockNoTopHeader = ({
             mt={[2, 1, 4]}
             mb={[2, 2, 4]}
             fontSize={[1, 0, 3]}
-            fontFamily="headline"
+            fontFamily="body"
             letterSpacing={3}
           >
             {caption}

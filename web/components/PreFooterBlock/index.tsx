@@ -34,7 +34,7 @@ export const PreFooterBlock = ({
             m={0}
             fontSize={['20px', '24px', '43px']}
             fontWeight="regular"
-            fontFamily="body"
+            fontFamily="headline"
             letterSpacing="-0.01em"
             lineHeight={['24.5px', '51.39px']}
           >
@@ -44,7 +44,7 @@ export const PreFooterBlock = ({
             <StyledDescription
               fontSize={['16px', '14px', '16px']}
               fontWeight="regular"
-              fontFamily="headline"
+              fontFamily="body"
               letterSpacing="-0.015em"
               lineHeight="26px"
               maxWidth={['300px', '300px', 'none']}
