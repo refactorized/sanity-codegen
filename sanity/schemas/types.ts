@@ -421,11 +421,11 @@ export type Link = {
   blockType?: string;
 
   /**
-   * Link to another Page — `reference`
+   * Internal page slug — `slug`
    *
    *
    */
-  refLink?: SanityReference<Page>;
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Manual URL link — `url`

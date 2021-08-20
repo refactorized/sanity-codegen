@@ -1,10 +1,8 @@
-type SanityDocument = {
-  _createdAt: Date;
-  _id: string;
-  _rev: string;
-  _type: string;
-  _updatedAt: Date;
-};
+import {
+  SanityDocument,
+  SanityKeyedReference,
+  SanityReference,
+} from '@schema/types';
 
 interface PageBlockData {
   blockType: string; // TODO: blocktype->_type
@@ -39,5 +37,20 @@ interface SiteConfig {
   austinRiggs: string;
 }
 
-// const siteCfg: siteConfig = cfg;
-// const Footer = ({siteCfg}: {siteCfg: siteConfig}) => {};
+// see: https://github.com/ricokahler/sanity-codegen/issues/175#issuecomment-900805132
+// recursively resolve sanity references for a given type
+type ResolvedSanityReferences<T> =
+  // match `SanityKeyedReference` and unwrap via `infer U`
+  T extends SanityKeyedReference<infer U>
+    ? U
+    : // match `SanityReference` and unwrap via `infer U`
+    T extends SanityReference<infer U>
+    ? U
+    : // match arrays, unwrap with `T[number]`,
+    // recursively run through `ResolvedSanityReferences`
+    // then re-wrap in an another array
+    T extends any[]
+    ? Array<ResolvedSanityReferences<T[number]>>
+    : // finally utilize mapped types to
+      // recursively run children through `ResolvedSanityReferences`
+      {[P in keyof T]: ResolvedSanityReferences<T[P]>};

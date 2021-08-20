@@ -13,10 +13,9 @@ const link = {
       initialValue: 'link',
     },
     {
-      name: 'refLink',
-      title: 'Link to another Page',
-      type: 'reference',
-      to: [{type: 'page'}],
+      name: 'slug',
+      title: 'Internal page slug',
+      type: 'slug',
     },
     {
       name: 'url',

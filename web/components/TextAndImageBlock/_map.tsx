@@ -1,29 +1,27 @@
 import {TextAndImageBlock, TextAndImageBlockProps} from '.';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
-import { Link } from '@studio/schemas/types'
+import {Link} from '@schema/types';
 import log from '@util/logging';
 
-const linkUrl = (link: Link ) => {
-return '#'; //TODO: implement
-}
-
+const linkUrl = (link: Link) => {
+  return '#'; //TODO: implement
+};
 
 // TODO: rearrange data into single var
 const _map = (block: TextAndImageBlockData) => {
   log.json(block);
   const props: TextAndImageBlockProps = {
-    header: block.header,
+    header: block.header || null,
     caption: block.body.toString(), // TODO: update
-    subheader: block.subHeader,
+    subheader: block.subHeader || null,
     btnText: block.buttonText,
-    btnUrl: block.buttonLink.,
+    btnUrl: '#',
     imgUrls: {
-      desktop: '#',
-      mobile: '#',
+      desktop: block.desktopImage.asset.url,
+      mobile: block.mobileImage?.asset.url || null,
     },
   };
   return <TextAndImageBlock key={block._key} {...props} />;
 };
 
 export default _map;
- 

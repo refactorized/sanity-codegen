@@ -25,7 +25,7 @@
       "@theme":["themes"],
       "@util/*":["util/*"],
       "@cfg":["../config"],
-      "@studio/*":["../sanity/*"]
+      "@schema/*":["../sanity/schemas/*"]
     }
   },
   "include": [
