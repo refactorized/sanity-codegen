@@ -1,10 +1,16 @@
 import {MouseEventHandler} from 'react';
 import styled from 'styled-components';
 import {color, space, typography, variant} from 'styled-system';
-import {solid, outlined, text, secondary} from '../../themes/variants/buttons';
+import {
+  solid,
+  outlined,
+  text,
+  secondary,
+  category,
+} from '../../themes/variants/buttons';
 import {RightArrowNoLine} from '../Arrow/index';
 
-type ButtonVariants = 'solid' | 'outlined' | 'text' | 'secondary';
+type ButtonVariants = 'solid' | 'outlined' | 'text' | 'secondary' | 'category';
 type SizeVariants = 'large' | 'medium' | 'small';
 
 export interface ButtonProps {
@@ -16,7 +22,7 @@ export interface ButtonProps {
   label: string;
   size: SizeVariants;
   arrow: Boolean;
-  arrowColor: string;
+  arrowColor?: string;
 }
 
 /*** STYLING ***/
@@ -36,6 +42,7 @@ const StyledButton = styled.button`
       outlined,
       text,
       secondary,
+      category,
     },
   })}
   ${color}
@@ -50,6 +57,7 @@ const StyledButtonLink = styled.a`
       outlined,
       text,
       secondary,
+      category,
     },
   })}
   ${color}
@@ -70,12 +78,12 @@ export const Button = ({
     <StyledWrapper>
       {url ? (
         <StyledButtonLink href={url} variant={variant}>
-          <StyledSpan mr={2}>{label}</StyledSpan>
+          <StyledSpan mr={arrow === true ? 2 : 0}>{label}</StyledSpan>
           {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
         </StyledButtonLink>
       ) : (
         <StyledButton onClick={onClickHandler} variant={variant}>
-          <StyledSpan mr={2}>{label}</StyledSpan>
+          <StyledSpan mr={arrow === true ? 2 : 0}>{label}</StyledSpan>
           {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
         </StyledButton>
       )}

@@ -86,3 +86,16 @@ export const text = {
     borderColor: 'transparent',
   },
 };
+
+export const category = {
+  ...solid,
+  borderColor: 'primary',
+  color: 'primary',
+  bg: 'transparent',
+  px: ['16px', '24px'],
+  ':not(:disabled):hover': {
+    bg: 'blue',
+    borderColor: 'blue',
+    color: 'white',
+  },
+};

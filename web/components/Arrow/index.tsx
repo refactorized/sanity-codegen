@@ -163,3 +163,41 @@ const StyledSVG = styled.svg`
       }
     `}
 `;
+
+export const DownArrow = ({size = '14'}) => {
+  return (
+    <svg
+      width={size}
+      viewBox="0 0 14 9"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 1.5l6 6 6-6"
+        stroke="#212121"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const UpArrow = ({size = '12'}) => {
+  return (
+    <svg
+      width={size}
+      viewBox="0 0 12 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 6.25l-5-4.5-5 4.5"
+        stroke="#212121"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
