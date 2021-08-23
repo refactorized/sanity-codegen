@@ -30,6 +30,9 @@ import footerConfig, {footerLink} from './objects/config/footerConfig';
 import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
+// We import object and document schemas
+import blockContent from './blockContent'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -61,7 +64,5 @@ export default createSchema({
     footerLink,
     placeholder,
     prose,
-    // The following are document types which will appear
-    // in the studio.
   ]),
 });
