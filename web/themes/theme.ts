@@ -30,6 +30,35 @@ export type ThemeBreakpointScale = string[] &
     [index in ThemeBreakpointName]: string;
   };
 
+export type ThemeLetterSpacingName =
+  | 'narrow'
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'standard'
+  | 'wide';
+
+// combined array scale with named keys
+export type ThemeLetterSpacingScale = number[] &
+  {
+    [index in ThemeLetterSpacingName]: number;
+  };
+
+export type ThemeFontSizeName =
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | 'x5'
+  | 'x6'
+  | 'x7'
+  | 'x8';
+
+export type ThemeFontSizeScale = number[] &
+  {
+    [index in ThemeFontSizeName]: number;
+  };
+
 export type Theme = {
   breakpoints: ThemeBreakpointScale;
   buttons: any;
@@ -39,7 +68,7 @@ export type Theme = {
     heading: number;
     headingSecondary: number;
   };
-  letterSpacings: number[];
+  letterSpacings: ThemeLetterSpacingScale;
   fonts: {
     body: string;
     headline: string;
@@ -51,8 +80,8 @@ export type Theme = {
     regular: number;
     light: number;
   };
-  fontSizes: number[];
-  fontSize: number[];
+  fontSizes: ThemeFontSizeScale;
+  fontSize: ThemeFontSizeScale;
   space: ThemeSpaceScale;
   spaces: ThemeSpaceScale;
 };
@@ -78,8 +107,24 @@ breakpoints.tablet = breakpoints[0];
 breakpoints.desktop = breakpoints[1];
 breakpoints.max = breakpoints[2];
 
+const letterSpacing = [-3, -2, -1, -0.5, 0, 1] as ThemeLetterSpacingScale;
+letterSpacing.narrow = space[0];
+letterSpacing.xs = space[1];
+letterSpacing.sm = space[2];
+letterSpacing.md = space[3];
+letterSpacing.standard = space[4];
+letterSpacing.wide = space[5];
+
 //                [ 0   1   2   3   4   5   6   7]
-const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64];
+const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64] as ThemeFontSizeScale;
+fontSizes.sm = fontSizes[0];
+fontSizes.md = fontSizes[1];
+fontSizes.lg = fontSizes[2];
+fontSizes.xl = fontSizes[3];
+fontSizes.x5 = fontSizes[4];
+fontSizes.x6 = fontSizes[5];
+fontSizes.x7 = fontSizes[6];
+fontSizes.x8 = fontSizes[7];
 
 const theme: Theme = {
   breakpoints,
@@ -103,9 +148,14 @@ const theme: Theme = {
     regular: 400,
     light: 300,
   },
-  letterSpacings: [-3, -2, -1, -0.5, 0, 1],
+  letterSpacings: letterSpacing,
   space,
   spaces: space, // renamed spaces to space ()
 };
+
+// ADDITIONAL TYPING
+export type ThemeLineHeights = keyof typeof theme.lineHeights;
+export type ThemeFontWeights = keyof typeof theme.fontWeights;
+export type ThemeFonts = keyof typeof theme.fonts;
 
 export default theme;
