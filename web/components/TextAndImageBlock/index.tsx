@@ -12,6 +12,7 @@ import {
 import Image from 'next/image';
 import {Button} from '@components/Button/';
 import Block from '@components/Layout/Block';
+import {RenderBasicText} from '@components/PortableText';
 
 export interface TextAndImageBlockProps {
   header: string;
@@ -87,14 +88,23 @@ export const TextAndImageBlock = ({
         gridRowGap={0}
         gridColumnGap={[0, 3, 6]}
       >
+        {/*/TODO: review image flexibility / responsiveness */}
         <Box display={['none', 'none', 'block']} width="100%">
           <Image src={imgUrls.desktop} width={743} height={419} />
         </Box>
         <Box gridColumn={1} display={['none', 'block', 'none']} width="100%">
-          <Image src={imgUrls.mobile} width={368} height={207.53} />
+          <Image
+            src={imgUrls.mobile || imgUrls.desktop}
+            width={368}
+            height={207.53}
+          />
         </Box>
         <Box gridColumn={1} display={['block', 'none', 'none']} width="100%">
-          <Image src={imgUrls.mobile} width={280} height={304} />
+          <Image
+            src={imgUrls.mobile || imgUrls.desktop}
+            width={280}
+            height={304}
+          />
         </Box>
         <Box
           mt={[4, 0, 0]}
@@ -118,7 +128,7 @@ export const TextAndImageBlock = ({
             fontFamily="headline"
             letterSpacing={3}
           >
-            {caption}
+            <RenderBasicText content={caption} />
           </Text>
           <Button
             arrowColor="white"
