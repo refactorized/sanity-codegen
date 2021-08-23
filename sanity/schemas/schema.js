@@ -8,6 +8,13 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 import siteConfig from './documents/siteConfig';
 import announcementBar from './documents/announcementBar';
+import category from './documents/category'
+import post from './documents/post'
+import staff from './documents/staff'
+import department from './documents/department'
+import event from './documents/event'
+import eventSeries from './documents/eventSeries'
+import eventCategory from './documents/eventCategory'
 
 // pagebuilder block documents
 import admissionsCallout from './documents/admissionsCallout';
@@ -23,16 +30,6 @@ import footerConfig, {footerLink} from './objects/config/footerConfig';
 import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
-// We import object and document schemas
-import blockContent from './blockContent'
-import category from './category'
-import post from './post'
-import staff from './staff'
-import department from './department'
-import event from './event'
-import eventSeries from './eventSeries'
-import eventCategory from './eventCategory'
-
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -44,6 +41,13 @@ export default createSchema({
     announcementBar,
     page,
     siteConfig,
+    post,
+    staff,
+    category,
+    department,
+    event,
+    eventSeries,
+    eventCategory,
     // Page Builder block Documents
     admissionsCallout,
     carousel,
@@ -59,15 +63,5 @@ export default createSchema({
     prose,
     // The following are document types which will appear
     // in the studio.
-    post,
-    staff,
-    category,
-    department,
-    event,
-    eventSeries,
-    eventCategory,
-    // When added to this list, object types can be used as
-    // { type: 'typename' } in other document schemas
-    blockContent, // @Adam should this be prose?
   ]),
 });
