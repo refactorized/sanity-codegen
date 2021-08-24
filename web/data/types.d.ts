@@ -1,8 +1,11 @@
-import {
+import type {
   SanityDocument,
   SanityKeyedReference,
   SanityReference,
+  BasicText,
 } from '@schema/types';
+
+export type BasicText = BasicText;
 
 interface PageBlockData {
   blockType: string; // TODO: blocktype->_type

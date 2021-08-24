@@ -9,10 +9,9 @@ const linkUrl = (link: Link) => {
 
 // TODO: rearrange data into single var
 const _map = (block: TextAndImageBlockData) => {
-  log.json(block);
   const props: TextAndImageBlockProps = {
     header: block.header || null,
-    caption: block.body.toString(), // TODO: update
+    caption: block.body, // TODO: update
     subheader: block.subHeader || null,
     btnText: block.buttonText,
     btnUrl: '#',

@@ -17,6 +17,23 @@ const Template: Story<ComponentProps<typeof TextAndImageBlock>> = (args) => (
   </ThemeProvider>
 );
 
+const captionData = [
+  {
+    _key: '1c7187e7a0c5',
+    _type: 'block',
+    children: [
+      {
+        _key: 'fbc5ea8aadc7',
+        _type: 'span',
+        marks: [],
+        text: 'The Erikson Institute for Education and Research of the Austen Riggs Center is about the advancement of knowledge. We host and attend conferences, workshops, lecture series, and events. The Institute also offers national and international professional education.',
+      },
+    ],
+    markDefs: [],
+    style: 'normal',
+  },
+];
+
 export const DefaultSetup = Template.bind({});
 DefaultSetup.args = {
   header: 'Fresh Insights and a Century of Expertise',
@@ -25,8 +42,7 @@ DefaultSetup.args = {
     mobile: '/text-and-img-block.jpg',
   },
   subheader: 'Education & Research',
-  caption:
-    'The Erikson Institute for Education and Research of the Austen Riggs Center is about the advancement of knowledge. We host and attend conferences, workshops, lecture series, and events. The Institute also offers national and international professional education.',
+  caption: captionData,
   btnText: 'Learn More',
   btnUrl: '#',
 };

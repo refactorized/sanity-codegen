@@ -12,6 +12,7 @@ import {
 import Image from 'next/image';
 import {Button} from '@components/Button/';
 import Block from '@components/Layout/Block';
+import type {BasicText} from '@data/types';
 import {RenderBasicText} from '@components/PortableText';
 
 export interface TextAndImageBlockProps {
@@ -21,7 +22,7 @@ export interface TextAndImageBlockProps {
     mobile: string;
   };
   subheader: string;
-  caption: string;
+  caption: BasicText;
   btnText?: string;
   btnUrl?: string;
 }
@@ -58,12 +59,12 @@ const Text = styled.p`
 `;
 
 export const TextAndImageBlock = ({
-  header = `Fresh Insights & a Century of Expertise`,
+  header,
   imgUrls,
-  subheader = `Education & Research`,
-  caption = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-  btnText = `Button Text`,
-  btnUrl = `#`,
+  subheader,
+  caption,
+  btnText,
+  btnUrl,
 }: TextAndImageBlockProps): JSX.Element => {
   return (
     <Block>
@@ -128,7 +129,7 @@ export const TextAndImageBlock = ({
             fontFamily="headline"
             letterSpacing={3}
           >
-            <RenderBasicText content={caption} />
+            <RenderBasicText asFragment content={caption} />
           </Text>
           <Button
             arrowColor="white"
