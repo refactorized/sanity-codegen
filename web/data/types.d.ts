@@ -7,29 +7,29 @@ import type {
 
 export type BasicText = BasicText;
 
-interface PageBlockData {
+export interface PageBlockData {
   blockType: string; // TODO: blocktype->_type
   _type: string;
   _key: string;
 }
 
-interface PageDocument extends SanityDocument {
+export interface PageDocument extends SanityDocument {
   blocks: PageBlockData[];
 }
 
-interface FooterLink {
+export interface FooterLink {
   title: string;
   slug: {current: string};
   _key: string;
 }
-interface FooterConfig {
+export interface FooterConfig {
   col1: FooterLink[];
   col2: FooterLink[];
   col3: FooterLink[];
   col4: FooterLink[];
   col5: FooterLink[];
 }
-interface SiteConfig {
+export interface SiteConfig {
   AddressLine1: string;
   AddressLine2: string;
   email: string;
@@ -42,7 +42,7 @@ interface SiteConfig {
 
 // see: https://github.com/ricokahler/sanity-codegen/issues/175#issuecomment-900805132
 // recursively resolve sanity references for a given type
-type ResolvedSanityReferences<T> =
+export type ResolvedSanityReferences<T> =
   // match `SanityKeyedReference` and unwrap via `infer U`
   T extends SanityKeyedReference<infer U>
     ? U

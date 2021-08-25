@@ -1,5 +1,6 @@
 import client, {fetchOne, replaceReferences} from './sanityClient';
 import {handler} from '../util/logging';
+import {PageDocument} from '@data/types';
 import groq from 'groq';
 
 // promise style
