@@ -1,6 +1,6 @@
 {
 	"sanity schema field": {
-		"prefix": "~field",
+		"prefix": "\\field",
 		"body": [
 			"{",
 			"  name: '$1',",

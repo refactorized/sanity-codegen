@@ -1,22 +1,26 @@
-import {TextAndImageBlock} from '.';
+import {TextAndImageBlock, TextAndImageBlockProps} from '.';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
+import {Link} from '@schema/types';
+import log from '@util/logging';
 
-// TODO: rearrange data into single var
-const props = {
-  header: 'Fresh Insights and a Century of Expertise',
-  imgUrls: {
-    desktop: '/text-and-img-block.jpg',
-    mobile: '/text-and-img-block.jpg',
-  },
-  subheader: 'Education & Research',
-  caption:
-    'The Erikson Institute for Education and Research of the Austen Riggs Center is about the advancement of knowledge. We host and attend conferences, workshops, lecture series, and events. The Institute also offers national and international professional education.',
-  btnText: 'Learn More',
-  btnUrl: '#',
+const linkUrl = (link: Link) => {
+  return '#'; //TODO: implement
 };
 
-const _map = (block: TextAndImageBlockData) => (
-  <TextAndImageBlock key={block._key} {...props} />
-);
+// TODO: rearrange data into single var
+const _map = (block: TextAndImageBlockData) => {
+  const props: TextAndImageBlockProps = {
+    header: block.header || null,
+    caption: block.body, // TODO: update
+    subheader: block.subHeader || null,
+    btnText: block.buttonText,
+    btnUrl: '#',
+    imgUrls: {
+      desktop: block.desktopImage.asset.url,
+      mobile: block.mobileImage?.asset.url || null,
+    },
+  };
+  return <TextAndImageBlock key={block._key} {...props} />;
+};
 
 export default _map;

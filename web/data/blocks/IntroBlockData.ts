@@ -1,3 +1,5 @@
+import {PageBlockData} from '@data/types';
+
 export default interface IntroBlockData extends PageBlockData {
   blockType: 'introBlock';
   body: string;

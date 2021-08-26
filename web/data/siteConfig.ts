@@ -1,6 +1,7 @@
 import client, {fetchOne} from './sanityClient';
 import {handler} from '../util/logging';
 import groq from 'groq';
+import {SiteConfig} from '@data/types';
 
 const getSiteConfig = async (): Promise<SiteConfig> => {
   // matching in exact id also avoids drafts

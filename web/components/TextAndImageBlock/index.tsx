@@ -12,6 +12,8 @@ import {
 import Image from 'next/image';
 import {Button} from '@components/Button/';
 import Block from '@components/Layout/Block';
+import type {BasicText} from '@data/types';
+import {RenderBasicText} from '@components/PortableText';
 
 export interface TextAndImageBlockProps {
   header: string;
@@ -20,7 +22,7 @@ export interface TextAndImageBlockProps {
     mobile: string;
   };
   subheader: string;
-  caption: string;
+  caption: BasicText;
   btnText?: string;
   btnUrl?: string;
   reverse?: boolean;
@@ -65,12 +67,12 @@ const Text = styled.p`
 `;
 
 export const TextAndImageBlock = ({
-  header = `Fresh Insights & a Century of Expertise`,
+  header,
   imgUrls,
-  subheader = `Education & Research`,
-  caption = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-  btnText = `Button Text`,
-  btnUrl = `#`,
+  subheader,
+  caption,
+  btnText,
+  btnUrl,
 }: TextAndImageBlockProps): JSX.Element => {
   return (
     <Block>
@@ -95,14 +97,23 @@ export const TextAndImageBlock = ({
         gridRowGap={0}
         gridColumnGap={[0, 3, 6]}
       >
+        {/*/TODO: review image flexibility / responsiveness */}
         <Box display={['none', 'none', 'block']} width="100%">
           <Image src={imgUrls.desktop} width={743} height={419} />
         </Box>
         <Box gridColumn={1} display={['none', 'block', 'none']} width="100%">
-          <Image src={imgUrls.mobile} width={368} height={207.53} />
+          <Image
+            src={imgUrls.mobile || imgUrls.desktop}
+            width={368}
+            height={207.53}
+          />
         </Box>
         <Box gridColumn={1} display={['block', 'none', 'none']} width="100%">
-          <Image src={imgUrls.mobile} width={280} height={304} />
+          <Image
+            src={imgUrls.mobile || imgUrls.desktop}
+            width={280}
+            height={304}
+          />
         </Box>
         <Box
           mt={[4, 0, 0]}
@@ -197,7 +208,7 @@ export const TextAndImageBlockNoTopHeader = ({
             fontFamily="body"
             letterSpacing={3}
           >
-            {caption}
+            <RenderBasicText asFragment content={caption} />
           </Text>
           <Button
             arrowColor="white"
