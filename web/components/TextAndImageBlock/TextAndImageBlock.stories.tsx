@@ -46,3 +46,16 @@ DefaultSetup.args = {
   btnText: 'Learn More',
   btnUrl: '#',
 };
+
+export const NoTopHeader = Template.bind({});
+NoTopHeader.args = {
+  header: '',
+  imgUrls: {
+    desktop: '/text-and-img-block.jpg',
+    mobile: '/text-and-img-block.jpg',
+  },
+  subheader: 'Financing Your Stay',
+  caption: captionData,
+  btnText: 'Learn More',
+  btnUrl: '#',
+};
