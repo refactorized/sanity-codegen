@@ -137,7 +137,7 @@ export const TextAndImageBlock = ({
             fontFamily="body"
             letterSpacing={3}
           >
-            {caption}
+            <RenderBasicText asFragment content={caption} />
           </Text>
           <Button
             arrowColor="white"
