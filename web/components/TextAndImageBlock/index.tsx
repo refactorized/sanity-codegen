@@ -156,9 +156,9 @@ export const TextAndImageBlock = ({
 export const TextAndImageBlockNoTopHeader = ({
   header,
   imgUrls,
-  caption = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-  btnText = `Button Text`,
-  btnUrl = `#`,
+  caption,
+  btnText,
+  btnUrl,
   reverse,
 }: TextAndImageBlockProps): JSX.Element => {
   return (
