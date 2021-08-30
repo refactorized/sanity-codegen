@@ -18,7 +18,7 @@ const Template: Story<ComponentProps<typeof ArticleCard>> = (args) => (
 
 export const Article = Template.bind({});
 Article.args = {
-  image: '/link-menu-image.jpg',
+  image: '/building.png',
   category: 'News & Blog',
   headline:
     'Slow Fuse of the Possible: Some Convergences of Poetry and Psychoanalysis',
