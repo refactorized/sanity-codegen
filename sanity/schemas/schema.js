@@ -8,13 +8,15 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 import siteConfig from './documents/siteConfig';
 import announcementBar from './documents/announcementBar';
-import category from './documents/category'
-import post from './documents/post'
-import staff from './documents/staff'
-import department from './documents/department'
-import event from './documents/event'
-import eventSeries from './documents/eventSeries'
-import eventCategory from './documents/eventCategory'
+import category from './documents/category';
+import resource from './documents/resource';
+import resourceType from './documents/resourceType';
+import post from './documents/post';
+import staff from './documents/staff';
+import department from './documents/department';
+import event from './documents/event';
+import eventSeries from './documents/eventSeries';
+import eventCategory from './documents/eventCategory';
 
 // pagebuilder block documents
 import admissionsCallout from './documents/admissionsCallout';
