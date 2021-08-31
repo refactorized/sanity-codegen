@@ -24,8 +24,8 @@ export default {
     {
       name: 'authors',
       title: 'Author(s)',
-      type: 'reference',
-      to: {type: 'author'},
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'author'}}],
     },
     {
       name: 'staff',
