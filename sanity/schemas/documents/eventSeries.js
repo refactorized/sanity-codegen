@@ -1,7 +1,7 @@
 export default {
   name: 'eventSeries',
   title: 'Event Series',
-  type: 'document',
+  type: 'object',
 
   fields: [
     {
@@ -30,4 +30,4 @@ export default {
       media: 'image',
     },
   },
-}
+};

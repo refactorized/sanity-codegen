@@ -1,6 +1,6 @@
 const carousel = {
   name: 'carousel',
-  type: 'document',
+  type: 'object',
   title: 'Carousel',
   fields: [
     {

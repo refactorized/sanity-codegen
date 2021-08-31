@@ -5,18 +5,19 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // documents
-import page from './documents/page';
-import siteConfig from './documents/siteConfig';
 import announcementBar from './documents/announcementBar';
+import author from './documents/author';
 import category from './documents/category';
-import resource from './documents/resource';
-import resourceType from './documents/resourceType';
-import post from './documents/post';
-import staff from './documents/staff';
 import department from './documents/department';
 import event from './documents/event';
-import eventSeries from './documents/eventSeries';
 import eventCategory from './documents/eventCategory';
+import eventSeries from './documents/eventSeries';
+import page from './documents/page';
+import post from './documents/post';
+import resource from './documents/resource';
+import resourceType from './documents/resourceType';
+import siteConfig from './documents/siteConfig';
+import staff from './documents/staff';
 
 // pagebuilder block documents
 import admissionsCallout from './documents/admissionsCallout';
@@ -35,7 +36,7 @@ import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
 // We import object and document schemas
-import blockContent from './blockContent'
+import blockContent from './documents/blockContent';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -46,15 +47,19 @@ export default createSchema({
   types: schemaTypes.concat([
     // documents
     announcementBar,
-    page,
-    siteConfig,
-    post,
-    staff,
+    author,
+    blockContent,
     category,
     department,
     event,
-    eventSeries,
     eventCategory,
+    eventSeries,
+    page,
+    post,
+    resource,
+    resourceType,
+    siteConfig,
+    staff,
     // Page Builder block Documents
     admissionsCallout,
     carousel,

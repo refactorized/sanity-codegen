@@ -3,7 +3,7 @@ export default {
   title: 'Event',
   type: 'document',
 
-  // Start Date, 
+  // Start Date,
   // End Date
   // Start Time
   // End Time
@@ -24,9 +24,7 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: Rule => [
-        Rule.required().min(1).error('Error Message')
-      ]
+      validation: (Rule) => [Rule.required().min(1).error('Error Message')],
     },
     {
       name: 'image',
@@ -51,12 +49,12 @@ export default {
     {
       name: 'eventStart',
       title: 'Event Start',
-      type: 'datetime'
+      type: 'datetime',
     },
     {
-      name: 'eventStart',
-      title: 'Event Start',
-      type: 'datetime'
+      name: 'eventEnd',
+      title: 'Event End',
+      type: 'datetime',
     },
     {
       name: 'host', // e.g. Austen Riggs Center
@@ -65,7 +63,7 @@ export default {
       initialValue: 'Austen Riggs Center',
     },
     {
-      name: 'description', // 
+      name: 'description', //
       title: 'Description',
       type: 'array',
       of: [
@@ -85,7 +83,7 @@ export default {
     {
       name: 'lmsHosted', // Do we need this -- some sort of "is this in an external system"
       title: 'External Course', // Needs some sort of host
-      type: 'boolean' // And we'd add in 
+      type: 'boolean', // And we'd add in
     },
     {
       name: 'slug',
@@ -96,7 +94,7 @@ export default {
         maxLength: 96,
       },
     },
-       {
+    {
       name: 'bio',
       title: 'Bio',
       type: 'array',
@@ -116,4 +114,4 @@ export default {
       media: 'image',
     },
   },
-}
+};
