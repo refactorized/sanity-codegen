@@ -28,7 +28,9 @@ import preFooter from './documents/preFooter';
 import textAndImageBlock from './documents/textAndImageBlock';
 
 // objects
+import basicText from './objects/basicText';
 import footerConfig, {footerLink} from './objects/config/footerConfig';
+import link from './objects/link';
 import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
@@ -62,8 +64,10 @@ export default createSchema({
     preFooter,
     textAndImageBlock,
     // objects
+    basicText,
     footerConfig,
     footerLink,
+    link,
     placeholder,
     prose,
   ]),

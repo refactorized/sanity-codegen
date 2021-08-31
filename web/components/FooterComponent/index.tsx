@@ -13,6 +13,7 @@ import {
 import {Address} from './address';
 import {Facebook, Twitter, LinkedIn} from '../SocialComponents';
 import {Block} from '@components/Layout';
+import {SiteConfig} from '@data/types';
 
 interface FooterProps {
   siteConfig: SiteConfig;

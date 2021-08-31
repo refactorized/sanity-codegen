@@ -1,6 +1,6 @@
 import sanityClient from '@sanity/client';
-import {result} from 'lodash';
 import config from '../../config';
+import {AsyncWalkBuilder} from 'walkjs';
 
 const client = sanityClient({
   projectId: config.sanity.projectId,
@@ -28,5 +28,50 @@ export const fetchOne = (query: string) => {
     return results[0];
   });
 };
+
+/**
+ * This function will mutate reference-objects:
+ * The keys of a reference-object will be deleted and the keys of the reference-
+ * document will be added.
+ * eg:
+ * { _type: 'reference', _ref: 'abc' }
+ * becomes:
+ * { _type: 'document', _id: 'abc', ...allOtherDocumentProps }
+ * CREDIT: https://github.com/sanity-io/GROQ/issues/21#issuecomment-862284356
+ */
+export async function replaceReferences(
+  input: unknown,
+  resolvedIds: string[] = [],
+) {
+  await new AsyncWalkBuilder()
+    .withGlobalFilter((x) => x.val?._type === 'reference')
+    .withSimpleCallback(async (node) => {
+      const refId = node.val._ref;
+
+      if (typeof refId !== 'string') {
+        throw new Error('node.val._ref is not set');
+      }
+
+      if (resolvedIds.includes(refId)) {
+        const ids = `[${resolvedIds.concat(refId).join(',')}]`;
+        throw new Error(
+          `Ran into an infinite loop of references, please investigate the following sanity document order: ${ids}`,
+        );
+      }
+
+      const doc = await client.fetch(`*[_id == '${refId}']{...}[0]`);
+
+      // recursively replace references
+      await replaceReferences(doc, resolvedIds.concat(refId));
+
+      /**
+       * Here we'll mutate the original reference object by clearing the
+       * existing keys and adding all keys of the reference itself.
+       */
+      Object.keys(node.val).forEach((key) => delete node.val[key]);
+      Object.keys(doc).forEach((key) => (node.val[key] = doc[key]));
+    })
+    .walk(input);
+}
 
 export default client;
