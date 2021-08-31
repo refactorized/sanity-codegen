@@ -7,17 +7,20 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
+      validation: Rule => Rule.required().error('Staff member must have a name')
     },
     {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().error('Staff member must have a title')
     },
     {
       name: 'departments',
       title: 'Departments',
       type: 'array',
       of: [{type: 'reference', to: {type: 'department'}}],
+      validation: Rule => Rule.required().error('Staff member must have a department')
     },
     {
       name: 'slug',
@@ -35,6 +38,16 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'telephone',
+      title: 'Telephone',
+      type: 'string',
+    },
+    {
+      name: 'email',
+      title: 'Email',
+      type: 'string',
     },
     {
       name: 'bio',

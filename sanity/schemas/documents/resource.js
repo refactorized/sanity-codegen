@@ -2,6 +2,10 @@ export default {
   name: 'resource',
   title: 'Resource',
   type: 'document',
+  validation: Rule => Rule.custom(fields => {
+    if (fields.authors.length == 0 && fields.staff.length == 0) return "You must have an author or staff member selected"
+    return true
+  }),
   fields: [
     {
       name: 'title',
@@ -18,10 +22,16 @@ export default {
       },
     },
     {
-      name: 'author',
-      title: 'Author',
+      name: 'authors',
+      title: 'Author(s)',
       type: 'reference',
       to: {type: 'author'},
+    },
+    {
+      name: 'staff',
+      title: 'Staff Member(s)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'staff'}}],
     },
     {
       name: 'mainImage',
@@ -32,16 +42,16 @@ export default {
       },
     },
     {
+      name: 'type',
+      title: 'Resource Type',
+      type: 'reference',
+      to: {type: 'resourceType'},
+    },
+    {
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-    },
-    {
-      name: 'type',
-      title: 'Resource Type',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'resourceType'}}],
     },
     {
       name: 'publishedAt',
