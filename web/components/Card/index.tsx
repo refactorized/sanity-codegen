@@ -218,17 +218,11 @@ export const ArticleCard = ({
   description,
 }: ArticleCardProps): JSX.Element => {
   return (
-    <StyledBox
-      display="flex"
-      flexDirection="column"
-      pr="5px"
-      m={['20px 0', null, null, null]}
-      width={['256px', '288px', null, '362px']}
-    >
+    <StyledBox display="flex" flexDirection="column" width="auto">
       <Image
         src={image}
-        width={['256px', '288px', null, '362px']}
-        height={['180px', '176px', null, '221px']}
+        maxWidth="100%"
+        height="auto"
         pb="13px"
         borderRadius="4px"
       />
