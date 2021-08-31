@@ -1,7 +1,7 @@
 export default {
   name: 'eventSeries',
   title: 'Event Series',
-  type: 'object',
+  type: 'document',
 
   fields: [
     {
