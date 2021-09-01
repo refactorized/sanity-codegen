@@ -3,7 +3,7 @@ export default {
   title: 'Resource',
   type: 'document',
   validation: Rule => Rule.custom(fields => {
-    if (fields.authors.length == 0 && fields.staff.length == 0) return "You must have an author or staff member selected"
+    if (fields.authors.length == 0 && fields.staff == "") return "You must have an author or staff member selected"
     return true
   }),
   fields: [
