@@ -5,7 +5,6 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // documents
-import announcementBar from './documents/announcementBar';
 import author from './documents/author';
 import category from './documents/category';
 import department from './documents/department';
@@ -19,14 +18,15 @@ import resourceType from './documents/resourceType';
 import siteConfig from './documents/siteConfig';
 import staff from './documents/staff';
 
-// pagebuilder block documents
-import admissionsCallout from './documents/admissionsCallout';
-import carousel from './documents/carousel';
-import flexCollar from './documents/flexCollar';
-import introBlock from './documents/introBlock';
-import linkMenu from './documents/linkMenu';
-import preFooter from './documents/preFooter';
-import textAndImageBlock from './documents/textAndImageBlock';
+// pagebuilder sections (also called blocks)
+import admissionsCallout from './sections/admissionsCallout';
+import announcementBar from './sections/announcementBar';
+import carousel from './sections/carousel';
+import flexCollar from './sections/flexCollar';
+import introBlock from './sections/introBlock';
+import linkMenu from './sections/linkMenu';
+import preFooter from './sections/preFooter';
+import textAndImageBlock from './sections/textAndImageBlock';
 
 // objects
 import basicText from './objects/basicText';
