@@ -1,6 +1,6 @@
 const admissionsCallout = {
   name: 'admissionsCallout',
-  type: 'document',
+  type: 'object',
   title: 'Admissions Callout Block',
   fields: [
     {

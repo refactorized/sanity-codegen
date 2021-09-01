@@ -2,7 +2,7 @@ import {string} from 'prop-types';
 
 const introBlock = {
   name: 'introBlock',
-  type: 'document',
+  type: 'object',
   title: 'Intro Block',
   fields: [
     {

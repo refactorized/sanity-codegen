@@ -1,6 +1,6 @@
 const linkMenu = {
   name: 'linkMenu',
-  type: 'document',
+  type: 'object',
   title: 'Link Menu Block',
   fields: [
     {

@@ -1,6 +1,6 @@
 const preFooter = {
   name: 'preFooter',
-  type: 'document',
+  type: 'object',
   title: 'Pre-Footer',
   fields: [
     {

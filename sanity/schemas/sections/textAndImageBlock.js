@@ -3,7 +3,7 @@ const _required = (Rule) => Rule.required();
 
 const textAndImageBlock = {
   name: 'textAndImageBlock',
-  type: 'document',
+  type: 'object',
   title: 'Text & Image Block',
   icon: RiLayoutColumnLine,
   fields: [

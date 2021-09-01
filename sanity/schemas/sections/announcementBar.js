@@ -1,6 +1,6 @@
 const announcementBar = {
   name: 'announcementBar',
-  type: 'document',
+  type: 'object',
   title: 'Announcement Bar',
   fields: [
     {

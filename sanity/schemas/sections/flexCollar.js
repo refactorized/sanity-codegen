@@ -1,6 +1,6 @@
 const flexCollar = {
   name: 'flexCollar',
-  type: 'document',
+  type: 'object',
   title: 'Flex Collar',
   fields: [
     {
