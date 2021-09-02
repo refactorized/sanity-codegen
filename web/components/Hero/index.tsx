@@ -118,7 +118,7 @@ const ImageGradient = styled.div`
 
 const Title = styled.div`
   color: #fff;
-  font-family: ${(props) => props.theme.fonts.body};
+  font-family: ${(props) => props.theme.fonts.headline};
   margin: 22px;
   z-index: 102;
   font-size: 35px;
@@ -135,7 +135,7 @@ const Title = styled.div`
 
 const HeroCardList = styled.div`
   display: flex;
-  font-family: ${(props) => props.theme.fonts.headline};
+  font-family: ${(props) => props.theme.fonts.body};
   font-weight: 700;
   z-index: 103;
   flex-direction: column;
