@@ -11,7 +11,7 @@ export default {
       name: 'staff',
       title: 'Staff Member(s)',
       type: 'reference',
-      to: 'staff',
+      to: { type: 'staff' },
     },
     {
       name: 'firstName',
