@@ -18,4 +18,5 @@ const Template = (args) => (
 export const DefaultBlock = Template.bind({});
 DefaultBlock.args = {
   linksList: siteConfig.links,
+  setCategory: null,
 };

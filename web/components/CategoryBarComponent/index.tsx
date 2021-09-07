@@ -1,53 +1,75 @@
 import React from 'react';
-import styled from 'styled-components';
-import {Button} from '@components/Button';
+import styled, {css} from 'styled-components';
 import {query} from '@theme/fn';
-import {Dropdown} from '@components/DropDownComponent';
+import {useState} from 'react';
 
-interface CategoryLink {
+export interface CategoryLink {
+  id: number;
   title: string;
   link: string;
 }
 
 interface CategoryBarProps {
   links: CategoryLink[];
+  setCategory: any;
 }
-export const CategoryBar = ({links}: CategoryBarProps): JSX.Element => {
+export const CategoryBar = ({
+  setCategory,
+  links,
+}: CategoryBarProps): JSX.Element => {
+  const [active, setActive] = useState(0);
+
+  const handleOnClick = (id) => {
+    links.map((link) => (link.id == id ? setCategory(link.title) : null));
+    setActive(id);
+  };
+
   return (
     <>
-      {/* Mobile Version Using Dropdown Component */}
-      <DropdownContainer>
-        <Dropdown linksList={links} />
-      </DropdownContainer>
-      {/* Greater than Mobile Version Styling */}
       <ButtonListContainer>
         {links.map((link, index) => (
           <Button
+            id={link.id}
             key={index}
-            arrow={false}
-            variant="category"
-            url={link.link}
-            label={link.title}
-            size="medium"
-          />
+            onClick={(e) => handleOnClick(e.target.id)}
+            active={active == index ? true : false}
+          >
+            {link.title}
+          </Button>
         ))}
       </ButtonListContainer>
     </>
   );
 };
 
-const DropdownContainer = styled.div`
-  @media (${query.atLeast('max')}) {
-    display: none;
-  } ;
+const Button = styled.button`
+  padding: 16px 24px;
+  border: solid 2px black;
+  background-color: transparent;
+  font-family: Proxima Nova;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  text-align: center;
+
+  ${(props) =>
+    props.active &&
+    css`
+      color: white;
+      background-color: #1b76b0;
+      border: #1b76b0;
+    `}
 `;
 
 const ButtonListContainer = styled.div`
-  display: none;
-  @media (${query.atLeast('max')}) {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (${query.atLeast('tablet')}) {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
   } ;
 `;

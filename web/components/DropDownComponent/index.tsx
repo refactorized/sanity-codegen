@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {DownArrow, UpArrow} from '@components/Arrow';
 const {useState} = React;
 
-export const Dropdown = ({linksList}) => {
+export const Dropdown = ({linksList, setCategory}) => {
   const [menu, openMenu] = useState(false);
   const [items, setItems] = useState(linksList);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -30,10 +30,16 @@ export const Dropdown = ({linksList}) => {
 
   return (
     <Container>
-      <DropdownDefault onClick={(e) => handleItemClickOpen()}>
-        {selectedItem
-          ? items.find((item) => item.id == selectedItem).title
-          : items[0].title}
+      <DropdownDefault onClick={() => handleItemClickOpen()}>
+        {/* This Shows The Chosen Category */}
+        {selectedItem ? (
+          <>
+            {items.find((item) => item.id == selectedItem).title}
+            {setCategory(items.find((item) => item.id == selectedItem).title)}
+          </>
+        ) : (
+          items[0].title
+        )}
         <ArrowContainer>{menu ? <UpArrow /> : <DownArrow />}</ArrowContainer>
       </DropdownDefault>
       {menu ? (
