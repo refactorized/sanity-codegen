@@ -7,16 +7,13 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
+      validation: Rule => Rule.required().error('Department must have a name')
     },
     {
       name: 'description',
       title: 'Description',
       type: 'text',
-    },
-    {
-      name: 'team',
-      title: 'Team',
-      type: 'text', // This has potential to change.
+      validation: Rule => Rule.required().error('Department must have a description')
     },
   ],
 }
