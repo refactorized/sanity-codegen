@@ -1,8 +1,8 @@
 import config from '@cfg';
 import log from '@util/logging';
-import {PageBlockData} from '@data/types';
-import {AnyBlockData} from '@data/blocks/AnyBlockData';
+import {PageSection} from '@data/types';
 
+// mapping functions
 import {_map as mapProseBlock} from '@components/ProseBlock/';
 import mapAdmissionsCalloutBlock from '@components/AdmissionsCalloutComponent/_map';
 import mapCarouselBlock from '@components/Carousel/_map';
@@ -12,6 +12,7 @@ import mapLinkMenuBlock from '@components/LinkMenuComponent/_map';
 import mapPreFooterBlock from '@components/PreFooterBlock/_map';
 import mapTextAndImageBlock from '@components/TextAndImageBlock/_map';
 
+// section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
 import CarouselBlockData from '@data/blocks/CarouselBlockData';
 import FlexCollarBlockData from '@data/blocks/FlexCollarBlockData';
@@ -19,8 +20,9 @@ import IntroBlockData from '@data/blocks/IntroBlockData';
 import LinkMenuBlockData from '@data/blocks/LinkMenuBlockData';
 import PreFooterBlockData from '@data/blocks/PreFooterBlockData';
 import ProseBlockData from '@data/blocks/ProseBlockData';
+import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
 
-const MapComponents = ({blocks}: {blocks: AnyBlockData[]}) => {
+const MapComponents = ({blocks}: {blocks: any[]}) => {
   if (!blocks?.length) {
     if (config.dev) {
       log.error('invalid or empty blocks passed to <MapComponents>', {
@@ -30,36 +32,35 @@ const MapComponents = ({blocks}: {blocks: AnyBlockData[]}) => {
     return null;
   }
   const components = blocks.map((block) => {
-    if (block.blockType === 'admissionsCallout') {
+    if (block._type === 'admissionsCallout') {
       return mapAdmissionsCalloutBlock(block as AdmissionsCalloutBlockData);
     }
-    if (block.blockType === 'carousel') {
+    if (block._type === 'carousel') {
       return mapCarouselBlock(block as CarouselBlockData);
     }
-    if (block.blockType === 'flexCollar') {
+    if (block._type === 'flexCollar') {
       return mapFlexCollarBlock(block as FlexCollarBlockData);
     }
-    if (block.blockType === 'introBlock') {
+    if (block._type === 'introBlock') {
       return mapIntroBlock(block as IntroBlockData);
     }
-    if (block.blockType === 'linkMenu') {
+    if (block._type === 'linkMenu') {
+      let b = block;
       return mapLinkMenuBlock(block as LinkMenuBlockData);
     }
-    if (block.blockType === 'placeholder') {
+    if (block._type === 'placeholder') {
       return <div key={block._key}>{(block as {text: string}).text}</div>;
     }
-    if (block.blockType === 'preFooter') {
+    if (block._type === 'preFooter') {
       return mapPreFooterBlock(block as PreFooterBlockData);
     }
-    if (block.blockType === 'prose') {
+    if (block._type === 'prose') {
       return mapProseBlock(block as ProseBlockData);
     }
-    if (block.blockType === 'textAndImageBlock') {
-      return mapTextAndImageBlock(block); // no cast here because the types actually line up.
+    if (block._type === 'textAndImageBlock') {
+      return mapTextAndImageBlock(block as TextAndImageBlockData);
     }
-    return (
-      <div>{`unknown block type: ${(block as PageBlockData).blockType}`}</div>
-    );
+    return <div>{`unknown block type: ${(block as PageSection)._type}`}</div>;
   });
   return <>{components}</>;
 };
