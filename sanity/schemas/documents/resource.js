@@ -11,6 +11,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().error('Resource must have a title')
     },
     {
       name: 'slug',
@@ -20,6 +21,12 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+    },
+    {
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'string',
+      validation: Rule => Rule.required().error('Resource must have a short description')
     },
     {
       name: 'authors',
