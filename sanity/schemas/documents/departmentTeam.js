@@ -1,7 +1,7 @@
 export default {
   name: 'departmentTeam',
   title: 'Team',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'name',

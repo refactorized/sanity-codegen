@@ -49,12 +49,12 @@ export default {
       staffLastName: 'staff.lastName',
       staffFirstName: 'staff.firstName',
       staffMedia: 'staff.image',
-      media: 'image',
+      image: 'image',
       role: 'role'
     },
-    prepare: ({firstName, lastName, staffFirstName,staffLastName, media}) => {
+    prepare: ({firstName, lastName, staffFirstName,staffLastName, staffMedia, image}) => {
       const title = (staffLastName != "") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`
-      const media = (media) ? media : staffMedia
+      const media = (staffMedia) ? staffMedia : image
       const subtitle = (role) ? role : ""
       return {
         title,
