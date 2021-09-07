@@ -56,9 +56,7 @@ export default {
       of: [
         {
           title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
+          type: 'blockContent'
         },
       ],
     },
