@@ -95,9 +95,10 @@ export default {
       media: 'image',
     },
     prepare(selection) {
-      const {title, lastName} = selection
+      const {title, lastName, media} = selection
       return {
-        title: `${lastName}, ${title}`
+        title: `${lastName}, ${title}`,
+        media
       }
     },
   },

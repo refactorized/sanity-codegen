@@ -2,10 +2,6 @@ export default {
   name: 'resource',
   title: 'Resource',
   type: 'document',
-  validation: Rule => Rule.custom(fields => {
-    if (fields.authors.length == 0 && fields.staff == "") return "You must have an author or staff member selected"
-    return true
-  }),
   fields: [
     {
       name: 'title',
@@ -33,12 +29,7 @@ export default {
       title: 'Author(s)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'author'}}],
-    },
-    {
-      name: 'staff',
-      title: 'Staff Member(s)',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'staff'}}],
+      validation: Rule => Rule.required().error('Resource must have one or more authors')
     },
     {
       name: 'mainImage',
