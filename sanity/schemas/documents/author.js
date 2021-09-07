@@ -52,14 +52,12 @@ export default {
       image: 'image',
       role: 'role'
     },
-    prepare: ({firstName, lastName, staffFirstName,staffLastName, staffMedia, image}) => {
-      const title = (staffLastName != "") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`
-      const media = (staffMedia) ? staffMedia : image
-      const subtitle = (role) ? role : ""
+    prepare(selection) {
+      const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image} = selection
       return {
-        title,
-        subtitle,
-        media
+        title: (staffLastName != "") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`,
+        subtitle: subtitle = (role) ? role : "",
+        media: media = (staffMedia) ? staffMedia : image
       }
     },
   },
