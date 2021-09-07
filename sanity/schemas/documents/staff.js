@@ -69,13 +69,7 @@ export default {
     {
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'blockContent'
-        },
-      ],
+      type: 'blockContent',
     },
   ],
   preview: {
