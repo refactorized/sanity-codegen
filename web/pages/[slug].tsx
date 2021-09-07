@@ -5,7 +5,6 @@ import Layout from '../components/Layout/Layout';
 import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
 import {Footer} from '../components/FooterComponent';
-import {AnyBlockData} from '@data/blocks/AnyBlockData';
 import {SiteConfig} from '@data/types';
 
 export async function getStaticPaths() {
@@ -31,7 +30,7 @@ const SlugPage = (props) => {
   return (
     <Page>
       <Layout>
-        <MapComponents blocks={props.page.blocks as AnyBlockData[]} />
+        <MapComponents blocks={props.page.blocks} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
       </Layout>

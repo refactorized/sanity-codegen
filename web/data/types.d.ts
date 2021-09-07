@@ -1,4 +1,5 @@
 import type {
+  SanityKeyed,
   SanityDocument,
   SanityKeyedReference,
   SanityReference,
@@ -7,14 +8,14 @@ import type {
 
 export type BasicText = BasicText;
 
-export interface PageBlockData {
-  blockType: string; // TODO: blocktype->_type
+// these are always present on data that comes in from sanity
+export interface PageSection {
   _type: string;
   _key: string;
 }
 
 export interface PageDocument extends SanityDocument {
-  blocks: PageBlockData[];
+  blocks: PageSection[];
 }
 
 export interface FooterLink {

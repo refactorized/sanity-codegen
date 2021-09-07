@@ -1,6 +1,6 @@
-import {PageBlockData} from '@data/types';
+import {PageSection} from '@data/types';
 
-export default interface IntroBlockData extends PageBlockData {
+export default interface IntroBlockData extends PageSection {
   blockType: 'introBlock';
   body: string;
   buttonText: string;
