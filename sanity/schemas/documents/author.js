@@ -45,12 +45,15 @@ export default {
   preview: {
     select: {
       firstName: 'firstName',
-      staff: 'staff',
       lastName: 'lastName',
+      staffLastName: 'staff.lastName',
+      staffFirstName: 'staff.firstName',
+      staffMedia: 'staff.image',
       media: 'image',
     },
-    prepare: ({firstName, staff, lastName, media}) => {
-      const title = staff ? `${staff.lastName}, ${staff.firstName}` : `${lastName}, ${firstName}`
+    prepare: ({firstName, lastName, staffFirstName,staffLastName, media}) => {
+      const title = (staffLastName != "") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`
+      const media = (media) ? media : staffMedia
       return {
         title,
         media
