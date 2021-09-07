@@ -4,10 +4,21 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'name',
-      title: 'Name',
+      name: 'firstName',
+      title: 'First Name (and middle initial)',
       type: 'string',
-      validation: Rule => Rule.required().error('Staff member must have a name')
+      validation: Rule => Rule.required().error('Staff member must have a first name')
+    },
+    {
+      name: 'lastName',
+      title: 'Last Name',
+      type: 'string',
+      validation: Rule => Rule.required().error('Staff member must have a last name')
+    },
+    {
+      name: 'credentials',
+      title: 'Credentials (e.g. PhD, PsyD, MD, etc.)',
+      type: 'string',
     },
     {
       name: 'title',
@@ -21,6 +32,12 @@ export default {
       type: 'array',
       of: [{type: 'reference', to: {type: 'department'}}],
       validation: Rule => Rule.required().error('Staff member must have a department')
+    },
+    {
+      name: 'team',
+      title: 'Teams',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
     {
       name: 'slug',
@@ -37,7 +54,7 @@ export default {
       type: 'image',
       options: {
         hotspot: true,
-      },
+      }, 
     },
     {
       name: 'telephone',

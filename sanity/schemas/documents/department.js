@@ -15,5 +15,11 @@ export default {
       type: 'text',
       validation: Rule => Rule.required().error('Department must have a description')
     },
+    {
+      name: 'teams',
+      title: 'Teams',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'departmentTeam'}}],
+    },
   ],
 }
