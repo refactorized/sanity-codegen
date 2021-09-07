@@ -1,5 +1,5 @@
-import {PageBlockData} from '@data/types';
+import {PageSection} from '@data/types';
 
-export default interface PreFooterBlockData extends PageBlockData {
+export default interface PreFooterBlockData extends PageSection {
   blockType: 'preFooter';
 }

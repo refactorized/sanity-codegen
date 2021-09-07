@@ -49,16 +49,16 @@ export default {
       },
     },
     {
-      name: 'type',
-      title: 'Resource Type',
-      type: 'reference',
-      to: {type: 'resourceType'},
-    },
-    {
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
+    },
+    {
+      name: 'type',
+      title: 'Resource Type',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'resourceType'}}],
     },
     {
       name: 'publishedAt',
