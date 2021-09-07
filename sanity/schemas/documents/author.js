@@ -3,15 +3,15 @@ export default {
   title: 'Author',
   type: 'document',
   validation: Rule => Rule.custom(fields => {
-    if (fields.staff.length == 0 && (fields.lastName == "" && fields.firstName == "")) return "You must have a staff member selected or manually enter an author"
+    if (fields.staff == "" && (fields.lastName == "" && fields.firstName == "")) return "You must have a staff member selected or manually enter an author"
     return true
   }),
   fields: [
     {
       name: 'staff',
       title: 'Staff Member(s)',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'staff'}}],
+      type: 'reference',
+      to: 'staff',
     },
     {
       name: 'firstName',
@@ -44,14 +44,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'firstName',
+      firstName: 'firstName',
+      staff: 'staff',
       lastName: 'lastName',
       media: 'image',
     },
-    prepare(selection) {
-      const {title, lastName, media} = selection
+    prepare: ({firstName, staff, lastName, media}) => {
+      const title = staff ? `${staff.lastName}, ${staff.firstName}` : `${lastName}, ${firstName}`
       return {
-        title: `${lastName}, ${title}`,
+        title,
         media
       }
     },
