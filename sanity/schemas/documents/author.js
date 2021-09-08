@@ -26,7 +26,8 @@ export default {
     {
       name: 'role',
       title: 'Role (e.g. author, editor, reviewer, etc.)',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required().error('Author must have a role')
     },
     {
       name: 'image',
@@ -55,7 +56,7 @@ export default {
     prepare(selection) {
       const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image} = selection
       return {
-        title: (staffLastName != "") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`,
+        title: (typeof(staffLastName) == "undefined") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`,
         subtitle: subtitle = (role) ? role : "",
         media: media = (staffMedia) ? staffMedia : image
       }
