@@ -51,7 +51,7 @@ export default {
       staffFirstName: 'staff.firstName',
       staffMedia: 'staff.image',
       image: 'image',
-      subtitle: 'role'
+      role: 'role'
     },
     prepare(selection) {
       const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image, role} = selection
