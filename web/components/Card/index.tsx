@@ -12,6 +12,7 @@ import {
 } from 'styled-system';
 import {CircleArrow} from '../Arrow/index';
 import {SingleQuote, PuzzlePerson} from './CardIcons';
+import {query} from '../../themes/fn';
 
 enum CardIconSelect {
   PuzzlePerson,
@@ -28,6 +29,7 @@ export interface TestimonialCardProps {
   testimonialText: string;
   patientName: string;
   patientPhotoPath: string;
+  cardFullWidth: boolean;
 }
 
 export interface ArticleCardProps {
@@ -37,80 +39,170 @@ export interface ArticleCardProps {
   date?: string;
   description: string;
 }
+
 const QuoteDiv = styled.div`
-  ${space}
-  ${layout}
+  width: 10px;
   display: inline-block;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 14px;
+  }
+`;
+
+const RightQuoteDiv = styled.div`
+  width: 10px;
+  margin-left: 8px;
+  display: inline-block;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 14px;
+  }
 `;
 
 const CardContainer = styled.div`
-  ${color}
-  ${shadow}
-  ${layout}
-  ${space}
   position: relative;
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: proxima-nova;
+  font-family: ${(props) => props.theme.fonts.body};
+  width: ${(props) => (props.fullWidth ? '100%' : '254px')};
+  height: 333px;
+  padding: 26px 32px;
+
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
+  box-shadow: ${(props) => props.boxShadow};
+
+  @media screen and (${query.atLeast('tablet')}) {
+    width: 280px;
+    height: 332px;
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 362px;
+    height: 474px;
+    padding: 38px 42px;
+  }
 `;
 
 const IconContainer = styled.div`
-  ${layout}
-  ${position}
+  width: 87px;
+  top: 32px;
+  left: 32px;
   position: absolute;
+
+  @media screen and (${query.atLeast('tablet')}) {
+    width: 56px;
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 108px;
+    top: 46px;
+    left: 46px;
+  }
 `;
 
 const BaselineContainer = styled.div`
-  ${position}
   position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 25px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    left: 46px;
+    right: 46px;
+    bottom: 46px;
+  }
 `;
 
 const BaselineText = styled.div`
-  ${typography}
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: 14px;
+  line-height: 20px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 18px;
+    line-height: 28px;
+  }
 `;
 
 const StatisticText = styled.div`
-  ${typography}
+  font-family: ${(props) => props.theme.fonts.body};
   font-weight: 700;
+  font-size: 56px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 80px;
+  }
 `;
 
 const TestimonialText = styled.div`
-  ${typography}
-  ${space}
   font-style: italic;
   letter-spacing: -0.015em;
+  font-size: 14px;
+  margin-top: 10px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 18px;
+    margin-top: 27px;
+  }
 `;
 
 const PatientLine = styled.div`
-  ${space}
   display: flex;
   align-items: center;
+  margin-top: 10px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    margin-top: 16px;
+  }
 `;
 
 const PatientPhoto = styled.div`
-  ${color}
-  ${layout}
   border-radius: 23px;
   background-color: #ddd;
+  width: 40px;
+  height: 40px;
+  display: none;
+
+  background-image: ${(props) =>
+    'url({0})'.replace('{0}', props.backgroundImage)};
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+  }
 `;
 
 const PatientName = styled.div`
-  ${typography}
-  ${space}
   line-height: 18px;
   color: rgba(113, 151, 107, 1);
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 1.4px;
+  font-size: 10px;
+  margin-left: 0;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 14px;
+    margin-left: 12px;
+  }
 `;
 
 const MoreCTA = styled.div`
-  ${typography}
-  ${position}
   display: flex;
   position: absolute;
   color: rgba(0, 0, 0, 1);
   font-weight: 700;
+  font-size: 14px;
+  bottom: 18px;
+  left: 32px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 18px;
+    bottom: 37px;
+    left: 49px;
+  }
 `;
 
 const CTAText = styled.div`
@@ -124,35 +216,13 @@ export const StatCard = ({
   icon,
 }: StatCardProps): JSX.Element => {
   return (
-    <CardContainer
-      width={[254, 280, 362]}
-      height={[333, 332, 474]}
-      padding={['26px 32px', '26px 32px', '38px 42px']}
-      bg={backgroundColor}
-      color="#fff"
-    >
-      <IconContainer
-        width={[87, 56, 108]}
-        top={[32, 32, 46]}
-        left={[32, 32, 46]}
-      >
+    <CardContainer backgroundColor={backgroundColor} color={'#fff'}>
+      <IconContainer>
         <PuzzlePerson />
       </IconContainer>
-      <BaselineContainer
-        left={['32px', '32px', '46px']}
-        right={['32px', '32px', '46px']}
-        bottom={['25px', '25px', '46px']}
-      >
-        <StatisticText fontSize={['56px', '56px', '80px']} fontFamily="body">
-          {statisticText}
-        </StatisticText>
-        <BaselineText
-          fontSize={['14px', '14px', '18px']}
-          lineHeight={['20px', '20px', '28px']}
-          fontFamily="body"
-        >
-          {baselineText}
-        </BaselineText>
+      <BaselineContainer>
+        <StatisticText>{statisticText}</StatisticText>
+        <BaselineText>{baselineText}</BaselineText>
       </BaselineContainer>
     </CardContainer>
   );
@@ -162,47 +232,27 @@ export const TestimonialCard = ({
   testimonialText,
   patientName,
   patientPhotoPath,
+  cardFullWidth,
 }: TestimonialCardProps): JSX.Element => {
   return (
     <CardContainer
-      width={[254, 280, 362]}
-      height={[333, 332, 474]}
-      padding={['26px 32px', '26px 32px', '38px 42px']}
-      bg="#fff"
-      color="#484848"
-      boxShadow="0px 8px 15px 0px rgba(0, 0, 0, 0.1)"
+      backgroundColor={'#fff'}
+      color={'#484848'}
+      boxShadow={'0px 8px 15px 0px rgba(0, 0, 0, 0.1)'}
+      fullWidth={cardFullWidth}
     >
-      <QuoteDiv width={['10px', '10px', '14px']}>
+      <QuoteDiv>
         <SingleQuote />
       </QuoteDiv>
-      <QuoteDiv width={['10px', '10px', '14px']} marginLeft="8px">
+      <RightQuoteDiv>
         <SingleQuote />
-      </QuoteDiv>
-      <TestimonialText
-        fontSize={['14px', '14px', '18px']}
-        marginTop={['10px', '10px', '27px']}
-      >
-        {testimonialText + '"'}
-      </TestimonialText>
-      <PatientLine marginTop={['10px', '10px', '16px']}>
-        <PatientPhoto
-          background={patientPhotoPath}
-          width={['40px', '40px', '45px']}
-          height={['40px', '40px', '45px']}
-          display={['none', 'inline-block']}
-        ></PatientPhoto>
-        <PatientName
-          fontSize={['10px', '10px', '14px']}
-          marginLeft={[0, '12px']}
-        >
-          - {patientName}
-        </PatientName>
+      </RightQuoteDiv>
+      <TestimonialText>{testimonialText + '"'}</TestimonialText>
+      <PatientLine>
+        <PatientPhoto backgroundImage={patientPhotoPath}></PatientPhoto>
+        <PatientName>- {patientName}</PatientName>
       </PatientLine>
-      <MoreCTA
-        fontSize={['14px', '14px', '18px']}
-        bottom={['18px', '18px', '37px']}
-        left={['32px', '32px', '49px']}
-      >
+      <MoreCTA>
         <CTAText>More Patient Outcomes</CTAText>
         <CircleArrow />
       </MoreCTA>
