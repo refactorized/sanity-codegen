@@ -54,7 +54,7 @@ export default {
       role: 'role'
     },
     prepare(selection) {
-      const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image} = selection
+      const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image, role} = selection
       return {
         title: (typeof(staffLastName) == "undefined") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`,
         subtitle: subtitle = (role) ? role : "",
