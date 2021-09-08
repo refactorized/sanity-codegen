@@ -51,14 +51,14 @@ export default {
       staffFirstName: 'staff.firstName',
       staffMedia: 'staff.image',
       image: 'image',
-      role: 'role'
+      subtitle: 'role'
     },
     prepare(selection) {
       const {firstName, lastName, staffFirstName,staffLastName, staffMedia, image, role} = selection
       return {
         title: (typeof(staffLastName) == "undefined") ? `${staffLastName}, ${staffFirstName}` : `${lastName}, ${firstName}`,
-        subtitle: subtitle = (role) ? role : "",
-        media: media = (staffMedia) ? staffMedia : image
+        media: media = (staffMedia) ? staffMedia : image,
+        subtitle,
       }
     },
   },
