@@ -14,7 +14,8 @@ export type ThemeSpaceName =
   | 'x12'
   | 'margin'
   | 'marginMobile'
-  | 'marginWide';
+  | 'marginWide'
+  | 'marginTablet';
 
 export type ThemeBreakpointName = 'tablet' | 'desktop' | 'max';
 
@@ -101,6 +102,7 @@ space.x12 = space[10];
 space.margin = 80;
 space.marginMobile = 20;
 space.marginWide = 200;
+space.marginTablet = 64;
 
 const breakpoints = ['768px', '1024px', '1440px'] as ThemeBreakpointScale;
 breakpoints.tablet = breakpoints[0];

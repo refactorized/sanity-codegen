@@ -80,7 +80,7 @@ export const TextAndImageBlock = ({
   reverse,
 }: TextAndImageBlockProps): JSX.Element => {
   return (
-    <>
+    <Block>
       {header && (
         <Header
           fontFamily="headline"
@@ -171,6 +171,6 @@ export const TextAndImageBlock = ({
           />
         </Box>
       </Box>
-    </>
+    </Block>
   );
 };

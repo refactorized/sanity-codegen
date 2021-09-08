@@ -1,45 +1,61 @@
 import {FC} from 'react';
 import styled from 'styled-components';
 import theme, {Theme, ThemeColorName} from '@theme';
-import {query, space} from '@theme/fn';
+import query from '@theme/query';
 
 export interface BlockComponentProps {
-  narrow?: boolean;
-  squish?: boolean;
+  narrow?: true;
+  squish?: true;
   background?: ThemeColorName;
   theme?: Theme;
 }
 
-// set background color, but only if specified
-const bgcolor = ({background}: BlockComponentProps) => {
-  if (background) {
-    return {backgroundColor: theme.colors[background]};
-  }
-  return null;
-};
+// generate css calculate rule that uses padding to lock a virtual max width
+const extraPaddingCalc = (marginPx: number) =>
+  `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`;
 
-// set tablet+ padding for regular / narrow layouts
-const paddingVariants = ({narrow, squish, theme}: BlockComponentProps) => {
-  // calculate padding in order to lock virtual max width
-  const widthPadding = (marginPx: number) =>
-    `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`;
-  return {
-    padding: `${squish ? theme.space.md : theme.space.margin}px ${widthPadding(
-      narrow ? theme.space.marginWide : theme.space.margin,
-    )}`,
-  };
-};
+const Block = styled.div<BlockComponentProps>(
+  ({narrow, squish, background, theme}: BlockComponentProps) => {
+    // TODO: use styled components CSSObject Type
+    const css: Record<string, any> = {
+      boxSizing: 'border-box', // allows padding to size inner content
+      width: '100%',
+      // prevent margin collapse to preserve apparent padding when bg set
+      '&>*': {overflow: 'hidden'},
+    };
 
-const Block = styled.div<BlockComponentProps>`
-  box-sizing: border-box; // allows padding to size inner content
-  width: 100%;
-  ${bgcolor}
+    // add background if specified
+    if (background) {
+      css.backgroundColor = theme.colors[background];
+    }
+    const padding = {
+      mobile: {
+        x: `${theme.space.marginMobile}px`,
+        y: `${theme.space.marginMobile}px`,
+      },
+      tablet: {
+        x: `${theme.space.marginTablet}px`,
+        y: `${squish ? theme.space.md : theme.space.margin}px`,
+      },
+      desktop: {
+        x: `${extraPaddingCalc(
+          narrow ? theme.space.marginWide : theme.space.margin,
+        )}`,
+        y: `${squish ? theme.space.md : theme.space.margin}px`,
+      },
+    };
 
-  padding: ${space('marginMobile')};
+    css.padding = `${padding.mobile.y} ${padding.mobile.x}`;
 
-  @media (${query.atLeast('tablet')}) {
-    ${paddingVariants}
-  }
-`;
+    css[`@media (${query.atLeast.tablet})`] = {
+      padding: `${padding.tablet.y} ${padding.tablet.x}`,
+    };
+    css[`@media (${query.atLeast.desktop})`] = {
+      padding: `${padding.desktop.y} ${padding.desktop.x}`,
+    };
+
+    return css;
+  },
+);
 
 export default Block as FC<BlockComponentProps>;

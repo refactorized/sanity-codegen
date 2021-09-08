@@ -10,6 +10,8 @@ import {
   ThemeFontSizeName,
 } from './theme';
 
+// TODO: allow passing of theme for all these functions
+
 export const color = (name: ThemeColorName) => () => theme.colors[name];
 
 export const space = (name: ThemeSpaceName) => () => `${theme.spaces[name]}px`;
