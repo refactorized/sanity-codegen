@@ -65,15 +65,7 @@ export default {
     {
       name: 'description', //
       title: 'Description',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      type: 'blockContent',
     },
     {
       name: 'location', // Webinar -or- Physical Google-maps-able location
@@ -95,17 +87,28 @@ export default {
       },
     },
     {
-      name: 'bio',
-      title: 'Bio',
+      name: 'moderator',
+      title: 'Moderator (Staff)',
+      type: 'reference',
+      to: {type: 'staff'}
+    },
+    {
+      name: 'moderatorExternal',
+      title: 'Moderator (External)',
+      type: 'reference',
+      to: {type: 'externalContributor'}
+    },
+    {
+      name: 'speakers',
+      title: 'Speaker(s) (Staff)',
       type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      of: [{type: 'reference', to: {type: 'staff'}}],
+    },
+    {
+      name: 'speakersExternal',
+      title: 'Speaker(s) (External)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'externalContributor'}}],
     },
   ],
   preview: {

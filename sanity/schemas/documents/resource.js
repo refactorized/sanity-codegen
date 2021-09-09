@@ -25,11 +25,10 @@ export default {
       validation: Rule => Rule.required().error('Resource must have a short description')
     },
     {
-      name: 'authors',
-      title: 'Author(s)',
+      name: 'associatedStaff',
+      title: 'Associated Staffmember(s)',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'author'}}],
-      validation: Rule => Rule.required().error('Resource must have one or more authors')
+      of: [{type: 'reference', to: {type: 'staff'}}],
     },
     {
       name: 'mainImage',
@@ -66,13 +65,15 @@ export default {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      firstName: 'staff.0.firstName',
+      lastName: 'staff.0.lastName',
+      credentials: 'staff.0.credentials',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
+      const {firstName, lastName, credentials} = selection
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
+        subtitle: `${lastName}, ${firstName} ${credentials}`,
       })
     },
   },
