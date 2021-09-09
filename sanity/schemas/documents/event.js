@@ -73,6 +73,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'registrationLink',
+      title: 'URL for Registration',
+      type: 'string',
+    },
+    {
       name: 'lmsHosted', // Do we need this -- some sort of "is this in an external system"
       title: 'External Course', // Needs some sort of host
       type: 'boolean', // And we'd add in
@@ -115,6 +120,7 @@ export default {
     select: {
       title: 'name',
       media: 'image',
+      subtitle: 'series.name'
     },
   },
 };

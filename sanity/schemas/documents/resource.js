@@ -29,6 +29,7 @@ export default {
       title: 'Associated Staffmember(s)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'staff'}}],
+      validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
       name: 'mainImage',
@@ -49,6 +50,7 @@ export default {
       title: 'Resource Type',
       type: 'array',
       of: [{type: 'reference', to: {type: 'resourceType'}}],
+      validation: Rule => Rule.required().error('Resource must have a type selected')
     },
     {
       name: 'publishedAt',
@@ -69,11 +71,12 @@ export default {
       lastName: 'associatedStaff.0.lastName',
       credentials: 'associatedStaff.0.credentials',
       media: 'mainImage',
+      resourceType: 'type.name'
     },
     prepare(selection) {
-      const {firstName, lastName, credentials} = selection
+      const {firstName, lastName, credentials, resourceType} = selection
       return Object.assign({}, selection, {
-        subtitle: `${lastName}, ${firstName} ${credentials}`,
+        subtitle: `${resourceType} by ${lastName}, ${firstName} ${credentials}`,
       })
     },
   },
