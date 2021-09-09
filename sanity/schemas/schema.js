@@ -37,7 +37,7 @@ import prose from './objects/prose';
 
 // We import object and document schemas
 import blockContent from './documents/blockContent';
-import externalContributor from './documents/resource';
+import externalContributor from './documents/externalContributor';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
