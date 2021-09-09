@@ -65,9 +65,9 @@ export default {
   preview: {
     select: {
       title: 'title',
-      firstName: 'staff.0.firstName',
-      lastName: 'staff.0.lastName',
-      credentials: 'staff.0.credentials',
+      firstName: 'associatedStaff.0.firstName',
+      lastName: 'associatedStaff.0.lastName',
+      credentials: 'associatedStaff.0.credentials',
       media: 'mainImage',
     },
     prepare(selection) {
