@@ -51,6 +51,7 @@ export default {
         {type: 'preFooter'},
         {type: 'prose'},
         {type: 'textAndImageBlock'},
+        {type: 'heroBlock'},
       ],
     },
   ],

@@ -37,19 +37,212 @@ export type {
 };
 
 /**
- * Announcement Bar
+ * Author
  *
  *
  */
-export interface AnnouncementBar extends SanityDocument {
-  _type: "announcementBar";
+export interface Author extends SanityDocument {
+  _type: "author";
 
   /**
-   * blockType — `string`
+   * Name — `string`
    *
    *
    */
-  blockType?: string;
+  name?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Bio — `array`
+   *
+   *
+   */
+  bio?: Array<SanityKeyed<SanityBlock>>;
+}
+
+/**
+ * Category
+ *
+ *
+ */
+export interface Category extends SanityDocument {
+  _type: "category";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
+}
+
+/**
+ * Department
+ *
+ *
+ */
+export interface Department extends SanityDocument {
+  _type: "department";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Team — `text`
+   *
+   *
+   */
+  team?: string;
+}
+
+/**
+ * Event
+ *
+ *
+ */
+export interface Event extends SanityDocument {
+  _type: "event";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Series — `reference`
+   *
+   *
+   */
+  series?: SanityReference<EventSeries>;
+
+  /**
+   * Event Category — `reference`
+   *
+   *
+   */
+  eventCategory?: SanityReference<EventCategory>;
+
+  /**
+   * Event Start — `datetime`
+   *
+   *
+   */
+  eventStart?: string;
+
+  /**
+   * Event End — `datetime`
+   *
+   *
+   */
+  eventEnd?: string;
+
+  /**
+   * Host — `string`
+   *
+   *
+   */
+  host?: string;
+
+  /**
+   * Description — `array`
+   *
+   *
+   */
+  description?: Array<SanityKeyed<SanityBlock>>;
+
+  /**
+   * Location — `string`
+   *
+   *
+   */
+  location?: string;
+
+  /**
+   * External Course — `boolean`
+   *
+   *
+   */
+  lmsHosted?: boolean;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Bio — `array`
+   *
+   *
+   */
+  bio?: Array<SanityKeyed<SanityBlock>>;
+}
+
+/**
+ * Event Category
+ *
+ *
+ */
+export interface EventCategory extends SanityDocument {
+  _type: "eventCategory";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
 }
 
 /**
@@ -108,7 +301,164 @@ export interface Page extends SanityDocument {
     | SanityKeyed<PreFooter>
     | SanityKeyed<Prose>
     | SanityKeyed<TextAndImageBlock>
+    | SanityKeyed<HeroBlock>
   >;
+}
+
+/**
+ * Post
+ *
+ *
+ */
+export interface Post extends SanityDocument {
+  _type: "post";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Author — `reference`
+   *
+   *
+   */
+  author?: SanityReference<Author>;
+
+  /**
+   * Main image — `image`
+   *
+   *
+   */
+  mainImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Categories — `array`
+   *
+   *
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
+
+  /**
+   * Published at — `datetime`
+   *
+   *
+   */
+  publishedAt?: string;
+
+  /**
+   * Body — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
+}
+
+/**
+ * Resource
+ *
+ *
+ */
+export interface Resource extends SanityDocument {
+  _type: "resource";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Author — `reference`
+   *
+   *
+   */
+  author?: SanityReference<Author>;
+
+  /**
+   * Main image — `image`
+   *
+   *
+   */
+  mainImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Categories — `array`
+   *
+   *
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
+
+  /**
+   * Resource Type — `array`
+   *
+   *
+   */
+  type?: Array<SanityKeyedReference<ResourceType>>;
+
+  /**
+   * Published at — `datetime`
+   *
+   *
+   */
+  publishedAt?: string;
+
+  /**
+   * Body — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
+}
+
+/**
+ * Resource Type
+ *
+ *
+ */
+export interface ResourceType extends SanityDocument {
+  _type: "resourceType";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
 }
 
 /**
@@ -163,61 +513,137 @@ export interface SiteConfig extends SanityDocument {
 }
 
 /**
- * Admissions Callout Block
+ * Staff
  *
  *
  */
-export interface AdmissionsCallout extends SanityDocument {
+export interface Staff extends SanityDocument {
+  _type: "staff";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Departments — `array`
+   *
+   *
+   */
+  departments?: Array<SanityKeyedReference<Department>>;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Bio — `array`
+   *
+   *
+   */
+  bio?: Array<SanityKeyed<SanityBlock>>;
+}
+
+export type AnnouncementBar = {
+  _type: "announcementBar";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+};
+
+export type BlockContent = Array<
+  | SanityKeyed<SanityBlock>
+  | SanityKeyed<{
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+    }>
+>;
+
+export type EventSeries = {
+  _type: "eventSeries";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+};
+
+export type AdmissionsCallout = {
   _type: "admissionsCallout";
-
   /**
    * blockType — `string`
    *
    *
    */
   blockType?: string;
-}
+};
 
-/**
- * Carousel
- *
- *
- */
-export interface Carousel extends SanityDocument {
+export type Carousel = {
   _type: "carousel";
-
   /**
    * blockType — `string`
    *
    *
    */
   blockType?: string;
-}
+};
 
-/**
- * Flex Collar
- *
- *
- */
-export interface FlexCollar extends SanityDocument {
+export type FlexCollar = {
   _type: "flexCollar";
-
   /**
    * blockType — `string`
    *
    *
    */
   blockType?: string;
-}
+};
 
-/**
- * Intro Block
- *
- *
- */
-export interface IntroBlock extends SanityDocument {
+export type IntroBlock = {
   _type: "introBlock";
-
   /**
    * blockType — `string`
    *
@@ -245,48 +671,30 @@ export interface IntroBlock extends SanityDocument {
    *
    */
   buttonLink?: { _type: "buttonLink"; current: string };
-}
+};
 
-/**
- * Link Menu Block
- *
- *
- */
-export interface LinkMenu extends SanityDocument {
+export type LinkMenu = {
   _type: "linkMenu";
-
   /**
    * blockType — `string`
    *
    *
    */
   blockType?: string;
-}
+};
 
-/**
- * Pre-Footer
- *
- *
- */
-export interface PreFooter extends SanityDocument {
+export type PreFooter = {
   _type: "preFooter";
-
   /**
    * blockType — `string`
    *
    *
    */
   blockType?: string;
-}
+};
 
-/**
- * Text & Image Block
- *
- *
- */
-export interface TextAndImageBlock extends SanityDocument {
+export type TextAndImageBlock = {
   _type: "textAndImageBlock";
-
   /**
    * blockType — `string`
    *
@@ -352,7 +760,67 @@ export interface TextAndImageBlock extends SanityDocument {
    *
    */
   buttonLink?: Link;
-}
+};
+
+export type HeroBlock = {
+  _type: "heroBlock";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Hero Background Image — `image`
+   *
+   *
+   */
+  bgImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Hero Cards — `array`
+   *
+   * Adds clickable cards to the hero
+   */
+  hero_cards?: Array<SanityKeyed<HeroCard>>;
+};
+
+export type HeroCard = {
+  _type: "heroCard";
+  /**
+   * Eyebrow — `string`
+   *
+   * Text on top of card
+   */
+  card_eyebrow?: string;
+
+  /**
+   * Copy — `text`
+   *
+   * Main copy on card
+   */
+  card_copy?: string;
+
+  /**
+   * Card URL — `link`
+   *
+   * Destination page or URL after clicking on card
+   */
+  card_link?: Link;
+};
 
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
 
@@ -470,13 +938,14 @@ export type Prose = {
 };
 
 export type Documents =
-  | AnnouncementBar
+  | Author
+  | Category
+  | Department
+  | Event
+  | EventCategory
   | Page
+  | Post
+  | Resource
+  | ResourceType
   | SiteConfig
-  | AdmissionsCallout
-  | Carousel
-  | FlexCollar
-  | IntroBlock
-  | LinkMenu
-  | PreFooter
-  | TextAndImageBlock;
+  | Staff;

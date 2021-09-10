@@ -1,15 +1,12 @@
 import styled from 'styled-components';
-import {query} from '../../themes/fn';
+import {query, color, fontSize} from '../../themes/fn';
+import Block from '@components/Layout/Block';
+import {HeroCard} from '@schema/types';
 
 export interface HomepageHeroProps {
   imageUrl: string;
   title: string;
-  eyebrow1: string;
-  copy1: string;
-  url1: string;
-  eyebrow2: string;
-  copy2: string;
-  url2: string;
+  heroCards: HeroCard[];
   admissionsText: string;
   admissionsUrl: string;
 }
@@ -69,7 +66,7 @@ const HeroContainer = styled.div`
   }
 
   @media screen and (${query.atLeast('desktop')}) {
-    height: 628px;
+    height: 682px;
     flex-direction: row;
     align-items: flex-end;
     padding: 140px 84px 72px 82px;
@@ -122,6 +119,7 @@ const Title = styled.div`
   margin: 22px;
   z-index: 102;
   font-size: 35px;
+  max-width: 1043px;
 
   @media screen and (${query.atLeast('tablet')}) {
     margin: 22px 48px;
@@ -152,7 +150,7 @@ const HeroCardList = styled.div`
     flex-basis: 361px;
   }
 `;
-const HeroCard = styled.div`
+const SingleHeroCard = styled.div`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   color: #fff;
@@ -168,6 +166,10 @@ const HeroCard = styled.div`
     color: #282828;
     padding: 20px 24px;
     margin: 0 0 22px 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
   }
 `;
 
@@ -195,6 +197,8 @@ const Eyebrow = styled.a`
 const Copy = styled.a`
   display: block;
   text-decoration: none;
+  color: #282828;
+  ${fontSize('xl')};
 
   :visited {
     color: inherit;
@@ -204,49 +208,35 @@ const Copy = styled.a`
 export const HomepageHero = ({
   imageUrl,
   title,
-  eyebrow1,
-  copy1,
-  url1,
-  eyebrow2,
-  copy2,
-  url2,
+  heroCards,
 }: HomepageHeroProps): JSX.Element => {
   return (
-    <HeroContainer>
-      <ImageContainer backgroundImage={imageUrl}>
-        <ImageGradient />
-      </ImageContainer>
-      <Title>{title}</Title>
-      <HeroCardList>
-        <HeroCard>
-          <Eyebrow href={url1}>
-            {eyebrow1}{' '}
-            <MobileChevronDiv>
-              <Chevron />
-            </MobileChevronDiv>
-          </Eyebrow>
-          <Copy href={url1}>
-            {copy1}{' '}
-            <DesktopChevronDiv>
-              <Chevron />
-            </DesktopChevronDiv>
-          </Copy>
-        </HeroCard>
-        <HeroCard>
-          <Eyebrow href={url2}>
-            {eyebrow2}{' '}
-            <MobileChevronDiv>
-              <Chevron />
-            </MobileChevronDiv>
-          </Eyebrow>
-          <Copy href={url2}>
-            {copy2}{' '}
-            <DesktopChevronDiv>
-              <Chevron />
-            </DesktopChevronDiv>
-          </Copy>
-        </HeroCard>
-      </HeroCardList>
-    </HeroContainer>
+    <Block full={true}>
+      <HeroContainer>
+        <ImageContainer backgroundImage={imageUrl}>
+          <ImageGradient />
+        </ImageContainer>
+        <Title>{title}</Title>
+        <HeroCardList>
+          {heroCards &&
+            heroCards.map((card) => (
+              <SingleHeroCard>
+                <Eyebrow href={card.card_link.slug.current}>
+                  {card.card_eyebrow}{' '}
+                  <MobileChevronDiv>
+                    <Chevron />
+                  </MobileChevronDiv>
+                </Eyebrow>
+                <Copy href={card.card_link.slug.current}>
+                  {card.card_copy}{' '}
+                  <DesktopChevronDiv>
+                    <Chevron />
+                  </DesktopChevronDiv>
+                </Copy>
+              </SingleHeroCard>
+            ))}
+        </HeroCardList>
+      </HeroContainer>
+    </Block>
   );
 };

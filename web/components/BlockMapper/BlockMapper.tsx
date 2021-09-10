@@ -7,6 +7,7 @@ import {_map as mapProseBlock} from '@components/ProseBlock/';
 import mapAdmissionsCalloutBlock from '@components/AdmissionsCalloutComponent/_map';
 import mapCarouselBlock from '@components/Carousel/_map';
 import mapFlexCollarBlock from '@components/FlexCollarComponent/_map';
+import mapHeroBlock from '@components/Hero/_map';
 import mapIntroBlock from '@components/IntroBlockComponent/_map';
 import mapLinkMenuBlock from '@components/LinkMenuComponent/_map';
 import mapPreFooterBlock from '@components/PreFooterBlock/_map';
@@ -17,6 +18,7 @@ import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData'
 import CarouselBlockData from '@data/blocks/CarouselBlockData';
 import FlexCollarBlockData from '@data/blocks/FlexCollarBlockData';
 import IntroBlockData from '@data/blocks/IntroBlockData';
+import HeroBlockData from '@data/blocks/HomepageHeroData';
 import LinkMenuBlockData from '@data/blocks/LinkMenuBlockData';
 import PreFooterBlockData from '@data/blocks/PreFooterBlockData';
 import ProseBlockData from '@data/blocks/ProseBlockData';
@@ -56,6 +58,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'prose') {
       return mapProseBlock(block as ProseBlockData);
+    }
+    if (block._type === 'heroBlock') {
+      return mapHeroBlock(block as HeroBlockData);
     }
     if (block._type === 'textAndImageBlock') {
       return mapTextAndImageBlock(block as TextAndImageBlockData);

@@ -27,6 +27,7 @@ import introBlock from './sections/introBlock';
 import linkMenu from './sections/linkMenu';
 import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
+import heroBlock, {heroCard} from './sections/hero';
 
 // objects
 import basicText from './objects/basicText';
@@ -68,6 +69,8 @@ export default createSchema({
     linkMenu,
     preFooter,
     textAndImageBlock,
+    heroBlock,
+    heroCard,
     // objects
     basicText,
     footerConfig,

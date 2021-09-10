@@ -6,6 +6,7 @@ import query from '@theme/query';
 export interface BlockComponentProps {
   narrow?: true;
   squish?: true;
+  full?: true;
   background?: ThemeColorName;
   theme?: Theme;
 }
@@ -15,7 +16,7 @@ const extraPaddingCalc = (marginPx: number) =>
   `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`;
 
 const Block = styled.div<BlockComponentProps>(
-  ({narrow, squish, background, theme}: BlockComponentProps) => {
+  ({narrow, squish, background, theme, full}: BlockComponentProps) => {
     // TODO: use styled components CSSObject Type
     const css: Record<string, any> = {
       boxSizing: 'border-box', // allows padding to size inner content
@@ -30,18 +31,22 @@ const Block = styled.div<BlockComponentProps>(
     }
     const padding = {
       mobile: {
-        x: `${theme.space.marginMobile}px`,
-        y: `${theme.space.marginMobile}px`,
+        x: `${full ? 0 : theme.space.marginMobile}px`,
+        y: `${full ? 0 : theme.space.marginMobile}px`,
       },
       tablet: {
-        x: `${theme.space.marginTablet}px`,
-        y: `${squish ? theme.space.md : theme.space.margin}px`,
+        x: `${full ? 0 : theme.space.marginTablet}px`,
+        y: `${full ? 0 : squish ? theme.space.md : theme.space.margin}px`,
       },
       desktop: {
-        x: `${extraPaddingCalc(
-          narrow ? theme.space.marginWide : theme.space.margin,
-        )}`,
-        y: `${squish ? theme.space.md : theme.space.margin}px`,
+        x: `${
+          full
+            ? 0
+            : extraPaddingCalc(
+                narrow ? theme.space.marginWide : theme.space.margin,
+              )
+        }`,
+        y: `${full ? 0 : squish ? theme.space.md : theme.space.margin}px`,
       },
     };
 
