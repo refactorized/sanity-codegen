@@ -3,7 +3,7 @@ import theme, {Theme} from '../../themes';
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -15,7 +15,7 @@ const Container = styled.div`
   left: 0;
 `;
 
-interface LayoutProps {
+export interface LayoutProps {
   theme?: Theme;
 }
 
