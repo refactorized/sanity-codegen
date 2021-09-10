@@ -100,10 +100,31 @@ export interface OutcomesCarouselProps {
   cards: (StatCardProps | TestimonialCardProps)[];
 }
 
+export interface CarouselProps {
+  title: string;
+  cards: JSX.Element[];
+}
+
 export const OutcomesCarousel = ({
   title,
   cards,
 }: OutcomesCarouselProps): JSX.Element => {
+  const cardElements = cards.map(function(card, index){
+    if (isStatCard(card)) {
+      return <StatCard {...card} />;
+    } else if (isTestimonialCard(card)) {
+      return <TestimonialCard {...card} />;
+    }
+  });
+  return <Carousel
+    title={title}
+    cards={cardElements}/>;
+};
+
+export const Carousel = ({
+  title,
+  cards,
+}: CarouselProps): JSX.Element => {
   const ref = useRef({
     slickNext: () => {},
     slickPrev: () => {},
@@ -148,11 +169,7 @@ export const OutcomesCarousel = ({
       <ListContainer ref={ref} as={Slider} {...SliderConfig}>
         {cards &&
           cards.map(function (card, index) {
-            if (isStatCard(card)) {
-              return <StatCard {...card} />;
-            } else if (isTestimonialCard(card)) {
-              return <TestimonialCard {...card} />;
-            }
+            return card;
           })}
       </ListContainer>
     </CarouselContainer>
