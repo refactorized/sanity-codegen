@@ -57,19 +57,19 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'host', // e.g. Austen Riggs Center
-      title: 'Host',
+      name: 'host', 
+      title: 'Event Host',
       type: 'string',
       initialValue: 'Austen Riggs Center',
     },
     {
-      name: 'description', //
-      title: 'Description',
-      type: 'blockContent',
+      name: 'venue', 
+      title: 'Venue',
+      type: 'string',
     },
     {
-      name: 'location', // Webinar -or- Physical Google-maps-able location
-      title: 'Location',
+      name: 'venueAddress',
+      title: 'Venue Address',
       type: 'string',
     },
     {
@@ -78,9 +78,9 @@ export default {
       type: 'string',
     },
     {
-      name: 'lmsHosted', // Do we need this -- some sort of "is this in an external system"
-      title: 'External Course', // Needs some sort of host
-      type: 'boolean', // And we'd add in
+      name: 'lmsHosted', 
+      title: 'External Course?', 
+      type: 'boolean', 
     },
     {
       name: 'slug',
@@ -90,6 +90,16 @@ export default {
         source: 'name',
         maxLength: 96,
       },
+    },
+    {
+      name: 'shortDescription', //
+      title: 'Short Description',
+      type: 'blockContent',
+    },
+    {
+      name: 'description', //
+      title: 'Description',
+      type: 'blockContent',
     },
     {
       name: 'moderator',
@@ -115,7 +125,27 @@ export default {
       type: 'array',
       of: [{type: 'reference', to: {type: 'externalContributor'}}],
     },
-  ],
+    {
+      name: 'schedule',
+      title: 'Schedule',
+      type: 'blockContent',
+    },
+    {
+      name: 'contact',
+      title: 'Contact',
+      type: 'blockContent',
+    },
+    {
+      name: 'learningObjectives',
+      title: 'Learning Objectives',
+      type: 'blockContent',
+    },
+    {
+      name: 'continuingEducation',
+      title: 'Continuing Education',
+      type: 'blockContent',
+    },
+],
   preview: {
     select: {
       title: 'name',
