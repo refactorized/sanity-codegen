@@ -76,7 +76,7 @@ export default {
     prepare(selection) {
       const {firstName, lastName, credentials, resourceType} = selection
       return Object.assign({}, selection, {
-        subtitle: `${resourceType} by ${lastName}, ${firstName} ${credentials}`,
+        subtitle: `Type: ${resourceType} | Staff: ${lastName}, ${firstName} ${credentials}`,
       })
     },
   },
