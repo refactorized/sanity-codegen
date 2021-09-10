@@ -99,7 +99,7 @@ export default {
     prepare(selection) {
       const {firstName, lastName, media, subtitle, credentials} = selection
       return {
-        title: `${lastName}, ${firstName} ${credentials}`,
+        title: `${lastName}, ${firstName} ${typeof(credentials) == "undefined" ? "" : credentials}`,
         subtitle, 
         media
       }
