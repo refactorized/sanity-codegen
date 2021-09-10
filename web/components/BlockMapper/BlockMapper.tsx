@@ -5,7 +5,7 @@ import {PageSection} from '@data/types';
 // mapping functions
 import {_map as mapProseBlock} from '@components/ProseBlock/';
 import mapAdmissionsCalloutBlock from '@components/AdmissionsCalloutComponent/_map';
-import mapCarouselBlock from '@components/Carousel/_map';
+import mapCarouselBlock from '@components/OutcomesCarousel/_map';
 import mapFlexCollarBlock from '@components/FlexCollarComponent/_map';
 import mapHeroBlock from '@components/Hero/_map';
 import mapIntroBlock from '@components/IntroBlockComponent/_map';

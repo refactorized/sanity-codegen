@@ -2,11 +2,11 @@ import React, {ComponentProps} from 'react';
 import {Story} from '@storybook/react';
 import {ThemeProvider} from 'styled-components';
 
-import {OutcomesCarousel} from '../Carousel/index';
+import {OutcomesCarousel} from './index';
 import theme from '@theme';
 
 export default {
-  title: 'Components/Carousel',
+  title: 'Components/OutcomesCarousel',
   component: OutcomesCarousel,
 };
 
