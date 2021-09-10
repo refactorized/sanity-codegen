@@ -71,7 +71,7 @@ export default {
       lastName: 'associatedStaff.0.lastName',
       credentials: 'associatedStaff.0.credentials',
       media: 'mainImage',
-      resourceType: 'type.title'
+      resourceType: 'type.0.title'
     },
     prepare(selection) {
       const {firstName, lastName, credentials, resourceType} = selection
