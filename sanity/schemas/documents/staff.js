@@ -93,12 +93,13 @@ export default {
       firstName: 'firstName',
       lastName: 'lastName',
       media: 'image',
-      subtitle: 'departments.0.name'
+      subtitle: 'departments.0.name',
+      credentials: 'credentials'
     },
     prepare(selection) {
-      const {title, lastName, media, subtitle} = selection
+      const {firstName, lastName, media, subtitle, credentials} = selection
       return {
-        title: `${lastName}, ${title}`,
+        title: `${lastName}, ${firstName} ${credentials}`,
         subtitle, 
         media
       }
