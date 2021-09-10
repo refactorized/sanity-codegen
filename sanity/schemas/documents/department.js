@@ -22,4 +22,10 @@ export default {
       of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'description'
+    },
+  },
 }

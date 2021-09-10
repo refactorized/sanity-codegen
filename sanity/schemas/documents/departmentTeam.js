@@ -16,4 +16,10 @@ export default {
       validation: Rule => Rule.required().error('Team must have a description')
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'description'
+    },
+  },
 }
