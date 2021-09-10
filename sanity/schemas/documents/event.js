@@ -41,10 +41,10 @@ export default {
       to: {type: 'eventSeries'},
     },
     {
-      name: 'eventCategory', // e.g. Conference, Ongoing Educational Events
-      title: 'Event Category',
+      name: 'category', // sitewide taxonomy
+      title: 'Category',
       type: 'reference',
-      to: {type: 'eventCategory'},
+      to: {type: 'category'},
     },
     {
       name: 'eventStart',
