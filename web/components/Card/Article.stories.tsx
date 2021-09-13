@@ -18,6 +18,7 @@ const Template: Story<ComponentProps<typeof ArticleCard>> = (args) => (
 
 export const Article = Template.bind({});
 Article.args = {
+  cardFullWidth: true,
   image: '/building.png',
   category: 'News & Blog',
   headline:

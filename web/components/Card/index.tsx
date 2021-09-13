@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {
   color,
   space,
@@ -38,6 +38,7 @@ export interface ArticleCardProps {
   headline: string;
   date?: string;
   description: string;
+  cardFullWidth: boolean;
 }
 
 const QuoteDiv = styled.div`
@@ -266,9 +267,10 @@ export const ArticleCard = ({
   headline,
   date,
   description,
+  cardFullWidth,
 }: ArticleCardProps): JSX.Element => {
   return (
-    <StyledBox display="flex" flexDirection="column" width="auto">
+    <StyledContainer fullWidth={cardFullWidth}>
       <Image
         src={image}
         maxWidth="100%"
@@ -325,11 +327,31 @@ export const ArticleCard = ({
           {description}
         </StyledHeader>
       </StyledBox>
-    </StyledBox>
+    </StyledContainer>
   );
 };
 
 export default StatCard;
+
+const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${(props) =>
+    props.fullWidth
+      ? css`
+          width: 100%;
+        `
+      : css`
+          width: 256px;
+          @media (${query.atLeast('tablet')}) {
+            width: 288px;
+          }
+          @media (${query.atLeast('max')}) {
+            width: 362px;
+          } ;
+        `}
+`;
 
 const StyledBox = styled.div`
   ${layout}

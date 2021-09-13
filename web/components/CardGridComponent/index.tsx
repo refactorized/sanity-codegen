@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {TextAndImageBlock} from '@components/TextAndImageBlock';
 import {CategoryBar, CategoryLink} from '@components/CategoryBarComponent';
 import {ArticleCard} from '@components/Card';
-import {query} from '@theme/fn';
+import {query, color} from '@theme/fn';
 import Block from '@components/Layout/Block';
 import {Dropdown} from '@components/DropDownComponent';
 import type {BasicText} from '@data/types';
@@ -42,27 +42,53 @@ export const CardGrid = ({
 }: CardGridProps): JSX.Element => {
   const [selected, setCategory] = useState(null);
   return (
-    <Block>
-      <TextAndImageBlock
-        imgUrls={textAndImageObject.imgUrls}
-        header={textAndImageObject.header}
-        subheader={textAndImageObject.subheader}
-        caption={textAndImageObject.caption}
-        btnText={textAndImageObject.btnText}
-        btnUrl={textAndImageObject.btnUrl}
-      />
-      <Padding>
-        <DropdownContainer>
-          <Dropdown linksList={links} setCategory={setCategory} />
-        </DropdownContainer>
-        <CategoryContainer>
-          <CategoryBar links={links} setCategory={setCategory} />
-        </CategoryContainer>
-      </Padding>
-      <StyledArticleContainer>
-        {articleCardArr.map((obj, ind) => {
-          if (obj.category && selected) {
-            if (selected === 'All Events') {
+    <Container>
+      <Block>
+        <TextAndImageBlock
+          imgUrls={textAndImageObject.imgUrls}
+          header={textAndImageObject.header}
+          subheader={textAndImageObject.subheader}
+          caption={textAndImageObject.caption}
+          btnText={textAndImageObject.btnText}
+          btnUrl={textAndImageObject.btnUrl}
+        />
+        <Padding>
+          <DropdownContainer>
+            <Dropdown linksList={links} setCategory={setCategory} />
+          </DropdownContainer>
+          <CategoryContainer>
+            <CategoryBar links={links} setCategory={setCategory} />
+          </CategoryContainer>
+        </Padding>
+        <StyledArticleContainer>
+          {articleCardArr.map((obj, ind) => {
+            if (obj.category && selected) {
+              if (selected === 'All Events') {
+                return (
+                  <ArticleCard
+                    key={ind}
+                    image={obj.image}
+                    category={obj.category}
+                    headline={obj.headline}
+                    date={obj.headline}
+                    description={obj.description}
+                    cardFullWidth={true}
+                  />
+                );
+              } else if (selected === obj.category) {
+                return (
+                  <ArticleCard
+                    key={ind}
+                    image={obj.image}
+                    category={obj.category}
+                    headline={obj.headline}
+                    date={obj.headline}
+                    description={obj.description}
+                    cardFullWidth={true}
+                  />
+                );
+              }
+            } else if (obj.category && !selected) {
               return (
                 <ArticleCard
                   key={ind}
@@ -71,37 +97,20 @@ export const CardGrid = ({
                   headline={obj.headline}
                   date={obj.headline}
                   description={obj.description}
-                />
-              );
-            } else if (selected === obj.category) {
-              return (
-                <ArticleCard
-                  key={ind}
-                  image={obj.image}
-                  category={obj.category}
-                  headline={obj.headline}
-                  date={obj.headline}
-                  description={obj.description}
+                  cardFullWidth={true}
                 />
               );
             }
-          } else if (obj.category && !selected) {
-            return (
-              <ArticleCard
-                key={ind}
-                image={obj.image}
-                category={obj.category}
-                headline={obj.headline}
-                date={obj.headline}
-                description={obj.description}
-              />
-            );
-          }
-        })}
-      </StyledArticleContainer>
-    </Block>
+          })}
+        </StyledArticleContainer>
+      </Block>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  background-color: ${color('cream')};
+`;
 
 const StyledArticleContainer = styled.div`
   display: grid;
