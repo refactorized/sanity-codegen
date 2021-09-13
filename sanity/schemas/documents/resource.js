@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().error('Resource must have a title')
     },
     {
       name: 'slug',
@@ -18,10 +19,17 @@ export default {
       },
     },
     {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'string',
+      validation: Rule => Rule.required().error('Resource must have a short description')
+    },
+    {
+      name: 'associatedStaff',
+      title: 'Associated Staffmember(s)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'staff'}}],
+      validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
       name: 'mainImage',
@@ -42,6 +50,7 @@ export default {
       title: 'Resource Type',
       type: 'array',
       of: [{type: 'reference', to: {type: 'resourceType'}}],
+      validation: Rule => Rule.required().error('Resource must have a type selected')
     },
     {
       name: 'publishedAt',
@@ -58,13 +67,16 @@ export default {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      firstName: 'associatedStaff.0.firstName',
+      lastName: 'associatedStaff.0.lastName',
+      credentials: 'associatedStaff.0.credentials',
       media: 'mainImage',
+      resourceType: 'type.0.title'
     },
     prepare(selection) {
-      const {author} = selection
+      const {firstName, lastName, credentials, resourceType} = selection
       return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
+        subtitle: `Type: ${resourceType} | Staff: ${lastName}, ${firstName} ${credentials}`,
       })
     },
   },

@@ -41,10 +41,10 @@ export default {
       to: {type: 'eventSeries'},
     },
     {
-      name: 'eventCategory', // e.g. Conference, Ongoing Educational Events
-      title: 'Event Category',
+      name: 'category', // sitewide taxonomy
+      title: 'Category',
       type: 'reference',
-      to: {type: 'eventCategory'},
+      to: {type: 'category'},
     },
     {
       name: 'eventStart',
@@ -57,33 +57,30 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'host', // e.g. Austen Riggs Center
-      title: 'Host',
+      name: 'host', 
+      title: 'Event Host',
       type: 'string',
       initialValue: 'Austen Riggs Center',
     },
     {
-      name: 'description', //
-      title: 'Description',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
-    },
-    {
-      name: 'location', // Webinar -or- Physical Google-maps-able location
-      title: 'Location',
+      name: 'venue', 
+      title: 'Venue',
       type: 'string',
     },
     {
-      name: 'lmsHosted', // Do we need this -- some sort of "is this in an external system"
-      title: 'External Course', // Needs some sort of host
-      type: 'boolean', // And we'd add in
+      name: 'venueAddress',
+      title: 'Venue Address',
+      type: 'string',
+    },
+    {
+      name: 'registrationLink',
+      title: 'URL for Registration',
+      type: 'string',
+    },
+    {
+      name: 'lmsHosted', 
+      title: 'External Course?', 
+      type: 'boolean', 
     },
     {
       name: 'slug',
@@ -95,23 +92,65 @@ export default {
       },
     },
     {
-      name: 'bio',
-      title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      name: 'shortDescription', //
+      title: 'Short Description',
+      type: 'blockContent',
     },
-  ],
+    {
+      name: 'description', //
+      title: 'Description',
+      type: 'blockContent',
+    },
+    {
+      name: 'moderator',
+      title: 'Moderator (Staff)',
+      type: 'reference',
+      to: {type: 'staff'}
+    },
+    {
+      name: 'moderatorExternal',
+      title: 'Moderator (External)',
+      type: 'reference',
+      to: {type: 'externalContributor'}
+    },
+    {
+      name: 'speakers',
+      title: 'Speaker(s) (Staff)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'staff'}}],
+    },
+    {
+      name: 'speakersExternal',
+      title: 'Speaker(s) (External)',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'externalContributor'}}],
+    },
+    {
+      name: 'schedule',
+      title: 'Schedule',
+      type: 'blockContent',
+    },
+    {
+      name: 'contact',
+      title: 'Contact',
+      type: 'blockContent',
+    },
+    {
+      name: 'learningObjectives',
+      title: 'Learning Objectives',
+      type: 'blockContent',
+    },
+    {
+      name: 'continuingEducation',
+      title: 'Continuing Education',
+      type: 'blockContent',
+    },
+],
   preview: {
     select: {
       title: 'name',
       media: 'image',
+      subtitle: 'series.name'
     },
   },
 };

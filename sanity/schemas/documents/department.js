@@ -7,16 +7,25 @@ export default {
       name: 'name',
       title: 'Name',
       type: 'string',
+      validation: Rule => Rule.required().error('Department must have a name')
     },
     {
       name: 'description',
       title: 'Description',
       type: 'text',
+      validation: Rule => Rule.required().error('Department must have a description')
     },
     {
-      name: 'team',
-      title: 'Team',
-      type: 'text', // This has potential to change.
+      name: 'teams',
+      title: 'Teams',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'description'
+    },
+  },
 }

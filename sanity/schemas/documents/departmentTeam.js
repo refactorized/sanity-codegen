@@ -1,32 +1,25 @@
 export default {
-  name: 'eventSeries',
-  title: 'Event Series',
+  name: 'departmentTeam',
+  title: 'Team',
   type: 'document',
   fields: [
     {
       name: 'name',
       title: 'Name',
       type: 'string',
+      validation: Rule => Rule.required().error('Team must have a name')
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
+      type: 'text',
+      validation: Rule => Rule.required().error('Team must have a description')
     },
   ],
   preview: {
     select: {
       title: 'name',
-      media: 'image',
+      subtitle: 'description'
     },
   },
-};
+}

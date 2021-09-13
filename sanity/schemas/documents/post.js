@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().error('Post must have a title')
     },
     {
       name: 'slug',
@@ -21,7 +22,14 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: {type: 'staff'},
+      validation: Rule => Rule.required().error('Post must have an author')
+    },
+    {
+      name: 'shortDescription',
+      title: 'Short Description',
+      type: 'string',
+      validation: Rule => Rule.required().error('Post must have a short description')
     },
     {
       name: 'mainImage',
@@ -41,11 +49,13 @@ export default {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      validation: Rule => Rule.required().error('Post must have a publication date')
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: Rule => Rule.required().error('Post must have a body')
     },
   ],
 

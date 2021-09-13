@@ -5,9 +5,9 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // documents
-import author from './documents/author';
 import category from './documents/category';
 import department from './documents/department';
+import departmentTeam from './documents/departmentTeam';
 import event from './documents/event';
 import eventCategory from './documents/eventCategory';
 import eventSeries from './documents/eventSeries';
@@ -38,6 +38,7 @@ import prose from './objects/prose';
 
 // We import object and document schemas
 import blockContent from './documents/blockContent';
+import externalContributor from './documents/externalContributor';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -48,10 +49,11 @@ export default createSchema({
   types: schemaTypes.concat([
     // documents
     announcementBar,
-    author,
+    externalContributor,
     blockContent,
     category,
     department,
+    departmentTeam,
     event,
     eventCategory,
     eventSeries,
