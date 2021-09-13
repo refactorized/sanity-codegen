@@ -42,9 +42,9 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
   // Created ColumnData Function to Prevent
   // Styled Systems Styling Repetition
   const columnData = (colObj: any) => {
-    return colObj.map((x: any) => (
-      <div key={x._key}>
-        {x.map((x: any, i: number) =>
+    return colObj.map((col: any, idx: number) => (
+      <div key={idx}>
+        {col.map((x: any, i: number) =>
           i === 0 ? (
             <StyledLink
               display="block"
@@ -55,7 +55,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
               paddingBottom={['10px', '25px', null, 'initial']}
               color="text"
               href={x.slug.current}
-              key={x.key}
+              key={x._key}
             >
               {x.title}
             </StyledLink>
@@ -101,7 +101,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
             fax={fax}
           />
           {/* columnData iterates and renders Columns 1 - 4 */}
-          {columnData(columnArr.map((x) => x))}
+          {columnData(columnArr)}
           <div>
             {/* This is UNIQUE column 5 (has all fully bolded list compared to other columns)  */}
             {footerConfig.col5.map((x) => (
@@ -141,7 +141,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
           >
             <div>
               {/* columnData iterates and renders Every First Item from Columns 1 - 4 */}
-              {columnArr.map((x: any) => (
+              {columnArr.map((x: any, i: number) => (
                 <StyledLink
                   display="block"
                   fontSize={[0, 1, null, null]}
@@ -152,7 +152,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                   m="0"
                   color="text"
                   href={x[0].slug.current}
-                  key={x._key}
+                  key={i}
                 >
                   {x[0].title}
                 </StyledLink>

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import {query, color, fontSize} from '../../themes/fn';
 import Block from '@components/Layout/Block';
-import {HeroCard} from '@schema/types';
+import {HeroCardData} from '@data/blocks/HomepageHeroData';
 
 export interface HomepageHeroProps {
   imageUrl: string;
   title: string;
-  heroCards: HeroCard[];
+  heroCards: HeroCardData[];
   admissionsText: string;
   admissionsUrl: string;
 }
@@ -22,9 +22,9 @@ const Chevron = () => {
       <path
         d="M1 13L7 7L1 1"
         stroke="#1B76B0"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -220,7 +220,7 @@ export const HomepageHero = ({
         <HeroCardList>
           {heroCards &&
             heroCards.map((card) => (
-              <SingleHeroCard>
+              <SingleHeroCard key={card._key}>
                 <Eyebrow href={card.card_link.slug.current}>
                   {card.card_eyebrow}{' '}
                   <MobileChevronDiv>
