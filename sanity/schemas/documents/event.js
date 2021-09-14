@@ -44,7 +44,8 @@ export default {
       name: 'category', // sitewide taxonomy
       title: 'Category',
       type: 'reference',
-      to: {type: 'category'},
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
       name: 'eventStart',
@@ -79,7 +80,7 @@ export default {
     },
     {
       name: 'lmsHosted', 
-      title: 'External Course?', 
+      title: 'External Event?', 
       type: 'boolean', 
     },
     {
@@ -143,6 +144,11 @@ export default {
     {
       name: 'continuingEducation',
       title: 'Continuing Education',
+      type: 'blockContent',
+    },
+    {
+      name: 'cancellationRefundPolicy',
+      title: 'Cancellation and Refund Policy',
       type: 'blockContent',
     },
 ],
