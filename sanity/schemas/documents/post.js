@@ -28,7 +28,7 @@ export default {
     {
       name: 'shortDescription',
       title: 'Short Description',
-      type: 'string',
+      type: 'blockContent',
       validation: Rule => Rule.required().error('Post must have a short description')
     },
     {
