@@ -46,6 +46,13 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
+      name: 'postType',
+      title: 'Post Type',
+      type: 'reference',
+      description: 'e.g. News, Announcements, Riggs Blog, etc.',
+      to: {type: 'category'},
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
