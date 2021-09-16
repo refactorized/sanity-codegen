@@ -2,7 +2,7 @@ import {ThemeProvider} from 'styled-components';
 import theme from '../../themes';
 import React from 'react';
 import styled from 'styled-components';
-import {color, fontSize, fontFamily, space, query} from '@theme/fn';
+import {color, fontSize, fontFamily, space, query, fontWeight} from '@theme/fn';
 import {Container, LayoutProps} from './Layout';
 
 const ErrorContainer = styled(Container)`
@@ -11,17 +11,30 @@ const ErrorContainer = styled(Container)`
 `;
 
 export const Header = styled.h1`
-  ${fontSize('x8')};
+  ${fontSize('x6')};
   ${fontFamily('headline')};
+  ${fontWeight('regular')};
+  margin-bottom: 0;
+  @media screen and (${query.atLeast('tablet')}) {
+    ${fontSize('x8')};
+  }
 `;
 
 export const Text = styled.p`
-  ${fontSize('xl')};
+  ${fontSize('md')};
   ${fontFamily('body')};
-  margin: ${space('md')} 0 ${space('x12')};
+  margin: ${space('md')} 0 ${space('lg')};
   max-width: 681px;
+
+  @media screen and (${query.atLeast('tablet')}) {
+    ${fontSize('xl')};
+    margin: ${space('md')} 0 ${space('x10')};
+  }
 `;
 
+export const ButtonWrapperForSpacing = styled.div`
+  margin-bottom: ${space('x12')};
+`;
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;

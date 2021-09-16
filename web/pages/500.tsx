@@ -3,6 +3,7 @@ import ErrorLayout, {
   Header,
   Text,
   ButtonWrapper,
+  ButtonWrapperForSpacing,
 } from '../components/Layout/ErrorLayout';
 import {Block} from '@components/Layout';
 import Stretch from '../components/Layout/Stretch';
@@ -24,32 +25,34 @@ const Error500Page = (props) => {
   return (
     <Page>
       <ErrorLayout>
+        <Stretch />
         <Block>
           {/* <MapComponents blocks={props.page.blocks as AnyBlockData[]} /> */}
-          <Stretch />
           <Header>500: Internal Server Error</Header>
           <Text>
             Sorry, our internal server encountered a problem. We’re working to
             correct it. Please come back soon.
           </Text>
-          <ButtonWrapper>
-            <Button
-              url="/"
-              label="Go Back Home"
-              arrow={true}
-              size="medium"
-              variant="solid"
-              arrowColor="#fff"
-            />
-            <Button
-              url="/contact-us"
-              label="Contact Us"
-              arrow={true}
-              size="medium"
-              variant="solid"
-              arrowColor="#fff"
-            />
-          </ButtonWrapper>
+          <ButtonWrapperForSpacing>
+            <ButtonWrapper>
+              <Button
+                url="/"
+                label="Go Back Home"
+                arrow={true}
+                size="medium"
+                variant="solid"
+                arrowColor="#fff"
+              />
+              <Button
+                url="/contact-us"
+                label="Contact Us"
+                arrow={true}
+                size="medium"
+                variant="solid"
+                arrowColor="#fff"
+              />
+            </ButtonWrapper>
+          </ButtonWrapperForSpacing>
         </Block>
         <Footer siteConfig={props.siteConfig as SiteConfig} />
       </ErrorLayout>
