@@ -36,9 +36,9 @@ export default {
     },
     {
       name: 'externalContributors',
-      title: 'External Contributors',
+      title: 'External Contributor(s)',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'externalContributors'}}],
+      of: [{type: 'reference', to: {type: 'externalContributor'}}],
       validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
