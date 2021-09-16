@@ -13,12 +13,10 @@ export default {
       validation: (Rule) => [Rule.required().min(1).error('Error Message')],
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'ethosCourseYN',
+      title: 'Is this an Ethos Course?',
+      type: 'boolean',
+      initialValue: true,
     },
     {
       name: 'series', // e.g. Virtual Rounds
@@ -37,11 +35,13 @@ export default {
       name: 'eventStart',
       title: 'Event Start',
       type: 'datetime',
+      timeFormat: 'hh:mm a',
     },
     {
       name: 'eventEnd',
       title: 'Event End',
       type: 'datetime',
+      timeFormat: 'hh:mm a',
     },
     {
       name: 'host', 
@@ -70,10 +70,12 @@ export default {
       type: 'string',
     },
     {
-      name: 'lmsHosted', 
-      title: 'External Event?', 
-      type: 'boolean', 
-      initialValue: false,
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'slug',
@@ -88,12 +90,6 @@ export default {
       name: 'shortDescription', //
       title: 'Short Description',
       type: 'blockContent',
-    },
-    {
-      name: 'ethosCourseYN',
-      title: 'Is this an Ethos Course?',
-      type: 'boolean',
-      initialValue: true,
     },
     {
       name: 'description', //
