@@ -6,12 +6,14 @@ export default {
     {
       name: 'title',
       title: 'Title',
+      description: 'The title of the resource, also used as the page title',
       type: 'string',
       validation: Rule => Rule.required().error('Resource must have a title')
     },
     {
       name: 'slug',
       title: 'Slug',
+      description: 'This ensures a unique URL',
       type: 'slug',
       options: {
         source: 'title',
@@ -21,6 +23,7 @@ export default {
     {
       name: 'shortDescription',
       title: 'Short Description',
+      description: 'This appears above the page and will be used in the SEO page description',
       type: 'string',
       validation: Rule => Rule.required().error('Resource must have a short description')
     },
@@ -29,6 +32,13 @@ export default {
       title: 'Associated Staffmember(s)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'staff'}}],
+      validation: Rule => Rule.required().error('Resource must have an associated staffmember')
+    },
+    {
+      name: 'externalContributors',
+      title: 'External Contributors',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'externalContributors'}}],
       validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
@@ -48,6 +58,7 @@ export default {
     {
       name: 'type',
       title: 'Resource Type',
+      description: 'e.g. Books, Clinical Perspectives, Conference Presentations, etc.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'resourceType'}}],
       validation: Rule => Rule.required().error('Resource must have a type selected')
@@ -55,12 +66,30 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime',
+      description: 'The title of the resource',
+      type: 'date',
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: Rule => Rule.required().error('Resource must have a body of some sort')
+    },
+  ],
+  orderings: [
+    {
+      title: 'Newest -> Oldest',
+      name: 'publishedAt',
+      by: [
+        {field: 'publishedAt', direction: 'desc'}
+      ]
+    },
+    {
+      title: 'Oldest -> Newest',
+      name: 'publishedAt',
+      by: [
+        {field: 'publishedAt', direction: 'asc'}
+      ]
     },
   ],
 

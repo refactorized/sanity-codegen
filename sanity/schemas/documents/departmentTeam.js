@@ -5,15 +5,9 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
+      title: 'Team Name',
       type: 'string',
       validation: Rule => Rule.required().error('Team must have a name')
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: Rule => Rule.required().error('Team must have a description')
     },
   ],
   preview: {

@@ -10,12 +10,6 @@ export default {
       validation: Rule => Rule.required().error('Department must have a name')
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: Rule => Rule.required().error('Department must have a description')
-    },
-    {
       name: 'teams',
       title: 'Teams',
       type: 'array',
