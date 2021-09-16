@@ -103,7 +103,7 @@ export default {
       title: 'Is this an Ethos Course?',
       type: 'boolean',
       initialValue: true,
-    }
+    },
     {
       name: 'description', //
       title: 'Description',
