@@ -1,23 +1,9 @@
+import blockContent from "./blockContent";
+
 export default {
   name: 'event',
   title: 'Event',
   type: 'document',
-
-  // Start Date,
-  // End Date
-  // Start Time
-  // End Time
-  // Registration Status (open/waitlist/full)
-  // Duration (e.g. 1 hour)
-  // something about "moderated by, presneted by, discussion"
-  // Presenters (array)
-  // Presenter Bios (???)
-  // Registration Link
-  // Event Materials (downloads)
-  // Description (needs WYSIWYG)
-  // Type of Event (e.g. Event, CE Course, )
-  // Cost (e.g. Free, $1,234, etc)
-  // CE Metadata ()
 
   fields: [
     {
@@ -62,6 +48,11 @@ export default {
       title: 'Event Host',
       type: 'string',
       initialValue: 'Austen Riggs Center',
+    },
+    {
+      name: 'pricingDescription',
+      title: 'Pricing',
+      type: 'blockContent',
     },
     {
       name: 'venue', 
