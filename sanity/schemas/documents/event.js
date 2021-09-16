@@ -82,6 +82,7 @@ export default {
       name: 'lmsHosted', 
       title: 'External Event?', 
       type: 'boolean', 
+      initialValue: false,
     },
     {
       name: 'slug',
@@ -98,61 +99,78 @@ export default {
       type: 'blockContent',
     },
     {
+      name: 'ethosCourseYN',
+      title: 'Is this an Ethos Course?',
+      type: 'boolean',
+      initialValue: true,
+    }
+    {
       name: 'description', //
       title: 'Description',
       type: 'blockContent',
     },
     {
-      name: 'moderator',
-      title: 'Moderator (Staff)',
-      type: 'reference',
-      to: {type: 'staff'}
-    },
-    {
-      name: 'moderatorExternal',
-      title: 'Moderator (External)',
-      type: 'reference',
-      to: {type: 'externalContributor'}
-    },
-    {
       name: 'speakers',
-      title: 'Speaker(s) (Staff)',
+      title: 'Participating Staff',
       type: 'array',
       of: [{type: 'reference', to: {type: 'staff'}}],
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'speakersExternal',
-      title: 'Speaker(s) (External)',
+      title: 'External Participants',
       type: 'array',
       of: [{type: 'reference', to: {type: 'externalContributor'}}],
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'schedule',
       title: 'Schedule',
       type: 'blockContent',
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'contact',
       title: 'Contact',
       type: 'blockContent',
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'learningObjectives',
       title: 'Learning Objectives',
       type: 'blockContent',
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'continuingEducation',
       title: 'Continuing Education',
       type: 'blockContent',
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
     {
       name: 'cancellationRefundPolicy',
       title: 'Cancellation and Refund Policy',
       type: 'blockContent',
+      hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
 ],
-  preview: {
+orderings: [
+  {
+    title: 'Start Date, (Chronological)',
+    name: 'eventStart',
+    by: [
+      {field: 'eventStart', direction: 'asc'}
+    ]
+  },
+  {
+    title: 'Start Date, (Reverse Chronological)',
+    name: 'eventStart',
+    by: [
+      {field: 'eventStart', direction: 'desc'}
+    ]
+  },
+],
+preview: {
     select: {
       title: 'name',
       media: 'image',
