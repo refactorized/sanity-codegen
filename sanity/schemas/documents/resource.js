@@ -3,7 +3,7 @@ export default {
   title: 'Resource',
   type: 'document',
   validation: Rule => Rule.custom(fields => {
-    if (!fields.associatedStaff && !fields.externalContributor) return "You must have either a staff member or external contributor."
+    if (fields.associatedStaff.length == 'undefined' && fields.externalContributor.length == 'undefined') return "You must have either a staff member or external contributor."
     return true
   }),
   fields: [
@@ -103,13 +103,17 @@ export default {
       firstName: 'associatedStaff.0.firstName',
       lastName: 'associatedStaff.0.lastName',
       credentials: 'associatedStaff.0.credentials',
+      extFirstName: 'externalContibutor.0.firstName',
+      extLastName: 'externalContibutor.0.lastName',
+      extCredentials: 'externalContibutor.0.credentials',
       media: 'mainImage',
       resourceType: 'type.0.title'
     },
     prepare(selection) {
-      const {firstName, lastName, credentials, resourceType} = selection
+      const {firstName, lastName, credentials, resourceType, extFirstName, extLastName, extCredentials} = selection
       return Object.assign({}, selection, {
-        subtitle: `Type: ${resourceType} | Staff: ${lastName}, ${firstName} ${credentials}`,
+        //subtitle: `Type: ${resourceType} | ${lastName}, ${firstName} ${credentials}`,
+        subtitle: `Type: ${resourceType} | ${lastName ? lastName & ', ' & firstName & ' ' & credentials :  extLastName & ', ' & extFirstName & ' ' & extCredentials }`,
       })
     },
   },
