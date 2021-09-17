@@ -1,17 +1,14 @@
 ## ⚠️ This is a special HZ fork that handles reference types differently
 
-(see original repo for actual updates and code-gen hotness.  This readme is stripped down from the original)
+(see original repo for actual updates and code-gen hotness. This readme is stripped down from the original)
 
-## Installation
+## Installation ⚠️ (THIS IS DIFFERENT)
 
-```
-npm i --save-dev sanity-codegen prettier
-```
-
-or
+The original package refers to itself a bunch, and we want to be able to merge
+upstream fixes, so we need to alias our version to the original name:
 
 ```
-yarn add --dev sanity-codegen prettier
+ yarn add -D sanity-codegen@npm:@hzdg/sanity-codegen@latest
 ```
 
 > Note: Prettier is a peer dependency

@@ -26,14 +26,13 @@ export const defaultBabelOptions = {
         root: ['.'],
         alias: {
           'part:@sanity/base/schema-creator':
-            '@hzdg/sanity-codegen/schema-creator-shim',
+            'sanity-codegen/schema-creator-shim',
           'all:part:@sanity/base/schema-type':
-            '@hzdg/sanity-codegen/schema-type-shim',
-          'part:@sanity/base/schema-type':
-            '@hzdg/sanity-codegen/schema-type-shim',
-          '^part:.*': '@hzdg/sanity-codegen/no-op',
-          '^config:.*': '@hzdg/sanity-codegen/no-op',
-          '^all:part:.*': '@hzdg/sanity-codegen/no-op',
+            'sanity-codegen/schema-type-shim',
+          'part:@sanity/base/schema-type': 'sanity-codegen/schema-type-shim',
+          '^part:.*': 'sanity-codegen/no-op',
+          '^config:.*': 'sanity-codegen/no-op',
+          '^all:part:.*': 'sanity-codegen/no-op',
         },
       },
     ],
