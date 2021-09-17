@@ -100,21 +100,8 @@ export default {
   preview: {
     select: {
       title: 'title',
-      firstName: 'associatedStaff.0.firstName',
-      lastName: 'associatedStaff.0.lastName',
-      credentials: 'associatedStaff.0.credentials',
-      extFirstName: 'externalContibutors.0.firstName',
-      extLastName: 'externalContibutors.0.lastName',
-      extCredentials: 'externalContibutors.0.credentials',
       media: 'mainImage',
-      resourceType: 'type.0.title'
-    },
-    prepare(selection) {
-      const {firstName, lastName, credentials, resourceType, extFirstName, extLastName, extCredentials} = selection
-      return Object.assign({}, selection, {
-        //subtitle: `Type: ${resourceType} | ${lastName}, ${firstName} ${credentials}`,
-        subtitle: `Type: ${resourceType} | ${lastName ? lastName & ', ' & firstName & ' ' & credentials :  extLastName & ', ' & extFirstName & ' ' & extCredentials }`,
-      })
+      subtitle: 'type.0.title'
     },
   },
 }
