@@ -3,7 +3,7 @@ export default {
   title: 'Resource',
   type: 'document',
   validation: Rule => Rule.custom(fields => {
-    if (fields.associatedStaff.length == 'undefined' && fields.externalContributor.length == 'undefined') return "You must have either a staff member or external contributor."
+    if (typeOf(fields.associatedStaff.length) == 'undefined' && typeOf(fields.externalContributor.length) == 'undefined') return "You must have either a staff member or external contributor."
     return true
   }),
   fields: [
