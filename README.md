@@ -1,3 +1,5 @@
+# ⚠️ This is a special HZ fork that handles reference types slightly differently ⚠️
+
 > ### 👋 A new version is approaching!
 >
 > There are a lot of new features (include GROQ codegen!) and changes coming to this lib soon. See [this issue](https://github.com/ricokahler/sanity-codegen/issues/5) for the 1.0 roadmap and for ways you can contribute.
