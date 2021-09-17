@@ -1,6 +1,6 @@
 {
   "name": "@hzdg/sanity-codegen",
-  "version": "0.9.5-3",
+  "version": "0.9.5-4",
   "description": "",
   "repository": {
     "type": "git",
@@ -18,9 +18,6 @@
     "test": "jest",
     "typecheck": "npx tsc --project ./tsconfig.typecheck.json",
     "lint": "npx eslint --ext .ts,.js ./src"
-  },
-  "bin": {
-    "sanity-codegen": "dist/cli.js"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "7.14.5",
