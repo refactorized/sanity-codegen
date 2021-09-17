@@ -1,11 +1,11 @@
 {
-  "name": "sanity-codegen",
+  "name": "@hzdg/sanity-codegen",
   "version": "0.9.5",
   "private": true,
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ricokahler/sanity-codegen"
+    "url": "https://github.com/hzdg/sanity-codegen.git"
   },
   "license": "MIT",
   "author": {
