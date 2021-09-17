@@ -2,6 +2,10 @@ export default {
   name: 'resource',
   title: 'Resource',
   type: 'document',
+  validation: Rule => Rule.custom(fields => {
+    if (fields.associatedStaff.length == 0 && fields.externalContributor.length == 0) return "You must have either a staff member or external contributor."
+    return true
+  }),
   fields: [
     {
       name: 'title',
@@ -30,16 +34,16 @@ export default {
     {
       name: 'associatedStaff',
       title: 'Associated Staffmember(s)',
+      description: 'Either a staff member or an external contributor is required.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'staff'}}],
-      validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
       name: 'externalContributors',
       title: 'External Contributor(s)',
       type: 'array',
+      description: 'Either a staff member or an external contributor is required.',
       of: [{type: 'reference', to: {type: 'externalContributor'}}],
-      validation: Rule => Rule.required().error('Resource must have an associated staffmember')
     },
     {
       name: 'mainImage',
