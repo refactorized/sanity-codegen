@@ -1,7 +1,6 @@
 {
   "name": "@hzdg/sanity-codegen",
-  "version": "0.9.5",
-  "private": true,
+  "version": "0.9.5-2",
   "description": "",
   "repository": {
     "type": "git",
