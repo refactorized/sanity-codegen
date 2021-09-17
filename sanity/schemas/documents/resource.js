@@ -103,9 +103,9 @@ export default {
       firstName: 'associatedStaff.0.firstName',
       lastName: 'associatedStaff.0.lastName',
       credentials: 'associatedStaff.0.credentials',
-      extFirstName: 'externalContibutor.0.firstName',
-      extLastName: 'externalContibutor.0.lastName',
-      extCredentials: 'externalContibutor.0.credentials',
+      extFirstName: 'externalContibutors.0.firstName',
+      extLastName: 'externalContibutors.0.lastName',
+      extCredentials: 'externalContibutors.0.credentials',
       media: 'mainImage',
       resourceType: 'type.0.title'
     },
