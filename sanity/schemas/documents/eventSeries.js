@@ -11,6 +11,22 @@ export default {
       validation: Rule => Rule.required().error('Resource must have a type selected')
     },
   ],
+  orderings: [
+    {
+      title: 'Name, A-Z',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Name, Z-A',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'desc'}
+      ]
+    },
+  ],
   preview: {
     select: {
       title: 'name',

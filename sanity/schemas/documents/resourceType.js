@@ -11,4 +11,20 @@ export default {
       validation: Rule => Rule.required().error('Resource Type must have a title')
     },
   ],
+  orderings: [
+    {
+      title: 'Title, A-Z',
+      name: 'title',
+      by: [
+        {field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, Z-A',
+      name: 'title',
+      by: [
+        {field: 'title', direction: 'desc'}
+      ]
+    },
+  ],
 }

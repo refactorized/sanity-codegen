@@ -73,7 +73,23 @@ export default {
       validation: Rule => Rule.required().error('Post must have a body')
     },
   ],
-
+  orderings: [
+    {
+      title: 'Published At, (Chronological)',
+      name: 'publishedAd',
+      by: [
+        {field: 'publishedAd', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Published At, (Reverse Chronological)',
+      name: 'publishedAd',
+      by: [
+        {field: 'publishedAd', direction: 'desc'}
+      ]
+    },
+  ],
+  
   preview: {
     select: {
       title: 'title',

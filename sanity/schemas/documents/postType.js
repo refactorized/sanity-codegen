@@ -10,4 +10,20 @@ export default {
       type: 'string',
     },
   ],
+  orderings: [
+    {
+      title: 'Title, A-Z',
+      name: 'title',
+      by: [
+        {field: 'title', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Title, Z-A',
+      name: 'title',
+      by: [
+        {field: 'title', direction: 'desc'}
+      ]
+    },
+  ],
 }

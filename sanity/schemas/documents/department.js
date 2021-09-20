@@ -18,6 +18,22 @@ export default {
       of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
   ],
+  orderings: [
+    {
+      title: 'Department Name, A-Z',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Department Name, Z-A',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'desc'}
+      ]
+    },
+  ],
   preview: {
     select: {
       title: 'name',
