@@ -49,6 +49,7 @@ export default {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
+      description: 'This appears between the resource metadata and body text',
       options: {
         hotspot: true,
       },
@@ -56,6 +57,7 @@ export default {
     {
       name: 'categories',
       title: 'Categories',
+      description: 'e.g. treatment, personality disorders, etc.  Please enter one or more.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
     },
@@ -70,7 +72,7 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      description: 'The title of the resource',
+      description: 'Enter when the resource was published, if applicable.',
       type: 'date',
     },
     {

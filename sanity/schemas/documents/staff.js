@@ -57,6 +57,7 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image',
+      description: 'If available, this should be a photo of the staff member.  If none is available, a default image will be used',
       options: {
         hotspot: true,
       }, 

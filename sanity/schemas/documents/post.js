@@ -35,6 +35,7 @@ export default {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
+      description: 'This appears between the resource metadata and body text',
       options: {
         hotspot: true,
       },
@@ -43,6 +44,7 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
+      description: 'e.g. treatment, personality disorders, etc.',
       of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
