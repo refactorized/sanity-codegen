@@ -12,7 +12,7 @@ import event from './documents/event';
 import eventCategory from './documents/eventCategory';
 import eventSeries from './documents/eventSeries';
 import page from './documents/page';
-import post from './documents/post';
+import news from './documents/news';
 import postType from './documents/postType';
 import resource from './documents/resource';
 import resourceType from './documents/resourceType';
@@ -58,7 +58,7 @@ export default createSchema({
     eventCategory,
     eventSeries,
     page,
-    post,
+    news,
     postType,
     resource,
     resourceType,
