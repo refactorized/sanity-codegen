@@ -6,27 +6,14 @@ export default {
     {
       name: 'name',
       title: 'Name',
+      description: 'e.g. "Virtual Rounds". Please enter in title case because this is user-facing',
       type: 'string',
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      },
+      validation: Rule => Rule.required().error('Resource must have a type selected')
     },
   ],
   preview: {
     select: {
       title: 'name',
-      media: 'image',
     },
   },
 };

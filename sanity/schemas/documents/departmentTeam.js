@@ -6,6 +6,7 @@ export default {
     {
       name: 'name',
       title: 'Team Name',
+      description: 'e.g. Communications team, etc.',
       type: 'string',
       validation: Rule => Rule.required().error('Team must have a name')
     },
@@ -13,7 +14,6 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description'
     },
   },
 }

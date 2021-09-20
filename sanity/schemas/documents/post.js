@@ -6,6 +6,7 @@ export default {
     {
       name: 'title',
       title: 'Title',
+      description: 'Headline for the post, this will also appear as the page title and SEO title within search results.',
       type: 'string',
       validation: Rule => Rule.required().error('Post must have a title')
     },
@@ -13,6 +14,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Click "generate" to create based on the title of the post',
       options: {
         source: 'title',
         maxLength: 96,
@@ -22,12 +24,14 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
+      description: 'Please add an author to the post',
       to: {type: 'staff'},
       validation: Rule => Rule.required().error('Post must have an author')
     },
     {
       name: 'shortDescription',
       title: 'Short Description',
+      description: 'The short description is used in the SEO page description as well as at the top of the post.',
       type: 'blockContent',
       validation: Rule => Rule.required().error('Post must have a short description')
     },
@@ -35,7 +39,7 @@ export default {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
-      description: 'This appears between the resource metadata and body text',
+      description: '(optional) This appears between the resource metadata and body text',
       options: {
         hotspot: true,
       },
@@ -57,12 +61,14 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
+      description: 'This date is used in sorting, and should reflect the date the post was originally published',
       type: 'datetime',
       validation: Rule => Rule.required().error('Post must have a publication date')
     },
     {
       name: 'body',
       title: 'Body',
+      description: 'This is the main body of the post',
       type: 'blockContent',
       validation: Rule => Rule.required().error('Post must have a body')
     },

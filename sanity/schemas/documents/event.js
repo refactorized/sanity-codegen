@@ -9,8 +9,9 @@ export default {
     {
       name: 'name',
       title: 'Name',
+      description: 'e.g. "2021 Fall Conference"',
       type: 'string',
-      validation: (Rule) => [Rule.required().min(1).error('The event must have a title.')],
+      validation: (Rule) => [Rule.required().min(1).error('The event must have a name.')],
     },
     {
       name: 'ethosCourseYN',
@@ -37,12 +38,14 @@ export default {
     {
       name: 'eventStart',
       title: 'Event Start',
+      description: 'Start date and time',
       type: 'datetime',
       validation: Rule => Rule.required(),
     },
     {
       name: 'eventEnd',
       title: 'Event End',
+      description: 'End date and time',
       type: 'datetime',
       validation: Rule => Rule.required().min(Rule.valueOfField('eventStart')),
     },
