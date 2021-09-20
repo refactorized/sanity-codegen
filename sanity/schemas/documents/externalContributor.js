@@ -34,6 +34,22 @@ export default {
       type: 'blockContent',
     },
   ],
+  orderings: [
+    {
+      title: 'Name, A-Z',
+      name: 'lastName',
+      by: [
+        {field: 'lastName', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Last Name, Z-A',
+      name: 'lastName',
+      by: [
+        {field: 'lastName', direction: 'desc'}
+      ]
+    },
+  ],
   preview: {
     select: {
       firstName: 'firstName',

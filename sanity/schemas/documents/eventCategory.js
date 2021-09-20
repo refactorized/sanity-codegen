@@ -14,4 +14,20 @@ export default {
       type: 'text',
     },
   ],
+  orderings: [
+    {
+      title: 'Name, A-Z',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Name, Z-A',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'desc'}
+      ]
+    },
+  ],
 }

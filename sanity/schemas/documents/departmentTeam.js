@@ -5,21 +5,31 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
+      title: 'Team Name',
+      description: 'e.g. Communications team, etc.',
       type: 'string',
       validation: Rule => Rule.required().error('Team must have a name')
     },
+  ],
+  orderings: [
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      validation: Rule => Rule.required().error('Team must have a description')
+      title: 'Name, A-Z',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'asc'}
+      ]
+    },
+    {
+      title: 'Name, Z-A',
+      name: 'name',
+      by: [
+        {field: 'name', direction: 'desc'}
+      ]
     },
   ],
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description'
     },
   },
 }

@@ -5,7 +5,8 @@ export default {
   fields: [
     {
       name: 'firstName',
-      title: 'First Name (and middle initial)',
+      title: 'First Name',
+      description: 'Can also hold the middle initial',
       type: 'string',
       validation: Rule => Rule.required().error('Staff member must have a first name')
     },
@@ -17,25 +18,29 @@ export default {
     },
     {
       name: 'credentials',
-      title: 'Credentials (e.g. PhD, PsyD, MD, etc.)',
+      title: 'Academic Credentials',
+      description: 'e.g. PhD, PsyD, MD, etc.',
       type: 'string',
     },
     {
       name: 'title',
       title: 'Title',
+      description: 'e.g. CEO, Medical Director',
       type: 'string',
       validation: Rule => Rule.required().error('Staff member must have a title')
     },
     {
       name: 'departments',
       title: 'Departments',
+      description: 'Please select one or more departments',
       type: 'array',
       of: [{type: 'reference', to: {type: 'department'}}],
       validation: Rule => Rule.required().error('Staff member must have a department')
     },
     {
       name: 'team',
-      title: 'Teams',
+      title: 'Team(s)',
+      description: 'Please select one or more team',
       type: 'array',
       of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
@@ -52,6 +57,7 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image',
+      description: 'If available, this should be a photo of the staff member.  If none is available, a default image will be used',
       options: {
         hotspot: true,
       }, 
@@ -59,16 +65,19 @@ export default {
     {
       name: 'telephone',
       title: 'Telephone',
+      description: '(optional) in the form of (xxx) xxx-xxxx',
       type: 'string',
     },
     {
       name: 'email',
       title: 'Email',
+      description: '(optional)',
       type: 'string',
     },
     {
       name: 'bio',
       title: 'Bio',
+      description: '(optional) in the form of (xxx) xxx-xxxx',
       type: 'blockContent',
     },
   ],
