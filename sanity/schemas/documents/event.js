@@ -144,7 +144,7 @@ export default {
     {
       name: 'learningObjectives',
       title: 'Learning Objectives',
-      description: '(optional) If you want to show the learning objectives for an event, enter that here.'
+      description: '(optional) If you want to show the learning objectives for an event, enter that here.',
       type: 'blockContent',
       hidden: ({ parent, value }) => !value && parent?.ethosCourseYN,
     },
