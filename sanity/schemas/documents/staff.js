@@ -49,8 +49,7 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'name',
-        maxLength: 96,
+        source: doc => `${doc.firstName}_${doc.lastName}_${doc?.credentials}`
       },
     },
     {
