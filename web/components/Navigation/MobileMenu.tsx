@@ -128,7 +128,7 @@ const StyledMobileBottomAdditionalLinksRow = styled.div`
   margin-bottom: ${({last}) => (last ? '0' : space('md'))};
 `;
 
-const StyledMobileBottomAdditionalLinksRowCell = styled.a`
+const StyledMobileBottomAdditionalLinksRowCell = styled.div`
   display: flex;
   align-items: center;
   ${({border}) => border && `border-right: 1px solid #58585A;`}
@@ -238,13 +238,13 @@ export const NavigationMobileBottom = ({
   // Render Menu List
   const renderItems = (links: LinkObject[]) => {
     if (links && links.length > 0) {
-      return links.map((link) => {
+      return links.map((link, index) => {
         const hasSublinks = link.links && link.links.length > 0;
 
         return hasSublinks ? (
           /** Has  sublinks */
           <StyledMobileBottomBodyLink
-            key={link.label}
+            key={index}
             fontSize={2}
             onClick={() => handleItemClickWithSubitems(link.links, link.label)}
           >
@@ -257,7 +257,7 @@ export const NavigationMobileBottom = ({
           </StyledMobileBottomBodyLink>
         ) : (
           /** Has no sublinks */
-          <Link href={link.url} passHref={true}>
+          <Link key={index} href={link.url} passHref={true}>
             <StyledMobileBottomBodyLinkA>
               <StyledMobileBottomBodyLink key={link.label} fontSize={2}>
                 {link.label}

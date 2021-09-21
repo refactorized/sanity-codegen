@@ -20,9 +20,9 @@ const LeftChevron = () => {
       <path
         d="M7 13L1 7L7 1"
         stroke="#111111"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -40,9 +40,9 @@ const RightChevron = () => {
       <path
         d="M1 13L7 7L1 1"
         stroke="#111111"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -94,9 +94,10 @@ export const Pagination = ({
 
   const getPagerCellElement = (text, isCurrent, clickable) => {
     return isCurrent ? (
-      <PageSelectedElement>{text}</PageSelectedElement>
+      <PageSelectedElement key={text}>{text}</PageSelectedElement>
     ) : (
       <PageElement
+        key={text}
         onClick={(e) => (clickable ? pageSelected(text) : noOp())}
         clickable={clickable}
       >
@@ -147,7 +148,7 @@ export const Pagination = ({
   });
 
   return (
-    <PaginationContainer>
+    <PaginationContainer key={currentPage}>
       <PageElement
         onClick={(e) => navBackward()}
         clickable={currentPage > 1}

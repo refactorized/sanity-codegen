@@ -38,7 +38,7 @@ export const HamburgerMenu = ({
                 d="M1 1.5h18M1 7h18M1 12.5h18"
                 stroke={color}
                 strokeWidth="2"
-                stroke-miterlimit="16"
+                strokeMiterlimit="16"
                 strokeLinecap="round"
               />
             </StyledPATH>
@@ -56,7 +56,7 @@ export const HamburgerMenu = ({
               d="M1 1.5h18M1 7h18M1 12.5h18"
               stroke={color}
               strokeWidth="2"
-              stroke-miterlimit="16"
+              strokeMiterlimit="16"
               strokeLinecap="round"
             />
           </svg>

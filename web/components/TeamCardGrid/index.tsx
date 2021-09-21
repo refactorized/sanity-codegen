@@ -49,7 +49,7 @@ export const TeamCardGrid = ({
     <Block>
       <Header>{category === '' ? header : category}</Header>
       <Wrapper>
-        {cards.map((card) => {
+        {cards.map((card, index) => {
           if (
             // No Category is selected
             // TODO in parent: subcategory should automatically be blank
@@ -62,6 +62,7 @@ export const TeamCardGrid = ({
           ) {
             return (
               <TeamCard
+                key={index}
                 name={card.name}
                 title={card.title}
                 image={card.image}

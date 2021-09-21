@@ -69,6 +69,10 @@ const StyledBottomSection = styled.ul`
   padding: 0;
 `;
 
+const StyledSection = styled.ul`
+  list-style-type: none;
+`;
+
 const StyledLink = styled.li`
   ${typography}
   margin-right: ${space('lg')};
@@ -135,9 +139,9 @@ export const DesktopMenu = ({
   registerLink,
 }: NavigationProps): JSX.Element => {
   const renderTopLinks = (links: LinkObject[]) => {
-    return links.map((link) => {
+    return links.map((link, index) => {
       return (
-        <StyledLink fontSize={0}>
+        <StyledLink key={index} fontSize={0}>
           <Link href={link.url}>
             <a>{link.label}</a>
           </Link>
@@ -152,18 +156,20 @@ export const DesktopMenu = ({
   };
 
   const renderSubLinks = (links: LinkObject[]) => {
-    return links.map((link) => {
+    return links.map((link, index) => {
       return (
-        <StyledSubLink header={true} fontSize={1}>
-          <Link href={link.url}>
-            <a>{link.label}</a>
-          </Link>{' '}
-          {link.links && (
-            <ul>
-              <li>{renderSubLinks(link.links)}</li>
-            </ul>
-          )}
-        </StyledSubLink>
+        <StyledSection key={index}>
+          <StyledSubLink header={true} fontSize={1}>
+            <Link href={link.url}>
+              <a>{link.label}</a>
+            </Link>
+            {link.links && (
+              <ul>
+                <li>{renderSubLinks(link.links)}</li>
+              </ul>
+            )}
+          </StyledSubLink>
+        </StyledSection>
       );
     });
   };

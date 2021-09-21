@@ -54,12 +54,7 @@ export const LinkMenuComponent = ({
           display="block"
           width="100%"
         >
-          <Image
-            src={imgUrl}
-            width={450}
-            height="responsive"
-            objectFit="cover"
-          />
+          <Image src={imgUrl} width={450} height="responsive" />
         </StyledImageContainer>
         <StyledBox>
           <StyledBox maxWidth={['inherit', null, null, '660px']}>
