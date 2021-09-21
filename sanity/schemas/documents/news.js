@@ -63,6 +63,11 @@ export default {
       title: 'Published at',
       description: 'This date is used in sorting, and should reflect the date the post was originally published',
       type: 'datetime',
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: 'hh:mm a',
+        calendarTodayLabel: 'Today'
+      },
       validation: Rule => Rule.required().error('Post must have a publication date')
     },
     {

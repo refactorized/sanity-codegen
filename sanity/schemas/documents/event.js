@@ -40,6 +40,11 @@ export default {
       title: 'Event Start',
       description: 'Start date and time',
       type: 'datetime',
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: 'hh:mm a',
+        calendarTodayLabel: 'Today'
+      },
       validation: Rule => Rule.required(),
     },
     {
@@ -47,6 +52,11 @@ export default {
       title: 'Event End',
       description: 'End date and time',
       type: 'datetime',
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: 'hh:mm a',
+        calendarTodayLabel: 'Today'
+      },
       validation: Rule => Rule.required().min(Rule.valueOfField('eventStart')),
     },
     {
