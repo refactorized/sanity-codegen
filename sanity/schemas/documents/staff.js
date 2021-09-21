@@ -48,6 +48,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       options: {
         source: doc => `${doc.firstName}_${doc.lastName}_${doc?.credentials}`
       },
