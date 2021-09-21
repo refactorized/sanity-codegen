@@ -76,7 +76,6 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'MM/DD/YYYY',
-        timeFormat: 'hh:mm a',
         calendarTodayLabel: 'Today'
       },
     },

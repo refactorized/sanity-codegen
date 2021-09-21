@@ -50,7 +50,7 @@ export default {
       type: 'slug',
       description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       options: {
-        source: doc => `${doc.firstName} ${doc.lastName} ${typeof(credentials) == "undefined" ? "" : credentials}`
+        source: doc => `${doc.firstName} ${doc.lastName} ${typeof(doc.credentials) == "undefined" ? "" : doc.credentials}`
       },
     },
     {
