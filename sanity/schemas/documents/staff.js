@@ -48,9 +48,9 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       options: {
-        source: 'name',
-        maxLength: 96,
+        source: doc => `${doc.firstName} ${doc.lastName} ${typeof(doc.credentials) == "undefined" ? "" : doc.credentials}`
       },
     },
     {

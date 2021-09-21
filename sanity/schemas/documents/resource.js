@@ -74,6 +74,10 @@ export default {
       title: 'Published at',
       description: 'Enter when the resource was published, if applicable.',
       type: 'date',
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        calendarTodayLabel: 'Today'
+      },
     },
     {
       name: 'body',
