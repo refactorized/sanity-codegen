@@ -6,13 +6,6 @@ const link = {
     'Link to internal or external resources. Please enter information in only one field.',
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'link',
-    },
-    {
       name: 'slug',
       title: 'Internal page slug',
       type: 'slug',
