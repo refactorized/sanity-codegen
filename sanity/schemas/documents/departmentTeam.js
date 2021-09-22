@@ -11,6 +11,16 @@ export default {
       validation: Rule => Rule.required().error('Team must have a name')
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
+      validation: Rule => Rule.required().error('Department must have a name'),
+      options: {
+        source: doc => `${doc.name}/${doc.associatedDepartment.slug}`
+      },
+    },
+    {
       name: 'associatedDepartment',
       title: 'Associated Department',
       description: 'e.g. Administration, Therapy, etc.',

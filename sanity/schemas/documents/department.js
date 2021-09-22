@@ -10,6 +10,16 @@ export default {
       type: 'string',
       validation: Rule => Rule.required().error('Department must have a name')
     },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
+      validation: Rule => Rule.required().error('Department must have a slug'),
+      options: {
+        source: doc => `${doc.firstName} ${doc.lastName} ${typeof(doc.credentials) == "undefined" ? "" : doc.credentials}`
+      },
+    },
   ],
   orderings: [
     {
