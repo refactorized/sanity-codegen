@@ -29,7 +29,6 @@ export const getPageData = async (slug: string): Promise<PageDocument> => {
   try {
     const pageData = await fetchOne(query);
     await replaceReferences(pageData); // mutates pageData
-
     return pageData as PageDocument;
   } catch (err) {
     handler(err);

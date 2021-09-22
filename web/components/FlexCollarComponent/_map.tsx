@@ -1,11 +1,16 @@
-import {FlexCollar, FlexCollarProps} from '.';
+import {FlexCollar, FlexCollarProps, flexCollarCard} from '.';
 import FlexCollarBlockData from '@data/blocks/FlexCollarBlockData';
-import testData from './testData';
 
-const props: FlexCollarProps = {cards: testData.cards};
-
-const _map = (block: FlexCollarBlockData) => (
-  <FlexCollar key={block._key} {...props} />
-);
+const _map = (block: FlexCollarBlockData) => {
+  const cards = block.cards.map(
+    (card) =>
+      ({
+        header: card.pageInfo.title,
+        category: card.pageInfo.category?.title || 'Austen Riggs',
+        image: card.pageInfo.openGraphImage?.asset?.url || null
+      } as flexCollarCard),
+  );
+  return <FlexCollar {...{key: block._key, cards}}  />;
+};
 
 export default _map;

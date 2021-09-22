@@ -71,3 +71,6 @@ Temporary Items
 .apdisk
 
 # End of https://www.toptal.com/developers/gitignore/api/osx
+
+############ DONT actually save yarn lockfile, it breaks nrtlify currently
+yarn.lock

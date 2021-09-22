@@ -32,7 +32,6 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.1",
     "prettier": "^2.3.2",
-    "sanity-codegen": "^0.9.5",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.3.2"
   }

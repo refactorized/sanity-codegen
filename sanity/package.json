@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "prettier": "^2.3.2",
-    "sanity-codegen": "^0.9.5"
+    "sanity-codegen": "npm:@hzdg/sanity-codegen@0.9.5-6"
   }
 }

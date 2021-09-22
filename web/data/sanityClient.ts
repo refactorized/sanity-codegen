@@ -1,6 +1,6 @@
 import sanityClient from '@sanity/client';
 import config from '../../config';
-import {AsyncWalkBuilder} from 'walkjs';
+import resolveReferences, {SanityRefResolver} from './resolveReferences';
 
 const client = sanityClient({
   projectId: config.sanity.projectId,
@@ -12,7 +12,7 @@ const client = sanityClient({
 //TODO: should fetchOne also work with queries tha return an object vs an array?
 
 /**
- * Fetches a query the is expected to have one result.  Throws
+ * Fetches a query the is expected to have one result.
  * @param query groq query that is expected to return array of size 1
  * @returns Object, query result, pulled from the array.
  */
@@ -29,49 +29,28 @@ export const fetchOne = (query: string) => {
   });
 };
 
-/**
- * This function will mutate reference-objects:
- * The keys of a reference-object will be deleted and the keys of the reference-
- * document will be added.
- * eg:
- * { _type: 'reference', _ref: 'abc' }
- * becomes:
- * { _type: 'document', _id: 'abc', ...allOtherDocumentProps }
- * CREDIT: https://github.com/sanity-io/GROQ/issues/21#issuecomment-862284356
- */
-export async function replaceReferences(
+const defaultResolver: SanityRefResolver = {
+  refTypes: ['reference'],
+  queryFn: (refId) => `*[_id == '${refId}']{...}[0]`,
+};
+
+const pageInfoResolver: SanityRefResolver = {
+  refTypes: ['pageInfo'],
+  queryFn: (refId) =>
+    `*[_id == '${refId}']{openGraphImage, slug, title, description}[0]`,
+};
+
+const pageLinkResolver: SanityRefResolver = {
+  refTypes: ['pageLink'],
+  queryFn: (refId) => `*[_id == '${refId}'][0].slug`,
+};
+
+export const replaceReferences = async (
   input: unknown,
   resolvedIds: string[] = [],
-) {
-  await new AsyncWalkBuilder()
-    .withGlobalFilter((x) => x.val?._type === 'reference')
-    .withSimpleCallback(async (node) => {
-      const refId = node.val._ref;
-
-      if (typeof refId !== 'string') {
-        throw new Error('node.val._ref is not set');
-      }
-
-      if (resolvedIds.includes(refId)) {
-        const ids = `[${resolvedIds.concat(refId).join(',')}]`;
-        throw new Error(
-          `Ran into an infinite loop of references, please investigate the following sanity document order: ${ids}`,
-        );
-      }
-
-      const doc = await client.fetch(`*[_id == '${refId}']{...}[0]`);
-
-      // recursively replace references
-      await replaceReferences(doc, resolvedIds.concat(refId));
-
-      /**
-       * Here we'll mutate the original reference object by clearing the
-       * existing keys and adding all keys of the reference itself.
-       */
-      Object.keys(node.val).forEach((key) => delete node.val[key]);
-      Object.keys(doc).forEach((key) => (node.val[key] = doc[key]));
-    })
-    .walk(input);
-}
+) => {
+  const resolvers = [defaultResolver, pageInfoResolver, pageLinkResolver];
+  await resolveReferences(input, client, resolvers, resolvedIds);
+};
 
 export default client;

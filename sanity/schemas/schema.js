@@ -19,11 +19,11 @@ import resourceType from './documents/resourceType';
 import siteConfig from './documents/siteConfig';
 import staff from './documents/staff';
 
-// pagebuilder sections (also called blocks)
+// page-builder sections (also called blocks)
 import admissionsCallout from './sections/admissionsCallout';
 import announcementBar from './sections/announcementBar';
 import carousel from './sections/carousel';
-import flexCollar from './sections/flexCollar';
+import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
 import linkMenu from './sections/linkMenu';
 import preFooter from './sections/preFooter';
@@ -34,6 +34,7 @@ import heroBlock, {heroCard} from './sections/hero';
 import basicText from './objects/basicText';
 import footerConfig, {footerLink} from './objects/config/footerConfig';
 import link from './objects/link';
+import pageInfo from './objects/pageInfo';
 import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
@@ -65,12 +66,14 @@ export default createSchema({
     resourceType,
     siteConfig,
     staff,
-    // Page Builder block Documents
+    // Page Builder block Documents, and co-located objects
     admissionsCallout,
     carousel,
     flexCollar,
+    flexCollarCard,
     introBlock,
     linkMenu,
+    pageInfo,
     preFooter,
     textAndImageBlock,
     heroBlock,

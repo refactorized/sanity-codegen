@@ -268,6 +268,13 @@ export interface Page extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
    * Description — `text`
    *
    * This description populates meta-tags on the webpage
@@ -635,11 +642,21 @@ export type Carousel = {
 export type FlexCollar = {
   _type: "flexCollar";
   /**
-   * blockType — `string`
+   * Cards — `array`
    *
    *
    */
-  blockType?: string;
+  cards?: Array<SanityKeyed<FlexCollarCard>>;
+};
+
+export type FlexCollarCard = {
+  _type: "flexCollarCard";
+  /**
+   * Page — `pageInfo`
+   *
+   * Page from this website to build a card from
+   */
+  pageInfo?: PageInfo;
 };
 
 export type IntroBlock = {
@@ -682,6 +699,8 @@ export type LinkMenu = {
    */
   blockType?: string;
 };
+
+export type PageInfo = { _type: "pageInfo"; _ref: string };
 
 export type PreFooter = {
   _type: "preFooter";

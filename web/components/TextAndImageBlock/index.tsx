@@ -19,7 +19,7 @@ export interface TextAndImageBlockProps {
   header: string;
   imgUrls?: {
     desktop: string;
-    mobile: string;
+    mobile?: string;
   };
   subheader: string;
   caption: BasicText;

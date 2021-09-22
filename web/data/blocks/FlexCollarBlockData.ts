@@ -1,5 +1,8 @@
-import {PageSection} from '@data/types';
+import type {FlexCollar, SanityKeyed} from '@schema/types';
+import type {ResolvedSanityReferences} from '@data/types';
 
-export default interface FlexCollarBlockData extends PageSection {
-  blockType: 'flexCollar';
-}
+export type FlexCollarBlockData = SanityKeyed<
+  ResolvedSanityReferences<FlexCollar>
+>;
+
+export default FlexCollarBlockData;

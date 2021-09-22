@@ -12,6 +12,12 @@ export default [
     },
   },
   {
+    name: 'category',
+    title: 'Category',
+    type: 'reference',
+    to: [{type: 'category'}],
+  },
+  {
     name: 'description',
     type: 'text',
     title: 'Description',
