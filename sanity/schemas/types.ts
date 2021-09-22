@@ -37,19 +37,33 @@ export type {
 };
 
 /**
- * Author
+ * External Contributor
  *
  *
  */
-export interface Author extends SanityDocument {
-  _type: "author";
+export interface ExternalContributor extends SanityDocument {
+  _type: "externalContributor";
 
   /**
-   * Name — `string`
+   * First Name — `string`
    *
    *
    */
-  name?: string;
+  firstName?: string;
+
+  /**
+   * Last Name — `string`
+   *
+   *
+   */
+  lastName?: string;
+
+  /**
+   * Credentials (e.g. MD, PhD, PsyD, CSW) — `string`
+   *
+   *
+   */
+  credentials?: string;
 
   /**
    * Image — `image`
@@ -64,11 +78,11 @@ export interface Author extends SanityDocument {
   };
 
   /**
-   * Bio — `array`
+   * Bio — `blockContent`
    *
    *
    */
-  bio?: Array<SanityKeyed<SanityBlock>>;
+  bio?: BlockContent;
 }
 
 /**
@@ -105,23 +119,32 @@ export interface Department extends SanityDocument {
   /**
    * Name — `string`
    *
+   * Please enter the name of the department, e.g. "Admissions"
+   */
+  name?: string;
+}
+
+/**
+ * Team
+ *
+ *
+ */
+export interface DepartmentTeam extends SanityDocument {
+  _type: "departmentTeam";
+
+  /**
+   * Team Name — `string`
    *
+   * e.g. Communications team, etc.
    */
   name?: string;
 
   /**
-   * Description — `text`
+   * Associated Department — `reference`
    *
-   *
+   * e.g. Administration, Therapy, etc.
    */
-  description?: string;
-
-  /**
-   * Team — `text`
-   *
-   *
-   */
-  team?: string;
+  associatedDepartment?: SanityReference<Department>;
 }
 
 /**
@@ -135,14 +158,84 @@ export interface Event extends SanityDocument {
   /**
    * Name — `string`
    *
-   *
+   * e.g. "2021 Fall Conference"
    */
   name?: string;
 
   /**
+   * Is this an Ethos Course? — `boolean`
+   *
+   * If this is set to "true" the more detailed fields for schedule, speakers, etc, will be hidden from entry.
+   */
+  ethosCourseYN?: boolean;
+
+  /**
+   * Series — `reference`
+   *
+   * e.g. Virtual Rounds, Friday Night Guest Lecture, etc.
+   */
+  series?: SanityReference<EventSeries>;
+
+  /**
+   * Categories — `array`
+   *
+   * e.g. treatment, personality disorders, etc.
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
+
+  /**
+   * Event Start — `datetime`
+   *
+   * Start date and time
+   */
+  eventStart?: string;
+
+  /**
+   * Event End — `datetime`
+   *
+   * End date and time
+   */
+  eventEnd?: string;
+
+  /**
+   * Event Host — `string`
+   *
+   * e.g. "Austen Riggs Center" or another hosting organization.
+   */
+  host?: string;
+
+  /**
+   * Pricing — `blockContent`
+   *
+   * (optional) If you have pricing, please enter it here, with the cost in bold.
+   */
+  pricingDescription?: BlockContent;
+
+  /**
+   * Venue — `string`
+   *
+   * e.g. "Virtual" or "Edward R. Shapiro Community Center"
+   */
+  venue?: string;
+
+  /**
+   * Venue Address — `string`
+   *
+   * (optional) e.g. "25 Main St, Stockbridge, MA 01262"
+   */
+  venueAddress?: string;
+
+  /**
+   * URL for Registration — `url`
+   *
+   * e.g. the URL for the Ethos course, or other registration URL.
+   */
+  registrationLink?: string;
+
+  /**
    * Image — `image`
    *
-   *
+   * (optional) This appears below the page metadata and above the event description.
    */
   image?: {
     _type: "image";
@@ -152,62 +245,6 @@ export interface Event extends SanityDocument {
   };
 
   /**
-   * Series — `reference`
-   *
-   *
-   */
-  series?: SanityReference<EventSeries>;
-
-  /**
-   * Event Category — `reference`
-   *
-   *
-   */
-  eventCategory?: SanityReference<EventCategory>;
-
-  /**
-   * Event Start — `datetime`
-   *
-   *
-   */
-  eventStart?: string;
-
-  /**
-   * Event End — `datetime`
-   *
-   *
-   */
-  eventEnd?: string;
-
-  /**
-   * Host — `string`
-   *
-   *
-   */
-  host?: string;
-
-  /**
-   * Description — `array`
-   *
-   *
-   */
-  description?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Location — `string`
-   *
-   *
-   */
-  location?: string;
-
-  /**
-   * External Course — `boolean`
-   *
-   *
-   */
-  lmsHosted?: boolean;
-
-  /**
    * Slug — `slug`
    *
    *
@@ -215,11 +252,67 @@ export interface Event extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Bio — `array`
+   * Short Description — `blockContent`
    *
-   *
+   * This appears below the event/course title.
    */
-  bio?: Array<SanityKeyed<SanityBlock>>;
+  shortDescription?: BlockContent;
+
+  /**
+   * Description — `blockContent`
+   *
+   * This appears below the event image.
+   */
+  description?: BlockContent;
+
+  /**
+   * Participating Staff — `array`
+   *
+   * (optional) Please select any participating staff members so that their information (bio, photo, etc.) shows.
+   */
+  speakers?: Array<SanityKeyedReference<Staff>>;
+
+  /**
+   * External Participants — `array`
+   *
+   * (optional) Please enter any external participants so that their information (bio, photo, etc.) show.
+   */
+  speakersExternal?: Array<SanityKeyedReference<ExternalContributor>>;
+
+  /**
+   * Schedule — `blockContent`
+   *
+   * If you want to display a schedule, enter it here.
+   */
+  schedule?: BlockContent;
+
+  /**
+   * Contact — `blockContent`
+   *
+   * (optional) If you want to show contact information, enter that here.
+   */
+  contact?: BlockContent;
+
+  /**
+   * Learning Objectives — `blockContent`
+   *
+   * (optional) If you want to show the learning objectives for an event, enter that here.
+   */
+  learningObjectives?: BlockContent;
+
+  /**
+   * Continuing Education — `blockContent`
+   *
+   * (optional) If there is CE information you want to show, enter that here.
+   */
+  continuingEducation?: BlockContent;
+
+  /**
+   * Cancellation and Refund Policy — `blockContent`
+   *
+   * (optional) If you have a cancellation and/or refund policy, enter that here.
+   */
+  cancellationRefundPolicy?: BlockContent;
 }
 
 /**
@@ -243,6 +336,22 @@ export interface EventCategory extends SanityDocument {
    *
    */
   description?: string;
+}
+
+/**
+ * Event Series
+ *
+ *
+ */
+export interface EventSeries extends SanityDocument {
+  _type: "eventSeries";
+
+  /**
+   * Name — `string`
+   *
+   * e.g. "Virtual Rounds". Please enter in title case because this is user-facing
+   */
+  name?: string;
 }
 
 /**
@@ -313,38 +422,45 @@ export interface Page extends SanityDocument {
 }
 
 /**
- * Post
+ * News
  *
  *
  */
-export interface Post extends SanityDocument {
-  _type: "post";
+export interface News extends SanityDocument {
+  _type: "news";
 
   /**
    * Title — `string`
    *
-   *
+   * Headline for the post, this will also appear as the page title and SEO title within search results.
    */
   title?: string;
 
   /**
    * Slug — `slug`
    *
-   *
+   * Click "generate" to create based on the title of the post
    */
   slug?: { _type: "slug"; current: string };
 
   /**
    * Author — `reference`
    *
-   *
+   * Please add an author to the post
    */
-  author?: SanityReference<Author>;
+  author?: SanityReference<Staff>;
+
+  /**
+   * Short Description — `blockContent`
+   *
+   * The short description is used in the SEO page description as well as at the top of the post.
+   */
+  shortDescription?: BlockContent;
 
   /**
    * Main image — `image`
    *
-   *
+   * (optional) This appears between the resource metadata and body text
    */
   mainImage?: {
     _type: "image";
@@ -356,23 +472,46 @@ export interface Post extends SanityDocument {
   /**
    * Categories — `array`
    *
-   *
+   * e.g. treatment, personality disorders, etc.
    */
   categories?: Array<SanityKeyedReference<Category>>;
 
   /**
+   * Post Type — `reference`
+   *
+   * e.g. News, Announcements, Riggs Blog, etc.
+   */
+  postType?: SanityReference<Category>;
+
+  /**
    * Published at — `datetime`
    *
-   *
+   * This date is used in sorting, and should reflect the date the post was originally published
    */
   publishedAt?: string;
 
   /**
    * Body — `blockContent`
    *
-   *
+   * This is the main body of the post
    */
   body?: BlockContent;
+}
+
+/**
+ * Post Type
+ *
+ *
+ */
+export interface PostType extends SanityDocument {
+  _type: "postType";
+
+  /**
+   * Title — `string`
+   *
+   * This helps to organize the posts and is used to ensure they appear in the right places.
+   */
+  title?: string;
 }
 
 /**
@@ -386,28 +525,42 @@ export interface Resource extends SanityDocument {
   /**
    * Title — `string`
    *
-   *
+   * The title of the resource, also used as the page title
    */
   title?: string;
 
   /**
    * Slug — `slug`
    *
-   *
+   * This ensures a unique URL
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Author — `reference`
+   * Short Description — `string`
    *
-   *
+   * This appears above the page and will be used in the SEO page description
    */
-  author?: SanityReference<Author>;
+  shortDescription?: string;
+
+  /**
+   * Associated Staffmember(s) — `array`
+   *
+   * Either a staff member or an external contributor is required.
+   */
+  associatedStaff?: Array<SanityKeyedReference<Staff>>;
+
+  /**
+   * External Contributor(s) — `array`
+   *
+   * Either a staff member or an external contributor is required.
+   */
+  externalContributors?: Array<SanityKeyedReference<ExternalContributor>>;
 
   /**
    * Main image — `image`
    *
-   *
+   * This appears between the resource metadata and body text
    */
   mainImage?: {
     _type: "image";
@@ -419,21 +572,21 @@ export interface Resource extends SanityDocument {
   /**
    * Categories — `array`
    *
-   *
+   * e.g. treatment, personality disorders, etc.  Please enter one or more.
    */
   categories?: Array<SanityKeyedReference<Category>>;
 
   /**
    * Resource Type — `array`
    *
-   *
+   * e.g. Books, Clinical Perspectives, Conference Presentations, etc.
    */
   type?: Array<SanityKeyedReference<ResourceType>>;
 
   /**
-   * Published at — `datetime`
+   * Published at — `date`
    *
-   *
+   * Enter when the resource was published, if applicable.
    */
   publishedAt?: string;
 
@@ -456,16 +609,9 @@ export interface ResourceType extends SanityDocument {
   /**
    * Title — `string`
    *
-   *
+   * e.g. Books, Conference Presentations, etc.  Please enter in title case.
    */
   title?: string;
-
-  /**
-   * Description — `text`
-   *
-   *
-   */
-  description?: string;
 }
 
 /**
@@ -528,37 +674,58 @@ export interface Staff extends SanityDocument {
   _type: "staff";
 
   /**
-   * Name — `string`
+   * First Name — `string`
+   *
+   * Can also hold the middle initial
+   */
+  firstName?: string;
+
+  /**
+   * Last Name — `string`
    *
    *
    */
-  name?: string;
+  lastName?: string;
+
+  /**
+   * Academic Credentials — `string`
+   *
+   * e.g. PhD, PsyD, MD, etc.
+   */
+  credentials?: string;
 
   /**
    * Title — `string`
    *
-   *
+   * e.g. CEO, Medical Director
    */
   title?: string;
 
   /**
    * Departments — `array`
    *
-   *
+   * Please select one or more departments
    */
   departments?: Array<SanityKeyedReference<Department>>;
 
   /**
+   * Team(s) — `array`
+   *
+   * Please select one or more team
+   */
+  team?: Array<SanityKeyedReference<DepartmentTeam>>;
+
+  /**
    * Slug — `slug`
    *
-   *
+   * Write a custom slug here, or click “Generate” to auto-populate.
    */
   slug?: { _type: "slug"; current: string };
 
   /**
    * Image — `image`
    *
-   *
+   * If available, this should be a photo of the staff member.  If none is available, a default image will be used
    */
   image?: {
     _type: "image";
@@ -568,11 +735,25 @@ export interface Staff extends SanityDocument {
   };
 
   /**
-   * Bio — `array`
+   * Telephone — `string`
    *
-   *
+   * (optional) in the form of (xxx) xxx-xxxx
    */
-  bio?: Array<SanityKeyed<SanityBlock>>;
+  telephone?: string;
+
+  /**
+   * Email — `string`
+   *
+   * (optional)
+   */
+  email?: string;
+
+  /**
+   * Bio — `blockContent`
+   *
+   * (optional) in the form of (xxx) xxx-xxxx
+   */
+  bio?: BlockContent;
 }
 
 export type AnnouncementBar = {
@@ -594,30 +775,6 @@ export type BlockContent = Array<
       hotspot?: SanityImageHotspot;
     }>
 >;
-
-export type EventSeries = {
-  _type: "eventSeries";
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name?: string;
-
-  /**
-   * Description — `string`
-   *
-   *
-   */
-  description?: string;
-
-  /**
-   * Slug — `slug`
-   *
-   *
-   */
-  slug?: { _type: "slug"; current: string };
-};
 
 export type AdmissionsCallout = {
   _type: "admissionsCallout";
@@ -701,6 +858,8 @@ export type LinkMenu = {
 };
 
 export type PageInfo = { _type: "pageInfo"; _ref: string };
+
+export type PageLink = { _type: "pageLink"; _ref: string };
 
 export type PreFooter = {
   _type: "preFooter";
@@ -901,18 +1060,11 @@ export type FooterLink = {
 export type Link = {
   _type: "link";
   /**
-   * blockType — `string`
+   * Internal Page — `pageLink`
    *
    *
    */
-  blockType?: string;
-
-  /**
-   * Internal page slug — `slug`
-   *
-   *
-   */
-  slug?: { _type: "slug"; current: string };
+  slug?: PageLink;
 
   /**
    * Manual URL link — `url`
@@ -957,13 +1109,16 @@ export type Prose = {
 };
 
 export type Documents =
-  | Author
+  | ExternalContributor
   | Category
   | Department
+  | DepartmentTeam
   | Event
   | EventCategory
+  | EventSeries
   | Page
-  | Post
+  | News
+  | PostType
   | Resource
   | ResourceType
   | SiteConfig
