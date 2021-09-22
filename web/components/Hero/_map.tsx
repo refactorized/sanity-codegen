@@ -11,7 +11,6 @@ const _map = (block: HeroBlockData) => {
     admissionsText: '',
     admissionsUrl: '',
   };
-  // console.log('props'); ///////////////////////////////////////////////////////////////////////////////////////////////
   return <HomepageHero key={block._key} {...props} />;
 };
 

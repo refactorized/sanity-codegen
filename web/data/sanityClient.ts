@@ -37,7 +37,7 @@ const defaultResolver: SanityRefResolver = {
 const pageInfoResolver: SanityRefResolver = {
   refTypes: ['pageInfo'],
   queryFn: (refId) =>
-    `*[_id == '${refId}']{openGraphImage, slug, title, description}[0]`,
+    `*[_id == '${refId}']{openGraphImage, slug, title, description, category}[0]`,
 };
 
 const pageLinkResolver: SanityRefResolver = {
