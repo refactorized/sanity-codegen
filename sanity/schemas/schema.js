@@ -35,6 +35,7 @@ import basicText from './objects/basicText';
 import footerConfig, {footerLink} from './objects/config/footerConfig';
 import link from './objects/link';
 import pageInfo from './objects/pageInfo';
+import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
 import prose from './objects/prose';
 
@@ -74,6 +75,7 @@ export default createSchema({
     introBlock,
     linkMenu,
     pageInfo,
+    pageLink,
     preFooter,
     textAndImageBlock,
     heroBlock,

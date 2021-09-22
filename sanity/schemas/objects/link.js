@@ -7,8 +7,8 @@ const link = {
   fields: [
     {
       name: 'slug',
-      title: 'Internal page slug',
-      type: 'slug',
+      title: 'Internal Page',
+      type: 'pageLink',
     },
     {
       name: 'url',
