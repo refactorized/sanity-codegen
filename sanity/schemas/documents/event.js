@@ -54,7 +54,7 @@ export default {
       type: 'datetime',
       options: {
         dateFormat: 'MM/DD/YYYY',
-        timeFormat: 'hh:mm a',
+        timeFormat: 'h:mm a',
         calendarTodayLabel: 'Today'
       },
       validation: Rule => Rule.required().min(Rule.valueOfField('eventStart')),
