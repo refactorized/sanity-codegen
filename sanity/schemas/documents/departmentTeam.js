@@ -17,7 +17,7 @@ export default {
       description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       validation: Rule => Rule.required().error('Department must have a name'),
       options: {
-        source: doc => `${doc.name}/${doc.associatedDepartment.slug}`
+        source: doc => `${doc.associatedDepartment.slug}/${doc.name}`
       },
     },
     {
