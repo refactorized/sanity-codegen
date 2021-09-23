@@ -17,7 +17,10 @@ export default {
       description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       validation: Rule => Rule.required().error('Department must have a name'),
       options: {
-        source: doc => `${associatedDepartment.slug}__${doc.name}`
+        source: async doc => {
+          const department = await client.getDocument(doc.associatedDepartment.__ref);
+          return `${doc.department.slug}__${doc.name}`
+        }
       },
     },
     {
