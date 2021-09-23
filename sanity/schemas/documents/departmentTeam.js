@@ -13,7 +13,7 @@ export default {
     {
       name: 'slug',
       title: 'Slug',
-      type: 'string',
+      type: 'slug',
       description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       validation: Rule => Rule.required().error('Department must have a name'),
       options: {
