@@ -15,6 +15,7 @@ export default {
     {
       name: 'firstName',
       title: 'First Name',
+      description: 'Can also hold middle initial or name',
       fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
@@ -22,19 +23,22 @@ export default {
     {
       name: 'lastName',
       title: 'Last Name',
+      description: 'Contributor\'s Last Name',
       fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
     },
     {
       name: 'credentials',
-      title: 'Credentials (e.g. MD, PhD, PsyD, CSW)',
+      title: 'Credentials',
+      description: '(optional) e.g. MD, PhD, PsyD, CSW',
       fieldset: 'contributorNames',
       type: 'string'
     },
     {
       name: 'image',
       title: 'Image',
+      description: '(optional) if left empty will use default image',
       type: 'image',
       options: {
         hotspot: true,
