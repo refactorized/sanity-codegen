@@ -15,7 +15,6 @@ export default {
     {
       name: 'firstName',
       title: 'First Name',
-      description: 'Can also hold middle initial or name',
       fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
@@ -23,7 +22,6 @@ export default {
     {
       name: 'lastName',
       title: 'Last Name',
-      description: 'Contributor\'s Last Name',
       fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
@@ -31,7 +29,6 @@ export default {
     {
       name: 'credentials',
       title: 'Credentials',
-      description: '(optional) e.g. MD, PhD, PsyD, CSW',
       fieldset: 'contributorNames',
       type: 'string'
     },
