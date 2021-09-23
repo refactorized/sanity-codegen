@@ -6,7 +6,9 @@ export default {
     {
       name: 'contributorNames',
       title: 'Contributor Name & Credentials',
-      columns: 3
+      options: {
+        columns: 3
+      },
     },
   ],
   fields: [

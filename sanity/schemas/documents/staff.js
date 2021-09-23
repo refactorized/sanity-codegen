@@ -6,17 +6,23 @@ export default {
     {
       name: 'nameAndCredentials', 
       title: 'Staff Name & Credentials', 
-      columns: 3
+      options: {
+        columns: 3
+      },
     },
     {
       name: 'departmentAndTeam',
       title: 'Department and (optional) Team',
-      columns: 2
+      options: {
+        columns: 2
+      },
     },
     {
       name: 'contactInfo',
       title: 'Contact Info',
-      columns: 2
+      options: {
+        columns: 2
+      },
     },
   ],
   fields: [

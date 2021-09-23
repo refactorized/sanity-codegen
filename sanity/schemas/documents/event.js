@@ -8,7 +8,9 @@ export default {
     {
       name: 'eventDates',
       title: 'Start and End Date & Times',
-      columns: 2
+      options: {
+        columns: 2
+      },
     },
     {
       name: 'venueInfo',
