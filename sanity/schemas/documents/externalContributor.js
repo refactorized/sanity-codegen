@@ -2,22 +2,32 @@ export default {
   name: 'externalContributor',
   title: 'External Contributor',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'contributorNames',
+      title: 'Contributor Name & Credentials',
+      columns: 3
+    },
+  ],
   fields: [
     {
       name: 'firstName',
       title: 'First Name',
+      fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
     },
     {
       name: 'lastName',
       title: 'Last Name',
+      fieldset: 'contributorNames',
       type: 'string',
       validation: Rule => Rule.required().error('Last name is required')
     },
     {
       name: 'credentials',
       title: 'Credentials (e.g. MD, PhD, PsyD, CSW)',
+      fieldset: 'contributorNames',
       type: 'string'
     },
     {
