@@ -2,15 +2,12 @@ export default {
   name: 'departmentTeam',
   title: 'Team',
   type: 'document',
-  initialValue: {
-    slug: doc => `${doc.associatedDepartment.slug}/${doc.name}`
-  },
   fields: [
     {
       name: 'name',
       title: 'Team Name',
       description: 'e.g. Communications team, etc.',
-      type: 'string', 
+      type: 'string',
       validation: Rule => Rule.required().error('Team must have a name')
     },
     {
@@ -20,7 +17,7 @@ export default {
       description: 'Write a custom slug here, or click “Generate” to auto-populate.',
       validation: Rule => Rule.required().error('Department must have a name'),
       options: {
-
+        source: doc => `${doc.associatedDepartment.slug}__${doc.name}`
       },
     },
     {
