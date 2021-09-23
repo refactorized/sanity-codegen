@@ -1,3 +1,5 @@
+import client from 'part:@sanity/base/client';
+
 export default {
   name: 'departmentTeam',
   title: 'Team',
