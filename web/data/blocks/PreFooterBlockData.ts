@@ -1,5 +1,6 @@
-import {PageSection} from '@data/types';
+import type {PreFooter, SanityKeyed} from '@schema/types';
+import type {ResolvedSanityReferences} from '@data/types';
 
-export default interface PreFooterBlockData extends PageSection {
-  blockType: 'preFooter';
-}
+type PreFooterBlockData = SanityKeyed<ResolvedSanityReferences<PreFooter>>;
+
+export default PreFooterBlockData;

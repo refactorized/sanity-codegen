@@ -884,6 +884,41 @@ export type PreFooter = {
    *
    */
   blockType?: string;
+
+  /**
+   * Pre-Footer Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Pre-Footer Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Pre-Footer Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Pre-Footer Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Pre-Footer Phone Number — `string`
+   *
+   *
+   */
+  phoneNumber?: string;
 };
 
 export type TextAndImageBlock = {
