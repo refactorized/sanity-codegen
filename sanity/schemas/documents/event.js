@@ -4,7 +4,19 @@ export default {
   name: 'event',
   title: 'Event',
   type: 'document',
-
+  fieldsets: [
+    {
+      name: 'eventDates',
+      title: 'Start and End Date & Times',
+      options: {
+        columns: 2
+      },
+    },
+    {
+      name: 'venueInfo',
+      title: 'Venue Information (or URLs if online)',
+    },
+  ],
   fields: [
     {
       name: 'name',
@@ -38,6 +50,7 @@ export default {
     {
       name: 'eventStart',
       title: 'Event Start',
+      fieldset: 'eventDates',
       description: 'Start date and time',
       type: 'datetime',
       options: {
@@ -51,6 +64,7 @@ export default {
       name: 'eventEnd',
       title: 'Event End',
       description: 'End date and time',
+      fieldset: 'eventDates',
       type: 'datetime',
       options: {
         dateFormat: 'MM/DD/YYYY',
@@ -63,8 +77,32 @@ export default {
       name: 'host', 
       title: 'Event Host',
       type: 'string',
+      fieldset: 'venueInfo',
       description: 'e.g. "Austen Riggs Center" or another hosting organization.',
       initialValue: 'Austen Riggs Center',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'venue', 
+      title: 'Venue',
+      description: 'e.g. "Virtual" or "Edward R. Shapiro Community Center"',
+      fieldset: 'venueInfo',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'venueAddress',
+      title: 'Venue Address',
+      fieldset: 'venueInfo',
+      description: '(optional) e.g. "25 Main St, Stockbridge, MA 01262"',
+      type: 'string',
+    },
+    {
+      name: 'registrationLink',
+      title: 'URL for Registration',
+      fieldset: 'venueInfo',
+      description: 'e.g. the URL for the Ethos course, or other registration URL.',
+      type: 'url',
       validation: Rule => Rule.required(),
     },
     {
@@ -72,26 +110,6 @@ export default {
       title: 'Pricing',
       description: '(optional) If you have pricing, please enter it here, with the cost in bold.',
       type: 'blockContent',
-    },
-    {
-      name: 'venue', 
-      title: 'Venue',
-      description: 'e.g. "Virtual" or "Edward R. Shapiro Community Center"',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'venueAddress',
-      title: 'Venue Address',
-      description: '(optional) e.g. "25 Main St, Stockbridge, MA 01262"',
-      type: 'string',
-    },
-    {
-      name: 'registrationLink',
-      title: 'URL for Registration',
-      description: 'e.g. the URL for the Ethos course, or other registration URL.',
-      type: 'url',
-      validation: Rule => Rule.required(),
     },
     {
       name: 'image',

@@ -2,24 +2,50 @@ export default {
   name: 'staff',
   title: 'Staff',
   type: 'document',
+  fieldsets: [
+    {
+      name: 'nameAndCredentials', 
+      title: 'Staff Name & Credentials', 
+      options: {
+        columns: 3
+      },
+    },
+    {
+      name: 'departmentAndTeam',
+      title: 'Department and (optional) Team',
+      options: {
+        columns: 2
+      },
+    },
+    {
+      name: 'contactInfo',
+      title: 'Contact Info',
+      options: {
+        columns: 2
+      },
+    },
+  ],
   fields: [
     {
       name: 'firstName',
       title: 'First Name',
       description: 'Can also hold the middle initial',
       type: 'string',
+      fieldset: 'nameAndCredentials',
       validation: Rule => Rule.required().error('Staff member must have a first name')
     },
     {
       name: 'lastName',
       title: 'Last Name',
       type: 'string',
+      fieldset: 'nameAndCredentials',
       validation: Rule => Rule.required().error('Staff member must have a last name')
     },
     {
       name: 'credentials',
       title: 'Academic Credentials',
       description: 'e.g. PhD, PsyD, MD, etc.',
+      fieldset: 'nameAndCredentials',
       type: 'string',
     },
     {
@@ -32,6 +58,7 @@ export default {
     {
       name: 'departments',
       title: 'Departments',
+      fieldset: 'departmentAndTeam',
       description: 'Please select one or more departments',
       type: 'array',
       of: [{type: 'reference', to: {type: 'department'}}],
@@ -41,6 +68,7 @@ export default {
       name: 'team',
       title: 'Team(s)',
       description: 'Please select one or more team',
+      fieldset: 'departmentAndTeam',
       type: 'array',
       of: [{type: 'reference', to: {type: 'departmentTeam'}}],
     },
@@ -65,19 +93,21 @@ export default {
     {
       name: 'telephone',
       title: 'Telephone',
+      fieldset: 'contactInfo',
       description: '(optional) in the form of (xxx) xxx-xxxx',
       type: 'string',
     },
     {
       name: 'email',
       title: 'Email',
+      fieldset: 'contactInfo',
       description: '(optional)',
       type: 'string',
     },
     {
       name: 'bio',
       title: 'Bio',
-      description: '(optional) in the form of (xxx) xxx-xxxx',
+      description: '(optional) staff biography',
       type: 'blockContent',
     },
   ],
