@@ -1,10 +1,10 @@
 import {RiWindowFill} from 'react-icons/ri';
 const _required = (Rule) => Rule.required();
 
-const preFooter = {
-  name: 'preFooter',
+const calloutBand = {
+  name: 'calloutBand',
   type: 'object',
-  title: 'Pre-Footer',
+  title: 'Callout Block',
   icon: RiWindowFill,
   fields: [
     {
@@ -12,35 +12,30 @@ const preFooter = {
       type: 'string',
       readOnly: true,
       hidden: true,
-      initialValue: 'preFooter',
+      initialValue: 'calloutBand',
     },
     {
       name: 'header',
       type: 'string',
-      title: 'Pre-Footer Header',
+      title: 'Callout Header',
       //title if for UI in sanity
     },
     {
       name: 'description',
       type: 'string',
-      title: 'Pre-Footer Description',
+      title: 'Callout Description',
     },
     {
       name: 'btnText',
       type: 'string',
-      title: 'Pre-Footer Button Text',
+      title: 'Callout Button Text',
     },
     {
       name: 'btnUrl',
       type: 'link',
-      title: 'Pre-Footer Button Url',
-    },
-    {
-      name: 'phoneNumber',
-      type: 'string',
-      title: 'Pre-Footer Phone Number',
+      title: 'Callout Button Url',
     },
   ],
 };
 
-export default preFooter;
+export default calloutBand;

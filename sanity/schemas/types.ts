@@ -122,6 +122,13 @@ export interface Department extends SanityDocument {
    * Please enter the name of the department, e.g. "Admissions"
    */
   name?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Write a custom slug here, or click “Generate” to auto-populate.
+   */
+  slug?: { _type: "slug"; current: string };
 }
 
 /**
@@ -138,6 +145,13 @@ export interface DepartmentTeam extends SanityDocument {
    * e.g. Communications team, etc.
    */
   name?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Write a custom slug here, or click “Generate” to auto-populate.
+   */
+  slug?: { _type: "slug"; current: string };
 
   /**
    * Associated Department — `reference`
@@ -418,6 +432,7 @@ export interface Page extends SanityDocument {
     | SanityKeyed<Prose>
     | SanityKeyed<TextAndImageBlock>
     | SanityKeyed<HeroBlock>
+    | SanityKeyed<CalloutBand>
   >;
 }
 
@@ -869,6 +884,41 @@ export type PreFooter = {
    *
    */
   blockType?: string;
+
+  /**
+   * Pre-Footer Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Pre-Footer Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Pre-Footer Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Pre-Footer Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Pre-Footer Phone Number — `string`
+   *
+   *
+   */
+  phoneNumber?: string;
 };
 
 export type TextAndImageBlock = {
@@ -998,6 +1048,44 @@ export type HeroCard = {
    * Destination page or URL after clicking on card
    */
   card_link?: Link;
+};
+
+export type CalloutBand = {
+  _type: "calloutBand";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Callout Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Callout Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Callout Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Callout Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
 };
 
 export type BasicText = Array<SanityKeyed<SanityBlock>>;

@@ -29,6 +29,7 @@ import linkMenu from './sections/linkMenu';
 import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
+import calloutBand from './sections/calloutBand';
 
 // objects
 import basicText from './objects/basicText';
@@ -80,6 +81,7 @@ export default createSchema({
     textAndImageBlock,
     heroBlock,
     heroCard,
+    calloutBand,
     // objects
     basicText,
     footerConfig,

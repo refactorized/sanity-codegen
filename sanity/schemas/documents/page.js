@@ -29,6 +29,7 @@ export default {
         {type: 'prose'},
         {type: 'textAndImageBlock'},
         {type: 'heroBlock'},
+        {type: 'calloutBand'},
       ],
     },
   ],
@@ -36,16 +37,12 @@ export default {
     {
       title: 'Title, A-Z',
       name: 'title',
-      by: [
-        {field: 'title', direction: 'asc'}
-      ]
+      by: [{field: 'title', direction: 'asc'}],
     },
     {
       title: 'Title, Z-A',
       name: 'title',
-      by: [
-        {field: 'title', direction: 'desc'}
-      ]
+      by: [{field: 'title', direction: 'desc'}],
     },
   ],
 
