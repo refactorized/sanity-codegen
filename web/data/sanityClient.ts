@@ -31,18 +31,20 @@ export const fetchOne = (query: string) => {
 
 const defaultResolver: SanityRefResolver = {
   refTypes: ['reference'],
-  queryFn: (refId) => `*[_id == '${refId}']{...}[0]`,
+  queryFn: (refId) =>
+    `*[_id == '${refId}' && !(_id in path('drafts.**'))]{...}[0]`,
 };
 
 const pageInfoResolver: SanityRefResolver = {
   refTypes: ['pageInfo'],
   queryFn: (refId) =>
-    `*[_id == '${refId}']{openGraphImage, slug, title, description, category}[0]`,
+    `*[_id == '${refId}' && !(_id in path('drafts.**'))]{openGraphImage, slug, title, description, category}[0]`,
 };
 
 const pageLinkResolver: SanityRefResolver = {
   refTypes: ['pageLink'],
-  queryFn: (refId) => `*[_id == '${refId}'][0].slug`,
+  queryFn: (refId) =>
+    `*[_id == '${refId}' && !(_id in path('drafts.**'))][0].slug`,
 };
 
 export const replaceReferences = async (
