@@ -113,10 +113,7 @@ export const Pagination = ({
   }: PaginationProps) => {
     const cells = Array();
 
-    if (
-      currentPage > pageBufferCount + 1 &&
-      totalPages > pageBufferCount * 2 + 1
-    ) {
+    if (currentPage > pageBufferCount + 1 && totalPages > pageBufferCount + 1) {
       cells.push(getPagerCellElement(1, false, true));
       cells.push(getPagerCellElement('...', false, false));
     }
@@ -131,7 +128,7 @@ export const Pagination = ({
 
     if (
       currentPage < totalPages - pageBufferCount &&
-      totalPages > pageBufferCount * 2 + 1
+      totalPages > pageBufferCount + 1
     ) {
       cells.push(getPagerCellElement('...', false, false));
       cells.push(getPagerCellElement(totalPages, false, true));
