@@ -20,7 +20,9 @@ import React from 'react';
 
 const Noop = () => null;
 
-const CarouselContainer = styled.div``;
+const CarouselContainer = styled.div`
+  width: 100%;
+`;
 
 const CarouselHeader = styled.div`
   display: flex;
@@ -97,7 +99,7 @@ function isTestimonialCard(card: any): card is TestimonialCardProps {
 
 export interface OutcomesCarouselProps {
   title: string;
-  cards: (StatCardProps | TestimonialCardProps)[];
+  cards: any[];
 }
 
 export interface CarouselProps {

@@ -59,7 +59,7 @@ export interface ExternalContributor extends SanityDocument {
   lastName?: string;
 
   /**
-   * Credentials (e.g. MD, PhD, PsyD, CSW) — `string`
+   * Credentials — `string`
    *
    *
    */
@@ -68,7 +68,7 @@ export interface ExternalContributor extends SanityDocument {
   /**
    * Image — `image`
    *
-   *
+   * (optional) if left empty will use default image
    */
   image?: {
     _type: "image";
@@ -147,18 +147,18 @@ export interface DepartmentTeam extends SanityDocument {
   name?: string;
 
   /**
-   * Slug — `slug`
-   *
-   * Write a custom slug here, or click “Generate” to auto-populate.
-   */
-  slug?: { _type: "slug"; current: string };
-
-  /**
    * Associated Department — `reference`
    *
    * e.g. Administration, Therapy, etc.
    */
   associatedDepartment?: SanityReference<Department>;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click “Generate” to auto-populate.
+   */
+  slug?: { _type: "slug"; current: string };
 }
 
 /**
@@ -219,13 +219,6 @@ export interface Event extends SanityDocument {
   host?: string;
 
   /**
-   * Pricing — `blockContent`
-   *
-   * (optional) If you have pricing, please enter it here, with the cost in bold.
-   */
-  pricingDescription?: BlockContent;
-
-  /**
    * Venue — `string`
    *
    * e.g. "Virtual" or "Edward R. Shapiro Community Center"
@@ -245,6 +238,13 @@ export interface Event extends SanityDocument {
    * e.g. the URL for the Ethos course, or other registration URL.
    */
   registrationLink?: string;
+
+  /**
+   * Pricing — `blockContent`
+   *
+   * (optional) If you have pricing, please enter it here, with the cost in bold.
+   */
+  pricingDescription?: BlockContent;
 
   /**
    * Image — `image`
@@ -766,7 +766,7 @@ export interface Staff extends SanityDocument {
   /**
    * Bio — `blockContent`
    *
-   * (optional) in the form of (xxx) xxx-xxxx
+   * (optional) staff biography
    */
   bio?: BlockContent;
 }
@@ -809,6 +809,23 @@ export type Carousel = {
    *
    */
   blockType?: string;
+};
+
+export type OutcomesCarousel = {
+  _type: "outcomesCarousel";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Cards — `array`
+   *
+   * Cards to show in the carousel
+   */
+  cards?: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
 };
 
 export type FlexCollar = {
@@ -1194,6 +1211,71 @@ export type Prose = {
    *
    */
   content?: Array<SanityKeyed<SanityBlock>>;
+};
+
+export type TestimonialCard = {
+  _type: "testimonialCard";
+  /**
+   * Quote — `string`
+   *
+   * Thoughts and feedback from a Riggs patient.
+   */
+  testimonial_text?: string;
+
+  /**
+   * Patient Name — `string`
+   *
+   *
+   */
+  patient_name?: string;
+
+  /**
+   * Patient Photo — `image`
+   *
+   *
+   */
+  patient_photo_path?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+};
+
+export type StatCard = {
+  _type: "statCard";
+  /**
+   * Background Color — `string`
+   *
+   * in hex (#123456) or rgba (rgba(0,0,0,0.5) format
+   */
+  background_color?: string;
+
+  /**
+   * Statistic — `string`
+   *
+   * A numerical statistic, including unit of measure (eg %)
+   */
+  statistic_text?: string;
+
+  /**
+   * Descriptive Text — `string`
+   *
+   * Thoughts and feedback from a Riggs patient.
+   */
+  baseline_text?: string;
+
+  /**
+   * Icon — `image`
+   *
+   *
+   */
+  icon?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 };
 
 export type Documents =

@@ -23,6 +23,7 @@ import staff from './documents/staff';
 import admissionsCallout from './sections/admissionsCallout';
 import announcementBar from './sections/announcementBar';
 import carousel from './sections/carousel';
+import outcomesCarousel, {testimonialCard, statCard} from './sections/outcomesCarousel';
 import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
 import linkMenu from './sections/linkMenu';
@@ -71,6 +72,7 @@ export default createSchema({
     // Page Builder block Documents, and co-located objects
     admissionsCallout,
     carousel,
+    outcomesCarousel,
     flexCollar,
     flexCollarCard,
     introBlock,
@@ -89,5 +91,7 @@ export default createSchema({
     link,
     placeholder,
     prose,
+    testimonialCard,
+    statCard,
   ]),
 });

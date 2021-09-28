@@ -1,39 +1,31 @@
 import {OutcomesCarousel, OutcomesCarouselProps} from '.';
-import CarouselBlockData from '@data/blocks/CarouselBlockData';
+import OutcomesCarouselBlockData from '@data/blocks/OutcomesCarouselBlockData';
+import {getStaticProps} from 'pages';
+import {StatCardProps, TestimonialCardProps} from '@components/Card';
 
-// const props = {
-//   title: 'Patient Outcomes & Results',
-//   cards: [
-//     {
-//       backgroundColor: '#1B76B0',
-//       statisticText: '94%',
-//       baselineText:
-//         'Satisfaction rate with Riggs’s individual psychotherapy, as reported by discharged patients.',
-//     },
-//     {
-//       testimonialText:
-//         'I look at Riggs as the place that broke my fall. In giving me the space to discover my competency, I found my voice. I started by expressing my anger about almost everything. But this expression opened many doors for me. From there, I broke the downward spiral.',
-//       patientName: 'CJ, Former Patient',
-//     },
-//     {
-//       backgroundColor: 'rgba(32, 69, 104, 1)',
-//       statisticText: '70,000+',
-//       baselineText:
-//         'Lorem ispum dolor set met ipsum solor set met ipsum. LoremLorem ispum dolor set met ipsum.',
-//     },
-//     {
-//       backgroundColor: 'rgba(113, 151, 107, 1)',
-//       statisticText: '90%',
-//       baselineText:
-//         'Lorem ispum dolor set met ipsum solor set met ipsum. LoremLorem ispum dolor set met ipsum.',
-//     },
-//   ],
-// } as OutcomesCarouselProps; // FIXME: types are not right for this yet
-
-// const _map = (block: CarouselBlockData) => (
-//   <OutcomesCarousel key={block._key} {...props} />
-// );
-
-const _map = (block: CarouselBlockData) => null;
+const _map = (block: OutcomesCarouselBlockData) => {
+  const props: OutcomesCarouselProps = {
+    title: block.title,
+    cards: block.cards.map(function (card) {
+      if (card._type == 'testimonialCard')
+        return {
+          testimonialText: card.testimonial_text,
+          patientName: card.patient_name,
+          patientPhotoPath: card.patient_photo_path
+            ? card.patient_photo_path.asset.url
+            : '',
+        } as TestimonialCardProps;
+      else if (card._type == 'statCard') {
+        return {
+          backgroundColor: card.background_color,
+          baselineText: card.baseline_text,
+          statisticText: card.statistic_text,
+          iconPath: card.icon ? card.icon.asset.url : '',
+        } as StatCardProps;
+      }
+    }),
+  };
+  return <OutcomesCarousel key={block._key} {...props} />;
+};
 
 export default _map;

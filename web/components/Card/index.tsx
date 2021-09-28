@@ -11,18 +11,14 @@ import {
   position,
 } from 'styled-system';
 import {CircleArrow} from '../Arrow/index';
-import {SingleQuote, PuzzlePerson} from './CardIcons';
+import {SingleQuote} from './CardIcons';
 import {query} from '../../themes/fn';
-
-enum CardIconSelect {
-  PuzzlePerson,
-}
 
 export interface StatCardProps {
   backgroundColor: string;
   baselineText: string;
   statisticText: string;
-  icon: CardIconSelect;
+  iconPath: string;
 }
 
 export interface TestimonialCardProps {
@@ -87,16 +83,23 @@ const CardContainer = styled.div`
 
 const IconContainer = styled.div`
   width: 87px;
+  height: 87px;
   top: 32px;
   left: 32px;
   position: absolute;
+  background-size: cover;
+
+  background-image: ${(props) =>
+    'url({0})'.replace('{0}', props.backgroundImage)};
 
   @media screen and (${query.atLeast('tablet')}) {
     width: 56px;
+    height: 56px;
   }
 
   @media screen and (${query.atLeast('desktop')}) {
     width: 108px;
+    height: 108px;
     top: 46px;
     left: 46px;
   }
@@ -164,6 +167,7 @@ const PatientPhoto = styled.div`
   width: 40px;
   height: 40px;
   display: none;
+  background-size: cover;
 
   background-image: ${(props) =>
     'url({0})'.replace('{0}', props.backgroundImage)};
@@ -214,13 +218,11 @@ export const StatCard = ({
   backgroundColor,
   baselineText,
   statisticText,
-  icon,
+  iconPath,
 }: StatCardProps): JSX.Element => {
   return (
     <CardContainer backgroundColor={backgroundColor} color={'#fff'}>
-      <IconContainer>
-        <PuzzlePerson />
-      </IconContainer>
+      <IconContainer backgroundImage={iconPath}></IconContainer>
       <BaselineContainer>
         <StatisticText>{statisticText}</StatisticText>
         <BaselineText>{baselineText}</BaselineText>

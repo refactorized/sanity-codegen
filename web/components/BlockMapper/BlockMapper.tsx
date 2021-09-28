@@ -5,7 +5,7 @@ import {PageSection} from '@data/types';
 // mapping functions
 import {_map as mapProseBlock} from '@components/ProseBlock/';
 import mapAdmissionsCalloutBlock from '@components/AdmissionsCalloutComponent/_map';
-import mapCarouselBlock from '@components/OutcomesCarousel/_map';
+import mapOutcomesCarouselBlock from '@components/OutcomesCarousel/_map';
 import mapFlexCollarBlock from '@components/FlexCollarComponent/_map';
 import mapHeroBlock from '@components/Hero/_map';
 import mapIntroBlock from '@components/IntroBlockComponent/_map';
@@ -16,7 +16,7 @@ import mapCalloutBandBlock from '@components/CalloutBandComponent/_map';
 
 // section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
-import CarouselBlockData from '@data/blocks/CarouselBlockData';
+import OutcomesCarouselBlockData from '@data/blocks/OutcomesCarouselBlockData';
 import FlexCollarBlockData from '@data/blocks/FlexCollarBlockData';
 import IntroBlockData from '@data/blocks/IntroBlockData';
 import HeroBlockData from '@data/blocks/HomepageHeroData';
@@ -39,8 +39,8 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     if (block._type === 'admissionsCallout') {
       return mapAdmissionsCalloutBlock(block as AdmissionsCalloutBlockData);
     }
-    if (block._type === 'carousel') {
-      return mapCarouselBlock(block as CarouselBlockData);
+    if (block._type === 'outcomesCarousel') {
+      return mapOutcomesCarouselBlock(block as OutcomesCarouselBlockData);
     }
     if (block._type === 'flexCollar') {
       return mapFlexCollarBlock(block as FlexCollarBlockData);

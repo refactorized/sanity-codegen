@@ -6,8 +6,9 @@ const _map = (block: CalloutBandBlockData) => {
     header: block.header,
     description: block.description,
     btnText: block.btnText,
-    btnUrl: block.btnUrl.slug ? block.btnUrl.slug.current : block.btnUrl.url,
-    //come back and update first option to block.btnUrl.slug.current
+    btnUrl: block.btnUrl.slug
+      ? block.btnUrl?.slug?.current
+      : block.btnUrl?.url || '',
   };
   return <CalloutBand key={block._key} {...props} />;
 };
