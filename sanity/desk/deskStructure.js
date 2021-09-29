@@ -1,4 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
+import {IoLibraryOutline,IoNewspaperOutline,IoPersonCircleOutline,IoSettingsOutline,IoCalendarOutline,IoPeopleCircleSharp,IoPricetagsOutline,IoFilterCircleOutline} from 'react-icons/io5'
 
 export default () =>
 
@@ -10,9 +11,11 @@ export default () =>
                 .child(
                     S.list()
                         .title('News')
+                        .icon(IoNewspaperOutline)
                         .items([
                             S.listItem()
                                 .title('News Posts')
+                                .icon(IoNewspaperOutline)
                                 .child(
                                     S.document()
                                         .schemaType('news')
@@ -20,6 +23,7 @@ export default () =>
                                 ),
                                 S.listItem()
                                 .title('Post Types')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('postType')
@@ -29,12 +33,15 @@ export default () =>
                 ),
             S.listItem()
                 .title('Resources')
+                .icon(IoLibraryOutline)
                 .child(
                     S.list()
                         .title('Resources')
+                        .icon(IoLibraryOutline)
                         .items([
                             S.listItem()
                                 .title('Resources')
+                                .icon(IoLibraryOutline)
                                 .child(
                                     S.document()
                                         .schemaType('resource')
@@ -42,6 +49,7 @@ export default () =>
                                 ),
                                 S.listItem()
                                 .title('Resource Types')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('resourceType')
@@ -51,12 +59,15 @@ export default () =>
                 ),
             S.listItem()
                 .title('Events & Courses')
+                .icon(IoCalendarOutline)
                 .child(
                     S.list()
                         .title('Events & Courses')
+                        .icon(IoCalendarOutline)
                         .items([
                             S.listItem()
                                 .title('Events')
+                                .icon(IoCalendarOutline)
                                 .child(
                                     S.document()
                                         .schemaType('event')
@@ -64,6 +75,7 @@ export default () =>
                                 ),
                                 S.listItem()
                                 .title('Event Categories')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('eventCategory')
@@ -71,6 +83,7 @@ export default () =>
                                 ),
                             S.listItem()
                                 .title('Event Series')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('eventSeries')
@@ -83,9 +96,11 @@ export default () =>
                 .child(
                     S.list()
                         .title('Organization Settings')
+                        .icon(IoPersonCircleOutline)
                         .items([
                             S.listItem()
                                 .title('Staff')
+                                .icon(IoPersonCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('staff')
@@ -93,6 +108,7 @@ export default () =>
                                 ),
                                 S.listItem()
                                 .title('Department')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('department')
@@ -100,6 +116,7 @@ export default () =>
                                 ),
                             S.listItem()
                                 .title('Teams')
+                                .icon(IoFilterCircleOutline)
                                 .child(
                                     S.document()
                                         .schemaType('departmentTeam')
@@ -107,6 +124,7 @@ export default () =>
                                 ),
                             S.listItem()
                                 .title('External Contributors')
+                                .icon(IoPeopleCircleSharp)
                                 .child(
                                     S.document()
                                         .schemaType('externalContributor')
@@ -117,6 +135,7 @@ export default () =>
             S.divider(),
             S.listItem()
                 .title('Taxonomy')
+                .icon(IoPricetagsOutline)
                 .child(
                     S.document()
                         .schemaType('category')
@@ -125,10 +144,11 @@ export default () =>
             S.divider(),
             S.listItem()
                 .title('Site Settings')
+                .icon(IoSettingsOutline)
                 .child(
                     S.document()
                         .schemaType('siteConfig')
                         .documentId('ID_SITE_CONFIG')
                 ),
-                ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','team','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
+                ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','departmentTeam','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
         ])
