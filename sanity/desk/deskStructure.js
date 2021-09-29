@@ -1,11 +1,19 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {IoLibraryOutline,IoNewspaperOutline,IoPersonCircleOutline,IoSettingsOutline,IoCalendarOutline,IoPeopleCircleSharp,IoPricetagsOutline,IoFilterCircleOutline} from 'react-icons/io5'
+import {IoDocumentsOutline,IoLibraryOutline,IoNewspaperOutline,IoPersonCircleOutline,IoSettingsOutline,IoCalendarOutline,IoPeopleCircleSharp,IoPricetagsOutline,IoFilterCircleOutline} from 'react-icons/io5'
 
 export default () =>
 
     S.list()
         .title('Content Hub')
         .items([
+            S.listItem()
+                .title('Pages')
+                .icon(IoDocumentsOutline)
+                .child(
+                    S.document()
+                        .schemaType('page')
+                        .documentId('page')
+                ),
             S.listItem()
                 .title('News')
                 .child(
@@ -150,5 +158,5 @@ export default () =>
                         .schemaType('siteConfig')
                         .documentId('ID_SITE_CONFIG')
                 ),
-                ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','departmentTeam','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
+                ...S.documentTypeListItems().filter(listItem => !['page','news','postType','resource','resourceType','category','siteConfig','staff','department','departmentTeam','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
         ])
