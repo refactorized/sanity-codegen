@@ -1,7 +1,10 @@
+import {IoPersonCircleOutline} from 'react-icons/io5'
+
 export default {
   name: 'staff',
   title: 'Staff',
   type: 'document',
+  icon: IoPersonCircleOutline,
   fieldsets: [
     {
       name: 'nameAndCredentials', 
@@ -29,7 +32,6 @@ export default {
     {
       name: 'firstName',
       title: 'First Name',
-      description: 'Can also hold the middle initial',
       type: 'string',
       fieldset: 'nameAndCredentials',
       validation: Rule => Rule.required().error('Staff member must have a first name')
@@ -44,7 +46,6 @@ export default {
     {
       name: 'credentials',
       title: 'Academic Credentials',
-      description: 'e.g. PhD, PsyD, MD, etc.',
       fieldset: 'nameAndCredentials',
       type: 'string',
     },

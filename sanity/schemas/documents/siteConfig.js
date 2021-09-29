@@ -1,3 +1,6 @@
+import {IoSettingsOutline} from 'react-icons/io5'
+
+
 const inFieldset = (name, fields) => {
   return fields.map((field) => ({...field, fieldset: name}));
 };
@@ -6,6 +9,7 @@ export default {
   name: 'siteConfig',
   type: 'document',
   title: 'Site Config',
+  icon: IoSettingsOutline,
   fieldsets: [{name: 'general', title: 'General Sitewide Information'}],
   fields: [
     ...inFieldset('general', [

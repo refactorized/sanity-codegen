@@ -1,7 +1,10 @@
+import {IoFilterCircleOutline} from 'react-icons/io5'
+
 export default {
   name: 'resourceType',
   title: 'Resource Type',
   type: 'document',
+  icon: IoFilterCircleOutline,
   fields: [
     {
       name: 'title',

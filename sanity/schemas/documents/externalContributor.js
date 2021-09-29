@@ -1,7 +1,10 @@
+import {IoPeopleCircleSharp} from 'react-icons/io5'
+
 export default {
   name: 'externalContributor',
   title: 'External Contributor',
   type: 'document',
+  icon: IoPeopleCircleSharp,
   fieldsets: [
     {
       name: 'contributorNames',

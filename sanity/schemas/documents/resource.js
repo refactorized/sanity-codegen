@@ -1,7 +1,10 @@
+import {IoLibraryOutline} from 'react-icons/io5'
+
 export default {
   name: 'resource',
   title: 'Resource',
   type: 'document',
+  icon: IoLibraryOutline,
   validation: Rule => Rule.custom(fields => {
     if (typeof(fields.associatedStaff) == 'undefined' && typeof(fields.externalContributors) == 'undefined') return "You must have either a staff member or external contributor."
     return true

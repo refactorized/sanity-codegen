@@ -1,9 +1,12 @@
+import {IoCalendarOutline} from 'react-icons/io5'
+
 import blockContent from "./blockContent";
 
 export default {
   name: 'event',
   title: 'Event',
   type: 'document',
+  icon: IoCalendarOutline,
   fieldsets: [
     {
       name: 'eventDates',

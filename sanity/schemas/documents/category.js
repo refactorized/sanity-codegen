@@ -1,7 +1,10 @@
+import {IoPricetagsOutline} from 'react-icons/io5'
+
 export default {
   name: 'category',
   title: 'Category',
   type: 'document',
+  icon: IoPricetagsOutline,
   fields: [
     {
       name: 'title',
