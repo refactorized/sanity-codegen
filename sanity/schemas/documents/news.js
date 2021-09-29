@@ -1,7 +1,10 @@
+import {IoNewspaperOutline} from 'react-icons/io5'
+
 export default {
   name: 'news',
   title: 'News',
   type: 'document',
+  icon: IoNewspaperOutline,
   fields: [
     {
       name: 'title',

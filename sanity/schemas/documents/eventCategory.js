@@ -1,7 +1,10 @@
+import {IoFilterCircleOutline} from 'react-icons/io5'
+
 export default {
   name: 'eventCategory',
   title: 'Event Category',
   type: 'document',
+  icon: IoFilterCircleOutline,
   fields: [
     {
       name: 'name',
