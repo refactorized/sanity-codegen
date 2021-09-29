@@ -5,7 +5,6 @@ export default () =>
     S.list()
         .title('Content Hub')
         .items([
-            ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','team','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
             S.listItem()
                 .title('News')
                 .child(
@@ -103,15 +102,15 @@ export default () =>
                                 .title('Teams')
                                 .child(
                                     S.document()
-                                        .schemaType('team')
-                                        .documentId('team')
+                                        .schemaType('departmentTeam')
+                                        .documentId('departmentTeam')
                                 ),
                             S.listItem()
                                 .title('External Contributors')
                                 .child(
                                     S.document()
-                                        .schemaType('externalContributors')
-                                        .documentId('externalContributors')
+                                        .schemaType('externalContributor')
+                                        .documentId('externalContributor')
                                 ),
                         ])
                 ),
@@ -129,6 +128,7 @@ export default () =>
                 .child(
                     S.document()
                         .schemaType('siteConfig')
-                        .documentId('siteConfig')
-                )
+                        .documentId('ID_SITE_CONFIG')
+                ),
+                ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','team','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
         ])
