@@ -9,12 +9,8 @@ export default () =>
             S.listItem()
                 .title('Pages')
                 .icon(IoDocumentsOutline)
-                .child(
-                    S.document()
-                        .schemaType('page')
-                        .documentId('page')
-                ),
-            S.listItem()
+                .child(S.documentTypeList('page').title('page')),
+                S.listItem()
                 .title('News')
                 .icon(IoNewspaperOutline)
                 .child(
@@ -24,19 +20,11 @@ export default () =>
                             S.listItem()
                                 .title('News Posts')
                                 .icon(IoNewspaperOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('news')
-                                        .documentId('news')
-                                ),
+                                .child(S.documentTypeList('news').title('News Posts')),
                                 S.listItem()
                                 .title('Post Types')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('postType')
-                                        .documentId('postType')
-                                ),
+                                .child(S.documentTypeList('postType').title('Post Types')),
                         ])
                 ),
             S.listItem()
@@ -49,19 +37,11 @@ export default () =>
                             S.listItem()
                                 .title('Resources')
                                 .icon(IoLibraryOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('resource')
-                                        .documentId('resource')
-                                ),
+                                .child(S.documentTypeList('resource').title('Resources')),
                             S.listItem()
                                 .title('Resource Types')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('resourceType')
-                                        .documentId('resourceType')
-                                ),
+                                .child(S.documentTypeList('resourceType').title('Resource Types')),
                         ])
                 ),
             S.listItem()
@@ -74,27 +54,15 @@ export default () =>
                             S.listItem()
                                 .title('Events')
                                 .icon(IoCalendarOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('event')
-                                        .documentId('event')
-                                ),
+                                .child(S.documentTypeList('event').title('Events')),
                             S.listItem()
                                 .title('Event Categories')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('eventCategory')
-                                        .documentId('eventCategory')
-                                ),
+                                .child(S.documentTypeList('eventCategory').title('Event Categories')),
                             S.listItem()
                                 .title('Event Series')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('eventSeries')
-                                        .documentId('eventSeries')
-                                ),
+                                .child(S.documentTypeList('eventSeries').title('Event Series')),
                         ])
                 ),
             S.listItem()
@@ -107,52 +75,32 @@ export default () =>
                             S.listItem()
                                 .title('Staff')
                                 .icon(IoPersonCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('staff')
-                                        .documentId('staff')
-                                ),
+                                .child(S.documentTypeList('staff').title('Staff')),
                             S.listItem()
                                 .title('Department')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('department')
-                                        .documentId('department')
-                                ),
+                                .child(S.documentTypeList('department').title('Departments')),
                             S.listItem()
                                 .title('Teams')
                                 .icon(IoFilterCircleOutline)
-                                .child(
-                                    S.document()
-                                        .schemaType('departmentTeam')
-                                        .documentId('departmentTeam')
-                                ),
+                                .child(S.documentTypeList('departmentTeams').title('Teams')),
                             S.listItem()
                                 .title('External Contributors')
                                 .icon(IoPeopleCircleSharp)
-                                .child(
-                                    S.document()
-                                        .schemaType('externalContributor')
-                                        .documentId('externalContributor')
-                                ),
+                                .child(S.documentTypeList('externalContributor').title('External Contributors')),
                         ])
                 ),
             S.divider(),
             S.listItem()
                 .title('Taxonomy')
                 .icon(IoPricetagsOutline)
-                .child(
-                    S.document()
-                        .schemaType('category')
-                        .documentId('category')
-                ),
+                .child(S.documentTypeList('category').title('Taxonomy')),
             S.divider(),
             S.listItem()
                 .title('Site Settings')
                 .icon(IoSettingsOutline)
                 .child(
-                    S.document()
+                    S.documentList()
                         .schemaType('siteConfig')
                         .documentId('ID_SITE_CONFIG')
                 ),
