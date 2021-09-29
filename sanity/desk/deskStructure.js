@@ -83,7 +83,7 @@ export default () =>
                             S.listItem()
                                 .title('Teams')
                                 .icon(IoFilterCircleOutline)
-                                .child(S.documentTypeList('departmentTeams').title('Teams')),
+                                .child(S.documentTypeList('departmentTeam').title('Teams')),
                             S.listItem()
                                 .title('External Contributors')
                                 .icon(IoPeopleCircleSharp)
