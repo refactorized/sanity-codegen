@@ -5,7 +5,7 @@ export default () =>
     S.list()
         .title('Content Hub')
         .items([
-            S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','team','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
+            ...S.documentTypeListItems().filter(listItem => !['news','postType','resource','resourceType','category','siteConfig','staff','department','team','externalContributor','event','eventCategory','eventSeries'].includes(listItem.getId())),
             S.listItem()
                 .title('News')
                 .child(
