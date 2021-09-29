@@ -19,7 +19,6 @@ export default () =>
                 .child(
                     S.list()
                         .title('News')
-                        .icon(IoNewspaperOutline)
                         .items([
                             S.listItem()
                                 .title('News Posts')
@@ -41,11 +40,9 @@ export default () =>
                 ),
             S.listItem()
                 .title('Resources')
-                .icon(IoLibraryOutline)
                 .child(
                     S.list()
                         .title('Resources')
-                        .icon(IoLibraryOutline)
                         .items([
                             S.listItem()
                                 .title('Resources')
@@ -55,7 +52,7 @@ export default () =>
                                         .schemaType('resource')
                                         .documentId('resource')
                                 ),
-                                S.listItem()
+                            S.listItem()
                                 .title('Resource Types')
                                 .icon(IoFilterCircleOutline)
                                 .child(
@@ -71,7 +68,6 @@ export default () =>
                 .child(
                     S.list()
                         .title('Events & Courses')
-                        .icon(IoCalendarOutline)
                         .items([
                             S.listItem()
                                 .title('Events')
@@ -81,7 +77,7 @@ export default () =>
                                         .schemaType('event')
                                         .documentId('event')
                                 ),
-                                S.listItem()
+                            S.listItem()
                                 .title('Event Categories')
                                 .icon(IoFilterCircleOutline)
                                 .child(
@@ -104,7 +100,6 @@ export default () =>
                 .child(
                     S.list()
                         .title('Organization Settings')
-                        .icon(IoPersonCircleOutline)
                         .items([
                             S.listItem()
                                 .title('Staff')
@@ -114,7 +109,7 @@ export default () =>
                                         .schemaType('staff')
                                         .documentId('staff')
                                 ),
-                                S.listItem()
+                            S.listItem()
                                 .title('Department')
                                 .icon(IoFilterCircleOutline)
                                 .child(
