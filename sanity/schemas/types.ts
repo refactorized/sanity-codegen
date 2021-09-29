@@ -799,6 +799,69 @@ export type AdmissionsCallout = {
    *
    */
   blockType?: string;
+
+  /**
+   * Admissions Callout Contact Header — `string`
+   *
+   *
+   */
+  contactHeader?: string;
+
+  /**
+   * Admissions Callout Contact Description — `string`
+   *
+   *
+   */
+  contactDescription?: string;
+
+  /**
+   * Admissions Callout Header — `string`
+   *
+   *
+   */
+  admissionHeader?: string;
+
+  /**
+   * Admissions Callout Description — `string`
+   *
+   *
+   */
+  admissionDescription?: string;
+
+  /**
+   * Admissions Callout Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Admissions Callout Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Admissions Callout Boxless Button Text — `string`
+   *
+   *
+   */
+  boxlessbtnText?: string;
+
+  /**
+   * Admissions Callout Boxless Button Url — `link`
+   *
+   *
+   */
+  boxlessbtnUrl?: Link;
+
+  /**
+   * Admissions Callout Phone Number — `string`
+   *
+   *
+   */
+  phoneNumber?: string;
 };
 
 export type Carousel = {

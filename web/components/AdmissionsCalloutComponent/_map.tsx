@@ -1,24 +1,22 @@
-import {AdmissionsCallout} from '.';
+import {AdmissionsCallout, AdmissionsCalloutProps} from '.';
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
 
-// TODO: rearrange data into single var
-const props = {
-  contactHeader: `Speak with Admissions`,
-  contactDescription: `From first contact to admissions consultation, follow the steps in our admissions process.`,
-  admissionHeader: `Admissions Process`,
-  admissionDescription: `If other treatments haven’t worked, Riggs may be right for you. Unlike
-  at other psychiatric hospitals in Massachusetts or elsewhere, our
-  relational, patient-driven behavioral treatment approach addresses
-  underlying issues, not just symptoms.`,
-  btnText: `Contact Admissions`,
-  btnUrl: `#`,
-  boxlessbtnText: `Learn More About Admissions`,
-  boxlessbtnUrl: `google.com`,
-  phoneNumber: '866-255-1921',
-};
+const _map = (block: AdmissionsCalloutBlockData) => {
+  const props: AdmissionsCalloutProps = {
+    contactHeader: block.contactHeader,
+    contactDescription: block.contactDescription,
+    admissionHeader: block.admissionHeader,
+    admissionDescription: block.admissionDescription,
+    btnText: block.btnText,
+    btnUrl: block.btnUrl.slug ? block.btnUrl.slug.current : block.btnUrl.url,
+    boxlessbtnText: block.boxlessbtnText,
+    boxlessbtnUrl: block.boxlessbtnUrl.slug
+      ? block.boxlessbtnUrl.slug.current
+      : block.boxlessbtnUrl.url,
+    phoneNumber: block.phoneNumber,
+  };
 
-const _map = (block: AdmissionsCalloutBlockData) => (
-  <AdmissionsCallout key={block._key} {...props} />
-);
+  return <AdmissionsCallout key={block._key} {...props} />;
+};
 
 export default _map;
