@@ -16,6 +16,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('News')
+                .icon(IoNewspaperOutline)
                 .child(
                     S.list()
                         .title('News')
@@ -40,6 +41,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('Resources')
+                .icon(IoLibraryOutline)
                 .child(
                     S.list()
                         .title('Resources')
@@ -97,6 +99,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('Organization Info')
+                .icon(IoPersonCircleOutline)
                 .child(
                     S.list()
                         .title('Organization Settings')
