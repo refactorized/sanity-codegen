@@ -26,7 +26,7 @@ import carousel from './sections/carousel';
 import outcomesCarousel, {testimonialCard, statCard} from './sections/outcomesCarousel';
 import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
-import linkMenu from './sections/linkMenu';
+import linkMenu, {linkMenuLink} from './sections/linkMenu';
 import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
@@ -76,6 +76,7 @@ export default createSchema({
     flexCollar,
     flexCollarCard,
     introBlock,
+    linkMenuLink,
     linkMenu,
     pageInfo,
     pageLink,

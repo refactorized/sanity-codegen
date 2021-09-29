@@ -942,6 +942,23 @@ export type IntroBlock = {
   buttonLink?: { _type: "buttonLink"; current: string };
 };
 
+export type LinkMenuLink = {
+  _type: "linkMenuLink";
+  /**
+   * Link Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Link Url — `link`
+   *
+   *
+   */
+  url: Link;
+};
+
 export type LinkMenu = {
   _type: "linkMenu";
   /**
@@ -950,6 +967,53 @@ export type LinkMenu = {
    *
    */
   blockType?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  imgUrl?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Link Menu Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Link Menu Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Link Menu Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Link Menu Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Link Menu Link List — `array`
+   *
+   *
+   */
+  links?: Array<SanityKeyed<LinkMenuLink>>;
 };
 
 export type PageInfo = { _type: "pageInfo"; _ref: string };

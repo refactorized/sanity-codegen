@@ -24,5 +24,5 @@ DefaultSetup.args = {
   description: siteConfig.copy,
   btnText: siteConfig.cta.title,
   btnUrl: siteConfig.cta.slug.current,
-  linkConfig: siteConfig.linkConfig,
+  links: siteConfig.links,
 };

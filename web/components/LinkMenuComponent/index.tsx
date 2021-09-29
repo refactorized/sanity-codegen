@@ -14,21 +14,19 @@ import {Button} from '@components/Button/index';
 import {CircleArrow} from '@components/Arrow/index';
 import Block from '@components/Layout/Block';
 
-interface MenuLink {
+interface linkMenuLink {
   title: string;
-  slug: {current: string};
+  url: string;
   _key: string;
 }
-interface LinkConfig {
-  links: MenuLink[];
-}
+
 export interface LinkMenuComponentProps {
   imgUrl?: string;
   header: string;
   description: string;
   btnText?: string;
   btnUrl?: string;
-  linkConfig: LinkConfig;
+  links: linkMenuLink[];
 }
 
 export const LinkMenuComponent = ({
@@ -37,7 +35,7 @@ export const LinkMenuComponent = ({
   description,
   btnText,
   btnUrl,
-  linkConfig,
+  links,
 }: LinkMenuComponentProps): JSX.Element => {
   return (
     <Block>
@@ -81,7 +79,7 @@ export const LinkMenuComponent = ({
               display={['block', null, null, 'inline-block']}
               m="20px 0px 40px"
             >
-              {linkConfig.links.map((x) => (
+              {links.map((x) => (
                 <StyledLink
                   width={['inherit', null, null, '332px']}
                   max-width={['390px', null, null, 'inherit']}
@@ -94,7 +92,7 @@ export const LinkMenuComponent = ({
                   boxShadow="0px 8px 11px rgba(0, 0, 0, 0.1)"
                   borderRadius="4px"
                   mb="20px"
-                  href={x.slug.current}
+                  href={x.url}
                   key={x._key}
                 >
                   <StyledHeadline

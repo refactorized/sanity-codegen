@@ -1,5 +1,6 @@
-import {PageSection} from '@data/types';
+import type {LinkMenu, SanityKeyed} from '@schema/types';
+import type {ResolvedSanityReferences} from '@data/types';
 
-export default interface LinkMenuBlockData extends PageSection {
-  blockType: 'linkMenu';
-}
+type LinkMenuBlockData = SanityKeyed<ResolvedSanityReferences<LinkMenu>>;
+
+export default LinkMenuBlockData;
