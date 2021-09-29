@@ -100,7 +100,7 @@ export default () =>
                 .title('Site Settings')
                 .icon(IoSettingsOutline)
                 .child(
-                    S.documentList()
+                    S.document()
                         .schemaType('siteConfig')
                         .documentId('ID_SITE_CONFIG')
                 ),
