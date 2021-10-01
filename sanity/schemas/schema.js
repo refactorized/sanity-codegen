@@ -23,7 +23,10 @@ import staff from './documents/staff';
 import admissionsCallout from './sections/admissionsCallout';
 import announcementBar from './sections/announcementBar';
 import carousel from './sections/carousel';
-import outcomesCarousel, {testimonialCard, statCard} from './sections/outcomesCarousel';
+import outcomesCarousel, {
+  testimonialCard,
+  statCard,
+} from './sections/outcomesCarousel';
 import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
 import linkMenu, {linkMenuLink} from './sections/linkMenu';
@@ -31,6 +34,7 @@ import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
 import calloutBand from './sections/calloutBand';
+import drawerCombo, {drawerComboDrawer} from './sections/drawerCombo';
 import interiorHero from './sections/interiorHero';
 
 // objects
@@ -86,6 +90,8 @@ export default createSchema({
     heroBlock,
     heroCard,
     calloutBand,
+    drawerCombo,
+    drawerComboDrawer,
     // objects
     basicText,
     footerConfig,

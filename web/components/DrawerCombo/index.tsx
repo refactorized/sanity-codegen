@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import {Component, useRef} from 'react';
 import React, {useState} from 'react';
 import {query} from '../../themes/fn';
-import {Button, ButtonProps} from '../Button/index';
+import {Button} from '../Button/index';
 import {CircleArrow} from '@components/Arrow';
 
+export interface CtaProps {
+  url: string;
+  label: string;
+}
 export interface DrawerProps {
-  icon: string;
+  icon?: string;
   title: string;
   details: string;
 }
@@ -14,7 +18,7 @@ export interface DrawerProps {
 export interface DrawerComboProps {
   title: string;
   copy: string;
-  cta: ButtonProps;
+  cta: CtaProps;
   drawers: DrawerProps[];
 }
 
@@ -157,7 +161,13 @@ const DrawerCombo = ({title, copy, cta, drawers}: DrawerComboProps) => {
           <ComboTextCopy>{copy}</ComboTextCopy>
         </ComboText>
         <ComboCTA>
-          <Button {...cta} arrowColor={'white'} />
+          <Button
+            {...cta}
+            arrowColor={'white'}
+            arrow={true}
+            variant={'solid'}
+            size={'medium'}
+          />
         </ComboCTA>
       </DrawerContent>
       <Drawers>

@@ -433,6 +433,8 @@ export interface Page extends SanityDocument {
     | SanityKeyed<TextAndImageBlock>
     | SanityKeyed<HeroBlock>
     | SanityKeyed<CalloutBand>
+    | SanityKeyed<DrawerCombo>
+    | SanityKeyed<InteriorHero>
   >;
 }
 
@@ -691,7 +693,7 @@ export interface Staff extends SanityDocument {
   /**
    * First Name — `string`
    *
-   * Can also hold the middle initial
+   *
    */
   firstName?: string;
 
@@ -705,7 +707,7 @@ export interface Staff extends SanityDocument {
   /**
    * Academic Credentials — `string`
    *
-   * e.g. PhD, PsyD, MD, etc.
+   *
    */
   credentials?: string;
 
@@ -1230,6 +1232,80 @@ export type CalloutBand = {
    *
    */
   btnUrl?: Link;
+};
+
+export type DrawerCombo = {
+  _type: "drawerCombo";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Drawer Combo Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Drawer Combo Copy — `string`
+   *
+   *
+   */
+  copy?: string;
+
+  /**
+   * Drawer Combo Url — `link`
+   *
+   *
+   */
+  url?: Link;
+
+  /**
+   * Drawer Combo Label — `string`
+   *
+   *
+   */
+  label?: string;
+
+  /**
+   * Drawer Combo Drawer List — `array`
+   *
+   *
+   */
+  drawers?: Array<SanityKeyed<DrawerComboDrawer>>;
+};
+
+export type DrawerComboDrawer = {
+  _type: "drawerComboDrawer";
+  /**
+   * Drawer Combo Icon — `image`
+   *
+   * Icon is Optional
+   */
+  icon?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Drawer Combo Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Drawer Combo details — `string`
+   *
+   *
+   */
+  details: string;
 };
 
 export type BasicText = Array<SanityKeyed<SanityBlock>>;

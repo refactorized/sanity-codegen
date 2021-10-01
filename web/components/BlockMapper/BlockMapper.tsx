@@ -13,6 +13,7 @@ import mapLinkMenuBlock from '@components/LinkMenuComponent/_map';
 import mapPreFooterBlock from '@components/PreFooterBlock/_map';
 import mapTextAndImageBlock from '@components/TextAndImageBlock/_map';
 import mapCalloutBandBlock from '@components/CalloutBandComponent/_map';
+import mapDrawerCombo from '@components/DrawerCombo/_maps';
 import mapInteriorHeroBlock from '@components/InteriorHero/_map';
 
 // section types
@@ -26,6 +27,7 @@ import PreFooterBlockData from '@data/blocks/PreFooterBlockData';
 import ProseBlockData from '@data/blocks/ProseBlockData';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
 import CalloutBandBlockData from '@data/blocks/CalloutBandBlockData';
+import DrawerComboBlockData from '@data/blocks/DrawerComboBlockData';
 import InteriorHeroBlockData from '@data/blocks/InteriorHeroData';
 
 const MapComponents = ({blocks}: {blocks: any[]}) => {
@@ -71,6 +73,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'calloutBand') {
       return mapCalloutBandBlock(block as CalloutBandBlockData);
+    }
+    if (block._type === 'drawerCombo') {
+      return mapDrawerCombo(block as DrawerComboBlockData);
     }
     if (block._type === 'interiorHero') {
       return mapInteriorHeroBlock(block as InteriorHeroBlockData);
