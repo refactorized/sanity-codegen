@@ -13,7 +13,7 @@ import Block from '@components/Layout/Block';
 export interface InteriorHeroProps {
   header: string;
   caption: string;
-  headerPadding: boolean;
+  headerPadding?: boolean;
   imgUrls?: {
     desktop: string;
     mobile: string;

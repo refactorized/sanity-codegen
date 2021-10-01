@@ -13,6 +13,7 @@ import mapLinkMenuBlock from '@components/LinkMenuComponent/_map';
 import mapPreFooterBlock from '@components/PreFooterBlock/_map';
 import mapTextAndImageBlock from '@components/TextAndImageBlock/_map';
 import mapCalloutBandBlock from '@components/CalloutBandComponent/_map';
+import mapInteriorHeroBlock from '@components/InteriorHero/_map';
 
 // section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
@@ -25,6 +26,7 @@ import PreFooterBlockData from '@data/blocks/PreFooterBlockData';
 import ProseBlockData from '@data/blocks/ProseBlockData';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
 import CalloutBandBlockData from '@data/blocks/CalloutBandBlockData';
+import InteriorHeroBlockData from '@data/blocks/InteriorHeroData';
 
 const MapComponents = ({blocks}: {blocks: any[]}) => {
   if (!blocks?.length) {
@@ -69,6 +71,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'calloutBand') {
       return mapCalloutBandBlock(block as CalloutBandBlockData);
+    }
+    if (block._type === 'interiorHero') {
+      return mapInteriorHeroBlock(block as InteriorHeroBlockData);
     }
     return <div>{`unknown block type: ${(block as PageSection)._type}`}</div>;
   });

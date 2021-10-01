@@ -31,6 +31,7 @@ import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
 import calloutBand from './sections/calloutBand';
+import interiorHero from './sections/interiorHero';
 
 // objects
 import basicText from './objects/basicText';
@@ -91,6 +92,7 @@ export default createSchema({
     footerLink,
     link,
     placeholder,
+    interiorHero,
     prose,
     testimonialCard,
     statCard,

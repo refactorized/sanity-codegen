@@ -30,6 +30,7 @@ export default {
         {type: 'textAndImageBlock'},
         {type: 'heroBlock'},
         {type: 'calloutBand'},
+        {type: 'interiorHero'},
       ],
     },
   ],

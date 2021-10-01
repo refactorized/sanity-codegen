@@ -1323,6 +1323,61 @@ export type Placeholder = {
   text?: string;
 };
 
+export type InteriorHero = {
+  _type: "interiorHero";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Interior Hero Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Interior Hero Caption — `string`
+   *
+   *
+   */
+  caption?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  desktopImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Mobile Image — `image`
+   *
+   * Optional alternate image to use for smaller(mobile) layouts
+   */
+  mobileImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Interior Hero Video Source — `link`
+   *
+   *
+   */
+  videoSrc?: Link;
+};
+
 export type Prose = {
   _type: "prose";
   /**
