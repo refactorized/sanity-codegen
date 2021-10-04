@@ -18,5 +18,9 @@ const Template = (args) => (
 export const DefaultBlock = Template.bind({});
 DefaultBlock.args = {
   linksList: siteConfig.links,
-  setCategory: null,
+  setCategory: function (selected) {
+    // Here in the demo, we are logging the selected value to the console.
+    // In practice, you would attach this callback to page state or another component to process.
+    console.log(selected);
+  },
 };
