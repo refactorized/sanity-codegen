@@ -1,4 +1,4 @@
-import {IoNewspaperOutline} from 'react-icons/io5'
+import {IoNewspaperOutline} from 'react-icons/io5';
 
 export default {
   name: 'news',
@@ -9,9 +9,11 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      description: 'Headline for the post, this will also appear as the page title and SEO title within search results.',
+      description:
+        'Headline for the post, this will also appear as the page title and SEO title within search results.',
       type: 'string',
-      validation: Rule => Rule.required().error('Post must have a title')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Post must have a title'),
     },
     {
       name: 'slug',
@@ -29,20 +31,25 @@ export default {
       type: 'reference',
       description: 'Please add an author to the post',
       to: {type: 'staff'},
-      validation: Rule => Rule.required().error('Post must have an author')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Post must have an author'),
     },
     {
       name: 'shortDescription',
       title: 'Short Description',
-      description: 'The short description is used in the SEO page description as well as at the top of the post.',
+      description:
+        'The short description is used in the SEO page description as well as at the top of the post.',
       type: 'blockContent',
-      validation: Rule => Rule.required().error('Post must have a short description')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Post must have a short description'),
     },
     {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
-      description: '(optional) This appears between the resource metadata and body text',
+      description:
+        '(optional) This appears between the resource metadata and body text',
       options: {
         hotspot: true,
       },
@@ -64,40 +71,40 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      description: 'This date is used in sorting, and should reflect the date the post was originally published',
+      description:
+        'This date is used in sorting, and should reflect the date the post was originally published',
       type: 'datetime',
       options: {
         dateFormat: 'MM/DD/YYYY',
         timeFormat: 'hh:mm a',
-        calendarTodayLabel: 'Today'
+        calendarTodayLabel: 'Today',
       },
-      validation: Rule => Rule.required().error('Post must have a publication date')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Post must have a publication date'),
     },
     {
       name: 'body',
       title: 'Body',
       description: 'This is the main body of the post',
       type: 'blockContent',
-      validation: Rule => Rule.required().error('Post must have a body')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Post must have a body'),
     },
   ],
   orderings: [
     {
       title: 'Published At, (Chronological)',
       name: 'publishedAd',
-      by: [
-        {field: 'publishedAd', direction: 'asc'}
-      ]
+      by: [{field: 'publishedAd', direction: 'asc'}],
     },
     {
       title: 'Published At, (Reverse Chronological)',
       name: 'publishedAd',
-      by: [
-        {field: 'publishedAd', direction: 'desc'}
-      ]
+      by: [{field: 'publishedAd', direction: 'desc'}],
     },
   ],
-  
+
   preview: {
     select: {
       title: 'title',
@@ -105,10 +112,10 @@ export default {
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
+      const {author} = selection;
       return Object.assign({}, selection, {
         subtitle: author && `by ${author}`,
-      })
+      });
     },
   },
-}
+};

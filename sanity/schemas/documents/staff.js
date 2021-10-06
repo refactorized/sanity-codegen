@@ -1,4 +1,4 @@
-import {IoPersonCircleOutline} from 'react-icons/io5'
+import {IoPersonCircleOutline} from 'react-icons/io5';
 
 export default {
   name: 'staff',
@@ -7,24 +7,24 @@ export default {
   icon: IoPersonCircleOutline,
   fieldsets: [
     {
-      name: 'nameAndCredentials', 
-      title: 'Staff Name & Credentials', 
+      name: 'nameAndCredentials',
+      title: 'Staff Name & Credentials',
       options: {
-        columns: 3
+        columns: 3,
       },
     },
     {
       name: 'departmentAndTeam',
       title: 'Department and (optional) Team',
       options: {
-        columns: 2
+        columns: 2,
       },
     },
     {
       name: 'contactInfo',
       title: 'Contact Info',
       options: {
-        columns: 2
+        columns: 2,
       },
     },
   ],
@@ -34,14 +34,18 @@ export default {
       title: 'First Name',
       type: 'string',
       fieldset: 'nameAndCredentials',
-      validation: Rule => Rule.required().error('Staff member must have a first name')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Staff member must have a first name'),
     },
     {
       name: 'lastName',
       title: 'Last Name',
       type: 'string',
       fieldset: 'nameAndCredentials',
-      validation: Rule => Rule.required().error('Staff member must have a last name')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Staff member must have a last name'),
     },
     {
       name: 'credentials',
@@ -54,7 +58,9 @@ export default {
       title: 'Title',
       description: 'e.g. CEO, Medical Director',
       type: 'string',
-      validation: Rule => Rule.required().error('Staff member must have a title')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Staff member must have a title'),
     },
     {
       name: 'departments',
@@ -63,7 +69,9 @@ export default {
       description: 'Please select one or more departments',
       type: 'array',
       of: [{type: 'reference', to: {type: 'department'}}],
-      validation: Rule => Rule.required().error('Staff member must have a department')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Staff member must have a department'),
     },
     {
       name: 'team',
@@ -77,19 +85,24 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
+      description:
+        'Write a custom slug here, or click “Generate” to auto-populate.',
       options: {
-        source: doc => `${doc.firstName} ${doc.lastName} ${typeof(doc.credentials) == "undefined" ? "" : doc.credentials}`
+        source: (doc) =>
+          `${doc.firstName} ${doc.lastName} ${
+            typeof doc.credentials == 'undefined' ? '' : doc.credentials
+          }`,
       },
     },
     {
       name: 'image',
       title: 'Image',
       type: 'image',
-      description: 'If available, this should be a photo of the staff member.  If none is available, a default image will be used',
+      description:
+        'If available, this should be a photo of the staff member.  If none is available, a default image will be used',
       options: {
         hotspot: true,
-      }, 
+      },
     },
     {
       name: 'telephone',
@@ -116,16 +129,12 @@ export default {
     {
       title: 'Last Name, A-Z',
       name: 'lastName',
-      by: [
-        {field: 'lastName', direction: 'asc'}
-      ]
+      by: [{field: 'lastName', direction: 'asc'}],
     },
     {
       title: 'Last Name, Z-A',
       name: 'lastName',
-      by: [
-        {field: 'lastName', direction: 'desc'}
-      ]
+      by: [{field: 'lastName', direction: 'desc'}],
     },
   ],
   preview: {
@@ -134,15 +143,17 @@ export default {
       lastName: 'lastName',
       media: 'image',
       subtitle: 'departments.0.name',
-      credentials: 'credentials'
+      credentials: 'credentials',
     },
     prepare(selection) {
-      const {firstName, lastName, media, subtitle, credentials} = selection
+      const {firstName, lastName, media, subtitle, credentials} = selection;
       return {
-        title: `${lastName}, ${firstName} ${typeof(credentials) == "undefined" ? "" : credentials}`,
-        subtitle, 
-        media
-      }
+        title: `${lastName}, ${firstName} ${
+          typeof credentials == 'undefined' ? '' : credentials
+        }`,
+        subtitle,
+        media,
+      };
     },
   },
-}
+};

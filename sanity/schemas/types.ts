@@ -49,14 +49,14 @@ export interface ExternalContributor extends SanityDocument {
    *
    *
    */
-  firstName?: string;
+  firstName: string;
 
   /**
    * Last Name — `string`
    *
    *
    */
-  lastName?: string;
+  lastName: string;
 
   /**
    * Credentials — `string`
@@ -121,14 +121,14 @@ export interface Department extends SanityDocument {
    *
    * Please enter the name of the department, e.g. "Admissions"
    */
-  name?: string;
+  name: string;
 
   /**
    * Slug — `slug`
    *
    * Write a custom slug here, or click “Generate” to auto-populate.
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 }
 
 /**
@@ -202,28 +202,28 @@ export interface Event extends SanityDocument {
    *
    * Start date and time
    */
-  eventStart?: string;
+  eventStart: string;
 
   /**
    * Event End — `datetime`
    *
    * End date and time
    */
-  eventEnd?: string;
+  eventEnd: string;
 
   /**
    * Event Host — `string`
    *
    * e.g. "Austen Riggs Center" or another hosting organization.
    */
-  host?: string;
+  host: string;
 
   /**
    * Venue — `string`
    *
    * e.g. "Virtual" or "Edward R. Shapiro Community Center"
    */
-  venue?: string;
+  venue: string;
 
   /**
    * Venue Address — `string`
@@ -237,7 +237,7 @@ export interface Event extends SanityDocument {
    *
    * e.g. the URL for the Ethos course, or other registration URL.
    */
-  registrationLink?: string;
+  registrationLink: string;
 
   /**
    * Pricing — `blockContent`
@@ -270,7 +270,7 @@ export interface Event extends SanityDocument {
    *
    * This appears below the event/course title.
    */
-  shortDescription?: BlockContent;
+  shortDescription: BlockContent;
 
   /**
    * Description — `blockContent`
@@ -365,7 +365,7 @@ export interface EventSeries extends SanityDocument {
    *
    * e.g. "Virtual Rounds". Please enter in title case because this is user-facing
    */
-  name?: string;
+  name: string;
 }
 
 /**
@@ -451,7 +451,7 @@ export interface News extends SanityDocument {
    *
    * Headline for the post, this will also appear as the page title and SEO title within search results.
    */
-  title?: string;
+  title: string;
 
   /**
    * Slug — `slug`
@@ -465,14 +465,14 @@ export interface News extends SanityDocument {
    *
    * Please add an author to the post
    */
-  author?: SanityReference<Staff>;
+  author: SanityReference<Staff>;
 
   /**
    * Short Description — `blockContent`
    *
    * The short description is used in the SEO page description as well as at the top of the post.
    */
-  shortDescription?: BlockContent;
+  shortDescription: BlockContent;
 
   /**
    * Main image — `image`
@@ -505,14 +505,14 @@ export interface News extends SanityDocument {
    *
    * This date is used in sorting, and should reflect the date the post was originally published
    */
-  publishedAt?: string;
+  publishedAt: string;
 
   /**
    * Body — `blockContent`
    *
    * This is the main body of the post
    */
-  body?: BlockContent;
+  body: BlockContent;
 }
 
 /**
@@ -544,7 +544,7 @@ export interface Resource extends SanityDocument {
    *
    * The title of the resource, also used as the page title
    */
-  title?: string;
+  title: string;
 
   /**
    * Slug — `slug`
@@ -558,7 +558,7 @@ export interface Resource extends SanityDocument {
    *
    * This appears above the page and will be used in the SEO page description
    */
-  shortDescription?: string;
+  shortDescription: string;
 
   /**
    * Associated Staffmember(s) — `array`
@@ -598,7 +598,7 @@ export interface Resource extends SanityDocument {
    *
    * e.g. Books, Clinical Perspectives, Conference Presentations, etc.
    */
-  type?: Array<SanityKeyedReference<ResourceType>>;
+  type: Array<SanityKeyedReference<ResourceType>>;
 
   /**
    * Published at — `date`
@@ -612,7 +612,7 @@ export interface Resource extends SanityDocument {
    *
    *
    */
-  body?: BlockContent;
+  body: BlockContent;
 }
 
 /**
@@ -628,7 +628,7 @@ export interface ResourceType extends SanityDocument {
    *
    * e.g. Books, Conference Presentations, etc.  Please enter in title case.
    */
-  title?: string;
+  title: string;
 }
 
 /**
@@ -695,14 +695,14 @@ export interface Staff extends SanityDocument {
    *
    *
    */
-  firstName?: string;
+  firstName: string;
 
   /**
    * Last Name — `string`
    *
    *
    */
-  lastName?: string;
+  lastName: string;
 
   /**
    * Academic Credentials — `string`
@@ -716,14 +716,14 @@ export interface Staff extends SanityDocument {
    *
    * e.g. CEO, Medical Director
    */
-  title?: string;
+  title: string;
 
   /**
    * Departments — `array`
    *
    * Please select one or more departments
    */
-  departments?: Array<SanityKeyedReference<Department>>;
+  departments: Array<SanityKeyedReference<Department>>;
 
   /**
    * Team(s) — `array`

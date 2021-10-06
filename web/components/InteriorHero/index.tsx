@@ -18,7 +18,7 @@ export interface InteriorHeroProps {
     desktop: string;
     mobile: string;
   };
-  videoSrc: string;
+  videoSrc?: string;
 }
 
 /*** STYLING ***/
@@ -60,39 +60,6 @@ const Caption = styled.p`
     max-width: 658px;
   }
 `;
-
-// const ImageWrapper = styled.div`
-//   margin-bottom: ${space('xl')};
-
-//   @media (${query.atLeast('tablet')}) {
-//     margin-bottom: ${space('x5')};
-//   }
-
-//   @media (${query.atLeast('desktop')}) {
-//     ${fontSize('xl')};
-//     margin-bottom: ${space('x10')};
-//   }
-// `;
-
-// const ImageMobile = styled(ImageWrapper)`
-//   display: none;
-//   @media (${query.below('tablet')}) {
-//     display: block;
-//   }
-// `;
-
-// const ImageTablet = styled(ImageWrapper)`
-//   display: none;
-//   @media (${query.atLeast('tablet')}) and (${query.below('desktop')}) {
-//     display: block;
-//   }
-// `;
-
-// const ImageDesktop = styled(ImageWrapper)`
-//   @media (${query.atLeast('desktop')}) {
-//     display: block;
-//   }
-// `;
 
 const Video = styled.video`
   width: 100%;

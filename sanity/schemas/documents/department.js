@@ -8,16 +8,21 @@ export default {
       title: 'Name',
       description: 'Please enter the name of the department, e.g. "Admissions"',
       type: 'string',
-      validation: Rule => Rule.required().error('Department must have a name')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Department must have a name'),
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      description: 'Write a custom slug here, or click “Generate” to auto-populate.',
-      validation: Rule => Rule.required().error('Department must have a slug'),
+      description:
+        'Write a custom slug here, or click “Generate” to auto-populate.',
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Department must have a slug'),
       options: {
-        source: 'name'
+        source: 'name',
       },
     },
   ],
@@ -25,16 +30,12 @@ export default {
     {
       title: 'Department Name, A-Z',
       name: 'name',
-      by: [
-        {field: 'name', direction: 'asc'}
-      ]
+      by: [{field: 'name', direction: 'asc'}],
     },
     {
       title: 'Department Name, Z-A',
       name: 'name',
-      by: [
-        {field: 'name', direction: 'desc'}
-      ]
+      by: [{field: 'name', direction: 'desc'}],
     },
   ],
   preview: {
@@ -42,4 +43,4 @@ export default {
       title: 'name',
     },
   },
-}
+};

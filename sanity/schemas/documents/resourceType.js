@@ -1,4 +1,4 @@
-import {IoFilterCircleOutline} from 'react-icons/io5'
+import {IoFilterCircleOutline} from 'react-icons/io5';
 
 export default {
   name: 'resourceType',
@@ -9,25 +9,24 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      description: 'e.g. Books, Conference Presentations, etc.  Please enter in title case.',
+      description:
+        'e.g. Books, Conference Presentations, etc.  Please enter in title case.',
       type: 'string',
-      validation: Rule => Rule.required().error('Resource Type must have a title')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Resource Type must have a title'),
     },
   ],
   orderings: [
     {
       title: 'Title, A-Z',
       name: 'title',
-      by: [
-        {field: 'title', direction: 'asc'}
-      ]
+      by: [{field: 'title', direction: 'asc'}],
     },
     {
       title: 'Title, Z-A',
       name: 'title',
-      by: [
-        {field: 'title', direction: 'desc'}
-      ]
+      by: [{field: 'title', direction: 'desc'}],
     },
   ],
-}
+};

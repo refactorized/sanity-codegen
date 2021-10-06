@@ -1,4 +1,4 @@
-import {IoPeopleCircleSharp} from 'react-icons/io5'
+import {IoPeopleCircleSharp} from 'react-icons/io5';
 
 export default {
   name: 'externalContributor',
@@ -10,7 +10,7 @@ export default {
       name: 'contributorNames',
       title: 'Contributor Name & Credentials',
       options: {
-        columns: 3
+        columns: 3,
       },
     },
   ],
@@ -20,20 +20,22 @@ export default {
       title: 'First Name',
       fieldset: 'contributorNames',
       type: 'string',
-      validation: Rule => Rule.required().error('Last name is required')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Last name is required'),
     },
     {
       name: 'lastName',
       title: 'Last Name',
       fieldset: 'contributorNames',
       type: 'string',
-      validation: Rule => Rule.required().error('Last name is required')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Last name is required'),
     },
     {
       name: 'credentials',
       title: 'Credentials',
       fieldset: 'contributorNames',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'image',
@@ -54,16 +56,12 @@ export default {
     {
       title: 'Name, A-Z',
       name: 'lastName',
-      by: [
-        {field: 'lastName', direction: 'asc'}
-      ]
+      by: [{field: 'lastName', direction: 'asc'}],
     },
     {
       title: 'Last Name, Z-A',
       name: 'lastName',
-      by: [
-        {field: 'lastName', direction: 'desc'}
-      ]
+      by: [{field: 'lastName', direction: 'desc'}],
     },
   ],
   preview: {
@@ -71,14 +69,14 @@ export default {
       firstName: 'firstName',
       lastName: 'lastName',
       image: 'image',
-      credentials: 'credentials'
+      credentials: 'credentials',
     },
     prepare(selection) {
-      const {firstName, lastName, image, credentials} = selection
+      const {firstName, lastName, image, credentials} = selection;
       return {
         title: `${lastName}, ${firstName} ${credentials}`,
         media: image,
-      }
+      };
     },
   },
-}
+};

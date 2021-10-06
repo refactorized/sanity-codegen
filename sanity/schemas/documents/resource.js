@@ -1,21 +1,27 @@
-import {IoLibraryOutline} from 'react-icons/io5'
+import {IoLibraryOutline} from 'react-icons/io5';
 
 export default {
   name: 'resource',
   title: 'Resource',
   type: 'document',
   icon: IoLibraryOutline,
-  validation: Rule => Rule.custom(fields => {
-    if (typeof(fields.associatedStaff) == 'undefined' && typeof(fields.externalContributors) == 'undefined') return "You must have either a staff member or external contributor."
-    return true
-  }),
+  validation: (Rule) =>
+    Rule.custom((fields) => {
+      if (
+        typeof fields.associatedStaff == 'undefined' &&
+        typeof fields.externalContributors == 'undefined'
+      )
+        return 'You must have either a staff member or external contributor.';
+      return true;
+    }),
   fields: [
     {
       name: 'title',
       title: 'Title',
       description: 'The title of the resource, also used as the page title',
       type: 'string',
-      validation: Rule => Rule.required().error('Resource must have a title')
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Resource must have a title'),
     },
     {
       name: 'slug',
@@ -30,14 +36,18 @@ export default {
     {
       name: 'shortDescription',
       title: 'Short Description',
-      description: 'This appears above the page and will be used in the SEO page description',
+      description:
+        'This appears above the page and will be used in the SEO page description',
       type: 'string',
-      validation: Rule => Rule.required().error('Resource must have a short description')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Resource must have a short description'),
     },
     {
       name: 'associatedStaff',
       title: 'Associated Staffmember(s)',
-      description: 'Either a staff member or an external contributor is required.',
+      description:
+        'Either a staff member or an external contributor is required.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'staff'}}],
     },
@@ -45,7 +55,8 @@ export default {
       name: 'externalContributors',
       title: 'External Contributor(s)',
       type: 'array',
-      description: 'Either a staff member or an external contributor is required.',
+      description:
+        'Either a staff member or an external contributor is required.',
       of: [{type: 'reference', to: {type: 'externalContributor'}}],
     },
     {
@@ -60,17 +71,21 @@ export default {
     {
       name: 'categories',
       title: 'Categories',
-      description: 'e.g. treatment, personality disorders, etc.  Please enter one or more.',
+      description:
+        'e.g. treatment, personality disorders, etc.  Please enter one or more.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
       name: 'type',
       title: 'Resource Type',
-      description: 'e.g. Books, Clinical Perspectives, Conference Presentations, etc.',
+      description:
+        'e.g. Books, Clinical Perspectives, Conference Presentations, etc.',
       type: 'array',
       of: [{type: 'reference', to: {type: 'resourceType'}}],
-      validation: Rule => Rule.required().error('Resource must have a type selected')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Resource must have a type selected'),
     },
     {
       name: 'publishedAt',
@@ -79,30 +94,28 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'MM/DD/YYYY',
-        calendarTodayLabel: 'Today'
+        calendarTodayLabel: 'Today',
       },
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-      validation: Rule => Rule.required().error('Resource must have a body of some sort')
+      codegen: {required: true},
+      validation: (Rule) =>
+        Rule.required().error('Resource must have a body of some sort'),
     },
   ],
   orderings: [
     {
       title: 'Newest -> Oldest',
       name: 'publishedAt',
-      by: [
-        {field: 'publishedAt', direction: 'desc'}
-      ]
+      by: [{field: 'publishedAt', direction: 'desc'}],
     },
     {
       title: 'Oldest -> Newest',
       name: 'publishedAt',
-      by: [
-        {field: 'publishedAt', direction: 'asc'}
-      ]
+      by: [{field: 'publishedAt', direction: 'asc'}],
     },
   ],
 
@@ -110,7 +123,7 @@ export default {
     select: {
       title: 'title',
       media: 'mainImage',
-      subtitle: 'type.0.title'
+      subtitle: 'type.0.title',
     },
   },
-}
+};
