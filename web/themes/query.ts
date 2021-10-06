@@ -1,4 +1,5 @@
 import theme, {Theme, ThemeBreakpointName} from './theme';
+import facepaint from 'facepaint';
 
 type ThemeWidthQuery = {
   [index in ThemeBreakpointName]: string;
@@ -34,5 +35,9 @@ const atLeast = Object.assign(
 ) as unknown as ThemeWidthQuery;
 
 const query: ThemeQueryMethods = {below, atLeast};
+
+export const mq = facepaint(
+  theme.breakpoints.map((brk: string) => `@media(min-width: ${brk})`),
+);
 
 export default query;

@@ -37,55 +37,6 @@ export type {
 };
 
 /**
- * External Contributor
- *
- *
- */
-export interface ExternalContributor extends SanityDocument {
-  _type: "externalContributor";
-
-  /**
-   * First Name — `string`
-   *
-   *
-   */
-  firstName: string;
-
-  /**
-   * Last Name — `string`
-   *
-   *
-   */
-  lastName: string;
-
-  /**
-   * Credentials — `string`
-   *
-   *
-   */
-  credentials?: string;
-
-  /**
-   * Image — `image`
-   *
-   * (optional) if left empty will use default image
-   */
-  image?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Bio — `blockContent`
-   *
-   *
-   */
-  bio?: BlockContent;
-}
-
-/**
  * Category
  *
  *
@@ -369,47 +320,40 @@ export interface EventSeries extends SanityDocument {
 }
 
 /**
- * Page
+ * External Contributor
  *
  *
  */
-export interface Page extends SanityDocument {
-  _type: "page";
+export interface ExternalContributor extends SanityDocument {
+  _type: "externalContributor";
 
   /**
-   * Title — `string`
+   * First Name — `string`
    *
    *
    */
-  title?: string;
+  firstName: string;
 
   /**
-   * slug — `slug`
+   * Last Name — `string`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  lastName: string;
 
   /**
-   * Category — `reference`
+   * Credentials — `string`
    *
    *
    */
-  category?: SanityReference<Category>;
+  credentials?: string;
 
   /**
-   * Description — `text`
+   * Image — `image`
    *
-   * This description populates meta-tags on the webpage
+   * (optional) if left empty will use default image
    */
-  description?: string;
-
-  /**
-   * Open Graph Image — `image`
-   *
-   * Image for sharing previews on Facebook, Twitter etc.
-   */
-  openGraphImage?: {
+  image?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -417,25 +361,11 @@ export interface Page extends SanityDocument {
   };
 
   /**
-   * Content Blocks — `array`
+   * Bio — `blockContent`
    *
-   * the block components that make up the page body
+   *
    */
-  blocks?: Array<
-    | SanityKeyed<AdmissionsCallout>
-    | SanityKeyed<Carousel>
-    | SanityKeyed<FlexCollar>
-    | SanityKeyed<IntroBlock>
-    | SanityKeyed<LinkMenu>
-    | SanityKeyed<Placeholder>
-    | SanityKeyed<PreFooter>
-    | SanityKeyed<Prose>
-    | SanityKeyed<TextAndImageBlock>
-    | SanityKeyed<HeroBlock>
-    | SanityKeyed<CalloutBand>
-    | SanityKeyed<DrawerCombo>
-    | SanityKeyed<InteriorHero>
-  >;
+  bio?: BlockContent;
 }
 
 /**
@@ -513,6 +443,76 @@ export interface News extends SanityDocument {
    * This is the main body of the post
    */
   body: BlockContent;
+}
+
+/**
+ * Page
+ *
+ *
+ */
+export interface Page extends SanityDocument {
+  _type: "page";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Content Blocks — `array`
+   *
+   * the block components that make up the page body
+   */
+  blocks?: Array<
+    | SanityKeyed<AdmissionsCallout>
+    | SanityKeyed<Carousel>
+    | SanityKeyed<FlexCollar>
+    | SanityKeyed<IntroBlock>
+    | SanityKeyed<LinkMenu>
+    | SanityKeyed<Placeholder>
+    | SanityKeyed<PreFooter>
+    | SanityKeyed<Prose>
+    | SanityKeyed<TextAndImageBlock>
+    | SanityKeyed<HeroBlock>
+    | SanityKeyed<CalloutBand>
+    | SanityKeyed<DrawerCombo>
+    | SanityKeyed<InteriorHero>
+  >;
 }
 
 /**
@@ -866,336 +866,6 @@ export type AdmissionsCallout = {
   phoneNumber?: string;
 };
 
-export type Carousel = {
-  _type: "carousel";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-};
-
-export type OutcomesCarousel = {
-  _type: "outcomesCarousel";
-  /**
-   * Title — `string`
-   *
-   *
-   */
-  title?: string;
-
-  /**
-   * Cards — `array`
-   *
-   * Cards to show in the carousel
-   */
-  cards?: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
-};
-
-export type FlexCollar = {
-  _type: "flexCollar";
-  /**
-   * Cards — `array`
-   *
-   *
-   */
-  cards?: Array<SanityKeyed<FlexCollarCard>>;
-};
-
-export type FlexCollarCard = {
-  _type: "flexCollarCard";
-  /**
-   * Page — `pageInfo`
-   *
-   * Page from this website to build a card from
-   */
-  pageInfo?: PageInfo;
-};
-
-export type IntroBlock = {
-  _type: "introBlock";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * Body Text — `text`
-   *
-   *
-   */
-  body?: string;
-
-  /**
-   * Button Text — `string`
-   *
-   *
-   */
-  buttonText?: string;
-
-  /**
-   * Button Link — `slug`
-   *
-   *
-   */
-  buttonLink?: { _type: "buttonLink"; current: string };
-};
-
-export type LinkMenuLink = {
-  _type: "linkMenuLink";
-  /**
-   * Link Title — `string`
-   *
-   *
-   */
-  title: string;
-
-  /**
-   * Link Url — `link`
-   *
-   *
-   */
-  url: Link;
-};
-
-export type LinkMenu = {
-  _type: "linkMenu";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * Image — `image`
-   *
-   *
-   */
-  imgUrl?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Link Menu Header — `string`
-   *
-   *
-   */
-  header?: string;
-
-  /**
-   * Link Menu Description — `string`
-   *
-   *
-   */
-  description?: string;
-
-  /**
-   * Link Menu Button Text — `string`
-   *
-   *
-   */
-  btnText?: string;
-
-  /**
-   * Link Menu Button Url — `link`
-   *
-   *
-   */
-  btnUrl?: Link;
-
-  /**
-   * Link Menu Link List — `array`
-   *
-   *
-   */
-  links?: Array<SanityKeyed<LinkMenuLink>>;
-};
-
-export type PageInfo = { _type: "pageInfo"; _ref: string };
-
-export type PageLink = { _type: "pageLink"; _ref: string };
-
-export type PreFooter = {
-  _type: "preFooter";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * Pre-Footer Header — `string`
-   *
-   *
-   */
-  header?: string;
-
-  /**
-   * Pre-Footer Description — `string`
-   *
-   *
-   */
-  description?: string;
-
-  /**
-   * Pre-Footer Button Text — `string`
-   *
-   *
-   */
-  btnText?: string;
-
-  /**
-   * Pre-Footer Button Url — `link`
-   *
-   *
-   */
-  btnUrl?: Link;
-
-  /**
-   * Pre-Footer Phone Number — `string`
-   *
-   *
-   */
-  phoneNumber?: string;
-};
-
-export type TextAndImageBlock = {
-  _type: "textAndImageBlock";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * Main Header — `string`
-   *
-   * Optional large main header, renders across the top of this component
-   */
-  header?: string;
-
-  /**
-   * Secondary Header — `string`
-   *
-   * Optional sub-header, renders above the body text
-   */
-  subHeader?: string;
-
-  /**
-   * Body Copy — `basicText`
-   *
-   *
-   */
-  body?: BasicText;
-
-  /**
-   * Image — `image`
-   *
-   *
-   */
-  desktopImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Mobile Image — `image`
-   *
-   * Optional alternate image to use for smaller(mobile) layouts
-   */
-  mobileImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * CTA Button Text — `string`
-   *
-   *
-   */
-  buttonText?: string;
-
-  /**
-   * CTA Button Link — `link`
-   *
-   *
-   */
-  buttonLink?: Link;
-};
-
-export type HeroBlock = {
-  _type: "heroBlock";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * Hero Background Image — `image`
-   *
-   *
-   */
-  bgImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Hero Title — `string`
-   *
-   *
-   */
-  title?: string;
-
-  /**
-   * Hero Cards — `array`
-   *
-   * Adds clickable cards to the hero
-   */
-  hero_cards?: Array<SanityKeyed<HeroCard>>;
-};
-
-export type HeroCard = {
-  _type: "heroCard";
-  /**
-   * Eyebrow — `string`
-   *
-   * Text on top of card
-   */
-  card_eyebrow?: string;
-
-  /**
-   * Copy — `text`
-   *
-   * Main copy on card
-   */
-  card_copy?: string;
-
-  /**
-   * Card URL — `link`
-   *
-   * Destination page or URL after clicking on card
-   */
-  card_link?: Link;
-};
-
 export type CalloutBand = {
   _type: "calloutBand";
   /**
@@ -1232,6 +902,16 @@ export type CalloutBand = {
    *
    */
   btnUrl?: Link;
+};
+
+export type Carousel = {
+  _type: "carousel";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
 };
 
 export type DrawerCombo = {
@@ -1308,6 +988,336 @@ export type DrawerComboDrawer = {
   details: string;
 };
 
+export type FlexCollar = {
+  _type: "flexCollar";
+  /**
+   * Cards — `array`
+   *
+   *
+   */
+  cards?: Array<SanityKeyed<FlexCollarCard>>;
+};
+
+export type FlexCollarCard = {
+  _type: "flexCollarCard";
+  /**
+   * Page — `pageInfo`
+   *
+   * Page from this website to build a card from
+   */
+  pageInfo?: PageInfo;
+};
+
+export type HeroBlock = {
+  _type: "heroBlock";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Hero Background Image — `image`
+   *
+   *
+   */
+  bgImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Hero Cards — `array`
+   *
+   * Adds clickable cards to the hero
+   */
+  hero_cards?: Array<SanityKeyed<HeroCard>>;
+};
+
+export type HeroCard = {
+  _type: "heroCard";
+  /**
+   * Eyebrow — `string`
+   *
+   * Text on top of card
+   */
+  card_eyebrow?: string;
+
+  /**
+   * Copy — `text`
+   *
+   * Main copy on card
+   */
+  card_copy?: string;
+
+  /**
+   * Card URL — `link`
+   *
+   * Destination page or URL after clicking on card
+   */
+  card_link?: Link;
+};
+
+export type IntroBlock = {
+  _type: "introBlock";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Body Text — `text`
+   *
+   *
+   */
+  body?: string;
+
+  /**
+   * Button Text — `string`
+   *
+   *
+   */
+  buttonText?: string;
+
+  /**
+   * Button Link — `slug`
+   *
+   *
+   */
+  buttonLink?: { _type: "buttonLink"; current: string };
+};
+
+export type LinkMenu = {
+  _type: "linkMenu";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  imgUrl?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Link Menu Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Link Menu Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Link Menu Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Link Menu Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Link Menu Link List — `array`
+   *
+   *
+   */
+  links?: Array<SanityKeyed<LinkMenuLink>>;
+};
+
+export type LinkMenuLink = {
+  _type: "linkMenuLink";
+  /**
+   * Link Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Link Url — `link`
+   *
+   *
+   */
+  url: Link;
+};
+
+export type OutcomesCarousel = {
+  _type: "outcomesCarousel";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Cards — `array`
+   *
+   * Cards to show in the carousel
+   */
+  cards?: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
+};
+
+export type PageInfo = { _type: "pageInfo"; _ref: string };
+
+export type PageLink = { _type: "pageLink"; _ref: string };
+
+export type PreFooter = {
+  _type: "preFooter";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Pre-Footer Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Pre-Footer Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Pre-Footer Button Text — `string`
+   *
+   *
+   */
+  btnText?: string;
+
+  /**
+   * Pre-Footer Button Url — `link`
+   *
+   *
+   */
+  btnUrl?: Link;
+
+  /**
+   * Pre-Footer Phone Number — `string`
+   *
+   *
+   */
+  phoneNumber?: string;
+};
+
+export type Prose = {
+  _type: "prose";
+  /**
+   * content — `array`
+   *
+   *
+   */
+  content?: Array<SanityKeyed<PtImage> | SanityKeyed<SanityBlock>>;
+};
+
+export type TextAndImageBlock = {
+  _type: "textAndImageBlock";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Main Header — `string`
+   *
+   * Optional large main header, renders across the top of this component
+   */
+  header?: string;
+
+  /**
+   * Secondary Header — `string`
+   *
+   * Optional sub-header, renders above the body text
+   */
+  subHeader?: string;
+
+  /**
+   * Body Copy — `basicText`
+   *
+   *
+   */
+  body?: BasicText;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  desktopImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Mobile Image — `image`
+   *
+   * Optional alternate image to use for smaller(mobile) layouts
+   */
+  mobileImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * CTA Button Text — `string`
+   *
+   *
+   */
+  buttonText?: string;
+
+  /**
+   * CTA Button Link — `link`
+   *
+   *
+   */
+  buttonLink?: Link;
+};
+
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
 
 export type FooterConfig = {
@@ -1365,40 +1375,6 @@ export type FooterLink = {
   slug?: { _type: "slug"; current: string };
 };
 
-export type Link = {
-  _type: "link";
-  /**
-   * Internal Page — `pageLink`
-   *
-   *
-   */
-  slug?: PageLink;
-
-  /**
-   * Manual URL link — `url`
-   *
-   *
-   */
-  url?: string;
-};
-
-export type Placeholder = {
-  _type: "placeholder";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
-   * text — `string`
-   *
-   *
-   */
-  text?: string;
-};
-
 export type InteriorHero = {
   _type: "interiorHero";
   /**
@@ -1454,8 +1430,25 @@ export type InteriorHero = {
   videoSrc?: Link;
 };
 
-export type Prose = {
-  _type: "prose";
+export type Link = {
+  _type: "link";
+  /**
+   * Internal Page — `pageLink`
+   *
+   *
+   */
+  slug?: PageLink;
+
+  /**
+   * Manual URL link — `url`
+   *
+   *
+   */
+  url?: string;
+};
+
+export type Placeholder = {
+  _type: "placeholder";
   /**
    * blockType — `string`
    *
@@ -1464,40 +1457,47 @@ export type Prose = {
   blockType?: string;
 
   /**
-   * content — `array`
+   * text — `string`
    *
    *
    */
-  content?: Array<SanityKeyed<SanityBlock>>;
+  text?: string;
 };
 
-export type TestimonialCard = {
-  _type: "testimonialCard";
+export type PtImage = {
+  _type: "ptImage";
   /**
-   * Quote — `string`
-   *
-   * Thoughts and feedback from a Riggs patient.
-   */
-  testimonial_text?: string;
-
-  /**
-   * Patient Name — `string`
+   * Image asset — `image`
    *
    *
    */
-  patient_name?: string;
-
-  /**
-   * Patient Photo — `image`
-   *
-   *
-   */
-  patient_photo_path?: {
+  image?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Image alignment — `string`
+   *
+   *
+   */
+  align?: "left" | "center" | "right";
+
+  /**
+   * Image width — `string`
+   *
+   *
+   */
+  width?: "large" | "medium" | "small";
+
+  /**
+   * Wrap content — `boolean`
+   *
+   * wrap following content around this image?
+   */
+  wrap?: boolean;
 };
 
 export type StatCard = {
@@ -1536,16 +1536,45 @@ export type StatCard = {
   };
 };
 
+export type TestimonialCard = {
+  _type: "testimonialCard";
+  /**
+   * Quote — `string`
+   *
+   * Thoughts and feedback from a Riggs patient.
+   */
+  testimonial_text?: string;
+
+  /**
+   * Patient Name — `string`
+   *
+   *
+   */
+  patient_name?: string;
+
+  /**
+   * Patient Photo — `image`
+   *
+   *
+   */
+  patient_photo_path?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+};
+
 export type Documents =
-  | ExternalContributor
   | Category
   | Department
   | DepartmentTeam
   | Event
   | EventCategory
   | EventSeries
-  | Page
+  | ExternalContributor
   | News
+  | Page
   | PostType
   | Resource
   | ResourceType

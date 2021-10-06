@@ -7,6 +7,7 @@ const client = sanityClient({
   dataset: config.sanity.dataset,
   token: config.sanity.token || '', // blank = anonymous user / read only
   useCdn: false, // `false` if you want to ensure fresh data
+  apiVersion: config.sanity.apiVersion,
 });
 
 //TODO: should fetchOne also work with queries tha return an object vs an array?
@@ -17,6 +18,7 @@ const client = sanityClient({
  * @returns Object, query result, pulled from the array.
  */
 export const fetchOne = (query: string) => {
+  console.log(query); ///////////////////////////////////////////////////////////////////////
   return client.fetch(query).then((results) => {
     if (results.length == null) {
       throw Error('Query did not return an array');

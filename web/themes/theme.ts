@@ -20,16 +20,14 @@ export type ThemeSpaceName =
 export type ThemeBreakpointName = 'tablet' | 'desktop' | 'max';
 
 // combined array scale with named keys
-export type ThemeSpaceScale = number[] &
-  {
-    [index in ThemeSpaceName]: number;
-  };
+export type ThemeSpaceScale = number[] & {
+  [index in ThemeSpaceName]: number;
+};
 
 // combined array scale with named keys
-export type ThemeBreakpointScale = string[] &
-  {
-    [index in ThemeBreakpointName]: string;
-  };
+export type ThemeBreakpointScale = string[] & {
+  [index in ThemeBreakpointName]: string;
+};
 
 export type ThemeLetterSpacingName =
   | 'narrow'
@@ -37,13 +35,14 @@ export type ThemeLetterSpacingName =
   | 'sm'
   | 'md'
   | 'standard'
-  | 'wide';
+  | 'wide'
+  | 'xw'
+  | 'xxw';
 
 // combined array scale with named keys
-export type ThemeLetterSpacingScale = number[] &
-  {
-    [index in ThemeLetterSpacingName]: number;
-  };
+export type ThemeLetterSpacingScale = number[] & {
+  [index in ThemeLetterSpacingName]: number;
+};
 
 export type ThemeFontSizeName =
   | 'sm'
@@ -53,24 +52,26 @@ export type ThemeFontSizeName =
   | 'x5'
   | 'x6'
   | 'x7'
-  | 'x8';
+  | 'x8'
+  | 'x9';
 
-export type ThemeFontSizeScale = number[] &
-  {
-    [index in ThemeFontSizeName]: number;
-  };
+export type ThemeFontSizeScale = number[] & {
+  [index in ThemeFontSizeName]: number;
+};
 
 export type Theme = {
   breakpoints: ThemeBreakpointScale;
   buttons: any;
   colors: ThemeColorList;
   lineHeights: {
+    // maybe lineheights are not a good thing to quantize
     body: number;
     heading: number;
     headingSecondary: number;
   };
-  letterSpacings: ThemeLetterSpacingScale;
+  // letterSpacings: ThemeLetterSpacingScale;
   fonts: {
+    // this really should be called something like fontFamilies
     body: string;
     headline: string;
   };
@@ -109,16 +110,19 @@ breakpoints.tablet = breakpoints[0];
 breakpoints.desktop = breakpoints[1];
 breakpoints.max = breakpoints[2];
 
-const letterSpacing = [-3, -2, -1, -0.5, 0, 1] as ThemeLetterSpacingScale;
-letterSpacing.narrow = space[0];
-letterSpacing.xs = space[1];
-letterSpacing.sm = space[2];
-letterSpacing.md = space[3];
-letterSpacing.standard = space[4];
-letterSpacing.wide = space[5];
+// const letterSpacing = [
+//   -3, -1.5, -1, -0.5, 0, 1, 4, 12,
+// ] as ThemeLetterSpacingScale;
+// letterSpacing.xs = space[1];
+// letterSpacing.sm = space[2];
+// letterSpacing.md = space[3];
+// letterSpacing.standard = space[4];
+// letterSpacing.wide = space[5];
+// letterSpacing.xw = space[6];
+// letterSpacing.xxw = space[7];
 
-//                [ 0   1   2   3   4   5   6   7]
-const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64] as ThemeFontSizeScale;
+//                [ 0   1   2   3   4   5   6   7   8]
+const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64, 72] as ThemeFontSizeScale;
 fontSizes.sm = fontSizes[0];
 fontSizes.md = fontSizes[1];
 fontSizes.lg = fontSizes[2];
@@ -127,6 +131,7 @@ fontSizes.x5 = fontSizes[4];
 fontSizes.x6 = fontSizes[5];
 fontSizes.x7 = fontSizes[6];
 fontSizes.x8 = fontSizes[7];
+fontSizes.x9 = fontSizes[8];
 
 const theme: Theme = {
   breakpoints,
@@ -139,7 +144,7 @@ const theme: Theme = {
   },
   fonts: {
     headline: 'mrs-eaves-xl-serif',
-    body: 'proxima-nova',
+    body: 'proxima-nova', // TODO: add bold variant?
   },
   fontSizes,
   fontSize: fontSizes, // renamed fontSize to fontSizes
@@ -150,7 +155,7 @@ const theme: Theme = {
     regular: 400,
     light: 300,
   },
-  letterSpacings: letterSpacing,
+  // letterSpacings: letterSpacing,
   space,
   spaces: space, // renamed spaces to space ()
 };

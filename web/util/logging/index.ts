@@ -7,7 +7,15 @@ const devError = console.error;
 const devLog = console.log;
 const devDir = console.dir;
 const devWarn = console.warn;
-const devJson = (obj) => console.log(JSON.stringify(obj, null, 2));
+const devJson = (obj) => {
+  let json: string;
+  try {
+    json = JSON.stringify(obj, null, 2);
+    console.log(json);
+  } catch (e) {
+    console.log('could not serialize object');
+  }
+};
 
 const devErrorHandler = (e: Error | any) => {
   console.error(e);

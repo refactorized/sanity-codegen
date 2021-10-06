@@ -44,7 +44,7 @@ import link from './objects/link';
 import pageInfo from './objects/pageInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
-import prose from './objects/prose';
+import prose, {ptImage} from './sections/prose';
 
 // We import object and document schemas
 import blockContent from './documents/blockContent';
@@ -59,7 +59,6 @@ export default createSchema({
   types: schemaTypes.concat([
     // documents
     announcementBar,
-    externalContributor,
     blockContent,
     category,
     department,
@@ -67,8 +66,9 @@ export default createSchema({
     event,
     eventCategory,
     eventSeries,
-    page,
+    externalContributor,
     news,
+    page,
     postType,
     resource,
     resourceType,
@@ -76,31 +76,32 @@ export default createSchema({
     staff,
     // Page Builder block Documents, and co-located objects
     admissionsCallout,
+    calloutBand,
     carousel,
-    outcomesCarousel,
+    drawerCombo,
+    drawerComboDrawer,
     flexCollar,
     flexCollarCard,
+    heroBlock,
+    heroCard,
     introBlock,
-    linkMenuLink,
     linkMenu,
+    linkMenuLink,
+    outcomesCarousel,
     pageInfo,
     pageLink,
     preFooter,
+    prose,
     textAndImageBlock,
-    heroBlock,
-    heroCard,
-    calloutBand,
-    drawerCombo,
-    drawerComboDrawer,
     // objects
     basicText,
     footerConfig,
     footerLink,
+    interiorHero,
     link,
     placeholder,
-    interiorHero,
-    prose,
-    testimonialCard,
+    ptImage,
     statCard,
+    testimonialCard,
   ]),
 });

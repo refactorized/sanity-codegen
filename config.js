@@ -13,10 +13,12 @@ const config = {
       process.env.SANITY_STUDIO_API_DATASET ||
       'production',
     token: process.env.SANITY_TOKEN || null,
+    apiVersion: '2021-09-30',
   },
-  flags: {
-    guides: `${process.env.DEBUG_GUIDES}`.toLowerCase === 'true',
-  },
+  // flags: {
+  //  // we don't use these in ARC currently
+  //   guides: `${process.env.DEBUG_GUIDES}`.toLowerCase === 'true',
+  // },
   prod,
   dev,
 };
