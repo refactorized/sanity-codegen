@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {query} from '../../themes/fn';
 import {Button} from '../Button/index';
 import {CircleArrow} from '@components/Arrow';
-
+import Block from '@components/Layout/Block';
 export interface CtaProps {
   url: string;
   label: string;
@@ -154,7 +154,7 @@ const Drawer = ({icon, title, details}: DrawerProps) => {
 
 const DrawerCombo = ({title, copy, cta, drawers}: DrawerComboProps) => {
   return (
-    <>
+    <Block background="cream" narrow>
       <DrawerContent>
         <ComboText>
           <ComboTextTitle>{title}</ComboTextTitle>
@@ -176,7 +176,7 @@ const DrawerCombo = ({title, copy, cta, drawers}: DrawerComboProps) => {
             return <Drawer {...drawer} key={'drawer-' + index} />;
           })}
       </Drawers>
-    </>
+    </Block>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {color, flexbox, typography, space, border, layout} from 'styled-system';
-import {Phone} from '@components/PhoneComponent';
+import Block from '@components/Layout/Block';
 import {Button} from '@components/Button';
 export interface CalloutBandProps {
   header: string;
@@ -16,14 +16,12 @@ export const CalloutBand = ({
   btnUrl = `#`,
 }: CalloutBandProps): JSX.Element => {
   return (
-    <>
+    <Block background="lightSky">
       <StyledBox
         display="flex"
         flexDirection={['column', 'row']}
         justifyContent="space-between"
         color="primary"
-        bg="#E1E9ED"
-        p={['22px', '55px 48px', null, '60px 85px']}
       >
         <div>
           <StyledHeadline
@@ -66,7 +64,7 @@ export const CalloutBand = ({
           />
         </StyledBoxEdit>
       </StyledBox>
-    </>
+    </Block>
   );
 };
 
