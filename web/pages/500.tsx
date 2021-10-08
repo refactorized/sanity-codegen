@@ -9,6 +9,7 @@ import {Block} from '@components/Layout';
 import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
 import {Footer} from '../components/FooterComponent';
+import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
 import {Button} from '@components/Button';
 import {SiteConfig} from '@data/types';
 
@@ -25,6 +26,7 @@ const Error500Page = (props) => {
   return (
     <Page>
       <ErrorLayout>
+        <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <Stretch />
         <Block>
           {/* <MapComponents blocks={props.page.blocks as AnyBlockData[]} /> */}

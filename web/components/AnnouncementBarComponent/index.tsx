@@ -1,34 +1,48 @@
-import React, {useState} from 'react';
+import {Block} from '@components/Layout';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {
-  color,
-  flexbox,
-  typography,
-  space,
-  border,
-  layout,
-  grid,
-} from 'styled-system';
+import {color, typography, space, border, layout, grid} from 'styled-system';
 import {Button} from '../Button';
 import {Close} from '../NavSvgComponent';
 
 export interface AnnouncementBarProps {
+  showAnnouncement: boolean;
   header: string;
   cta?: string;
   url?: string;
 }
 
 export const AnnouncementBar = ({
-  header = `Announcement goes here tortor neque dictum tortor nec odio massa eget at amet phasellus.`,
-  cta = `Read More`,
-  url = `#`,
+  showAnnouncement,
+  header,
+  cta,
+  url,
 }: AnnouncementBarProps): JSX.Element => {
-  const [showAnnouncement, hideAnnouncement] = React.useState(true);
-  const onClick = () => hideAnnouncement(false);
+  const [showAnnouncementBar, setShowAnnouncementBar] =
+    useState(showAnnouncement);
+  const onClick = () => {
+    // Hide announcement bar
+    setShowAnnouncementBar(false);
+
+    // ...and set localStorage key with announcement bar value.
+    // This will be used below.
+    localStorage.setItem('announcementBarMessage', header);
+  };
+
+  useEffect(() => {
+    // Check if "announcementBarMessage" cookie exists
+    // and is the same message as when the announcement bar was closed (for 100 days).
+    const prevMessage = localStorage.getItem('announcementBarMessage');
+
+    // If it exists and the messages match, don't display announcement bar.
+    prevMessage && prevMessage === header
+      ? setShowAnnouncementBar(false)
+      : setShowAnnouncementBar(true);
+  }, []);
 
   return (
-    <>
-      {showAnnouncement ? (
+    <Block full>
+      {showAnnouncementBar ? (
         <StyledContainer
           bg="navy"
           display="grid"
@@ -72,7 +86,7 @@ export const AnnouncementBar = ({
           </StyledButton>
         </StyledContainer>
       ) : null}
-    </>
+    </Block>
   );
 };
 const StyledContainer = styled.div`

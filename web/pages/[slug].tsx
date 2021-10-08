@@ -4,6 +4,7 @@ import MapComponents from '../components/BlockMapper/BlockMapper';
 import Layout from '../components/Layout/Layout';
 import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
+import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
 import {Footer} from '../components/FooterComponent';
 import {SiteConfig} from '@data/types';
 
@@ -30,6 +31,7 @@ const SlugPage = (props) => {
   return (
     <Page>
       <Layout>
+        <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <MapComponents blocks={props.page.blocks} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />

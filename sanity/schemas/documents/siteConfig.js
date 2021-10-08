@@ -1,5 +1,4 @@
-import {IoSettingsOutline} from 'react-icons/io5'
-
+import {IoSettingsOutline} from 'react-icons/io5';
 
 const inFieldset = (name, fields) => {
   return fields.map((field) => ({...field, fieldset: name}));
@@ -10,8 +9,37 @@ export default {
   type: 'document',
   title: 'Site Config',
   icon: IoSettingsOutline,
-  fieldsets: [{name: 'general', title: 'General Sitewide Information'}],
+  fieldsets: [
+    {name: 'announcementBar', title: 'Announcement Bar'},
+    {name: 'general', title: 'General Sitewide Information'},
+  ],
   fields: [
+    ...inFieldset('announcementBar', [
+      {
+        name: 'announcementBarShow',
+        type: 'boolean',
+        title: 'Show Announcement Bar',
+        description: 'Displays announcement bar site-wide.',
+      },
+      {
+        name: 'announcementBarMessage',
+        type: 'string',
+        title: 'Announcement Bar Message',
+        description: 'Text to display on announcement bar.',
+      },
+      {
+        name: 'announcementBarCtaText',
+        type: 'string',
+        title: 'CTA Text',
+        description: 'Text for announcement bar CTA',
+      },
+      {
+        name: 'announcementBarCtaLink',
+        type: 'link',
+        title: 'CTA Link',
+        description: 'Destination link for announcement bar CTA message.',
+      },
+    ]),
     ...inFieldset('general', [
       {
         name: 'AddressLine1',

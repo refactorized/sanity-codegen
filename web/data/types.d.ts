@@ -35,7 +35,11 @@ export interface FooterConfig {
   col4: FooterLink[];
   col5: FooterLink[];
 }
-export interface SiteConfig {
+export type SiteConfig = ResolvedSanityReferences<{
+  announcementBarShow: boolean;
+  announcementBarMessage: string;
+  announcementBarCtaText: string;
+  announcementBarCtaLink: Link;
   AddressLine1: string;
   AddressLine2: string;
   email: string;
@@ -44,7 +48,7 @@ export interface SiteConfig {
   footerConfig: FooterConfig;
   privatePolicy: string;
   austinRiggs: string;
-}
+}>;
 
 export type ResolvedPageInfo = ResolvedSanityReferences<{
   _type: 'resolvedPageInfo'; // using pageInfo here creates a cyclic mapping
