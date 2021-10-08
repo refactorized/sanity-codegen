@@ -18,7 +18,7 @@ interface ComboCard {
   icon: string;
 }
 
-interface ComboCardProps {
+export interface ComboCardProps {
   title: string;
   body: string;
   cards: ComboCard[];

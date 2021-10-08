@@ -1318,6 +1318,66 @@ export type TextAndImageBlock = {
   buttonLink?: Link;
 };
 
+export type ComboCard = {
+  _type: "comboCard";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Combo Card Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Combo Card Body — `string`
+   *
+   *
+   */
+  body?: string;
+
+  /**
+   * Combo Card List — `array`
+   *
+   *
+   */
+  cards?: Array<SanityKeyed<ComboCardCards>>;
+};
+
+export type ComboCardCards = {
+  _type: "comboCardCards";
+  /**
+   * Combo Card Icon — `image`
+   *
+   * Icon is Optional
+   */
+  icon?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Combo Card Headline — `string`
+   *
+   *
+   */
+  headline: string;
+
+  /**
+   * Combo Card Description — `string`
+   *
+   *
+   */
+  description: string;
+};
+
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
 
 export type FooterConfig = {

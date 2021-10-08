@@ -35,6 +35,7 @@ import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
 import calloutBand from './sections/calloutBand';
 import drawerCombo, {drawerComboDrawer} from './sections/drawerCombo';
+import comboCard, {comboCardCards} from './sections/comboCard';
 import interiorHero from './sections/interiorHero';
 
 // objects
@@ -93,6 +94,8 @@ export default createSchema({
     preFooter,
     prose,
     textAndImageBlock,
+    comboCard,
+    comboCardCards,
     // objects
     basicText,
     footerConfig,

@@ -31,6 +31,7 @@ export default {
         {type: 'heroBlock'},
         {type: 'calloutBand'},
         {type: 'drawerCombo'},
+        {type: 'comboCard'},
         {type: 'interiorHero'},
       ],
     },
