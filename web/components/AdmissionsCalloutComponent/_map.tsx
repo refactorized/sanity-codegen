@@ -1,6 +1,6 @@
 import {AdmissionsCallout, AdmissionsCalloutProps} from '.';
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
-import {mapLinks} from '@util/mapping/index';
+import {mapLink} from '@util/mapping/index';
 
 const _map = (block: AdmissionsCalloutBlockData) => {
   const props: AdmissionsCalloutProps = {
@@ -9,9 +9,9 @@ const _map = (block: AdmissionsCalloutBlockData) => {
     admissionHeader: block.admissionHeader,
     admissionDescription: block.admissionDescription,
     btnText: block.btnText,
-    btnUrl: mapLinks(block.btnUrl),
+    btnUrl: mapLink(block.btnUrl),
     boxlessbtnText: block.boxlessbtnText,
-    boxlessbtnUrl: mapLinks(block.boxlessbtnUrl),
+    boxlessbtnUrl: mapLink(block.boxlessbtnUrl),
     phoneNumber: block.phoneNumber,
   };
 

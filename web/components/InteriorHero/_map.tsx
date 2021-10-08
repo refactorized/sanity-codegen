@@ -1,6 +1,6 @@
 import {InteriorHero, InteriorHeroProps} from '.';
 import InteriorHeroData from '@data/blocks/InteriorHeroData';
-import {mapLinks} from '@util/mapping';
+import {mapLink} from '@util/mapping';
 
 const _map = (block: InteriorHeroData) => {
   const props: InteriorHeroProps = {
@@ -10,7 +10,7 @@ const _map = (block: InteriorHeroData) => {
       desktop: block.desktopImage?.asset.url || null,
       mobile: block.mobileImage?.asset.url || null,
     },
-    videoSrc: mapLinks(block.videoSrc),
+    videoSrc: mapLink(block.videoSrc),
   };
   return <InteriorHero key={block._key} {...props} />;
 };
