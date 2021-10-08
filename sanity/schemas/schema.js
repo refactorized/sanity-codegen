@@ -27,6 +27,7 @@ import outcomesCarousel, {
   testimonialCard,
   statCard,
 } from './sections/outcomesCarousel';
+import imageCarousel, {imageSlide} from './sections/imageCarousel';
 import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
 import linkMenu, {linkMenuLink} from './sections/linkMenu';
@@ -80,6 +81,8 @@ export default createSchema({
     admissionsCallout,
     calloutBand,
     carousel,
+    imageCarousel,
+    imageSlide,
     drawerCombo,
     drawerComboDrawer,
     flexCollar,

@@ -6,6 +6,7 @@ import {PageSection} from '@data/types';
 import {_map as mapProseBlock} from '@components/ProseBlock/';
 import mapAdmissionsCalloutBlock from '@components/AdmissionsCalloutComponent/_map';
 import mapOutcomesCarouselBlock from '@components/OutcomesCarousel/_map';
+import mapImageCarouselBlock from '@components/ImageCarousel/_map';
 import mapFlexCollarBlock from '@components/FlexCollarComponent/_map';
 import mapHeroBlock from '@components/Hero/_map';
 import mapIntroBlock from '@components/IntroBlockComponent/_map';
@@ -21,6 +22,7 @@ import mapTextTestimonialCardBlock from '@components/TextTestimonialCardComponen
 // section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
 import OutcomesCarouselBlockData from '@data/blocks/OutcomesCarouselBlockData';
+import ImageCarouselBlockData from '@data/blocks/ImagesCarouselBlockData';
 import FlexCollarBlockData from '@data/blocks/FlexCollarBlockData';
 import IntroBlockData from '@data/blocks/IntroBlockData';
 import HeroBlockData from '@data/blocks/HomepageHeroData';
@@ -49,6 +51,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'outcomesCarousel') {
       return mapOutcomesCarouselBlock(block as OutcomesCarouselBlockData);
+    }
+    if (block._type === 'imageCarousel') {
+      return mapImageCarouselBlock(block as ImageCarouselBlockData);
     }
     if (block._type === 'flexCollar') {
       return mapFlexCollarBlock(block as FlexCollarBlockData);

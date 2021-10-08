@@ -930,6 +930,59 @@ export type Carousel = {
   blockType?: string;
 };
 
+export type ImageCarousel = {
+  _type: "imageCarousel";
+  /**
+   * Slides — `array`
+   *
+   * Slides to show in the carousel
+   */
+  slides?: Array<SanityKeyed<ImageSlide>>;
+};
+
+export type ImageSlide = {
+  _type: "imageSlide";
+  /**
+   * Cover Image — `image`
+   *
+   *
+   */
+  cover_image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Headline — `string`
+   *
+   *
+   */
+  headline?: string;
+
+  /**
+   * Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * CTA — `link`
+   *
+   *
+   */
+  cta?: Link;
+
+  /**
+   * CTA Text — `string`
+   *
+   *
+   */
+  cta_text?: string;
+};
+
 export type DrawerCombo = {
   _type: "drawerCombo";
   /**

@@ -133,6 +133,7 @@ const Description = styled.div`
 
 const CTAContainer = styled.a`
   display: flex;
+  cursor: pointer;
 `;
 
 const CTAText = styled.div`
