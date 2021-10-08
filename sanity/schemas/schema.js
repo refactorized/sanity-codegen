@@ -35,6 +35,7 @@ import preFooter from './sections/preFooter';
 import textAndImageBlock from './sections/textAndImageBlock';
 import heroBlock, {heroCard} from './sections/hero';
 import calloutBand from './sections/calloutBand';
+import bioCallout, {bioCalloutCards} from './sections/bioCallout';
 import drawerCombo, {drawerComboDrawer} from './sections/drawerCombo';
 import comboCard, {comboCardCards} from './sections/comboCard';
 import interiorHero from './sections/interiorHero';
@@ -80,6 +81,8 @@ export default createSchema({
     // Page Builder block Documents, and co-located objects
     admissionsCallout,
     calloutBand,
+    bioCallout,
+    bioCalloutCards,
     carousel,
     imageCarousel,
     imageSlide,

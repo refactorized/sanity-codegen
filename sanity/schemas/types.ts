@@ -528,6 +528,7 @@ export interface Page extends SanityDocument {
     | SanityKeyed<CalloutBand>
     | SanityKeyed<DrawerCombo>
     | SanityKeyed<InteriorHero>
+    | SanityKeyed<BioCallout>
   >;
 }
 
@@ -918,6 +919,66 @@ export type CalloutBand = {
    *
    */
   btnUrl?: Link;
+};
+
+export type BioCallout = {
+  _type: "bioCallout";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Bio Callout Headline — `string`
+   *
+   *
+   */
+  headline?: string;
+
+  /**
+   * Bio Callout Cards — `array`
+   *
+   *
+   */
+  cards?: Array<SanityKeyed<BioCalloutCards>>;
+};
+
+export type BioCalloutCards = {
+  _type: "bioCalloutCards";
+  /**
+   * Image — `image`
+   *
+   * Image is Optional
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Credential — `string`
+   *
+   * Credential is Optional
+   */
+  credential?: string;
+
+  /**
+   * Bio — `string`
+   *
+   *
+   */
+  bio: string;
 };
 
 export type Carousel = {

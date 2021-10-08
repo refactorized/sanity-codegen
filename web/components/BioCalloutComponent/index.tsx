@@ -10,7 +10,7 @@ interface CardsProps {
   bio: string;
 }
 
-interface BioCalloutProps {
+export interface BioCalloutProps {
   headline: string;
   cards: CardsProps[];
 }

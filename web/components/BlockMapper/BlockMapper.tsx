@@ -17,6 +17,7 @@ import mapCalloutBandBlock from '@components/CalloutBandComponent/_map';
 import mapDrawerCombo from '@components/DrawerCombo/_maps';
 import mapComboCard from '@components/ComboCardComponent/_maps';
 import mapInteriorHeroBlock from '@components/InteriorHero/_map';
+import mapBioCalloutBlock from '@components/BioCalloutComponent/_map';
 import mapTextTestimonialCardBlock from '@components/TextTestimonialCardComponent/_map';
 
 // section types
@@ -34,6 +35,7 @@ import CalloutBandBlockData from '@data/blocks/CalloutBandBlockData';
 import DrawerComboBlockData from '@data/blocks/DrawerComboBlockData';
 import ComboCardBlockData from '@data/blocks/ComboCardBlockData';
 import InteriorHeroBlockData from '@data/blocks/InteriorHeroData';
+import BioCalloutBlockData from '@data/blocks/BioCalloutBlockData';
 import TextTestimonialCardBlockData from '@data/blocks/TextTestimonialCardBlockData';
 
 const MapComponents = ({blocks}: {blocks: any[]}) => {
@@ -91,6 +93,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'interiorHero') {
       return mapInteriorHeroBlock(block as InteriorHeroBlockData);
+    }
+    if (block._type === 'bioCallout') {
+      return mapBioCalloutBlock(block as BioCalloutBlockData);
     }
     if (block._type === 'textTestimonialCard') {
       return mapTextTestimonialCardBlock(block as TextTestimonialCardBlockData);
