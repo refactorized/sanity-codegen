@@ -26,6 +26,8 @@ export interface TestimonialCardProps {
   patientName: string;
   patientPhotoPath: string;
   cardFullWidth: boolean;
+  ctaLink: string;
+  ctaText: string;
 }
 
 export interface ArticleCardProps {
@@ -210,6 +212,24 @@ const MoreCTA = styled.div`
   }
 `;
 
+const MoreCTALink = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  position: absolute;
+  color: rgba(0, 0, 0, 1);
+  font-weight: 700;
+  font-size: 14px;
+  bottom: 18px;
+  left: 32px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    font-size: 18px;
+    bottom: 37px;
+    left: 49px;
+  }
+`;
+
 const CTAText = styled.div`
   margin-right: 8px;
 `;
@@ -236,6 +256,8 @@ export const TestimonialCard = ({
   patientName,
   patientPhotoPath,
   cardFullWidth,
+  ctaLink,
+  ctaText,
 }: TestimonialCardProps): JSX.Element => {
   return (
     <CardContainer
@@ -255,10 +277,10 @@ export const TestimonialCard = ({
         <PatientPhoto backgroundImage={patientPhotoPath}></PatientPhoto>
         <PatientName>- {patientName}</PatientName>
       </PatientLine>
-      <MoreCTA>
-        <CTAText>More Patient Outcomes</CTAText>
+      <MoreCTALink href={ctaLink}>
+        <CTAText>{ctaText}</CTAText>
         <CircleArrow />
-      </MoreCTA>
+      </MoreCTALink>
     </CardContainer>
   );
 };

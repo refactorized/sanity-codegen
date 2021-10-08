@@ -37,6 +37,7 @@ import calloutBand from './sections/calloutBand';
 import drawerCombo, {drawerComboDrawer} from './sections/drawerCombo';
 import comboCard, {comboCardCards} from './sections/comboCard';
 import interiorHero from './sections/interiorHero';
+import textTestimonialCard from './sections/textTestimonialCard';
 
 // objects
 import basicText from './objects/basicText';
@@ -106,5 +107,6 @@ export default createSchema({
     ptImage,
     statCard,
     testimonialCard,
+    textTestimonialCard,
   ]),
 });

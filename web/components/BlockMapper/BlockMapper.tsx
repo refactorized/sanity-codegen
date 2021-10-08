@@ -16,6 +16,7 @@ import mapCalloutBandBlock from '@components/CalloutBandComponent/_map';
 import mapDrawerCombo from '@components/DrawerCombo/_maps';
 import mapComboCard from '@components/ComboCardComponent/_maps';
 import mapInteriorHeroBlock from '@components/InteriorHero/_map';
+import mapTextTestimonialCardBlock from '@components/TextTestimonialCardComponent/_map';
 
 // section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
@@ -31,6 +32,7 @@ import CalloutBandBlockData from '@data/blocks/CalloutBandBlockData';
 import DrawerComboBlockData from '@data/blocks/DrawerComboBlockData';
 import ComboCardBlockData from '@data/blocks/ComboCardBlockData';
 import InteriorHeroBlockData from '@data/blocks/InteriorHeroData';
+import TextTestimonialCardBlockData from '@data/blocks/TextTestimonialCardBlockData';
 
 const MapComponents = ({blocks}: {blocks: any[]}) => {
   if (!blocks?.length) {
@@ -84,6 +86,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'interiorHero') {
       return mapInteriorHeroBlock(block as InteriorHeroBlockData);
+    }
+    if (block._type === 'textTestimonialCard') {
+      return mapTextTestimonialCardBlock(block as TextTestimonialCardBlockData);
     }
     return <div>{`unknown block type: ${(block as PageSection)._type}`}</div>;
   });

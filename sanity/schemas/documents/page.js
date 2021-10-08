@@ -33,6 +33,7 @@ export default {
         {type: 'drawerCombo'},
         {type: 'comboCard'},
         {type: 'interiorHero'},
+        {type: 'textTestimonialCard'},
       ],
     },
   ],

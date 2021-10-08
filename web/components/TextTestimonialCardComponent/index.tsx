@@ -11,6 +11,8 @@ export interface TextTestimonialCardProps {
   testimonialText: string;
   patientName: string;
   patientPhotoPath: string;
+  boxCtaLink: string;
+  boxCtaText: string;
 }
 
 export const TextTestimonialCard = ({
@@ -21,6 +23,8 @@ export const TextTestimonialCard = ({
   testimonialText = `I look at Riggs as the place that broke my fall. In giving me the space to discover my competency, I found my voice. I started by expressing my anger about almost everything. But this expression opened many doors for me. From there, I broke the downward spiral.`,
   patientName = `CJ, former patient`,
   patientPhotoPath = `../`,
+  boxCtaLink = `https://google.com`,
+  boxCtaText = `More Patient Outcomes`,
 }: TextTestimonialCardProps): JSX.Element => {
   return (
     <StyledContainer>
@@ -44,6 +48,8 @@ export const TextTestimonialCard = ({
             testimonialText={testimonialText}
             patientName={patientName}
             cardFullWidth={true}
+            ctaLink={boxCtaLink}
+            ctaText={boxCtaText}
           />
         </StyledTestimonial>
       </StyledContentContainer>

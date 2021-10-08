@@ -365,6 +365,22 @@ export interface ExternalContributor extends SanityDocument {
    *
    *
    */
+  blocks?: Array<
+    | SanityKeyed<AdmissionsCallout>
+    | SanityKeyed<Carousel>
+    | SanityKeyed<FlexCollar>
+    | SanityKeyed<IntroBlock>
+    | SanityKeyed<LinkMenu>
+    | SanityKeyed<Placeholder>
+    | SanityKeyed<PreFooter>
+    | SanityKeyed<Prose>
+    | SanityKeyed<TextAndImageBlock>
+    | SanityKeyed<HeroBlock>
+    | SanityKeyed<CalloutBand>
+    | SanityKeyed<DrawerCombo>
+    | SanityKeyed<InteriorHero>
+    | SanityKeyed<TextTestimonialCard>
+  >;
   bio?: BlockContent;
 }
 
@@ -1558,6 +1574,84 @@ export type PtImage = {
    * wrap following content around this image?
    */
   wrap?: boolean;
+};
+
+export type TextTestimonialCard = {
+  _type: "textTestimonialCard";
+  /**
+   * blockType — `string`
+   *
+   *
+   */
+  blockType?: string;
+
+  /**
+   * Text Testimonial Card Header — `string`
+   *
+   *
+   */
+  header?: string;
+
+  /**
+   * Text Testimonial Card Description — `string`
+   *
+   *
+   */
+  description?: string;
+
+  /**
+   * Text Testimonial Card CTA Text — `string`
+   *
+   *
+   */
+  cta?: string;
+
+  /**
+   * Text Testimonial Card CTA Url — `link`
+   *
+   *
+   */
+  ctaUrl?: Link;
+
+  /**
+   * Text Testimonial Card Testimonial — `string`
+   *
+   *
+   */
+  testimonialText?: string;
+
+  /**
+   * Text Testimonial Card Patient Name — `string`
+   *
+   *
+   */
+  patientName?: string;
+
+  /**
+   * Text Testimonial Card Patient Photo — `image`
+   *
+   *
+   */
+  patientPhotoPath?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Text Testimonial Card Box Cta Link — `link`
+   *
+   *
+   */
+  boxCtaLink?: Link;
+
+  /**
+   * Text Testimonial Card Box Cta text — `string`
+   *
+   *
+   */
+  boxCtaText?: string;
 };
 
 export type StatCard = {
