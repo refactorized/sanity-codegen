@@ -1,14 +1,38 @@
-import sanityClient from '@sanity/client';
-import config from '../../config';
+import cfg from '../../config';
 import resolveReferences, {SanityRefResolver} from './resolveReferences';
+import {createPreviewSubscriptionHook, createClient} from 'next-sanity';
+import {SanityClient} from '@sanity/client';
 
-const client = sanityClient({
-  projectId: config.sanity.projectId,
-  dataset: config.sanity.dataset,
-  token: config.sanity.token || '', // blank = anonymous user / read only
-  useCdn: false, // `false` if you want to ensure fresh data
-  apiVersion: config.sanity.apiVersion,
+export const sanityConfig = {
+  dataset: cfg.sanity.dataset,
+  projectId: cfg.sanity.projectId,
+  apiVersion: '2021-10-10',
+  useCdn: cfg.prod,
+};
+
+export const usePreviewSubscription =
+  createPreviewSubscriptionHook(sanityConfig);
+
+// Set up the client for fetching data in the getProps page functions
+export const publicClient = createClient(sanityConfig);
+
+// Set up a preview client with serverless authentication for drafts
+export const previewClient = createClient({
+  ...sanityConfig,
+  useCdn: false,
+  token: cfg.sanity.token,
 });
+
+export const getClient = (usePreview) =>
+  usePreview ? previewClient : publicClient;
+
+// const client = sanityClient({
+//   projectId: config.sanity.projectId,
+//   dataset: config.sanity.dataset,
+//   token: config.sanity.token || '', // blank = anonymous user / read only
+//   useCdn: false, // `false` if you want to ensure fresh data
+//   apiVersion: config.sanity.apiVersion,
+// });
 
 //TODO: should fetchOne also work with queries tha return an object vs an array?
 
@@ -18,8 +42,7 @@ const client = sanityClient({
  * @returns Object, query result, pulled from the array.
  */
 export const fetchOne = (query: string) => {
-  console.log(query); ///////////////////////////////////////////////////////////////////////
-  return client.fetch(query).then((results) => {
+  return publicClient.fetch(query).then((results) => {
     if (results.length == null) {
       throw Error('Query did not return an array');
     } else if (results.length === 0) {
@@ -31,30 +54,47 @@ export const fetchOne = (query: string) => {
   });
 };
 
+// && !(_id in path('drafts.**'))
+
 const defaultResolver: SanityRefResolver = {
   refTypes: ['reference'],
-  queryFn: (refId) =>
-    `*[_id == '${refId}' && !(_id in path('drafts.**'))]{...}[0]`,
+  queryFn: (refId) => `*[_id == '${refId}']{...}[0] `,
 };
 
 const pageInfoResolver: SanityRefResolver = {
   refTypes: ['pageInfo'],
   queryFn: (refId) =>
-    `*[_id == '${refId}' && !(_id in path('drafts.**'))]{openGraphImage, slug, title, description, category}[0]`,
+    `*[_id == '${refId}']{openGraphImage, slug, title, description, category}[0]`, ///////////// add ordering to always get draft
 };
 
 const pageLinkResolver: SanityRefResolver = {
   refTypes: ['pageLink'],
-  queryFn: (refId) =>
-    `*[_id == '${refId}' && !(_id in path('drafts.**'))][0].slug`,
+  queryFn: (refId) => `*[_id == '${refId}'][0].slug`,
 };
 
 export const replaceReferences = async (
   input: unknown,
-  resolvedIds: string[] = [],
+  client?: SanityClient,
 ) => {
   const resolvers = [defaultResolver, pageInfoResolver, pageLinkResolver];
-  await resolveReferences(input, client, resolvers, resolvedIds);
+  await resolveReferences(input, client || publicClient, resolvers);
 };
 
-export default client;
+export const bigFetch = async (query: string, preview?: boolean) => {
+  console.log(`bigFetch(${preview ? 'preview' : 'public'}) ${query}`);
+  const client = getClient(!!preview); // possibly get preview-enabled client
+  const results = await client.fetch(query);
+  await replaceReferences(results, client); // pass in client to enable preview
+  return results;
+};
+
+// export const useBigFetchSubscription = (query: string, initialData: any) => {
+//   const results = usePreviewSubscription(query, {
+//     initialData,
+//     enabled: true,
+//   });
+
+//   return results;
+// };
+
+export default publicClient;

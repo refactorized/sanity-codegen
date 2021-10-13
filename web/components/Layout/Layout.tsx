@@ -3,7 +3,12 @@ import theme, {Theme} from '../../themes';
 import React from 'react';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export interface LayoutProps {
+  theme?: Theme;
+  preview?: boolean;
+}
+
+export const Container = styled.div<LayoutProps>`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
@@ -11,13 +16,14 @@ export const Container = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  min-height: 100vh;
+  ${({preview}) => {
+    if (preview) {
+      return {border: 'dashed orange 5px'};
+    }
+  }}
 `;
-
-export interface LayoutProps {
-  theme?: Theme;
-}
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const _theme = props.theme || theme;

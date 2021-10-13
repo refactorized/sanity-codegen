@@ -1,4 +1,4 @@
-import client, {fetchOne, replaceReferences} from './sanityClient';
+import client, {bigFetch} from './sanityClient';
 import {handler} from '../util/logging';
 import {PageDocument} from '@data/types';
 import groq from 'groq';
@@ -23,15 +23,22 @@ export const getPaths = () => {
 };
 
 // async await style
-export const getPageData = async (slug: string): Promise<PageDocument> => {
-  const query = groq`*[_type == "page" && slug.current == "${slug}" && !(_id in path('drafts.**'))]`;
-
+export const getPageData = async (
+  slug: string,
+  preview?: boolean,
+): Promise<PageDocument> => {
+  const query = groq`*[_type == "page" && slug.current == "${slug}"] | order(_updatedAt desc)[0]`;
   try {
-    const pageData = await fetchOne(query);
-    await replaceReferences(pageData); // mutates pageData
+    const pageData = await bigFetch(query, !!preview);
     return pageData as PageDocument;
   } catch (err) {
     handler(err);
     return null;
   }
 };
+
+// export const usePageDataPreview = (slug: string, initialData: PageDocument) => {
+//   const query = groq`*[_type == "page" && slug.current == "${slug}"][0]`;
+//   const {data: pageData} = useBigFetchSubscription(query, initialData);
+//   return pageData as PageDocument;
+// };

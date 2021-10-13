@@ -3,6 +3,9 @@
  * import them from this file.
  */
 
+const prodUrl = 'https://austen-riggs-center.netlify.app/';
+const localUrl = 'http://localhost:3000/';
+
 const prod = process.env.NODE_ENV === 'production';
 const dev = !prod;
 const config = {
@@ -14,6 +17,9 @@ const config = {
       'production',
     token: process.env.SANITY_TOKEN || null,
     apiVersion: '2021-09-30',
+  },
+  deploy: {
+    primeUrl: process.env.DEPLOY_PRIME_URL || prod ? prodUrl : localUrl,
   },
   // flags: {
   //  // we don't use these in ARC currently

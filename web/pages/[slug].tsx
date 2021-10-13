@@ -6,7 +6,7 @@ import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
 import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
 import {Footer} from '../components/FooterComponent';
-import {SiteConfig} from '@data/types';
+import {PageDocument, SiteConfig} from '@data/types';
 
 export async function getStaticPaths() {
   const paths = await getPaths();
@@ -16,21 +16,36 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps = async ({params}: {params: {slug: string}}) => {
-  const pageData = await getPageData(params.slug);
+interface staticContext {
+  params: {
+    slug: string;
+  };
+  preview?: boolean;
+}
+
+interface SlugPageProps {
+  page: PageDocument;
+  siteConfig: SiteConfig;
+  preview?: boolean;
+}
+
+export const getStaticProps = async ({params, preview}: staticContext) => {
+  const pageData = await getPageData(params.slug, preview);
   const siteConfig = await getSiteConfig();
   return {
     props: {
       page: pageData,
       siteConfig: siteConfig,
-    },
+      preview: !!preview,
+    } as SlugPageProps,
   };
 };
 
-const SlugPage = (props) => {
+const SlugPage = (props: SlugPageProps) => {
+  // const livePage = usePageDataPreview(props.page)
   return (
     <Page>
-      <Layout>
+      <Layout preview={props.preview}>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <MapComponents blocks={props.page.blocks} />
         <Stretch />
