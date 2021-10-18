@@ -9,6 +9,7 @@ import type {
   Category,
   Link as _Link,
   PtImage as _PtImage,
+  Page,
 } from '@schema/types';
 
 export type BasicText = BasicText;
@@ -19,9 +20,7 @@ export interface PageSection {
   _key: string;
 }
 
-export interface PageDocument extends SanityDocument {
-  blocks: PageSection[];
-}
+export type PageDocument = ResolvedSanityReferences<Page>;
 
 export interface FooterLink {
   title: string;

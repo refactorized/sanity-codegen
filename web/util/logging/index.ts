@@ -7,6 +7,7 @@ const devError = console.error;
 const devLog = console.log;
 const devDir = console.dir;
 const devWarn = console.warn;
+const devInfo = console.info;
 const devJson = (obj) => {
   let json: string;
   try {
@@ -26,16 +27,17 @@ export const log = cfg.prod ? noop : devLog;
 export const dir = cfg.prod ? noop : devDir;
 export const warn = cfg.prod ? noop : devWarn;
 export const handler = cfg.prod ? noop : devErrorHandler;
-export const json = cfg.propd ? noop : devJson;
+export const json = cfg.prod ? noop : devJson;
+export const info = cfg.prod ? noop : devInfo;
 
 // create a default, all-in-one export that can be called like log, but
 // also contains the other functions as properties.
-const aio = log.bind({});
+const aio = log.bind({}); // bind duplicates the function
 aio.error = error;
 aio.dir = dir;
 aio.warn = warn;
 aio.handler = handler;
 aio.json = json;
+aio.info = info;
 
 export default aio;
-``;

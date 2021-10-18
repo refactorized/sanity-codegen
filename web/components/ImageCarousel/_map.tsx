@@ -1,6 +1,5 @@
 import {ImageCarousel, ImageCarouselProps, ImageCarouselSlide} from '.';
 import ImageCarouselBlockData from '@data/blocks/ImagesCarouselBlockData';
-import {getStaticProps} from 'pages';
 
 const _map = (block: ImageCarouselBlockData) => {
   const props: ImageCarouselProps = {

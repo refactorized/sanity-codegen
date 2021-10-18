@@ -2,6 +2,7 @@ import cfg from '../../config';
 import resolveReferences, {SanityRefResolver} from './resolveReferences';
 import {createPreviewSubscriptionHook, createClient} from 'next-sanity';
 import {SanityClient} from '@sanity/client';
+import log from '@util/logging';
 
 export const sanityConfig = {
   dataset: cfg.sanity.dataset,
@@ -25,14 +26,6 @@ export const previewClient = createClient({
 
 export const getClient = (usePreview) =>
   usePreview ? previewClient : publicClient;
-
-// const client = sanityClient({
-//   projectId: config.sanity.projectId,
-//   dataset: config.sanity.dataset,
-//   token: config.sanity.token || '', // blank = anonymous user / read only
-//   useCdn: false, // `false` if you want to ensure fresh data
-//   apiVersion: config.sanity.apiVersion,
-// });
 
 //TODO: should fetchOne also work with queries tha return an object vs an array?
 
@@ -81,7 +74,7 @@ export const replaceReferences = async (
 };
 
 export const bigFetch = async (query: string, preview?: boolean) => {
-  console.log(`bigFetch(${preview ? 'preview' : 'public'}) ${query}`);
+  log.info(`bigFetch(${preview ? 'preview' : 'public'}) ${query}`);
   const client = getClient(!!preview); // possibly get preview-enabled client
   const results = await client.fetch(query);
   await replaceReferences(results, client); // pass in client to enable preview

@@ -1,6 +1,5 @@
 import {OutcomesCarousel, OutcomesCarouselProps} from '.';
 import OutcomesCarouselBlockData from '@data/blocks/OutcomesCarouselBlockData';
-import {getStaticProps} from 'pages';
 import {StatCardProps, TestimonialCardProps} from '@components/Card';
 
 const _map = (block: OutcomesCarouselBlockData) => {

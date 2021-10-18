@@ -3,23 +3,12 @@ import {handler} from '../util/logging';
 import {PageDocument} from '@data/types';
 import groq from 'groq';
 
-// promise style
-export const getPaths = () => {
+export const getPaths = async (): Promise<string[]> => {
   const pathQuery = groq`*[_type == "page"  && !(_id in path('drafts.**'))]`;
-  return client
-    .fetch(pathQuery)
-    .then((results: any[]) => {
-      return results
-        .map((page) => ({
-          params: {
-            slug: (page?.slug?.current as string) || null,
-          },
-        }))
-        .filter((info) => info.params.slug != null);
-    })
-    .catch((err) => {
-      throw new Error(err);
-    });
+  const results = await client.fetch(pathQuery);
+  return results
+    .filter((page) => page?.slug?.current)
+    .map((page) => `${page.slug.current}`);
 };
 
 // async await style
@@ -28,13 +17,8 @@ export const getPageData = async (
   preview?: boolean,
 ): Promise<PageDocument> => {
   const query = groq`*[_type == "page" && slug.current == "${slug}"] | order(_updatedAt desc)[0]`;
-  try {
-    const pageData = await bigFetch(query, !!preview);
-    return pageData as PageDocument;
-  } catch (err) {
-    handler(err);
-    return null;
-  }
+  const pageData = await bigFetch(query, preview);
+  return pageData as PageDocument;
 };
 
 // export const usePageDataPreview = (slug: string, initialData: PageDocument) => {
