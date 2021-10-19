@@ -28,7 +28,6 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
     fax,
     footerConfig,
     privatePolicy,
-    austinRiggs,
   } = siteConfig;
 
   // Created ColumnArr for Functional Usage
@@ -192,7 +191,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
             lineHeight="24px"
             letterSpacing="-0.015em"
           >
-            © {new Date().getFullYear() + ' ' + austinRiggs}
+            © {new Date().getFullYear() + ' ' + 'The Austen Riggs Center'}
           </StyledHeading>
           <StyledHeading
             fontWeight="regular"

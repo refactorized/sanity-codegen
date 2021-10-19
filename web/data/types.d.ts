@@ -46,7 +46,6 @@ export type SiteConfig = ResolvedSanityReferences<{
   fax: string;
   footerConfig: FooterConfig;
   privatePolicy: string;
-  austinRiggs: string;
 }>;
 
 export type ResolvedPageInfo = ResolvedSanityReferences<{
