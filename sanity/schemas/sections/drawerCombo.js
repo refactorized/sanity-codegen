@@ -36,37 +36,40 @@ const drawerCombo = {
   icon: RiLayoutColumnLine,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'drawerCombo',
-    },
-    {
       name: 'title',
       type: 'string',
       title: 'Drawer Combo Title',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'copy',
       type: 'string',
       title: 'Drawer Combo Copy',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'url',
       type: 'link',
       title: 'Drawer Combo Url',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'label',
       type: 'string',
       title: 'Drawer Combo Label',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'drawers',
       type: 'array',
       title: 'Drawer Combo Drawer List',
       of: [{type: 'drawerComboDrawer'}],
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

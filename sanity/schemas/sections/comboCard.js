@@ -17,7 +17,11 @@ export const comboCardCards = {
       type: 'string',
       title: 'Combo Card Headline',
       codegen: {required: true},
+      //^^ This Informs Codegen that it's required
+      //^^Validation is done as a lambda
       validation: _required,
+      //^^^ This is the Sanity Validation
+      //^^ This is where we can create function and be specific about validation
     },
     {
       name: 'description',
@@ -36,27 +40,26 @@ const comboCard = {
   icon: RiLayoutColumnLine,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'comboCard',
-    },
-    {
       name: 'title',
       type: 'string',
       title: 'Combo Card Title',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'body',
       type: 'string',
       title: 'Combo Card Body',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'cards',
       type: 'array',
       title: 'Combo Card List',
       of: [{type: 'comboCardCards'}],
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

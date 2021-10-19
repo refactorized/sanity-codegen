@@ -1,13 +1,13 @@
 import DrawerCombo, {DrawerComboProps} from '.';
 import DrawerComboBlockData from '@data/blocks/DrawerComboBlockData';
-import {Blocks} from '@components/Layout/stories/Block.stories';
+import {mapLink} from '@util/mapping/index';
 
 const _map = (block: DrawerComboBlockData) => {
   const props: DrawerComboProps = {
     title: block.title,
     copy: block.copy,
     cta: {
-      url: block.url.slug ? block.url?.slug?.current : block.url?.url || '',
+      url: mapLink(block.url),
       label: block.label,
     },
     drawers: block.drawers.map((drawer) => ({

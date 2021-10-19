@@ -1,4 +1,5 @@
 import {RiWindowFill} from 'react-icons/ri';
+const _required = (Rule) => Rule.required();
 
 const interiorHero = {
   name: 'interiorHero',
@@ -7,26 +8,24 @@ const interiorHero = {
   icon: RiWindowFill,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'interiorHero',
-    },
-    {
       name: 'header',
       type: 'string',
       title: 'Interior Hero Header',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'caption',
       type: 'string',
       title: 'Interior Hero Caption',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'desktopImage',
       type: 'image',
       title: 'Image',
+      description: 'Image is optional',
     },
     {
       name: 'mobileImage',
@@ -39,6 +38,7 @@ const interiorHero = {
       name: 'videoSrc',
       type: 'link',
       title: 'Interior Hero Video Source',
+      description: 'Video is optional',
     },
   ],
 };

@@ -1,12 +1,13 @@
 import {PreFooterBlock, PreFooterBlockProps} from '.';
 import PreFooterBlockData from '@data/blocks/PreFooterBlockData';
+import {mapLink} from '@util/mapping/index';
 
 const _map = (block: PreFooterBlockData) => {
   const props: PreFooterBlockProps = {
     header: block.header,
     description: block.description,
     btnText: block.btnText,
-    btnUrl: block.btnUrl.slug ? block.btnUrl.slug.current : block.btnUrl.url,
+    btnUrl: mapLink(block.btnUrl),
     phoneNumber: block.phoneNumber,
   };
   return <PreFooterBlock key={block._key} {...props} />;

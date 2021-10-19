@@ -8,32 +8,32 @@ const calloutBand = {
   icon: RiWindowFill,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'calloutBand',
-    },
-    {
       name: 'header',
       type: 'string',
       title: 'Callout Header',
-      //title if for UI in sanity
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'description',
       type: 'string',
       title: 'Callout Description',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'btnText',
       type: 'string',
       title: 'Callout Button Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'btnUrl',
       type: 'link',
       title: 'Callout Button Url',
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

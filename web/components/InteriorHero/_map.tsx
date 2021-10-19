@@ -10,7 +10,7 @@ const _map = (block: InteriorHeroData) => {
       desktop: block.desktopImage?.asset.url || null,
       mobile: block.mobileImage?.asset.url || null,
     },
-    videoSrc: mapLink(block.videoSrc),
+    videoSrc: mapLink(block.videoSrc) || null,
   };
   return <InteriorHero key={block._key} {...props} />;
 };

@@ -1,5 +1,6 @@
 import {LinkMenuComponent, LinkMenuComponentProps} from '.';
 import LinkMenuBlockData from '@data/blocks/LinkMenuBlockData';
+import {mapLink} from '@util/mapping/index';
 
 const _map = (block: LinkMenuBlockData) => {
   const props: LinkMenuComponentProps = {
@@ -7,10 +8,10 @@ const _map = (block: LinkMenuBlockData) => {
     header: block.header,
     description: block.description,
     btnText: block.btnText,
-    btnUrl: block.btnUrl.slug ? block.btnUrl.slug.current : block.btnUrl.url,
+    btnUrl: mapLink(block.btnUrl),
     links: block.links.map((link) => ({
       title: link.title,
-      url: link.url.slug ? link.url?.slug?.current : link.url?.url || '',
+      url: mapLink(block.btnUrl),
       _key: link._key,
     })),
   };

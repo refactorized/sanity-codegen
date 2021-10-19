@@ -31,13 +31,6 @@ const linkMenu = {
   icon: RiLayoutColumnLine,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'linkMenu',
-    },
-    {
       name: 'imgUrl',
       type: 'image',
       title: 'Image',
@@ -47,27 +40,37 @@ const linkMenu = {
       name: 'header',
       type: 'string',
       title: 'Link Menu Header',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'description',
       type: 'string',
       title: 'Link Menu Description',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'btnText',
       type: 'string',
       title: 'Link Menu Button Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'btnUrl',
       type: 'link',
       title: 'Link Menu Button Url',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'links',
       type: 'array',
       title: 'Link Menu Link List',
       of: [{type: 'linkMenuLink'}],
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

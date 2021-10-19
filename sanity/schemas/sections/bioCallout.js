@@ -42,22 +42,19 @@ const bioCallout = {
   icon: RiLayoutColumnLine,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'bioCallout',
-    },
-    {
       name: 'headline',
       type: 'string',
       title: 'Bio Callout Headline',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'cards',
       type: 'array',
       title: 'Bio Callout Cards',
       of: [{type: 'bioCalloutCards'}],
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };
