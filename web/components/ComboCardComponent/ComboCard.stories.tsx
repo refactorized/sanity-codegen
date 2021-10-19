@@ -19,5 +19,7 @@ export const DefaultBlock = Template.bind({});
 DefaultBlock.args = {
   title: testData.title,
   body: testData.body,
+  ctaText: testData.ctaText,
+  ctaLink: testData.ctaLink,
   cards: testData.cards,
 };

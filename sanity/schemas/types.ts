@@ -1417,6 +1417,20 @@ export type ComboCard = {
   body: string;
 
   /**
+   * Combo Card Cta Text — `string`
+   *
+   *
+   */
+  ctaText: string;
+
+  /**
+   * Combo Card Cta Link — `link`
+   *
+   *
+   */
+  ctaLink: Link;
+
+  /**
    * Combo Card List — `array`
    *
    *

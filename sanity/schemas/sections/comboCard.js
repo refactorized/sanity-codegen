@@ -54,6 +54,20 @@ const comboCard = {
       validation: _required,
     },
     {
+      name: 'ctaText',
+      type: 'string',
+      title: 'Combo Card Cta Text',
+      codegen: {required: true},
+      validation: _required,
+    },
+    {
+      name: 'ctaLink',
+      type: 'link',
+      title: 'Combo Card Cta Link',
+      codegen: {required: true},
+      validation: _required,
+    },
+    {
       name: 'cards',
       type: 'array',
       title: 'Combo Card List',

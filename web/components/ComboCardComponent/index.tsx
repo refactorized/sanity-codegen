@@ -21,6 +21,8 @@ interface ComboCard {
 export interface ComboCardProps {
   title: string;
   body: string;
+  ctaText: string;
+  ctaLink: string;
   cards: ComboCard[];
 }
 
@@ -28,6 +30,8 @@ export const ComboCard = ({
   title,
   body,
   cards,
+  ctaText,
+  ctaLink,
 }: ComboCardProps): JSX.Element => {
   return (
     <StyledBox
@@ -68,8 +72,8 @@ export const ComboCard = ({
             >
               <Button
                 variant="solid"
-                label="Learn More"
-                url="#"
+                label={ctaText}
+                url={ctaLink}
                 size="medium"
                 arrow={true}
                 arrowColor="white"

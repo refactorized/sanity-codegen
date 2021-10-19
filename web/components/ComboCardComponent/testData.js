@@ -1,6 +1,8 @@
 export default {
   title: 'Stages in Our Admissions Process',
   body: 'Our step-by-step admissions assessment helps ensure you are likely to benefit from long-term residential treatment in our open setting. We also need to discuss the required commitment in time and money. Then we can confidently move on to the in-person admissions consultation, usually on the day of admission.',
+  ctaText: 'Learn More',
+  ctaLink: '#',
   cards: [
     {
       _key: '1',
