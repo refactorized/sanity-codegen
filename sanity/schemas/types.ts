@@ -828,18 +828,11 @@ export type BlockContent = Array<
 export type AdmissionsCallout = {
   _type: "admissionsCallout";
   /**
-   * Admissions Callout Contact Header — `string`
+   * blockType — `string`
    *
    *
    */
-  contactHeader: string;
-
-  /**
-   * Admissions Callout Contact Description — `string`
-   *
-   *
-   */
-  contactDescription: string;
+  blockType?: string;
 
   /**
    * Admissions Callout Header — `string`
@@ -856,20 +849,6 @@ export type AdmissionsCallout = {
   admissionDescription: string;
 
   /**
-   * Admissions Callout Button Text — `string`
-   *
-   *
-   */
-  btnText: string;
-
-  /**
-   * Admissions Callout Button Url — `link`
-   *
-   *
-   */
-  btnUrl: Link;
-
-  /**
    * Admissions Callout Boxless Button Text — `string`
    *
    *
@@ -882,6 +861,34 @@ export type AdmissionsCallout = {
    *
    */
   boxlessbtnUrl: Link;
+
+  /**
+   * Admissions Callout Contact Header — `string`
+   *
+   *
+   */
+  contactHeader: string;
+
+  /**
+   * Admissions Callout Contact Description — `string`
+   *
+   *
+   */
+  contactDescription: string;
+
+  /**
+   * Admissions Callout Button Text — `string`
+   *
+   *
+   */
+  btnText: string;
+
+  /**
+   * Admissions Callout Button Url — `link`
+   *
+   *
+   */
+  btnUrl: Link;
 
   /**
    * Admissions Callout Phone Number — `string`
