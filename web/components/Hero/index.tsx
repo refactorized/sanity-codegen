@@ -7,8 +7,6 @@ export interface HomepageHeroProps {
   imageUrl: string;
   title: string;
   heroCards: HeroCardData[];
-  admissionsText: string;
-  admissionsUrl: string;
 }
 
 const Chevron = () => {

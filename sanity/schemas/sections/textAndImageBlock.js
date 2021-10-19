@@ -8,13 +8,6 @@ const textAndImageBlock = {
   icon: RiLayoutColumnLine,
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'textAndImageBlock',
-    },
-    {
       name: 'header',
       type: 'string',
       title: 'Main Header',
@@ -24,19 +17,22 @@ const textAndImageBlock = {
     {
       name: 'subHeader',
       type: 'string',
-      title: 'Secondary Header',
-      description: 'Optional sub-header, renders above the body text',
+      title: 'Content Header',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'body',
       type: 'basicText',
       title: 'Body Copy',
+      codegen: {required: true},
       validation: _required,
     },
     {
       name: 'desktopImage',
       type: 'image',
       title: 'Image',
+      codegen: {required: true},
       validation: _required,
     },
     {
@@ -50,13 +46,11 @@ const textAndImageBlock = {
       name: 'buttonText',
       type: 'string',
       title: 'CTA Button Text',
-      validation: _required,
     },
     {
       name: 'buttonLink',
       type: 'link',
       title: 'CTA Button Link',
-      validation: _required,
     },
   ],
   preview: {

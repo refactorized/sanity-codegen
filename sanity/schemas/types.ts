@@ -1002,7 +1002,7 @@ export type ImageSlide = {
    *
    *
    */
-  cover_image?: {
+  cover_image: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -1014,28 +1014,28 @@ export type ImageSlide = {
    *
    *
    */
-  headline?: string;
+  headline: string;
 
   /**
    * Description — `string`
    *
    *
    */
-  description?: string;
+  description: string;
 
   /**
    * CTA — `link`
    *
    *
    */
-  cta?: Link;
+  cta: Link;
 
   /**
    * CTA Text — `string`
    *
    *
    */
-  cta_text?: string;
+  cta_text: string;
 };
 
 export type DrawerCombo = {
@@ -1112,7 +1112,7 @@ export type FlexCollar = {
    *
    *
    */
-  cards?: Array<SanityKeyed<FlexCollarCard>>;
+  cards: Array<SanityKeyed<FlexCollarCard>>;
 };
 
 export type FlexCollarCard = {
@@ -1128,18 +1128,11 @@ export type FlexCollarCard = {
 export type HeroBlock = {
   _type: "heroBlock";
   /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
    * Hero Background Image — `image`
    *
    *
    */
-  bgImage?: {
+  bgImage: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -1151,14 +1144,14 @@ export type HeroBlock = {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * Hero Cards — `array`
    *
    * Adds clickable cards to the hero
    */
-  hero_cards?: Array<SanityKeyed<HeroCard>>;
+  hero_cards: Array<SanityKeyed<HeroCard>>;
 };
 
 export type HeroCard = {
@@ -1168,52 +1161,45 @@ export type HeroCard = {
    *
    * Text on top of card
    */
-  card_eyebrow?: string;
+  card_eyebrow: string;
 
   /**
    * Copy — `text`
    *
    * Main copy on card
    */
-  card_copy?: string;
+  card_copy: string;
 
   /**
    * Card URL — `link`
    *
    * Destination page or URL after clicking on card
    */
-  card_link?: Link;
+  card_link: Link;
 };
 
 export type IntroBlock = {
   _type: "introBlock";
   /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
    * Body Text — `text`
    *
    *
    */
-  body?: string;
+  body: string;
 
   /**
    * Button Text — `string`
    *
    *
    */
-  buttonText?: string;
+  buttonText: string;
 
   /**
-   * Button Link — `slug`
+   * Button Link — `link`
    *
    *
    */
-  buttonLink?: { _type: "buttonLink"; current: string };
+  buttonLink: Link;
 };
 
 export type LinkMenu = {
@@ -1355,13 +1341,6 @@ export type Prose = {
 export type TextAndImageBlock = {
   _type: "textAndImageBlock";
   /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
-  /**
    * Main Header — `string`
    *
    * Optional large main header, renders across the top of this component
@@ -1369,25 +1348,25 @@ export type TextAndImageBlock = {
   header?: string;
 
   /**
-   * Secondary Header — `string`
+   * Content Header — `string`
    *
-   * Optional sub-header, renders above the body text
+   *
    */
-  subHeader?: string;
+  subHeader: string;
 
   /**
    * Body Copy — `basicText`
    *
    *
    */
-  body?: BasicText;
+  body: BasicText;
 
   /**
    * Image — `image`
    *
    *
    */
-  desktopImage?: {
+  desktopImage: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;

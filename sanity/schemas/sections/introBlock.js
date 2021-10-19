@@ -1,4 +1,5 @@
 import {string} from 'prop-types';
+const _required = (Rule) => Rule.required();
 
 const introBlock = {
   name: 'introBlock',
@@ -6,27 +7,25 @@ const introBlock = {
   title: 'Intro Block',
   fields: [
     {
-      name: 'blockType',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
-      initialValue: 'introBlock',
-    },
-    {
       name: 'body',
       type: 'text',
       title: 'Body Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'buttonText',
       type: 'string',
       title: 'Button Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'buttonLink',
-      // FIXME: this should be a more fleshed out link type including slug refs
-      type: 'slug',
+      type: 'link',
       title: 'Button Link',
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

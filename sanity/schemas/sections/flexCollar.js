@@ -1,4 +1,5 @@
 import {GiBowTie} from 'react-icons/gi';
+
 export const flexCollarCard = {
   name: 'flexCollarCard',
   type: 'object',
@@ -31,7 +32,8 @@ const flexCollar = {
       title: 'Cards',
       type: 'array',
       of: [{type: 'flexCollarCard'}],
-      validation: (Rule) => Rule.min(1).max(3),
+      codegen: {required: true},
+      validation: (Rule) => Rule.min(1).max(3).required(),
     },
   ],
   preview: {

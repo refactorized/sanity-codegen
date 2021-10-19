@@ -24,6 +24,4 @@ Homepage.args = {
   copy1: 'Find out about reffering a patient to Riggs',
   eyebrow2: 'Patient Outcomes and Results',
   copy2: 'Learn what previous residents say about us',
-  admissionsText: 'Contact Admissions',
-  admissionsUrl: 'https://www.google.com',
 };
