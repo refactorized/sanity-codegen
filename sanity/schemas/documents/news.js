@@ -10,7 +10,7 @@ export default {
       name: 'title',
       title: 'Title',
       description:
-        'Headline for the post, this will also appear as the page title and SEO title within search results.',
+        'Headline for the post, this will also appear as the page title and SEO title within search results. 100 character max recommended.',
       type: 'string',
       codegen: {required: true},
       validation: (Rule) => Rule.required().error('Post must have a title'),

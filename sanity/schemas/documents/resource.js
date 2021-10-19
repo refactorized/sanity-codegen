@@ -18,7 +18,8 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      description: 'The title of the resource, also used as the page title',
+      description:
+        'The title of the resource, also used as the page title. 100 character max recommended.',
       type: 'string',
       codegen: {required: true},
       validation: (Rule) => Rule.required().error('Resource must have a title'),

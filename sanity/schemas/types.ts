@@ -123,7 +123,7 @@ export interface Event extends SanityDocument {
   /**
    * Name — `string`
    *
-   * e.g. "2021 Fall Conference"
+   * e.g. "2021 Fall Conference" 100 character max recommended.
    */
   name?: string;
 
@@ -379,7 +379,7 @@ export interface News extends SanityDocument {
   /**
    * Title — `string`
    *
-   * Headline for the post, this will also appear as the page title and SEO title within search results.
+   * Headline for the post, this will also appear as the page title and SEO title within search results. 100 character max recommended.
    */
   title: string;
 
@@ -546,7 +546,7 @@ export interface Resource extends SanityDocument {
   /**
    * Title — `string`
    *
-   * The title of the resource, also used as the page title
+   * The title of the resource, also used as the page title. 100 character max recommended.
    */
   title: string;
 
@@ -827,13 +827,6 @@ export type BlockContent = Array<
 
 export type AdmissionsCallout = {
   _type: "admissionsCallout";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
-
   /**
    * Admissions Callout Header — `string`
    *

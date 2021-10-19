@@ -24,7 +24,7 @@ export default {
     {
       name: 'name',
       title: 'Name',
-      description: 'e.g. "2021 Fall Conference"',
+      description: 'e.g. "2021 Fall Conference" 100 character max recommended.',
       type: 'string',
       validation: (Rule) => [
         Rule.required().min(1).error('The event must have a name.'),
