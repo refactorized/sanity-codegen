@@ -18,6 +18,7 @@ const _map = (block: TextAndImageBlockData) => {
       desktop: block.desktopImage.asset.url,
       mobile: block.mobileImage?.asset.url || null,
     },
+    reverse: block.reverse,
   };
   return <TextAndImageBlock key={block._key} {...props} />;
 };

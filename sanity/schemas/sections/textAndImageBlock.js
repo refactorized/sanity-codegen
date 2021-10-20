@@ -52,6 +52,13 @@ const textAndImageBlock = {
       type: 'link',
       title: 'CTA Button Link',
     },
+    {
+      name: 'reverse',
+      type: 'boolean',
+      title: 'Define Image to be Left or Right',
+      description:
+        'Default (and color grey) is Image to the Left. Green is Image to the Right',
+    },
   ],
   preview: {
     select: {

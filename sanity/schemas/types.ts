@@ -1398,6 +1398,13 @@ export type TextAndImageBlock = {
    *
    */
   buttonLink?: Link;
+
+  /**
+   * Define Image to be Left or Right — `boolean`
+   *
+   * Default (and color grey) is Image to the Left. Green is Image to the Right
+   */
+  reverse?: boolean;
 };
 
 export type ComboCard = {
