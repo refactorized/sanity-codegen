@@ -1572,9 +1572,9 @@ export type InteriorHero = {
   };
 
   /**
-   * Interior Hero Video Source — `link`
+   * Toggle to set image placement — `link`
    *
-   * Video is optional
+   * Default (gray) to set image left; toggle (green) to set image right
    */
   videoSrc?: Link;
 };
