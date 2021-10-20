@@ -1,8 +1,12 @@
+import {isValidSlug} from '../regex';
+
 export default [
   {
     name: 'title',
     type: 'string',
     title: 'Title',
+    validation: (Rule) => Rule.required(),
+    codegen: {required: true},
   },
   {
     name: 'slug',
@@ -10,12 +14,24 @@ export default [
     options: {
       source: 'title',
     },
+    validation: (Rule) =>
+      Rule.custom((slug) => {
+        if (!slug?.current) {
+          return 'Slug is required';
+        }
+        if (!isValidSlug(slug.current)) {
+          return `Invalid format. Only 0-9, a-z, and '-' allowed. Separate paths with '/'. no leading or trailing '/'.`;
+        }
+      }),
+    codegen: {required: true},
   },
   {
     name: 'category',
     title: 'Category',
     type: 'reference',
     to: [{type: 'category'}],
+    validation: (Rule) => Rule.required(),
+    codegen: {required: true},
   },
   {
     name: 'description',
