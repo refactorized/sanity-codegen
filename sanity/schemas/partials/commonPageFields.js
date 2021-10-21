@@ -15,7 +15,7 @@ export default [
       source: 'title',
     },
     validation: (Rule) =>
-      Rule.custom((slug) => {
+      Rule.unique().custom((slug) => {
         if (!slug?.current) {
           return 'Slug is required';
         }
@@ -31,8 +31,8 @@ export default [
     title: 'Category',
     type: 'reference',
     to: [{type: 'category'}],
-    validation: (Rule) => Rule.required(),
-    codegen: {required: true},
+    // validation: (Rule) => Rule.required(),
+    // codegen: {required: true},
   },
   {
     name: 'description',
