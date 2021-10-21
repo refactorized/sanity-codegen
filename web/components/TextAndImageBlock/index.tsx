@@ -157,7 +157,7 @@ export const TextAndImageBlock = ({
             mb={[4, 2, 4]}
             fontSize={[1, 0, 3]}
             fontFamily="body"
-            letterSpacing={3}
+            letterSpacing={0}
           >
             <RenderBasicText asFragment content={caption} />
           </Text>
