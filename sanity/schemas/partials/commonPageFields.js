@@ -22,6 +22,7 @@ export default [
         if (!isValidSlug(slug.current)) {
           return `Invalid format. Only 0-9, a-z, and '-' allowed. Separate paths with '/'. no leading or trailing '/'.`;
         }
+        return true;
       }),
     codegen: {required: true},
   },
