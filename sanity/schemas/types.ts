@@ -458,21 +458,21 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 
   /**
    * Category — `reference`
    *
    *
    */
-  category?: SanityReference<Category>;
+  category: SanityReference<Category>;
 
   /**
    * Description — `text`
@@ -1400,9 +1400,9 @@ export type TextAndImageBlock = {
   buttonLink?: Link;
 
   /**
-   * Define Image to be Left or Right — `boolean`
+   * Toggle to set image placement — `boolean`
    *
-   * Default (and color grey) is Image to the Left. Green is Image to the Right
+   * Default (gray) to set image left; toggle (green) to set image right
    */
   reverse?: boolean;
 };
@@ -1572,9 +1572,9 @@ export type InteriorHero = {
   };
 
   /**
-   * Toggle to set image placement — `link`
+   * Interior Hero Video Source — `link`
    *
-   * Default (gray) to set image left; toggle (green) to set image right
+   * Video is optional: Add video link to the Manual URL Link field if video is provided
    */
   videoSrc?: Link;
 };

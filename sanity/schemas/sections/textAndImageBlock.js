@@ -55,9 +55,9 @@ const textAndImageBlock = {
     {
       name: 'reverse',
       type: 'boolean',
-      title: 'Define Image to be Left or Right',
+      title: 'Toggle to set image placement',
       description:
-        'Default (and color grey) is Image to the Left. Green is Image to the Right',
+        'Default (gray) to set image left; toggle (green) to set image right',
     },
   ],
   preview: {

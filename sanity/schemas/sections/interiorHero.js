@@ -37,9 +37,9 @@ const interiorHero = {
     {
       name: 'videoSrc',
       type: 'link',
-      title: 'Toggle to set image placement',
+      title: 'Interior Hero Video Source',
       description:
-        'Default (gray) to set image left; toggle (green) to set image right',
+        'Video is optional: Add video link to the Manual URL Link field if video is provided',
     },
   ],
 };
