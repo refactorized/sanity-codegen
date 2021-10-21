@@ -18,8 +18,7 @@ const textAndImageBlock = {
       name: 'subHeader',
       type: 'string',
       title: 'Content Header',
-      codegen: {required: true},
-      validation: _required,
+      description: 'Optional sub-header, renders above the body text',
     },
     {
       name: 'body',

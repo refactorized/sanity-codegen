@@ -10,7 +10,7 @@ const linkUrl = (link: Link) => {
 const _map = (block: TextAndImageBlockData) => {
   const props: TextAndImageBlockProps = {
     header: block.header || null,
-    subheader: block.subHeader,
+    subheader: block.subHeader || null,
     caption: block.body,
     btnText: block.buttonText || null,
     btnUrl: mapLink(block.buttonLink) || null,

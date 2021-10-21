@@ -1350,9 +1350,9 @@ export type TextAndImageBlock = {
   /**
    * Content Header — `string`
    *
-   *
+   * Optional sub-header, renders above the body text
    */
-  subHeader: string;
+  subHeader?: string;
 
   /**
    * Body Copy — `basicText`
