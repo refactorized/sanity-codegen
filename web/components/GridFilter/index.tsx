@@ -22,12 +22,19 @@ export interface GridFilterProps {
 
 const FilterContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 24px;
+
+  flex-direction: column;
+
+  @media (${query.atLeast('tablet')}) {
+    flex-direction: row;
+  }
 `;
 const Filter = styled.div`
-  flex-grow: 1;
-  width: 33%;
+  width: 100%%;
+  @media (${query.atLeast('tablet')}) {
+    width: 50%;
+  }
 `;
 const FilterLabel = styled.div`
   font-family: ${(props) => props.theme.fonts.body};

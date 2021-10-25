@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import {useReducer} from 'react';
 
-import {space, query, fontSize, fontFamily} from '../../themes/fn';
+import {space, query, fontSize, fontFamily, fontWeight} from '../../themes/fn';
 
 import {TeamCard, TeamCardProps} from '@components/Card/TeamCard';
 import {Block} from '@components/Layout';
@@ -9,8 +8,6 @@ import {Block} from '@components/Layout';
 export interface TeamCardGridProps {
   header: string;
   cards: TeamCardProps[];
-  category: string;
-  subcategory: string;
 }
 
 const Wrapper = styled.div`
@@ -39,27 +36,26 @@ const Header = styled.h2`
   }
 `;
 
+const NoCardsFound = styled.h3`
+  ${fontFamily('body')};
+  ${fontSize('xl')};
+  ${fontWeight('regular')};
+
+  @media screen and (${query.atLeast('tablet')}) {
+    ${fontSize('x5')};
+  }
+`;
+
 export const TeamCardGrid = ({
   header,
   cards,
-  category,
-  subcategory,
 }: TeamCardGridProps): JSX.Element => {
   return (
     <Block>
-      <Header>{category === '' ? header : category}</Header>
+      <Header>{header}</Header>
       <Wrapper>
-        {cards.map((card, index) => {
-          if (
-            // No Category is selected
-            // TODO in parent: subcategory should automatically be blank
-            // when category is blank
-            (category === '' && subcategory === '') ||
-            // Matches category
-            card.categories.some((c) => c === category) ||
-            // Matchs subcategory
-            card.subcategories.some((c) => c === subcategory)
-          ) {
+        {cards.length > 0 ? (
+          cards.map((card, index) => {
             return (
               <TeamCard
                 key={index}
@@ -73,8 +69,10 @@ export const TeamCardGrid = ({
                 subcategories={card.subcategories}
               />
             );
-          }
-        })}
+          })
+        ) : (
+          <NoCardsFound>No results available.</NoCardsFound>
+        )}
       </Wrapper>
     </Block>
   );

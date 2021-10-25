@@ -18,6 +18,7 @@ import resource from './documents/resource';
 import resourceType from './documents/resourceType';
 import siteConfig from './documents/siteConfig';
 import staff from './documents/staff';
+import teamPage from './documents/teamPage';
 
 // page-builder sections (also called blocks)
 import admissionsCallout from './sections/admissionsCallout';
@@ -79,6 +80,8 @@ export default createSchema({
     siteConfig,
     staff,
     // Page Builder block Documents, and co-located objects
+    teamPage,
+    // Page Builder block Documents
     admissionsCallout,
     calloutBand,
     bioCallout,

@@ -10,16 +10,17 @@ import {
 } from '../../themes/fn';
 import Image from 'next/image';
 import Link from 'next/link';
+import {Department, DepartmentTeam} from '@schema/types';
 
 export interface TeamCardProps {
-  image: string;
+  image?: string;
   name: string;
-  title: string;
+  title?: string;
   phone?: string;
   email?: string;
   url?: string;
-  categories: string[];
-  subcategories: string[];
+  categories: Department[];
+  subcategories: DepartmentTeam[];
 }
 
 const Wrapper = styled.div`
@@ -29,23 +30,33 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-const Name = styled.a`
-  ${fontSize('lg')};
+const Name = styled.h3`
+color: ${color('blue')};
+${fontSize('lg')};
   ${fontWeight('bold')};
   ${lineHeight('heading')};
-  color: ${color('blue')};
-  margin: ${space('md')} 0 0;
-  border-bottom: 4px solid transparent;
-  cursor: pointer;
-  align-self: flex-start;
-  position: relative;
 
   @media screen and (${query.atLeast('tablet')}) {
     ${fontSize('xl')};
-  &:hover {
-    border-color: ${color('blue')};
   }
-}
+  
+  a {
+    text-decoration: none;
+    
+    color: ${color('blue')};
+    margin: ${space('md')} 0 0;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    align-self: flex-start;
+    position: relative;
+
+    @media screen and (${query.atLeast('tablet')}) {
+   
+      &:hover {
+        border-color: ${color('blue')};
+      }
+    }
+  }
 }`;
 
 const Title = styled.p`
@@ -93,21 +104,40 @@ export const TeamCard = ({
 }: TeamCardProps): JSX.Element => {
   return (
     <Wrapper>
-      <Link href={url}>
-        <a>
-          {image ? (
-            <Image src={image} layout="responsive" height={333} width={326} />
-          ) : (
-            <Image
-              src={'/team-placeholder.jpg'}
-              layout="responsive"
-              height={333}
-              width={326}
-            />
-          )}
-        </a>
-      </Link>
-      <Name>{name}</Name>
+      {url ? (
+        <Link href={url}>
+          <a>
+            {image ? (
+              <Image src={image} layout="responsive" height={333} width={326} />
+            ) : (
+              <Image
+                src={'/team-placeholder.jpg'}
+                layout="responsive"
+                height={333}
+                width={326}
+              />
+            )}
+          </a>
+        </Link>
+      ) : image ? (
+        <Image src={image} layout="responsive" height={333} width={326} />
+      ) : (
+        <Image
+          src={'/team-placeholder.jpg'}
+          layout="responsive"
+          height={333}
+          width={326}
+        />
+      )}
+      <Name>
+        {url ? (
+          <Link href={url}>
+            <a>{name}</a>
+          </Link>
+        ) : (
+          name
+        )}
+      </Name>
       <Title>{title}</Title>
       {phone && (
         <ContactInfo>

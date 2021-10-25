@@ -11,7 +11,7 @@ interface PhoneComponentProps {
 }
 
 export const Phone = ({
-  tel = '123.456.7890',
+  tel,
   fontSize = '16px',
   fontWeight = 'regular',
   fontColor = 'text',

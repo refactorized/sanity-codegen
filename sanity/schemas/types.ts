@@ -805,6 +805,83 @@ export interface Staff extends SanityDocument {
   bio?: BlockContent;
 }
 
+/**
+ * Team Page
+ *
+ *
+ */
+export interface TeamPage extends SanityDocument {
+  _type: "teamPage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero Title — `string`
+   *
+   *
+   */
+  teamHeroTitle?: string;
+
+  /**
+   * Hero Caption — `string`
+   *
+   *
+   */
+  caption?: string;
+
+  /**
+   * Staff Cards — `array`
+   *
+   * Bios for staff members to be displayed on Team Page
+   */
+  cards?: Array<SanityKeyedReference<Staff>>;
+
+  /**
+   * Pre-Footer — `preFooter`
+   *
+   *
+   */
+  preFooter?: PreFooter;
+}
+
 export type AnnouncementBar = {
   _type: "announcementBar";
   /**
@@ -1799,4 +1876,5 @@ export type Documents =
   | Resource
   | ResourceType
   | SiteConfig
-  | Staff;
+  | Staff
+  | TeamPage;

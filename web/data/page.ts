@@ -3,6 +3,7 @@ import {handler} from '../util/logging';
 import {PageDocument} from '@data/types';
 import groq from 'groq';
 
+// promise style
 export const getPaths = async (): Promise<string[]> => {
   const pathQuery = groq`*[_type == "page"  && !(_id in path('drafts.**'))]`;
   const results = await client.fetch(pathQuery);

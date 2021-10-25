@@ -7,7 +7,7 @@ export interface PreFooterBlockProps {
   description: string;
   btnText: string;
   btnUrl: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 }
 import Block from '@components/Layout/Block';
 
@@ -16,7 +16,7 @@ export const PreFooterBlock = ({
   description = `From first contact to admissions consultation, let’s find out if we’re a good fit. `,
   btnText = `Contact Us`,
   btnUrl = `#`,
-  phoneNumber = '866-255-1921',
+  phoneNumber,
 }: PreFooterBlockProps): JSX.Element => {
   return (
     <Block>
