@@ -45,7 +45,7 @@ const linkMenu = {
     },
     {
       name: 'description',
-      type: 'string',
+      type: 'text',
       title: 'Link Menu Description',
       codegen: {required: true},
       validation: _required,

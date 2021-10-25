@@ -16,7 +16,7 @@ const admissionsCallout = {
     },
     {
       name: 'admissionDescription',
-      type: 'string',
+      type: 'text',
       title: 'Admissions Callout Description',
       codegen: {required: true},
       validation: _required,

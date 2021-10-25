@@ -48,7 +48,7 @@ const comboCard = {
     },
     {
       name: 'body',
-      type: 'string',
+      type: 'text',
       title: 'Combo Card Body',
       codegen: {required: true},
       validation: _required,

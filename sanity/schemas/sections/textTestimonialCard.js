@@ -16,7 +16,7 @@ const textTestimonialCard = {
     },
     {
       name: 'description',
-      type: 'string',
+      type: 'text',
       title: 'Text Testimonial Card Description',
       codegen: {required: true},
       validation: _required,
@@ -37,7 +37,7 @@ const textTestimonialCard = {
     },
     {
       name: 'testimonialText',
-      type: 'string',
+      type: 'text',
       title: 'Text Testimonial Card Testimonial',
       codegen: {required: true},
       validation: _required,

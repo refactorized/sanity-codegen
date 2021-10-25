@@ -16,7 +16,7 @@ const interiorHero = {
     },
     {
       name: 'caption',
-      type: 'string',
+      type: 'text',
       title: 'Interior Hero Caption',
       codegen: {required: true},
       validation: _required,

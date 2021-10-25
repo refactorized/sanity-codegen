@@ -21,7 +21,7 @@ export const drawerComboDrawer = {
     },
     {
       name: 'details',
-      type: 'string',
+      type: 'text',
       title: 'Drawer Combo details',
       codegen: {required: true},
       validation: _required,

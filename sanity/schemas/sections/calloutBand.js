@@ -16,7 +16,7 @@ const calloutBand = {
     },
     {
       name: 'description',
-      type: 'string',
+      type: 'text',
       title: 'Callout Description',
       codegen: {required: true},
       validation: _required,

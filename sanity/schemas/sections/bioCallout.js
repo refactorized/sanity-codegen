@@ -27,7 +27,7 @@ export const bioCalloutCards = {
     },
     {
       name: 'bio',
-      type: 'string',
+      type: 'text',
       title: 'Bio',
       codegen: {required: true},
       validation: _required,
