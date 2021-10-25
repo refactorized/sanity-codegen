@@ -15,7 +15,7 @@ export default [
       source: 'title',
     },
     validation: (Rule) =>
-      Rule.unique().custom((slug) => {
+      Rule.custom((slug) => {
         if (!slug?.current) {
           return 'Slug is required';
         }
