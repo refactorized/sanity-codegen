@@ -204,11 +204,11 @@ const TeamPage = (props) => {
     const destinationPath =
       destinationDepartment.title !== currentDepartment.title // Check if we're changing teams or nah
         ? // Go to different department
-          `/about/staff/${
+          `/about/our-team/${
             departmentSlug !== '' ? `${departmentSlug}/` : '' // '' is to handle choosing 'All Departments'
           }`
         : // Go to different team in same department
-          `/about/staff/${
+          `/about/our-team/${
             departmentSlug !== '' ? `${departmentSlug}/` : '' // '' is to handle choosing 'All Departments'
           }${teamSlug}`;
 
@@ -243,7 +243,7 @@ const TeamPage = (props) => {
   const totalNumberOfPages = Math.ceil(page.totalCards / maxNumberInPage);
 
   const handleSelectPage = (p: number): null => {
-    const destinationPath = `/about/staff/${
+    const destinationPath = `/about/our-team/${
       slugObj.department !== '' ? `${slugObj.department}/` : ''
     }${slugObj.team !== '' ? `${slugObj.team}/` : ''}${p > 1 ? p : ''}`;
 

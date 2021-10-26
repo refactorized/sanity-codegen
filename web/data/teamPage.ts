@@ -2,7 +2,7 @@ import client, {bigFetch} from './sanityClient';
 import {handler} from '../util/logging';
 import {PageDocument} from '@data/types';
 import groq from 'groq';
-import {maxNumberInPage} from 'pages/about/staff/[[...slug]]';
+import {maxNumberInPage} from 'pages/about/our-team/[[...slug]]';
 
 export const getTeamPaths = () => {
   const pathQuery = `{
