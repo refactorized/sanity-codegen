@@ -43,7 +43,7 @@ export const AdmissionsCallout = ({
     <Block>
       <StyledBox
         display="grid"
-        gridGap={['38px', '40px', '100px']}
+        gridGap={['38px', '40px', null, '100px']}
         gridTemplateColumns={['100%', '1fr 1fr']}
       >
         <StyledBox
@@ -59,7 +59,7 @@ export const AdmissionsCallout = ({
             fontFamily="headline"
             letterSpacing="-0.01em"
             lineHeight={['36px', '51.39px']}
-            m="10px 0"
+            m=" 0"
           >
             {admissionHeader}
           </StyledHeadline2>

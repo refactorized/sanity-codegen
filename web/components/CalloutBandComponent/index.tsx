@@ -41,7 +41,7 @@ export const CalloutBand = ({
               fontFamily="body"
               letterSpacing="-0.015em"
               lineHeight="26px"
-              maxWidth={['inherit', '400px', '700px', '800px']}
+              maxWidth={['inherit', '355px', '700px', '800px']}
             >
               {description}
             </StyledDescription>

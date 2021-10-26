@@ -27,12 +27,12 @@ export const PreFooterBlock = ({
         color="secondary"
         bg="navy"
         borderRadius={['4px', '0px']}
-        p={['22px', '45px 60px']}
+        p={['22px', '25px 29px', '45px 60px']}
       >
         <div>
           <StyledHeadline
             m={0}
-            fontSize={['20px', '24px', '43px']}
+            fontSize={['20px', '24px', '32px', '43px']}
             fontWeight="regular"
             fontFamily="headline"
             letterSpacing="-0.01em"
@@ -47,7 +47,7 @@ export const PreFooterBlock = ({
               fontFamily="body"
               letterSpacing="-0.015em"
               lineHeight="26px"
-              maxWidth={['300px', '300px', 'none']}
+              maxWidth={['300px', '280px', '370px', 'none']}
             >
               {description}
             </StyledDescription>

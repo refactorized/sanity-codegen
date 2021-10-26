@@ -43,7 +43,6 @@ export const LinkMenuComponent = ({
         color="text"
         display="grid"
         gridTemplateColumns={['100%', null, null, '35% 1fr']}
-        p={['20px', '50px', null, '80px']}
         gridGap={['25px', '35px', null, '81px']}
       >
         <StyledImageContainer
@@ -159,6 +158,7 @@ const StyledImageContainer = styled.div`
   div {
     height: 757px;
     @media (max-width: 1024px) {
+      display: block !important;
       height: 355px;
     }
     @media (max-width: 768px) {
