@@ -10,14 +10,18 @@ import {
   fontSize,
   lineHeight,
 } from '../../themes/fn';
+import {Dates} from '@components/Dates';
 
 export interface NewsDetailHeroProps {
   category: string;
   header: string;
-  date: string;
+  date?: string;
+  publishedDate?: string;
+  authors?: string[];
   urlFacebook?: string;
   urlTwitter?: string;
   urlLinkedin?: string;
+  squish?: true;
 }
 
 /*** STYLING ***/
@@ -68,6 +72,33 @@ const DateText = styled.p`
   }
 `;
 
+const InfoText = styled.p`
+  ${fontFamily('body')};
+  ${fontSize('sm')};
+  ${fontWeight('bold')};
+
+  span {
+    ${fontWeight('regular')};
+  }
+
+  .bold-span {
+    ${fontWeight('bold')};
+  }
+
+  span.author-name {
+    &::after {
+      display: block;
+      content: ' ';
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+`;
+
 const SocialWrapper = styled.div`
   ${fontWeight('bold')};
   ${fontFamily('body')};
@@ -91,17 +122,34 @@ export const NewsDetailHero = ({
   category,
   header,
   date,
+  authors,
+  publishedDate,
   urlFacebook,
   urlTwitter,
   urlLinkedin,
+  squish,
 }: NewsDetailHeroProps): JSX.Element => {
   const hasSocialLink = urlFacebook || urlTwitter || urlLinkedin;
   return (
-    <Block>
+    <Block squish={squish}>
       <Wrapper>
         <Eyebrow>{category}</Eyebrow>
         <Header>{header}</Header>
-        <DateText hasSocialLink={hasSocialLink}>{date}</DateText>
+        {publishedDate ? (
+          <InfoText>
+            <span className="bold-span">Published on:</span>{' '}
+            <Dates startDate={date} />
+          </InfoText>
+        ) : (
+          <Dates startDate={date} />
+        )}
+        <InfoText>
+          {authors.map((a) => (
+            <span key={a} className="bold-span author-name">
+              {a}
+            </span>
+          ))}
+        </InfoText>
         {hasSocialLink && (
           <SocialWrapper>
             <span>Share:</span>

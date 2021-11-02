@@ -17,6 +17,7 @@ import page from './documents/page';
 import news from './documents/news';
 import postType from './documents/postType';
 import resource from './documents/resource';
+import resourcePage from './documents/resourcePage';
 import resourceType from './documents/resourceType';
 import siteConfig from './documents/siteConfig';
 import staff from './documents/staff';
@@ -78,6 +79,7 @@ export default createSchema({
     page,
     postType,
     resource,
+    resourcePage,
     resourceType,
     siteConfig,
     staff,

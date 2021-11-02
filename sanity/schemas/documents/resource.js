@@ -78,12 +78,12 @@ export default {
       of: [{type: 'reference', to: {type: 'category'}}],
     },
     {
-      name: 'type',
+      name: 'resourceType',
       title: 'Resource Type',
       description:
         'e.g. Books, Clinical Perspectives, Conference Presentations, etc.',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'resourceType'}}],
+      type: 'reference',
+      to: [{type: 'resourceType'}],
       codegen: {required: true},
       validation: (Rule) =>
         Rule.required().error('Resource must have a type selected'),
@@ -101,7 +101,7 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'prose',
       codegen: {required: true},
       validation: (Rule) =>
         Rule.required().error('Resource must have a body of some sort'),
@@ -124,7 +124,7 @@ export default {
     select: {
       title: 'title',
       media: 'mainImage',
-      subtitle: 'type.0.title',
+      // subtitle: 'type.title',
     },
   },
 };

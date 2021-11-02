@@ -95,21 +95,21 @@ export interface DepartmentTeam extends SanityDocument {
    *
    * e.g. Communications team, etc.
    */
-  name?: string;
+  name: string;
 
   /**
    * Associated Department — `reference`
    *
    * e.g. Administration, Therapy, etc.
    */
-  associatedDepartment?: SanityReference<Department>;
+  associatedDepartment: SanityReference<Department>;
 
   /**
    * Slug — `slug`
    *
    * Click “Generate” to auto-populate.
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 }
 
 /**
@@ -599,11 +599,11 @@ export interface Resource extends SanityDocument {
   categories?: Array<SanityKeyedReference<Category>>;
 
   /**
-   * Resource Type — `array`
+   * Resource Type — `reference`
    *
    * e.g. Books, Clinical Perspectives, Conference Presentations, etc.
    */
-  type: Array<SanityKeyedReference<ResourceType>>;
+  resourceType: SanityReference<ResourceType>;
 
   /**
    * Published at — `date`
@@ -613,11 +613,88 @@ export interface Resource extends SanityDocument {
   publishedAt?: string;
 
   /**
-   * Body — `blockContent`
+   * Body — `prose`
    *
    *
    */
-  body: BlockContent;
+  body: Prose;
+}
+
+/**
+ * Resource Page
+ *
+ *
+ */
+export interface ResourcePage extends SanityDocument {
+  _type: "resourcePage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero — `interiorHero`
+   *
+   *
+   */
+  interiorHero?: InteriorHero;
+
+  /**
+   * Featured Resource — `reference`
+   *
+   * Resource displayed under the "Featured" section above the grid.
+   */
+  featuredResource?: SanityReference<Resource>;
+
+  /**
+   * Text and Image Block — `textAndImageBlock`
+   *
+   *
+   */
+  textAndImageBlock?: TextAndImageBlock;
+
+  /**
+   * Pre-Footer — `preFooter`
+   *
+   *
+   */
+  preFooter?: PreFooter;
 }
 
 /**
@@ -1427,7 +1504,7 @@ export type PreFooter = {
    *
    *
    */
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export type Prose = {
@@ -1899,6 +1976,7 @@ export type Documents =
   | Page
   | PostType
   | Resource
+  | ResourcePage
   | ResourceType
   | SiteConfig
   | Staff
