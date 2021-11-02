@@ -472,7 +472,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  category: SanityReference<Category>;
+  category?: SanityReference<Category>;
 
   /**
    * Description — `text`
@@ -819,14 +819,14 @@ export interface TeamPage extends SanityDocument {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 
   /**
    * Category — `reference`
@@ -913,7 +913,7 @@ export type AdmissionsCallout = {
   admissionHeader: string;
 
   /**
-   * Admissions Callout Description — `string`
+   * Admissions Callout Description — `text`
    *
    *
    */
@@ -979,7 +979,7 @@ export type CalloutBand = {
   header: string;
 
   /**
-   * Callout Description — `string`
+   * Callout Description — `text`
    *
    *
    */
@@ -1046,7 +1046,7 @@ export type BioCalloutCards = {
   credential?: string;
 
   /**
-   * Bio — `string`
+   * Bio — `text`
    *
    *
    */
@@ -1200,7 +1200,7 @@ export type DrawerComboDrawer = {
   title: string;
 
   /**
-   * Drawer Combo details — `string`
+   * Drawer Combo details — `text`
    *
    *
    */
@@ -1326,7 +1326,7 @@ export type LinkMenu = {
   header: string;
 
   /**
-   * Link Menu Description — `string`
+   * Link Menu Description — `text`
    *
    *
    */
@@ -1378,14 +1378,14 @@ export type OutcomesCarousel = {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * Cards — `array`
    *
    * Cards to show in the carousel
    */
-  cards?: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
+  cards: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
 };
 
 export type PageInfo = { _type: "pageInfo"; _ref: string };
@@ -1519,7 +1519,7 @@ export type ComboCard = {
   title: string;
 
   /**
-   * Combo Card Body — `string`
+   * Combo Card Body — `text`
    *
    *
    */
@@ -1643,7 +1643,7 @@ export type InteriorHero = {
   header: string;
 
   /**
-   * Interior Hero Caption — `string`
+   * Interior Hero Caption — `text`
    *
    *
    */
@@ -1758,28 +1758,28 @@ export type StatCard = {
    *
    * in hex (#123456) or rgba (rgba(0,0,0,0.5) format
    */
-  background_color?: string;
+  background_color: string;
 
   /**
    * Statistic — `string`
    *
    * A numerical statistic, including unit of measure (eg %)
    */
-  statistic_text?: string;
+  statistic_text: string;
 
   /**
    * Descriptive Text — `string`
    *
    * Thoughts and feedback from a Riggs patient.
    */
-  baseline_text?: string;
+  baseline_text: string;
 
   /**
    * Icon — `image`
    *
    *
    */
-  icon?: {
+  icon: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -1794,21 +1794,21 @@ export type TestimonialCard = {
    *
    * Thoughts and feedback from a Riggs patient.
    */
-  testimonial_text?: string;
+  testimonial_text: string;
 
   /**
    * Patient Name — `string`
    *
    *
    */
-  patient_name?: string;
+  patient_name: string;
 
   /**
    * Patient Photo — `image`
    *
    *
    */
-  patient_photo_path?: {
+  patient_photo_path: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -1826,7 +1826,7 @@ export type TextTestimonialCard = {
   header: string;
 
   /**
-   * Text Testimonial Card Description — `string`
+   * Text Testimonial Card Description — `text`
    *
    *
    */
@@ -1847,7 +1847,7 @@ export type TextTestimonialCard = {
   ctaUrl: Link;
 
   /**
-   * Text Testimonial Card Testimonial — `string`
+   * Text Testimonial Card Testimonial — `text`
    *
    *
    */
