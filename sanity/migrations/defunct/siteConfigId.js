@@ -8,7 +8,7 @@ const CFG_ID = 'ID_SITE_CONFIG';
 async function rename() {
   const results = await client.fetch(query);
   const dupe = results[0];
-  delete dupe.id; // previous mistake, don't worry about it.
+  delete dupe.id; // correct previous mistake of using id instead of _id, (don't worry about it.)
   dupe._id = CFG_ID; // so we can find it.
 
   const tx = client.transaction();

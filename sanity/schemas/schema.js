@@ -5,12 +5,14 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // documents
+import blockContent from './documents/blockContent';
 import category from './documents/category';
 import department from './documents/department';
 import departmentTeam from './documents/departmentTeam';
 import event from './documents/event';
 import eventCategory from './documents/eventCategory';
 import eventSeries from './documents/eventSeries';
+import externalContributor from './documents/externalContributor';
 import page from './documents/page';
 import news from './documents/news';
 import postType from './documents/postType';
@@ -51,10 +53,9 @@ import pageInfo from './objects/pageInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
 import prose, {ptImage} from './sections/prose';
+import navConfig, {navItem, navList} from './objects/config/navConfig';
 
-// We import object and document schemas
-import blockContent from './documents/blockContent';
-import externalContributor from './documents/externalContributor';
+// Singletons, and co-located objects
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -80,9 +81,9 @@ export default createSchema({
     resourceType,
     siteConfig,
     staff,
+
     // Page Builder block Documents, and co-located objects
     teamPage,
-    // Page Builder block Documents
     admissionsCallout,
     calloutBand,
     bioCallout,
@@ -108,6 +109,7 @@ export default createSchema({
     textAndImageBlock,
     comboCard,
     comboCardCards,
+
     // objects
     basicText,
     footerConfig,
@@ -119,5 +121,10 @@ export default createSchema({
     statCard,
     testimonialCard,
     textTestimonialCard,
+
+    // singletons and co-located objects
+    navConfig,
+    navItem,
+    navList,
   ]),
 });

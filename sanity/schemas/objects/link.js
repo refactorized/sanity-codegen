@@ -16,6 +16,7 @@ const link = {
       type: 'url',
     },
   ],
+  // TODO: actually validate maybe? (from adam, to adam)
   validation: (Rule) =>
     Rule.custom((fields) => {
       return true;

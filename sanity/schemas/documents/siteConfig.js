@@ -8,10 +8,25 @@ export default {
   name: 'siteConfig',
   type: 'document',
   title: 'Site Config',
+  preview: {select: {}, prepare: () => ({title: 'Site-wide Configuration'})},
   icon: IoSettingsOutline,
   fieldsets: [
-    {name: 'announcementBar', title: 'Announcement Bar'},
-    {name: 'general', title: 'General Sitewide Information'},
+    {
+      name: 'announcementBar',
+      title: 'Announcement Bar',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
+    },
+    {
+      name: 'general',
+      title: 'General Sitewide Information',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
+    },
   ],
   fields: [
     ...inFieldset('announcementBar', [
@@ -72,6 +87,19 @@ export default {
       name: 'footerConfig',
       type: 'footerConfig',
       title: 'Footer Configuration',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
+    },
+    {
+      name: 'navConfig',
+      type: 'navConfig',
+      title: 'Nav Configuration',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
     },
   ],
 };
