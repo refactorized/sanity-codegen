@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
-import {query} from '@theme/fn';
+import {fontFamily, query} from '@theme/fn';
 import {useState} from 'react';
 
 export interface CategoryLink {
@@ -46,7 +46,7 @@ const Button = styled.button`
   padding: 16px 24px;
   border: solid 2px black;
   background-color: transparent;
-  font-family: Proxima Nova;
+  ${fontFamily('body')};
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

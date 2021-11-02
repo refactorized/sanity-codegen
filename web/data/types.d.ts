@@ -72,10 +72,10 @@ export type ResolvedPageLink = {
 export type ResolvedSanityReferences<T> =
   // match `SanityKeyedReference` and unwrap via `infer U`
   T extends SanityKeyedReference<infer U>
-    ? U
+    ? ResolvedSanityReferences<U>
     : // match `SanityReference` and unwrap via `infer U`
     T extends SanityReference<infer U>
-    ? U
+    ? ResolvedSanityReferences<U>
     : // resolve pageInfo references (see note below)
     T extends {_type: 'pageInfo'}
     ? ResolvedPageInfo

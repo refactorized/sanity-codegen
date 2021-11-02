@@ -39,8 +39,6 @@ const preFooter = {
       name: 'phoneNumber',
       type: 'string',
       title: 'Pre-Footer Phone Number',
-      codegen: {required: true},
-      validation: _required,
     },
   ],
 };

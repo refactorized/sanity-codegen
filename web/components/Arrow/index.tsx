@@ -20,30 +20,44 @@ interface CircleArrowProps {
   arrowColor?: string;
   circleColor?: string;
   size?: number;
+  flip?: true;
 }
+
+const Container = styled.div`
+  ${({flip}) =>
+    flip &&
+    `
+  svg {
+    transform: rotate(180deg);
+  }
+  `}
+`;
 
 export const CircleArrow = ({
   arrowColor = 'white',
   circleColor = '#71976B',
   size = 25,
+  flip,
 }: CircleArrowProps) => {
   return (
-    <svg
-      width={size}
-      viewBox="0 0 27 28"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="13.5" cy="14.459" r="13.5" fill={circleColor} />
-      <path d="M11.75 18.46l4.5-4.5-4.5-4.5" fill={circleColor} />
-      <path
-        d="M11.75 18.46l4.5-4.5-4.5-4.5"
-        stroke={arrowColor}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <Container flip={flip}>
+      <svg
+        width={size}
+        viewBox="0 0 27 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="13.5" cy="14.459" r="13.5" fill={circleColor} />
+        <path d="M11.75 18.46l4.5-4.5-4.5-4.5" fill={circleColor} />
+        <path
+          d="M11.75 18.46l4.5-4.5-4.5-4.5"
+          stroke={arrowColor}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </Container>
   );
 };
 

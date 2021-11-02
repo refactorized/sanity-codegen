@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 
 export const Breadcrumbs = ({pages}: BreadcrumbsProps): JSX.Element => {
   return (
-    <Block squish={true}>
+    <Block breadcrumbs squish={true}>
       <Wrapper>
         {pages.map((page, index) => {
           return (

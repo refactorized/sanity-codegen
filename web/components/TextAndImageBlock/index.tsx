@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import {
-  color,
-  space,
   typography,
   flexbox,
   layout,
@@ -9,6 +7,15 @@ import {
   size,
   letterSpacing,
 } from 'styled-system';
+import {
+  color,
+  space,
+  fontFamily,
+  fontWeight,
+  fontSize,
+  query,
+  lineHeight,
+} from '@theme/fn';
 import Image from 'next/image';
 import {Button} from '@components/Button/';
 import Block from '@components/Layout/Block';
@@ -16,13 +23,15 @@ import type {BasicText} from '@data/types';
 import {RenderBasicText} from '@components/PortableText';
 
 export interface TextAndImageBlockProps {
-  header: string;
+  altBg?: true;
+  header?: string;
   imgUrls?: {
     desktop: string;
     mobile?: string;
   };
-  subheader: string;
-  caption: BasicText;
+  subheader?: string;
+  secondHeader?: string;
+  caption: BasicText | string;
   btnText?: string;
   btnUrl?: string;
   reverse?: boolean;
@@ -39,81 +48,183 @@ const Box = styled.div`
   ${size}
 `;
 
-const Header = styled.h1`
-  ${color}
-  ${space}
-  ${typography}
+const Container = styled.div`
+  background-color: ${({altBg}) =>
+    altBg ? color('cream') : color('background')};
 `;
 
-const Subheader = styled.h2`
-  ${color}
-  ${space}
-  ${typography}
-  text-transform: uppercase;
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 0;
+  grid-column-gap: 0;
+
+  @media screen and (${query.atLeast('tablet')}) {
+    grid-template-columns: ${({reverse}) =>
+      reverse
+        ? 'minmax(280px, 450px) minmax(368px,1fr)'
+        : 'minmax(368px,1fr) minmax(280px, 450px)'};
+    grid-column-gap: ${space('lg')};
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    grid-template-columns: ${({reverse}) =>
+      reverse
+        ? 'minmax(453px, 1fr) minmax(auto,743px)'
+        : 'minmax(auto,743px) minmax(453px, 1fr)'};
+    grid-column-gap: ${space('x6')};
+  }
 `;
+
+// const ImageContainer = styled.div`
+//   display: block;
+// `;
+
+const ContentContainer = styled.div`
+  margin-top: ${space('xl')};
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  grid-row: 2;
+
+  @media screen and (${query.atLeast('tablet')}) {
+    margin-top: 0;
+    grid-row: ${({reverse}) => (reverse ? 1 : 'unset')};
+  }
+`;
+
+// <Box
+//           mt={[4, 0, 0]}
+//           display="flex"
+//           justifyContent="center"
+//           flexDirection="column"
+//           gridRow={reverse ? 1 : 'unset'}
+//         >
+const Header = styled.h1`
+  ${fontFamily('headline')};
+  margin: 0 0 ${space('lg')};
+  max-width: 743px;
+  ${fontWeight('regular')};
+  ${fontSize('x5')};
+
+  ${fontSize('xl')};
+
+  @media screen and (${query.atLeast('desktop')}) {
+    margin-bottom: ${space('xl')};
+    ${fontSize('x6')}
+  }
+`;
+
+const Eyebrow = styled.h3`
+  text-transform: uppercase;
+  ${fontFamily('body')};
+  ${fontWeight('bold')};
+  ${fontSize('sm')};
+
+  @media screen and (${query.atLeast('tablet')}) {
+    font-size: 10px;
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    ${fontSize('sm')};
+  }
+`;
+
+{
+  /* <Eyebrow
+              fontFamily="body"
+              fontWeight="bold"
+              m={0}
+              fontSize={[0, '10px', 0]}
+            ></Eyebrow> */
+}
 
 // For No Top Header Variant
 const InnerHeader = styled.h1`
-  ${color}
-  ${space}
-  ${typography}
+  ${fontFamily('headline')};
+  ${fontSize('x5')};
+  margin: 0;
+
+  @media screen and (${query.atLeast('tablet')}) {
+    ${fontSize('xl')};
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    ${fontSize('x6')};
+  }
 `;
 
+{
+  /* <InnerHeader fontFamily="headline" m={0} fontSize={[4, 3, 5]}></InnerHeader> */
+}
+
 const Text = styled.div`
-  ${color}
-  ${space}
-  ${typography}
-  ${letterSpacing}
+  ${lineHeight('body')};
+  margin: ${space('md')} 0 ${space('xl')};
+  ${fontSize('md')};
+  ${fontFamily('body')};
+  letter-spacing: 0;
 
   p {
     margin: 0;
   }
+
+  @media screen and (${query.atLeast('tablet')}) {
+    margin: ${space('sm')} 0 ${space('md')};
+    ${fontSize('sm')};
+  }
+
+  @media screen and (${query.atLeast('desktop')}) {
+    margin: ${space('md')} 0 ${space('xl')};
+    ${fontSize('xl')};
+  }
+`;
+
+{
+  /* <Text
+            lineHeight={['body', 'body', 'heading']}
+            mt={[2, 1, 4]}
+            mb={[4, 2, 4]}
+            fontSize={[1, 0, 3]}
+            fontFamily="body"
+            letterSpacing={0}
+          ></Text> */
+}
+
+// SecondHeader used for Featured Resources / Courses
+const SecondHeader = styled.h2`
+  ${fontWeight('bold')};
+  color: ${color('navy')};
+  ${fontFamily('body')};
+  ${fontSize('lg')};
+  ${lineHeight('heading')};
+  margin: 0;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    ${fontSize('xl')};
+  }
+}
 `;
 
 export const TextAndImageBlock = ({
+  altBg,
   header,
   imgUrls,
   subheader,
+  secondHeader,
   caption,
   btnText,
   btnUrl,
   reverse,
 }: TextAndImageBlockProps): JSX.Element => {
+  console.log('TYPE OF CAPTION: ', typeof caption);
   return (
-    <Block>
-      {header && (
-        <Header
-          fontFamily="headline"
-          mx={[0]}
-          mt={0}
-          mb={[3, 3, 4]}
-          fontSize={[4, 3, 5]}
-          maxWidth={743}
-          fontWeight="regular"
-        >
-          {header}
-        </Header>
-      )}
-      <Box
-        display="grid"
-        gridTemplateColumns={
-          reverse
-            ? [
-                '1fr',
-                'minmax(280px, 450px) minmax(368px,1fr)',
-                'minmax(453px, 1fr) minmax(auto,743px)',
-              ]
-            : [
-                '1fr',
-                'minmax(368px,1fr) minmax(280px, 450px)',
-                'minmax(auto,743px) minmax(453px, 1fr)',
-              ]
-        }
-        gridRowGap={0}
-        gridColumnGap={[0, 3, 6]}
-      >
-        {/*/TODO: review image flexibility / responsiveness */}
-        <Box display={['none', 'none', 'block']} width="100%">
+    <Container altBg={altBg}>
+      <Block>
+        {header && <Header>{header}</Header>}
+        <GridContainer reverse={reverse}>
+          {/*/TODO: review image flexibility / responsiveness */}
+          {/* <Box display={['none', 'none', 'block']} width="100%">
           <Image src={imgUrls.desktop} width={743} height={419} />
         </Box>
         <Box gridColumn={1} display={['none', 'block', 'none']} width="100%">
@@ -129,48 +240,39 @@ export const TextAndImageBlock = ({
             width={280}
             height={304}
           />
-        </Box>
-        <Box
-          mt={[4, 0, 0]}
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          gridRow={reverse ? 1 : 'unset'}
-        >
-          {header ? (
-            <Subheader
-              fontFamily="body"
-              fontWeight="bold"
-              m={0}
-              fontSize={[0, '10px', 0]}
-            >
-              {subheader}
-            </Subheader>
-          ) : (
-            <InnerHeader fontFamily="headline" m={0} fontSize={[4, 3, 5]}>
-              {subheader}
-            </InnerHeader>
-          )}
-          <Text
-            lineHeight={['body', 'body', 'heading']}
-            mt={[2, 1, 4]}
-            mb={[4, 2, 4]}
-            fontSize={[1, 0, 3]}
-            fontFamily="body"
-            letterSpacing={0}
-          >
-            <RenderBasicText asFragment content={caption} />
-          </Text>
-          <Button
-            arrowColor="white"
-            arrow={true}
-            size="medium"
-            variant="solid"
-            url={btnUrl}
-            label={btnText}
+        </Box> */}
+          <Image
+            layout="responsive"
+            src={imgUrls.desktop}
+            width={'100%'}
+            height={'auto'}
+            objectFit="cover"
           />
-        </Box>
-      </Box>
-    </Block>
+          <ContentContainer reverse={reverse}>
+            {header ? (
+              <Eyebrow>{subheader}</Eyebrow>
+            ) : (
+              <InnerHeader>{subheader}</InnerHeader>
+            )}
+            {secondHeader && <SecondHeader>{secondHeader}</SecondHeader>}
+            {typeof caption === 'object' ? (
+              <Text>
+                <RenderBasicText asFragment content={caption} />
+              </Text>
+            ) : (
+              <Text>{caption}</Text>
+            )}
+            <Button
+              arrowColor="white"
+              arrow={true}
+              size="medium"
+              variant="solid"
+              url={btnUrl}
+              label={btnText}
+            />
+          </ContentContainer>
+        </GridContainer>
+      </Block>
+    </Container>
   );
 };

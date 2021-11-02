@@ -10,7 +10,15 @@ import {
 } from '../../themes/fn';
 import Image from 'next/image';
 import Link from 'next/link';
-import {Department, DepartmentTeam} from '@schema/types';
+
+interface Department {
+  name: string;
+  slug: {current: string}; // this should be just a string ~awt
+}
+
+interface DepartmentTeam extends Department {
+  associatedDepartment?: Department;
+}
 
 export interface TeamCardProps {
   image?: string;

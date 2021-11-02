@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   ${fontSize('sm')}
   ${fontFamily('body')};
   ${fontWeight('bold')};
+  display: inline;
 `;
 
 const DateSpan = styled.span`

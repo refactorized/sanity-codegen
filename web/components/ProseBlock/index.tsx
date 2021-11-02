@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import stylers from './stylers';
+import {fontFamily} from '@theme/fn';
 
 interface propsSpan {
   children: React.ReactNode;
@@ -71,11 +72,12 @@ const Wrapper = styled.div`
   left: 0;
   top: 0;
   max-width: 768px;
+  ${fontFamily('body')};
 `;
 
 const ProseBlock = ({block}: {block: ProseBlockData}) => {
   return (
-    <Block>
+    <Block squish>
       <Wrapper>
         <BlockContent {...{blocks: block.content, serializers}} />
       </Wrapper>

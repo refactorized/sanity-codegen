@@ -29,10 +29,10 @@ interface ArticleCardProps {
   description: string;
 }
 
-interface CardGridProps {
+export interface CardGridProps {
   links: CategoryLink[];
   articleCardArr: ArticleCardProps[];
-  textAndImageObject: TextAndImageBlockProps;
+  textAndImageObject?: TextAndImageBlockProps;
 }
 
 export const CardGrid = ({
@@ -44,14 +44,16 @@ export const CardGrid = ({
   return (
     <Container>
       <Block>
-        <TextAndImageBlock
-          imgUrls={textAndImageObject.imgUrls}
-          header={textAndImageObject.header}
-          subheader={textAndImageObject.subheader}
-          caption={textAndImageObject.caption}
-          btnText={textAndImageObject.btnText}
-          btnUrl={textAndImageObject.btnUrl}
-        />
+        {textAndImageObject && (
+          <TextAndImageBlock
+            imgUrls={textAndImageObject.imgUrls}
+            header={textAndImageObject.header}
+            subheader={textAndImageObject.subheader}
+            caption={textAndImageObject.caption}
+            btnText={textAndImageObject.btnText}
+            btnUrl={textAndImageObject.btnUrl}
+          />
+        )}
         <Padding>
           <DropdownContainer>
             <Dropdown linksList={links} setCategory={setCategory} />
@@ -63,14 +65,14 @@ export const CardGrid = ({
         <StyledArticleContainer>
           {articleCardArr.map((obj, ind) => {
             if (obj.category && selected) {
-              if (selected === 'All Events') {
+              if (selected === 'All Resources') {
                 return (
                   <ArticleCard
                     key={ind}
                     image={obj.image}
                     category={obj.category}
                     headline={obj.headline}
-                    date={obj.headline}
+                    // date={obj.headline}
                     description={obj.description}
                     cardFullWidth={true}
                   />
@@ -82,7 +84,7 @@ export const CardGrid = ({
                     image={obj.image}
                     category={obj.category}
                     headline={obj.headline}
-                    date={obj.headline}
+                    // date={obj.headline}
                     description={obj.description}
                     cardFullWidth={true}
                   />
@@ -95,7 +97,7 @@ export const CardGrid = ({
                   image={obj.image}
                   category={obj.category}
                   headline={obj.headline}
-                  date={obj.headline}
+                  // date={obj.headline}
                   description={obj.description}
                   cardFullWidth={true}
                 />

@@ -5,6 +5,7 @@ import query from '@theme/query';
 
 export interface BlockComponentProps {
   narrow?: true;
+  breadcrumbs?: true;
   squish?: true;
   full?: true;
   background?: ThemeColorName;
@@ -15,8 +16,18 @@ export interface BlockComponentProps {
 const extraPaddingCalc = (marginPx: number) =>
   `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max} / 2))`;
 
+const breadcrumbsPaddingCalc = (marginPx: number) =>
+  `calc(${marginPx}px + max(0px, 50% - ${theme.breakpoints.max}))`;
+
 const Block = styled.div<BlockComponentProps>(
-  ({narrow, squish, background, theme, full}: BlockComponentProps) => {
+  ({
+    narrow,
+    breadcrumbs,
+    squish,
+    background,
+    theme,
+    full,
+  }: BlockComponentProps) => {
     // TODO: use styled components CSSObject Type
     const css: Record<string, any> = {
       boxSizing: 'border-box', // allows padding to size inner content
@@ -42,6 +53,8 @@ const Block = styled.div<BlockComponentProps>(
         x: `${
           full
             ? 0
+            : breadcrumbs
+            ? breadcrumbsPaddingCalc(theme.space.margin)
             : extraPaddingCalc(
                 narrow ? theme.space.marginWide : theme.space.margin,
               )
