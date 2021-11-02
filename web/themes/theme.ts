@@ -29,20 +29,20 @@ export type ThemeBreakpointScale = string[] & {
   [index in ThemeBreakpointName]: string;
 };
 
-export type ThemeLetterSpacingName =
-  | 'narrow'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'standard'
-  | 'wide'
-  | 'xw'
-  | 'xxw';
+// export type ThemeLetterSpacingName =
+//   | 'narrow'
+//   | 'xs'
+//   | 'sm'
+//   | 'md'
+//   | 'standard'
+//   | 'wide'
+//   | 'xw'
+//   | 'xxw';
 
 // combined array scale with named keys
-export type ThemeLetterSpacingScale = number[] & {
-  [index in ThemeLetterSpacingName]: number;
-};
+// export type ThemeLetterSpacingScale = number[] & {
+//   [index in ThemeLetterSpacingName]: number;
+// };
 
 export type ThemeFontSizeName =
   | 'sm'
@@ -69,7 +69,7 @@ export type Theme = {
     heading: number;
     headingSecondary: number;
   };
-  letterSpacings: ThemeLetterSpacingScale;
+  // letterSpacings: ThemeLetterSpacingScale;
   fonts: {
     // this really should be called something like fontFamilies
     body: string;
@@ -110,16 +110,16 @@ breakpoints.tablet = breakpoints[0];
 breakpoints.desktop = breakpoints[1];
 breakpoints.max = breakpoints[2];
 
-const letterSpacing = [
-  -3, -1.5, -1, -0.5, 0, 1, 4, 12,
-] as ThemeLetterSpacingScale;
-letterSpacing.xs = space[1];
-letterSpacing.sm = space[2];
-letterSpacing.md = space[3];
-letterSpacing.standard = space[4];
-letterSpacing.wide = space[5];
-letterSpacing.xw = space[6];
-letterSpacing.xxw = space[7];
+// const letterSpacing = [
+//   -3, -1.5, -1, -0.5, 0, 1, 4, 12,
+// ] as ThemeLetterSpacingScale;
+// letterSpacing.xs = space[1];
+// letterSpacing.sm = space[2];
+// letterSpacing.md = space[3];
+// letterSpacing.standard = space[4];
+// letterSpacing.wide = space[5];
+// letterSpacing.xw = space[6];
+// letterSpacing.xxw = space[7];
 
 //                [ 0   1   2   3   4   5   6   7   8]
 const fontSizes = [14, 16, 18, 24, 27, 42, 56, 64, 72] as ThemeFontSizeScale;
@@ -155,7 +155,7 @@ const theme: Theme = {
     regular: 400,
     light: 300,
   },
-  letterSpacings: letterSpacing,
+  // letterSpacings: letterSpacing,
   space,
   spaces: space, // renamed spaces to space ()
 };
