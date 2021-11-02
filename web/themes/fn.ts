@@ -6,7 +6,7 @@ import {
   ThemeFontWeights,
   ThemeLineHeights,
   ThemeFonts,
-  ThemeLetterSpacingName,
+  // ThemeLetterSpacingName,
   ThemeFontSizeName,
 } from './theme';
 import fontDefs, {FontDef, FontDefName} from './fontDefs';
