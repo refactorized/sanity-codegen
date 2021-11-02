@@ -790,6 +790,13 @@ export interface SiteConfig extends SanityDocument {
    *
    */
   footerConfig?: FooterConfig;
+
+  /**
+   * Nav Configuration — `navConfig`
+   *
+   *
+   */
+  navConfig?: NavConfig;
 }
 
 /**
@@ -1962,6 +1969,64 @@ export type TextTestimonialCard = {
    *
    */
   boxCtaText: string;
+};
+
+export type NavConfig = {
+  _type: "navConfig";
+  /**
+   * navLists — `array`
+   *
+   *
+   */
+  navLists?: Array<SanityKeyed<NavList>>;
+};
+
+export type NavItem = {
+  _type: "navItem";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Link — `link`
+   *
+   *
+   */
+  link?: Link;
+
+  /**
+   * Sub-nav items — `array`
+   *
+   *
+   */
+  subnav?: Array<SanityKeyed<NavItem>>;
+};
+
+export type NavList = {
+  _type: "navList";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Link — `link`
+   *
+   *
+   */
+  link?: Link;
+
+  /**
+   * Sub-nav items — `array`
+   *
+   *
+   */
+  subnav?: Array<SanityKeyed<NavItem>>;
 };
 
 export type Documents =
