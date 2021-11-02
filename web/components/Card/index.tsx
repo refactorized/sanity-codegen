@@ -35,7 +35,7 @@ export interface ArticleCardProps {
   category: string;
   headline: string;
   date?: string;
-  description: string;
+  description: string | JSX.Element;
   cardFullWidth: boolean;
 }
 

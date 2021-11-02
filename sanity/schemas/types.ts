@@ -502,6 +502,7 @@ export interface Page extends SanityDocument {
     | SanityKeyed<AdmissionsCallout>
     | SanityKeyed<Carousel>
     | SanityKeyed<ImageCarousel>
+    | SanityKeyed<ArticleCarousel>
     | SanityKeyed<FlexCollar>
     | SanityKeyed<IntroBlock>
     | SanityKeyed<LinkMenu>
@@ -1070,6 +1071,30 @@ export type ImageCarousel = {
    * Slides to show in the carousel
    */
   slides?: Array<SanityKeyed<ImageSlide>>;
+};
+
+export type ArticleCarousel = {
+  _type: "articleCarousel";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Selected Articles — `array`
+   *
+   * selected articles will load every time a the begining of the carousel
+   */
+  selected_articles?: Array<SanityKeyedReference<Event | Resource | News>>;
+
+  /**
+   * Categories — `array`
+   *
+   * e.g. treatment, personality disorders, etc.
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
 };
 
 export type ImageSlide = {

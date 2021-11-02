@@ -16,7 +16,7 @@ const config = {
       process.env.SANITY_STUDIO_API_DATASET ||
       'production',
     token: process.env.SANITY_TOKEN || null,
-    apiVersion: '2021-09-30',
+    apiVersion: '2021-10-21',
   },
   deploy: {
     primeUrl: process.env.DEPLOY_PRIME_URL || prod ? prodUrl : localUrl,

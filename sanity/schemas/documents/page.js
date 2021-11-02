@@ -22,6 +22,7 @@ export default {
         {type: 'admissionsCallout'},
         {type: 'carousel'},
         {type: 'imageCarousel'},
+        {type: 'articleCarousel'},
         {type: 'flexCollar'},
         {type: 'introBlock'},
         {type: 'linkMenu'},

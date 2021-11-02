@@ -28,6 +28,7 @@ import outcomesCarousel, {
   testimonialCard,
   statCard,
 } from './sections/outcomesCarousel';
+import articleCarousel from './sections/articleCarousel';
 import imageCarousel, {imageSlide} from './sections/imageCarousel';
 import flexCollar, {flexCollarCard} from './sections/flexCollar';
 import introBlock from './sections/introBlock';
@@ -88,6 +89,7 @@ export default createSchema({
     bioCalloutCards,
     carousel,
     imageCarousel,
+    articleCarousel,
     imageSlide,
     drawerCombo,
     drawerComboDrawer,
