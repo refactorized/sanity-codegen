@@ -9,6 +9,7 @@ import type {
   Category,
   Link as _Link,
   PtImage as _PtImage,
+  PtEmbed as _PtEmbed,
   Page,
 } from '@schema/types';
 
@@ -97,3 +98,4 @@ export type ResolvedSanityReferences<T> =
 
 export type Link = ResolvedSanityReferences<_Link>;
 export type PtImage = ResolvedSanityReferences<_PtImage>;
+export type PtEmbed = _PtEmbed; // no refs to resolve

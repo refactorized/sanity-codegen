@@ -37,6 +37,7 @@ export default {
         {type: 'interiorHero'},
         {type: 'bioCallout'},
         {type: 'textTestimonialCard'},
+        {type: 'genericEmbed'},
       ],
     },
   ],

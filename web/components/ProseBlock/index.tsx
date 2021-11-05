@@ -2,7 +2,8 @@ import BlockContent from '@sanity/block-content-to-react';
 import ProseBlockData from '../../data/blocks/ProseBlockData';
 import Block from '../Layout/Block';
 import log from '@util/logging';
-import {Link as LikeType, PtImage} from '@data/types';
+import {UnwrappedGenericEmbed} from '@components/GenericEmbed';
+import {Link as LikeType, PtImage, PtEmbed} from '@data/types';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -21,6 +22,10 @@ interface propsLink extends propsSpan {
 
 interface propsPtImage {
   node: PtImage;
+}
+
+interface propsPtEmbed {
+  node: PtEmbed;
 }
 
 const BlockRenderer = (props) => {
@@ -53,7 +58,7 @@ const serializers = {
   types: {
     block: BlockRenderer,
     ptImage: (props: propsPtImage) => {
-      log(`url: ${props?.node?.image?.asset?.url}`);
+      // log(`url: ${props?.node?.image?.asset?.url}`);
       return (
         <Image
           src={props.node?.image.asset.url || ''}
@@ -62,6 +67,9 @@ const serializers = {
         />
       );
     },
+    ptEmbed: (props: propsPtEmbed) => (
+      <UnwrappedGenericEmbed markup={props.node.markup || ''} />
+    ),
   },
 };
 

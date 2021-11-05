@@ -45,6 +45,7 @@ import drawerCombo, {drawerComboDrawer} from './sections/drawerCombo';
 import comboCard, {comboCardCards} from './sections/comboCard';
 import interiorHero from './sections/interiorHero';
 import textTestimonialCard from './sections/textTestimonialCard';
+import genericEmbed from './sections/genericEmbed';
 
 // objects
 import basicText from './objects/basicText';
@@ -54,7 +55,7 @@ import pageInfo from './objects/pageInfo';
 import articleInfo from './objects/articleInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
-import prose, {ptImage} from './sections/prose';
+import prose, {ptImage, ptEmbed} from './sections/prose';
 import navConfig, {navItem, navList} from './objects/config/navConfig';
 
 // Singletons, and co-located objects
@@ -85,7 +86,7 @@ export default createSchema({
     siteConfig,
     staff,
 
-    // Page Builder block Documents, and co-located objects
+    // Page Builder sections, and co-located objects
     teamPage,
     admissionsCallout,
     calloutBand,
@@ -113,6 +114,7 @@ export default createSchema({
     textAndImageBlock,
     comboCard,
     comboCardCards,
+    genericEmbed,
 
     // objects
     basicText,
@@ -122,6 +124,7 @@ export default createSchema({
     link,
     placeholder,
     ptImage,
+    ptEmbed,
     statCard,
     testimonialCard,
     textTestimonialCard,

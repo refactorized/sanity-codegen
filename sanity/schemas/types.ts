@@ -517,6 +517,7 @@ export interface Page extends SanityDocument {
     | SanityKeyed<InteriorHero>
     | SanityKeyed<BioCallout>
     | SanityKeyed<TextTestimonialCard>
+    | SanityKeyed<GenericEmbed>
   >;
 }
 
@@ -1523,7 +1524,9 @@ export type Prose = {
    *
    *
    */
-  content?: Array<SanityKeyed<PtImage> | SanityKeyed<SanityBlock>>;
+  content?: Array<
+    SanityKeyed<PtImage> | SanityKeyed<PtEmbed> | SanityKeyed<SanityBlock>
+  >;
 };
 
 export type TextAndImageBlock = {
@@ -1660,6 +1663,16 @@ export type ComboCardCards = {
    *
    */
   description: string;
+};
+
+export type GenericEmbed = {
+  _type: "genericEmbed";
+  /**
+   * Embed HTML — `text`
+   *
+   * Paste code provided by third party here. Make sure you trust the source of this code.
+   */
+  markup?: string;
 };
 
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
@@ -1835,6 +1848,16 @@ export type PtImage = {
    * wrap following content around this image?
    */
   wrap?: boolean;
+};
+
+export type PtEmbed = {
+  _type: "ptEmbed";
+  /**
+   * Embed HTML — `text`
+   *
+   * Paste code provided by third party here. Make sure you trust the source of this code.
+   */
+  markup?: string;
 };
 
 export type StatCard = {
