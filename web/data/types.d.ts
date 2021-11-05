@@ -46,6 +46,14 @@ export type SiteConfig = ResolvedSanityReferences<{
   phone: string;
   fax: string;
   footerConfig: FooterConfig;
+  featuredLinkLabel: string;
+  featuredLinkUrl: Link;
+  logInLinkLabel: string;
+  logInLinkUrl: Link;
+  registerLink: string;
+  registerUrl: Link;
+  phoneNumber: string;
+  navConfig: NavConfig;
   privatePolicy: string;
 }>;
 

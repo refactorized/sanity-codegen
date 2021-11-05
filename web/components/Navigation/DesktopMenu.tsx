@@ -23,6 +23,7 @@ const StyledDesktopMenuWrapper = styled.div`
   display: none;
   @media (${query.atLeast('desktop')}) {
     display: block;
+    padding: 0 ${space('x10')};
   }
 `;
 
@@ -67,6 +68,7 @@ const StyledBottomSection = styled.ul`
   display: flex;
   align-items: center;
   padding: 0;
+  margin: 0;
 `;
 
 const StyledSection = styled.ul`

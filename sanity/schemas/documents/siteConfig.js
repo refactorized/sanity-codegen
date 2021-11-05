@@ -27,6 +27,14 @@ export default {
         collapsed: true, // Defines if the fieldset should be collapsed by default or not
       },
     },
+    {
+      name: 'navigation',
+      title: 'Navigation',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
+    },
   ],
   fields: [
     ...inFieldset('announcementBar', [
@@ -83,19 +91,56 @@ export default {
         title: 'General Information Email Address',
       },
     ]),
+    ...inFieldset('navigation', [
+      {
+        name: 'featuredLinkLabel',
+        type: 'string',
+        title: 'Featured Link Label',
+      },
+      {
+        name: 'featuredLinkUrl',
+        type: 'link',
+        title: 'Feature Link Url',
+      },
+      {
+        name: 'logInLinkLabel',
+        type: 'string',
+        title: 'Log in Label',
+      },
+      {
+        name: 'logInLinkUrl',
+        type: 'link',
+        title: 'Log in Url',
+      },
+      {
+        name: 'registerLink',
+        type: 'string',
+        title: 'Register Link',
+      },
+      {
+        name: 'registerUrl',
+        type: 'link',
+        title: 'Register Url',
+      },
+      {
+        name: 'phoneNumber',
+        type: 'string',
+        title: 'Phone Number',
+      },
+      {
+        name: 'navConfig',
+        type: 'navConfig',
+        title: 'Nav Configuration',
+        options: {
+          collapsible: true, // Makes the whole fieldset collapsible
+          collapsed: true, // Defines if the fieldset should be collapsed by default or not
+        },
+      },
+    ]),
     {
       name: 'footerConfig',
       type: 'footerConfig',
       title: 'Footer Configuration',
-      options: {
-        collapsible: true, // Makes the whole fieldset collapsible
-        collapsed: true, // Defines if the fieldset should be collapsed by default or not
-      },
-    },
-    {
-      name: 'navConfig',
-      type: 'navConfig',
-      title: 'Nav Configuration',
       options: {
         collapsible: true, // Makes the whole fieldset collapsible
         collapsed: true, // Defines if the fieldset should be collapsed by default or not

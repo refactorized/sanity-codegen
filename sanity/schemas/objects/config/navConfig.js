@@ -1,13 +1,21 @@
+const _required = (Rule) => Rule.required();
+
 export const navItem = {
   title: 'Nav item',
   type: 'object',
   name: 'navItem',
   fields: [
-    {title: 'Title', type: 'string', name: 'title'},
-    {title: 'Link', type: 'link', name: 'link'},
+    {
+      title: 'Label',
+      type: 'string',
+      name: 'label',
+      codegen: {required: true},
+      validation: _required,
+    },
+    {title: 'Url', type: 'link', name: 'url'},
     {
       title: 'Sub-nav items',
-      name: 'subnav',
+      name: 'links',
       type: 'array',
       of: [{type: 'navItem'}],
     },

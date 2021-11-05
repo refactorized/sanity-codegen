@@ -31,10 +31,11 @@ interface LinkObject {
 /*** STYLING ***/
 const StyledWrapper = styled.div`
   position: relative;
+  background-color: white;
 
   box-shadow: none;
   @media (${query.atLeast('desktop')}) {
-    padding: 0 ${space('x10')};
+    width: 100%;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   }
 `;
@@ -57,7 +58,6 @@ export const Navigation = ({
         logInLink={logInLink}
         registerLink={registerLink}
       />
-
       {/*** DESKTOP */}
       <DesktopMenu
         links={links}

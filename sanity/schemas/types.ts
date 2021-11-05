@@ -793,11 +793,53 @@ export interface SiteConfig extends SanityDocument {
   email?: string;
 
   /**
-   * Footer Configuration — `footerConfig`
+   * Featured Link Label — `string`
    *
    *
    */
-  footerConfig?: FooterConfig;
+  featuredLinkLabel?: string;
+
+  /**
+   * Feature Link Url — `link`
+   *
+   *
+   */
+  featuredLinkUrl?: Link;
+
+  /**
+   * Log in Label — `string`
+   *
+   *
+   */
+  logInLinkLabel?: string;
+
+  /**
+   * Log in Url — `link`
+   *
+   *
+   */
+  logInLinkUrl?: Link;
+
+  /**
+   * Register Link — `string`
+   *
+   *
+   */
+  registerLink?: string;
+
+  /**
+   * Register Url — `link`
+   *
+   *
+   */
+  registerUrl?: Link;
+
+  /**
+   * Phone Number — `string`
+   *
+   *
+   */
+  phoneNumber?: string;
 
   /**
    * Nav Configuration — `navConfig`
@@ -805,6 +847,13 @@ export interface SiteConfig extends SanityDocument {
    *
    */
   navConfig?: NavConfig;
+
+  /**
+   * Footer Configuration — `footerConfig`
+   *
+   *
+   */
+  footerConfig?: FooterConfig;
 }
 
 /**
@@ -2023,49 +2072,49 @@ export type NavConfig = {
 export type NavItem = {
   _type: 'navItem';
   /**
-   * Title — `string`
+   * Label — `string`
    *
    *
    */
-  title?: string;
+  label: string;
 
   /**
-   * Link — `link`
+   * Url — `link`
    *
    *
    */
-  link?: Link;
+  url?: Link;
 
   /**
    * Sub-nav items — `array`
    *
    *
    */
-  subnav?: Array<SanityKeyed<NavItem>>;
+  links?: Array<SanityKeyed<NavItem>>;
 };
 
 export type NavList = {
   _type: 'navList';
   /**
-   * Title — `string`
+   * Label — `string`
    *
    *
    */
-  title?: string;
+  label: string;
 
   /**
-   * Link — `link`
+   * Url — `link`
    *
    *
    */
-  link?: Link;
+  url?: Link;
 
   /**
    * Sub-nav items — `array`
    *
    *
    */
-  subnav?: Array<SanityKeyed<NavItem>>;
+  links?: Array<SanityKeyed<NavItem>>;
 };
 
 export type Documents =

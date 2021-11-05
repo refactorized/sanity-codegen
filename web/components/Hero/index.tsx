@@ -78,7 +78,7 @@ const ImageContainer = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 0;
   height: 295px;
 
   background-image: ${(props) =>
@@ -99,7 +99,7 @@ const ImageGradient = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
 
   @media screen and (${query.atLeast('desktop')}) {
@@ -115,7 +115,7 @@ const Title = styled.div`
   color: #fff;
   font-family: ${(props) => props.theme.fonts.headline};
   margin: 22px;
-  z-index: 102;
+  z-index: 0;
   font-size: 35px;
   max-width: 1043px;
 
@@ -133,7 +133,7 @@ const HeroCardList = styled.div`
   display: flex;
   font-family: ${(props) => props.theme.fonts.body};
   font-weight: 700;
-  z-index: 103;
+  z-index: 0;
   flex-direction: column;
 
   @media screen and (${query.atLeast('tablet')}) {

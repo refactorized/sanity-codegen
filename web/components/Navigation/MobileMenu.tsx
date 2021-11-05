@@ -87,7 +87,7 @@ const StyledMobileBottomBody = styled.div`
   transition: transform 0.4s ease-in-out;
   position: fixed;
   width: 100%;
-  top: 57px;
+  top: 53px;
   left: 0;
   bottom: 0;
   transform: translateX(${({show}) => (show ? '0px' : '100%')});
