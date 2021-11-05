@@ -50,7 +50,7 @@ export const ArticleCarousel = ({
   categories,
 }: ArticleCarouselProps): JSX.Element => {
   const [categoryArticles, setCategoryArticles] = useState([]);
-  const [combinedArticles, setCombinedArticles] = useState([]);
+  const [combinedArticles, setCombinedArticles] = useState(cards);
 
   useEffect(() => {
     Promise.all(
