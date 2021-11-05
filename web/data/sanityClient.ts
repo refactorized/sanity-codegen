@@ -30,6 +30,7 @@ export const getClient = (usePreview) =>
 //TODO: should fetchOne also work with queries tha return an object vs an array?
 
 /**
+ * THIS IS DEPRECATED - most things we fetch should accomodate draft documents
  * Fetches a query the is expected to have one result.
  * @param query groq query that is expected to return array of size 1
  * @returns Object, query result, pulled from the array.
@@ -57,7 +58,7 @@ const defaultResolver: SanityRefResolver = {
 const pageInfoResolver: SanityRefResolver = {
   refTypes: ['pageInfo'],
   queryFn: (refId) =>
-    `*[_id == '${refId}']{openGraphImage, slug, title, description, category}[0]`, ///////////// add ordering to always get draft
+    `*[_id == '${refId}']{openGraphImage, slug, title, description, category}[0]`, ///////////// TODO: add ordering to always get draft
 };
 
 const pageLinkResolver: SanityRefResolver = {
@@ -65,11 +66,27 @@ const pageLinkResolver: SanityRefResolver = {
   queryFn: (refId) => `*[_id == '${refId}'][0].slug`,
 };
 
+const articleInfoResolver: SanityRefResolver = {
+  refTypes: ['articleInfo'],
+  queryFn: (refId) => `*[_id == '${refId}']{
+    _type,
+    'image': coalesce(image, mainImage),
+    'date': coalesce(publishedAt, eventStart),
+    'headline': coalesce(title, name),
+    'description': shortDescription,
+  }[0] `,
+};
+
 export const replaceReferences = async (
   input: unknown,
   client?: SanityClient,
 ) => {
-  const resolvers = [defaultResolver, pageInfoResolver, pageLinkResolver];
+  const resolvers = [
+    defaultResolver,
+    pageInfoResolver,
+    pageLinkResolver,
+    articleInfoResolver,
+  ];
   await resolveReferences(input, client || publicClient, resolvers);
 };
 

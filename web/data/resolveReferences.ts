@@ -6,10 +6,6 @@ export interface SanityRefResolver {
   refTypes: string[];
   // Function to generate groq query given the refId as a string param
   queryFn: (refId: string) => string;
-  // Function to transform queried doc. This happens before recursive resolution
-  transform?: (doc: any) => any;
-  // skip default recurse of resulting doc for further references.
-  skipRecurse?: true;
 }
 
 /**
@@ -28,15 +24,15 @@ export default async function resolveReferences(
   resolvers: SanityRefResolver[],
   resolvedIds: string[] = [],
 ) {
-  const walker = new AsyncWalkBuilder(); //.withGlobalFilter((x) => x.val?._ref); // has to have (truthy) ref
+  const walker = new AsyncWalkBuilder();
 
   resolvers.forEach((resolver) => {
     walker.withCallback({
       filters: [(node) => resolver.refTypes.includes(node.val?._type)],
       callback: async (node) => {
-        // get refId and ensure we haven't been here before
+        // get refId and ensure we haven't been here (more than once) before
         const refId = node.val._ref;
-        if (resolvedIds.includes(refId)) {
+        if (resolvedIds.filter((id) => id == refId).length > 1) {
           const ids = `[${resolvedIds.concat(refId).join(',')}]`;
           throw new Error(
             `Ran into an infinite loop of references, please investigate the following sanity document order: ${ids}`,
@@ -44,10 +40,6 @@ export default async function resolveReferences(
         }
         // we mutate the hell out of doc.
         let doc = await client.fetch(resolver.queryFn(refId));
-
-        if (resolver.transform) {
-          doc = resolver.transform(doc);
-        }
 
         resolveReferences(doc, client, resolvers, resolvedIds.concat(refId));
 

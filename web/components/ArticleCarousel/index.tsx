@@ -17,24 +17,24 @@ export const mapArticle = function (article) {
   switch (article._type) {
     case 'news':
       return {
-        image: article.mainImage.asset.url,
-        headline: article.title,
+        image: article.image ? article.image.asset.url : '',
+        headline: article.headline,
         date: article.publishedAt,
         category: 'News',
         description: <BlockContent blocks={article.shortDescription} />,
       } as ArticleCardProps;
     case 'resource':
       return {
-        image: article.mainImage.asset.url,
-        headline: article.title,
+        image: article.image ? article.image.asset.url : '',
+        headline: article.headline,
         date: article.publishedAt,
         category: 'Resource',
         description: article.shortDescription,
       } as ArticleCardProps;
     case 'event':
       return {
-        image: article.image.asset.url,
-        headline: article.name,
+        image: article.image ? article.image.asset.url : '',
+        headline: article.headline,
         date: article.eventStart,
         category: 'Event',
         description: <BlockContent blocks={article.shortDescription} />,
@@ -56,7 +56,13 @@ export const ArticleCarousel = ({
     Promise.all(
       categories.map((category) => {
         console.log(category, 'category');
-        const query = groq`*[(_type== 'event' || _type== 'news' || _type== 'resource') && "${category}" in categories[]._ref][0...12] { ... }`;
+        const query = groq`*[(_type== 'event' || _type== 'news' || _type== 'resource') && "${category}" in categories[]._ref][0...12] {
+          _type,
+          'image': coalesce(image, mainImage),
+          'date': coalesce(publishedAt, eventStart),
+          'headline': coalesce(title, name),
+          'description': shortDescription,
+        }`;
         return bigFetch(query);
       }),
     ).then((values) => {

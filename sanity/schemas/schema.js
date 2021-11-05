@@ -51,6 +51,7 @@ import basicText from './objects/basicText';
 import footerConfig, {footerLink} from './objects/config/footerConfig';
 import link from './objects/link';
 import pageInfo from './objects/pageInfo';
+import articleInfo from './objects/articleInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
 import prose, {ptImage} from './sections/prose';
@@ -105,6 +106,7 @@ export default createSchema({
     linkMenuLink,
     outcomesCarousel,
     pageInfo,
+    articleInfo,
     pageLink,
     preFooter,
     prose,

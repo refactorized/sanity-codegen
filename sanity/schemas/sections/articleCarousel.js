@@ -18,7 +18,7 @@ export const articleCarousel = {
         'selected articles will load every time a the begining of the carousel',
       of: [
         {
-          type: 'reference',
+          type: 'articleInfo',
           to: [{type: 'event'}, {type: 'resource'}, {type: 'news'}],
         },
       ],
