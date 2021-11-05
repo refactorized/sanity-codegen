@@ -83,7 +83,7 @@ const SlugPage = (props: slugPageProps) => {
   }
 
   return (
-    <Page>
+    <Page {...props.page}>
       <Layout preview={props.preview}>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <MapComponents blocks={props.page.blocks} />

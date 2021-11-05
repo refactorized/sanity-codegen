@@ -475,6 +475,13 @@ export interface Page extends SanityDocument {
   category?: SanityReference<Category>;
 
   /**
+   * Meta Title — `string`
+   *
+   * This title populates meta-tags on the webpage
+   */
+  metatitle: string;
+
+  /**
    * Description — `text`
    *
    * This description populates meta-tags on the webpage
@@ -911,7 +918,7 @@ export interface TeamPage extends SanityDocument {
    *
    *
    */
-  slug: {_type: 'slug'; current: string};
+  slug: { _type: "slug"; current: string };
 
   /**
    * Category — `reference`
@@ -919,6 +926,13 @@ export interface TeamPage extends SanityDocument {
    *
    */
   category?: SanityReference<Category>;
+
+  /**
+   * Meta Title — `string`
+   *
+   * This title populates meta-tags on the webpage
+   */
+  metatitle: string;
 
   /**
    * Description — `text`

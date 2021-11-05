@@ -35,6 +35,15 @@ export default [
     // codegen: {required: true},
   },
   {
+    name: 'metatitle',
+    type: 'string',
+    title: 'Meta Title',
+    description: 'This title populates meta-tags on the webpage',
+    fieldset: 'metadata',
+    validation: (Rule) => Rule.required(),
+    codegen: {required: true},
+  },
+  {
     name: 'description',
     type: 'text',
     title: 'Description',

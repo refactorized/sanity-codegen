@@ -272,7 +272,7 @@ const TeamPage = (props) => {
   };
 
   return (
-    <Page>
+    <Page {...page}>
       <Layout>
         <MappedInteriorHero {...page} />
         <Block squish>
