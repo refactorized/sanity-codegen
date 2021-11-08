@@ -74,6 +74,7 @@ const articleInfoResolver: SanityRefResolver = {
     'date': coalesce(publishedAt, eventStart),
     'headline': coalesce(title, name),
     'description': shortDescription,
+    'slug': slug
   }[0] `,
 };
 

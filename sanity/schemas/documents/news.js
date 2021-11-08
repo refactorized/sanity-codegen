@@ -92,6 +92,11 @@ export default {
       codegen: {required: true},
       validation: (Rule) => Rule.required().error('Post must have a body'),
     },
+    {
+      name: 'articleCarousel',
+      title: 'Article Carousel',
+      type: 'articleCarousel',
+    },
   ],
   orderings: [
     {

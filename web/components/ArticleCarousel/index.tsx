@@ -19,25 +19,30 @@ export const mapArticle = function (article) {
       return {
         image: article.image ? article.image.asset.url : '',
         headline: article.headline,
-        date: article.publishedAt,
+        date: article.date,
         category: 'News',
-        description: <BlockContent blocks={article.shortDescription} />,
+        description: <BlockContent blocks={article.description} />,
+        url: article.slug ? `/news/${article.slug.current}` : '#',
       } as ArticleCardProps;
     case 'resource':
       return {
         image: article.image ? article.image.asset.url : '',
         headline: article.headline,
-        date: article.publishedAt,
+        date: article.date,
         category: 'Resource',
-        description: article.shortDescription,
+        description: article.description,
+        url: article.slug
+          ? `/education-research/resources/${article.slug.current}`
+          : '#',
       } as ArticleCardProps;
     case 'event':
       return {
         image: article.image ? article.image.asset.url : '',
         headline: article.headline,
-        date: article.eventStart,
+        date: article.date,
         category: 'Event',
-        description: <BlockContent blocks={article.shortDescription} />,
+        description: <BlockContent blocks={article.description} />,
+        url: article.slug ? `/events/${article.slug.current}` : '#',
       } as ArticleCardProps;
     default:
       return {} as ArticleCardProps;
@@ -58,6 +63,7 @@ export const ArticleCarousel = ({
         console.log(category, 'category');
         const query = groq`*[(_type== 'event' || _type== 'news' || _type== 'resource') && "${category}" in categories[]._ref][0...12] {
           _type,
+          slug,
           'image': coalesce(image, mainImage),
           'date': coalesce(publishedAt, eventStart),
           'headline': coalesce(title, name),

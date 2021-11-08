@@ -20,6 +20,7 @@ import {CircleArrow} from '@components/Arrow/index';
 import {
   ArticleCarousel,
   ArticleCarouselProps,
+  mapArticle,
 } from '@components/ArticleCarousel';
 
 import {SanityKeyed, Resource} from '@schema/types';
@@ -132,6 +133,28 @@ const CTAText = styled.div`
   margin-left: ${space('sm')};
 `;
 
+export const MappedArticleCarousel = (block: ResourceData) => {
+  const props: ArticleCarouselProps = {
+    title: block.articleCarousel.title,
+    cards:
+      block.articleCarousel.selected_articles &&
+      block.articleCarousel.selected_articles.length > 0
+        ? block.articleCarousel.selected_articles.map((article) =>
+            mapArticle(article),
+          )
+        : [],
+    categories:
+      block.articleCarousel.categories &&
+      block.articleCarousel.categories.length > 0
+        ? block.articleCarousel.categories.map(function (category) {
+            return category._id;
+          })
+        : [],
+  };
+
+  return <ArticleCarousel {...props} />;
+};
+
 // Slugs to use
 const resourceCenterSlug = '/education-research/resources';
 
@@ -193,6 +216,7 @@ const ResourceDetailPage = (props) => {
             </MoreCTALink>
           </Link>
         </Block>
+        <MappedArticleCarousel {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
       </Layout>

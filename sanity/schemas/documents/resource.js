@@ -106,6 +106,11 @@ export default {
       validation: (Rule) =>
         Rule.required().error('Resource must have a body of some sort'),
     },
+    {
+      name: 'articleCarousel',
+      title: 'Article Carousel',
+      type: 'articleCarousel',
+    },
   ],
   orderings: [
     {

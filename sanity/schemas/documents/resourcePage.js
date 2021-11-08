@@ -33,6 +33,11 @@ export default {
       title: 'Text and Image Block',
     },
     {
+      name: 'articleCarousel',
+      title: 'Article Carousel',
+      type: 'articleCarousel',
+    },
+    {
       name: 'preFooter',
       type: 'preFooter',
       title: 'Pre-Footer',

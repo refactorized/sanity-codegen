@@ -17,8 +17,13 @@ import {Breadcrumbs} from '@components/Breadcrumbs';
 import {NewsDetailHero, NewsDetailHeroProps} from '@components/NewsDetailHero';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
 import {CircleArrow} from '@components/Arrow/index';
+import {
+  ArticleCarousel,
+  ArticleCarouselProps,
+  mapArticle,
+} from '@components/ArticleCarousel';
 
-import {SanityKeyed, Resource} from '@schema/types';
+import {News} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 export async function getStaticPaths() {
@@ -79,9 +84,9 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 // TYPES
-type ResourceData = SanityKeyed<ResolvedSanityReferences<Resource>>;
+type NewsData = ResolvedSanityReferences<News>;
 
-export const MappedInteriorHero = (block: ResourceData) => {
+export const MappedInteriorHero = (block: NewsData) => {
   const props: InteriorHeroProps = {
     imgUrls: {
       desktop: block.mainImage.asset.url ? block.mainImage.asset.url : '',
@@ -91,6 +96,28 @@ export const MappedInteriorHero = (block: ResourceData) => {
   };
 
   return <InteriorHero {...props} />;
+};
+
+export const MappedArticleCarousel = (block: NewsData) => {
+  const props: ArticleCarouselProps = {
+    title: block.articleCarousel.title,
+    cards:
+      block.articleCarousel.selected_articles &&
+      block.articleCarousel.selected_articles.length > 0
+        ? block.articleCarousel.selected_articles.map((article) =>
+            mapArticle(article),
+          )
+        : [],
+    categories:
+      block.articleCarousel.categories &&
+      block.articleCarousel.categories.length > 0
+        ? block.articleCarousel.categories.map(function (category) {
+            return category._id;
+          })
+        : [],
+  };
+
+  return <ArticleCarousel {...props} />;
 };
 
 // Back Button
@@ -144,7 +171,7 @@ const NewsDetailPage = (props) => {
   )}`;
 
   // MAPPED COMPONENTS
-  const MappedNewsDetailHero = (block: ResourceData) => {
+  const MappedNewsDetailHero = (block: NewsData) => {
     const props: NewsDetailHeroProps = {
       category: 'News',
       header: block.title,
@@ -171,6 +198,7 @@ const NewsDetailPage = (props) => {
             </MoreCTALink>
           </Link>
         </Block>
+        <MappedArticleCarousel {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
       </Layout>

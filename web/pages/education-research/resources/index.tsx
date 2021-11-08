@@ -21,8 +21,13 @@ import {
 } from '@components/TextAndImageBlock';
 import {PreFooterBlock, PreFooterBlockProps} from '@components/PreFooterBlock';
 import {CardGrid, CardGridProps} from '@components/CardGridComponent';
+import {
+  ArticleCarousel,
+  ArticleCarouselProps,
+  mapArticle,
+} from '@components/ArticleCarousel';
 
-import {SanityKeyed, Resource, ResourcePage, ResourceType} from '@schema/types';
+import {SanityKeyed, Resource, ResourcePage} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 // misc
@@ -142,6 +147,28 @@ export const MappedTextAndImageBlock = (block: ResourcePageData) => {
   return <TextAndImageBlock {...props} />;
 };
 
+export const MappedArticleCarousel = (block: ResourcePageData) => {
+  const props: ArticleCarouselProps = {
+    title: block.articleCarousel.title,
+    cards:
+      block.articleCarousel.selected_articles &&
+      block.articleCarousel.selected_articles.length > 0
+        ? block.articleCarousel.selected_articles.map((article) =>
+            mapArticle(article),
+          )
+        : [],
+    categories:
+      block.articleCarousel.categories &&
+      block.articleCarousel.categories.length > 0
+        ? block.articleCarousel.categories.map(function (category) {
+            return category._id;
+          })
+        : [],
+  };
+
+  return <ArticleCarousel {...props} />;
+};
+
 export const MappedPreFooter = (block: ResourcePageData) => {
   const props: PreFooterBlockProps = {
     header: block.preFooter.header,
@@ -175,6 +202,7 @@ const ResourceIndexPage = (props) => {
         <MappedFeaturedResource {...page} />
         <MappedCardGrid {...props} />
         <MappedTextAndImageBlock {...page} />
+        <MappedArticleCarousel {...page} />
         <MappedPreFooter {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />

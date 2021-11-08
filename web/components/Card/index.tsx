@@ -14,6 +14,7 @@ import Link from 'next/link';
 import {CircleArrow} from '../Arrow/index';
 import {SingleQuote} from './CardIcons';
 import {query} from '../../themes/fn';
+import {Dates} from '@components/Dates';
 
 export interface StatCardProps {
   backgroundColor: string;
@@ -342,7 +343,7 @@ export const ArticleCard = ({
           p={['5px 0', null, null, '7px 0']}
           m="0"
         >
-          {date}
+          <Dates startDate={date} />
         </StyledHeader>
         <StyledHeader
           fontSize={['14px', null, null, '16px']}
