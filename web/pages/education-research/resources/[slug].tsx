@@ -17,6 +17,10 @@ import {Breadcrumbs} from '@components/Breadcrumbs';
 import {NewsDetailHero, NewsDetailHeroProps} from '@components/NewsDetailHero';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
 import {CircleArrow} from '@components/Arrow/index';
+import {
+  ArticleCarousel,
+  ArticleCarouselProps,
+} from '@components/ArticleCarousel';
 
 import {SanityKeyed, Resource} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
@@ -92,6 +96,21 @@ export const MappedInteriorHero = (block: ResourceData) => {
 
   return <InteriorHero {...props} />;
 };
+
+// FOR LATER
+// export const MappedArticleCarousel = (block: ResourceData) => {
+//   const props: ArticleCarouselProps = {
+//     title: block.articleCarousel.title,
+//     cards: block.articleCarousel.selected_articles.map(a => ({
+//       image: a.mainImage.asset.url,
+//       category: block.articleCarousel.categories,
+//       headline: a.title,
+//       date: a.publishedAt,
+//       description: a.shortDescription,
+//     })),
+//     categories: block.articleCarousel.categories.map()
+//   }
+// }
 
 // Back Button
 const MoreCTALink = styled.a`
