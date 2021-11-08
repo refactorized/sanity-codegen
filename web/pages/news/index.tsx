@@ -3,7 +3,7 @@ import {fontFamily, query, space} from '@theme/fn';
 import Link from 'next/link';
 import {GetStaticProps} from 'next';
 
-import {getResourcePageData, getAllResources} from '@data/resourcePage';
+import {getNewsPageData, getAllNews} from '@data/newsPage';
 import getSiteConfig from '@data/siteConfig';
 import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
@@ -15,14 +15,11 @@ import {Block} from '@components/Layout';
 
 import {Breadcrumbs} from '@components/Breadcrumbs';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
-import {
-  TextAndImageBlock,
-  TextAndImageBlockProps,
-} from '@components/TextAndImageBlock';
+
 import {PreFooterBlock, PreFooterBlockProps} from '@components/PreFooterBlock';
 import {CardGrid, CardGridProps} from '@components/CardGridComponent';
 
-import {SanityKeyed, Resource, ResourcePage, ResourceType} from '@schema/types';
+import {SanityKeyed, News, NewsPage, PostType} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 // misc
@@ -50,13 +47,13 @@ export const getStaticProps: GetStaticProps = async (
   // if params.slug is missing this is the root, re-map to home
 
   try {
-    const pageData = await getResourcePageData(preview);
+    const pageData = await getNewsPageData(preview);
 
     if (!pageData) {
       return {notFound: true};
     }
 
-    const resources = await getAllResources();
+    const news = await getAllNews();
 
     const siteConfig = await getSiteConfig();
     return {
@@ -64,20 +61,20 @@ export const getStaticProps: GetStaticProps = async (
         page: pageData,
         siteConfig: siteConfig,
         preview: !!preview,
-        resources,
+        news,
       } as slugPageProps,
     };
   } catch (e) {
     log.error(e);
-    throw e; // best way to get 500 page?
+    throw e;
   }
 };
 
 // TYPES
-type ResourcePageData = SanityKeyed<ResolvedSanityReferences<ResourcePage>>;
-type ResourceData = SanityKeyed<ResolvedSanityReferences<Resource>>;
+type NewsPageData = SanityKeyed<ResolvedSanityReferences<NewsPage>>;
+type NewsData = SanityKeyed<ResolvedSanityReferences<News>>;
 
-export const MappedInteriorHero = (block: ResourcePageData) => {
+export const MappedInteriorHero = (block: NewsPageData) => {
   const props: InteriorHeroProps = {
     header: block.interiorHero.header,
     caption: block.interiorHero.caption,
@@ -86,63 +83,30 @@ export const MappedInteriorHero = (block: ResourcePageData) => {
   return <InteriorHero {...props} />;
 };
 
-export const MappedFeaturedResource = (block: ResourcePageData) => {
-  const props: TextAndImageBlockProps = {
-    altBg: true,
-    header: 'Featured',
-    subheader: block.featuredResource.resourceType.title,
-    secondHeader: block.featuredResource.title,
-    caption: block.featuredResource.shortDescription,
-    imgUrls: {
-      desktop: block.featuredResource.mainImage.asset.url,
-    },
-    btnText: 'Read More',
-    btnUrl: block.featuredResource.slug.current,
-    reverse: false,
-  };
-
-  return <TextAndImageBlock {...props} />;
-};
-
-export const MappedCardGrid = (props: {resources: ResourceData[]}) => {
-  let resourceTypes = props.resources.map((t, i) => ({
+export const MappedCardGrid = (props: {news: NewsData[]}) => {
+  let postTypes = props.news.map((n, i) => ({
     id: i + 1,
-    title: t.resourceType.title,
+    title: n.postType.title,
     link: '#',
   }));
 
-  resourceTypes.unshift({id: 0, title: 'All Resources', link: '#'});
+  postTypes.unshift({id: 0, title: 'All News', link: '#'});
   const propsToPass: CardGridProps = {
-    links: resourceTypes,
-    articleCardArr: props.resources.map((r) => ({
-      image: r.mainImage.asset.url,
-      category: r.resourceType.title,
-      headline: r.title,
-      date: r.publishedAt,
-      description: r.shortDescription,
-      url: `/education-research/resources/${r.slug.current}`,
+    links: postTypes,
+    articleCardArr: props.news.map((n) => ({
+      image: n.mainImage.asset.url,
+      category: n.postType.title,
+      headline: n.title,
+      date: n.publishedAt,
+      description: n.shortDescription,
+      url: `/news/${n.slug.current}`,
     })),
   };
 
   return <CardGrid {...propsToPass} />;
 };
 
-export const MappedTextAndImageBlock = (block: ResourcePageData) => {
-  const props: TextAndImageBlockProps = {
-    subheader: block.textAndImageBlock.subHeader,
-    caption: block.textAndImageBlock.body,
-    imgUrls: {
-      desktop: block.textAndImageBlock.desktopImage.asset.url,
-    },
-    btnText: block.textAndImageBlock.buttonText,
-    btnUrl: block.textAndImageBlock.buttonLink.slug.current,
-    reverse: block.textAndImageBlock.reverse,
-  };
-
-  return <TextAndImageBlock {...props} />;
-};
-
-export const MappedPreFooter = (block: ResourcePageData) => {
+export const MappedPreFooter = (block: NewsPageData) => {
   const props: PreFooterBlockProps = {
     header: block.preFooter.header,
     description: block.preFooter.description,
@@ -152,18 +116,14 @@ export const MappedPreFooter = (block: ResourcePageData) => {
   return <PreFooterBlock {...props} />;
 };
 
-const ResourceIndexPage = (props) => {
+const NewsIndexPage = (props) => {
   const {page, resources} = props;
 
   // BREADCRUMB DATA
   const breadcrumbPages = [
     {
-      title: 'Education & Training',
-      slug: {current: '/education-research'},
-    },
-    {
-      title: page.title,
-      slug: {current: '/education-research/resources'},
+      title: 'News',
+      slug: {current: '/news'},
     },
   ];
 
@@ -172,9 +132,7 @@ const ResourceIndexPage = (props) => {
       <Layout>
         <Breadcrumbs pages={breadcrumbPages} />
         <MappedInteriorHero {...page} />
-        <MappedFeaturedResource {...page} />
         <MappedCardGrid {...props} />
-        <MappedTextAndImageBlock {...page} />
         <MappedPreFooter {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
@@ -183,4 +141,4 @@ const ResourceIndexPage = (props) => {
   );
 };
 
-export default ResourceIndexPage;
+export default NewsIndexPage;

@@ -10,6 +10,7 @@ import {
   system,
   position,
 } from 'styled-system';
+import Link from 'next/link';
 import {CircleArrow} from '../Arrow/index';
 import {SingleQuote} from './CardIcons';
 import {query} from '../../themes/fn';
@@ -37,6 +38,7 @@ export interface ArticleCardProps {
   date?: string;
   description: string | JSX.Element;
   cardFullWidth: boolean;
+  url: string;
 }
 
 const QuoteDiv = styled.div`
@@ -292,6 +294,7 @@ export const ArticleCard = ({
   date,
   description,
   cardFullWidth,
+  url,
 }: ArticleCardProps): JSX.Element => {
   return (
     <StyledContainer fullWidth={cardFullWidth}>
@@ -313,20 +316,22 @@ export const ArticleCard = ({
         >
           {category}
         </StyledParagraph>
-        <StyledLink textDecoration="none" p="0" m="0">
-          <StyledHeader
-            fontSize={['19px', '14px', null, '22px']}
-            fontWeight="bold"
-            fontFamily="body"
-            letterSpacing={['-0.01em', null, null, '-0.01em']}
-            lineHeight={['25px', '16px', null, '25px']}
-            color="navy"
-            p={['5px 0', null, null, '7px 0']}
-            m="0"
-          >
-            {headline}
-          </StyledHeader>
-        </StyledLink>
+        <Link href={url}>
+          <StyledLink textDecoration="none" p="0" m="0">
+            <StyledHeader
+              fontSize={['19px', '14px', null, '22px']}
+              fontWeight="bold"
+              fontFamily="body"
+              letterSpacing={['-0.01em', null, null, '-0.01em']}
+              lineHeight={['25px', '16px', null, '25px']}
+              color="navy"
+              p={['5px 0', null, null, '7px 0']}
+              m="0"
+            >
+              {headline}
+            </StyledHeader>
+          </StyledLink>
+        </Link>
         <StyledHeader
           display={['none', null, null, 'inherit']}
           fontSize={['14px', '10px', null, '14px']}

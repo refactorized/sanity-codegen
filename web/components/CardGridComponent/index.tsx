@@ -27,6 +27,7 @@ interface ArticleCardProps {
   headline: string;
   date: string;
   description: string;
+  url: string;
 }
 
 export interface CardGridProps {
@@ -65,7 +66,12 @@ export const CardGrid = ({
         <StyledArticleContainer>
           {articleCardArr.map((obj, ind) => {
             if (obj.category && selected) {
-              if (selected === 'All Resources') {
+              // TODO: Add solution that's less-harcodey
+              if (
+                selected === 'All Events' ||
+                selected === 'All News' ||
+                selected === 'All Resources'
+              ) {
                 return (
                   <ArticleCard
                     key={ind}
@@ -75,6 +81,7 @@ export const CardGrid = ({
                     // date={obj.headline}
                     description={obj.description}
                     cardFullWidth={true}
+                    url={obj.url}
                   />
                 );
               } else if (selected === obj.category) {
@@ -87,6 +94,7 @@ export const CardGrid = ({
                     // date={obj.headline}
                     description={obj.description}
                     cardFullWidth={true}
+                    url={obj.url}
                   />
                 );
               }
@@ -100,6 +108,7 @@ export const CardGrid = ({
                   // date={obj.headline}
                   description={obj.description}
                   cardFullWidth={true}
+                  url={obj.url}
                 />
               );
             }

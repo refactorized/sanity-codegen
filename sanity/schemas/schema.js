@@ -15,6 +15,7 @@ import eventSeries from './documents/eventSeries';
 import externalContributor from './documents/externalContributor';
 import page from './documents/page';
 import news from './documents/news';
+import newsPage from './documents/newsPage';
 import postType from './documents/postType';
 import resource from './documents/resource';
 import resourcePage from './documents/resourcePage';
@@ -78,6 +79,7 @@ export default createSchema({
     eventSeries,
     externalContributor,
     news,
+    newsPage,
     page,
     postType,
     resource,

@@ -141,15 +141,19 @@ export const NewsDetailHero = ({
             <Dates startDate={date} />
           </InfoText>
         ) : (
-          <Dates startDate={date} />
+          <InfoText>
+            <Dates startDate={date} />
+          </InfoText>
         )}
-        <InfoText>
-          {authors.map((a) => (
-            <span key={a} className="bold-span author-name">
-              {a}
-            </span>
-          ))}
-        </InfoText>
+        {authors && (
+          <InfoText>
+            {authors.map((a) => (
+              <span key={a} className="bold-span author-name">
+                {a}
+              </span>
+            ))}
+          </InfoText>
+        )}
         {hasSocialLink && (
           <SocialWrapper>
             <span>Share:</span>

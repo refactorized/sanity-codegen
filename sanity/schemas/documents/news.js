@@ -24,6 +24,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required().error('Post must have a slug'),
     },
     {
       name: 'author',
@@ -39,7 +40,7 @@ export default {
       title: 'Short Description',
       description:
         'The short description is used in the SEO page description as well as at the top of the post.',
-      type: 'blockContent',
+      type: 'string',
       codegen: {required: true},
       validation: (Rule) =>
         Rule.required().error('Post must have a short description'),
@@ -87,7 +88,7 @@ export default {
       name: 'body',
       title: 'Body',
       description: 'This is the main body of the post',
-      type: 'blockContent',
+      type: 'prose',
       codegen: {required: true},
       validation: (Rule) => Rule.required().error('Post must have a body'),
     },

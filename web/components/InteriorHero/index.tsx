@@ -95,6 +95,7 @@ export const InteriorHero = ({
             layout="responsive"
             height={'auto'}
             width={'100%'}
+            objectFit="cover"
           />
         )}
 

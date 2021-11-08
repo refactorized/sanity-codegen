@@ -398,11 +398,11 @@ export interface News extends SanityDocument {
   author: SanityReference<Staff>;
 
   /**
-   * Short Description — `blockContent`
+   * Short Description — `string`
    *
    * The short description is used in the SEO page description as well as at the top of the post.
    */
-  shortDescription: BlockContent;
+  shortDescription: string;
 
   /**
    * Main image — `image`
@@ -438,11 +438,74 @@ export interface News extends SanityDocument {
   publishedAt: string;
 
   /**
-   * Body — `blockContent`
+   * Body — `prose`
    *
    * This is the main body of the post
    */
-  body: BlockContent;
+  body: Prose;
+}
+
+/**
+ * News Page
+ *
+ *
+ */
+export interface NewsPage extends SanityDocument {
+  _type: "newsPage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero — `interiorHero`
+   *
+   *
+   */
+  interiorHero?: InteriorHero;
+
+  /**
+   * Pre-Footer — `preFooter`
+   *
+   *
+   */
+  preFooter?: PreFooter;
 }
 
 /**
@@ -2126,6 +2189,7 @@ export type Documents =
   | EventSeries
   | ExternalContributor
   | News
+  | NewsPage
   | Page
   | PostType
   | Resource
