@@ -1,4 +1,5 @@
 import {IoNewspaperOutline} from 'react-icons/io5';
+const _required = (Rule) => Rule.required();
 
 export default {
   name: 'news',
@@ -54,6 +55,13 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Alt Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'categories',

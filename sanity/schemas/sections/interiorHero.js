@@ -26,6 +26,9 @@ const interiorHero = {
       type: 'image',
       title: 'Image',
       description: 'Image is optional',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'mobileImage',
@@ -33,6 +36,16 @@ const interiorHero = {
       title: 'Mobile Image',
       description:
         'Optional alternate image to use for smaller(mobile) layouts',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Alt Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'videoSrc',

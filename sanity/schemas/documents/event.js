@@ -1,5 +1,5 @@
 import {IoCalendarOutline} from 'react-icons/io5';
-
+const _required = (Rule) => Rule.required();
 import blockContent from './blockContent';
 
 export default {
@@ -135,6 +135,13 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Alt Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'slug',

@@ -32,12 +32,18 @@ const textAndImageBlock = {
       type: 'image',
       title: 'Image',
       codegen: {required: true},
+      options: {
+        hotspot: true,
+      },
       validation: _required,
     },
     {
       name: 'mobileImage',
       type: 'image',
       title: 'Mobile Image',
+      options: {
+        hotspot: true,
+      },
       description:
         'Optional alternate image to use for smaller(mobile) layouts',
     },

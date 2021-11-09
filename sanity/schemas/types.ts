@@ -15,7 +15,7 @@ import type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-} from "sanity-codegen";
+} from 'sanity-codegen';
 
 export type {
   SanityReference,
@@ -42,7 +42,7 @@ export type {
  *
  */
 export interface Category extends SanityDocument {
-  _type: "category";
+  _type: 'category';
 
   /**
    * Title — `string`
@@ -65,7 +65,7 @@ export interface Category extends SanityDocument {
  *
  */
 export interface Department extends SanityDocument {
-  _type: "department";
+  _type: 'department';
 
   /**
    * Name — `string`
@@ -79,7 +79,7 @@ export interface Department extends SanityDocument {
    *
    * Write a custom slug here, or click “Generate” to auto-populate.
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 }
 
 /**
@@ -88,7 +88,7 @@ export interface Department extends SanityDocument {
  *
  */
 export interface DepartmentTeam extends SanityDocument {
-  _type: "departmentTeam";
+  _type: 'departmentTeam';
 
   /**
    * Team Name — `string`
@@ -109,7 +109,7 @@ export interface DepartmentTeam extends SanityDocument {
    *
    * Click “Generate” to auto-populate.
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 }
 
 /**
@@ -118,7 +118,7 @@ export interface DepartmentTeam extends SanityDocument {
  *
  */
 export interface Event extends SanityDocument {
-  _type: "event";
+  _type: 'event';
 
   /**
    * Name — `string`
@@ -203,18 +203,25 @@ export interface Event extends SanityDocument {
    * (optional) This appears below the page metadata and above the event description.
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
 
   /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text: string;
+
+  /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: {_type: 'slug'; current: string};
 
   /**
    * Short Description — `blockContent`
@@ -286,7 +293,7 @@ export interface Event extends SanityDocument {
  *
  */
 export interface EventCategory extends SanityDocument {
-  _type: "eventCategory";
+  _type: 'eventCategory';
 
   /**
    * Name — `string`
@@ -309,7 +316,7 @@ export interface EventCategory extends SanityDocument {
  *
  */
 export interface EventSeries extends SanityDocument {
-  _type: "eventSeries";
+  _type: 'eventSeries';
 
   /**
    * Name — `string`
@@ -325,7 +332,7 @@ export interface EventSeries extends SanityDocument {
  *
  */
 export interface ExternalContributor extends SanityDocument {
-  _type: "externalContributor";
+  _type: 'externalContributor';
 
   /**
    * First Name — `string`
@@ -354,7 +361,7 @@ export interface ExternalContributor extends SanityDocument {
    * (optional) if left empty will use default image
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -374,7 +381,7 @@ export interface ExternalContributor extends SanityDocument {
  *
  */
 export interface News extends SanityDocument {
-  _type: "news";
+  _type: 'news';
 
   /**
    * Title — `string`
@@ -388,7 +395,7 @@ export interface News extends SanityDocument {
    *
    * Click "generate" to create based on the title of the post
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: {_type: 'slug'; current: string};
 
   /**
    * Author — `reference`
@@ -410,11 +417,18 @@ export interface News extends SanityDocument {
    * (optional) This appears between the resource metadata and body text
    */
   mainImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text: string;
 
   /**
    * Categories — `array`
@@ -458,7 +472,7 @@ export interface News extends SanityDocument {
  *
  */
 export interface NewsPage extends SanityDocument {
-  _type: "newsPage";
+  _type: 'newsPage';
 
   /**
    * Title — `string`
@@ -472,7 +486,7 @@ export interface NewsPage extends SanityDocument {
    *
    *
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 
   /**
    * Category — `reference`
@@ -501,7 +515,7 @@ export interface NewsPage extends SanityDocument {
    * Image for sharing previews on Facebook, Twitter etc.
    */
   openGraphImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -528,7 +542,7 @@ export interface NewsPage extends SanityDocument {
  *
  */
 export interface Page extends SanityDocument {
-  _type: "page";
+  _type: 'page';
 
   /**
    * Title — `string`
@@ -542,7 +556,7 @@ export interface Page extends SanityDocument {
    *
    *
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 
   /**
    * Category — `reference`
@@ -571,7 +585,7 @@ export interface Page extends SanityDocument {
    * Image for sharing previews on Facebook, Twitter etc.
    */
   openGraphImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -611,7 +625,7 @@ export interface Page extends SanityDocument {
  *
  */
 export interface PostType extends SanityDocument {
-  _type: "postType";
+  _type: 'postType';
 
   /**
    * Title — `string`
@@ -627,7 +641,7 @@ export interface PostType extends SanityDocument {
  *
  */
 export interface Resource extends SanityDocument {
-  _type: "resource";
+  _type: 'resource';
 
   /**
    * Title — `string`
@@ -641,7 +655,7 @@ export interface Resource extends SanityDocument {
    *
    * This ensures a unique URL
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: {_type: 'slug'; current: string};
 
   /**
    * Short Description — `string`
@@ -670,11 +684,18 @@ export interface Resource extends SanityDocument {
    * This appears between the resource metadata and body text
    */
   mainImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text: string;
 
   /**
    * Categories — `array`
@@ -718,7 +739,7 @@ export interface Resource extends SanityDocument {
  *
  */
 export interface ResourcePage extends SanityDocument {
-  _type: "resourcePage";
+  _type: 'resourcePage';
 
   /**
    * Title — `string`
@@ -732,7 +753,7 @@ export interface ResourcePage extends SanityDocument {
    *
    *
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 
   /**
    * Category — `reference`
@@ -761,7 +782,7 @@ export interface ResourcePage extends SanityDocument {
    * Image for sharing previews on Facebook, Twitter etc.
    */
   openGraphImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -809,7 +830,7 @@ export interface ResourcePage extends SanityDocument {
  *
  */
 export interface ResourceType extends SanityDocument {
-  _type: "resourceType";
+  _type: 'resourceType';
 
   /**
    * Title — `string`
@@ -825,7 +846,7 @@ export interface ResourceType extends SanityDocument {
  *
  */
 export interface SiteConfig extends SanityDocument {
-  _type: "siteConfig";
+  _type: 'siteConfig';
 
   /**
    * Show Announcement Bar — `boolean`
@@ -960,7 +981,7 @@ export interface SiteConfig extends SanityDocument {
  *
  */
 export interface Staff extends SanityDocument {
-  _type: "staff";
+  _type: 'staff';
 
   /**
    * First Name — `string`
@@ -1009,7 +1030,7 @@ export interface Staff extends SanityDocument {
    *
    * Write a custom slug here, or click “Generate” to auto-populate.
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: {_type: 'slug'; current: string};
 
   /**
    * Image — `image`
@@ -1017,7 +1038,7 @@ export interface Staff extends SanityDocument {
    * If available, this should be a photo of the staff member.  If none is available, a default image will be used
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1051,7 +1072,7 @@ export interface Staff extends SanityDocument {
  *
  */
 export interface TeamPage extends SanityDocument {
-  _type: "teamPage";
+  _type: 'teamPage';
 
   /**
    * Title — `string`
@@ -1065,7 +1086,7 @@ export interface TeamPage extends SanityDocument {
    *
    *
    */
-  slug: { _type: "slug"; current: string };
+  slug: {_type: 'slug'; current: string};
 
   /**
    * Category — `reference`
@@ -1094,7 +1115,7 @@ export interface TeamPage extends SanityDocument {
    * Image for sharing previews on Facebook, Twitter etc.
    */
   openGraphImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1130,7 +1151,7 @@ export interface TeamPage extends SanityDocument {
 }
 
 export type AnnouncementBar = {
-  _type: "announcementBar";
+  _type: 'announcementBar';
   /**
    * blockType — `string`
    *
@@ -1142,7 +1163,7 @@ export type AnnouncementBar = {
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: "image";
+      _type: 'image';
       asset: SanityReference<SanityImageAsset>;
       crop?: SanityImageCrop;
       hotspot?: SanityImageHotspot;
@@ -1150,7 +1171,7 @@ export type BlockContent = Array<
 >;
 
 export type AdmissionsCallout = {
-  _type: "admissionsCallout";
+  _type: 'admissionsCallout';
   /**
    * Admissions Callout Header — `string`
    *
@@ -1216,7 +1237,7 @@ export type AdmissionsCallout = {
 };
 
 export type CalloutBand = {
-  _type: "calloutBand";
+  _type: 'calloutBand';
   /**
    * Callout Header — `string`
    *
@@ -1247,7 +1268,7 @@ export type CalloutBand = {
 };
 
 export type BioCallout = {
-  _type: "bioCallout";
+  _type: 'bioCallout';
   /**
    * Bio Callout Headline — `string`
    *
@@ -1264,14 +1285,14 @@ export type BioCallout = {
 };
 
 export type BioCalloutCards = {
-  _type: "bioCalloutCards";
+  _type: 'bioCalloutCards';
   /**
    * Image — `image`
    *
    * Image is Optional
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1300,7 +1321,7 @@ export type BioCalloutCards = {
 };
 
 export type Carousel = {
-  _type: "carousel";
+  _type: 'carousel';
   /**
    * blockType — `string`
    *
@@ -1310,7 +1331,7 @@ export type Carousel = {
 };
 
 export type ImageCarousel = {
-  _type: "imageCarousel";
+  _type: 'imageCarousel';
   /**
    * Slides — `array`
    *
@@ -1320,7 +1341,7 @@ export type ImageCarousel = {
 };
 
 export type ArticleCarousel = {
-  _type: "articleCarousel";
+  _type: 'articleCarousel';
   /**
    * Title — `string`
    *
@@ -1344,18 +1365,25 @@ export type ArticleCarousel = {
 };
 
 export type ImageSlide = {
-  _type: "imageSlide";
+  _type: 'imageSlide';
   /**
    * Cover Image — `image`
    *
    *
    */
   cover_image: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text: string;
 
   /**
    * Headline — `string`
@@ -1387,7 +1415,7 @@ export type ImageSlide = {
 };
 
 export type DrawerCombo = {
-  _type: "drawerCombo";
+  _type: 'drawerCombo';
   /**
    * Drawer Combo Title — `string`
    *
@@ -1425,14 +1453,14 @@ export type DrawerCombo = {
 };
 
 export type DrawerComboDrawer = {
-  _type: "drawerComboDrawer";
+  _type: 'drawerComboDrawer';
   /**
    * Drawer Combo Icon — `image`
    *
    * Icon is Optional
    */
   icon?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1454,7 +1482,7 @@ export type DrawerComboDrawer = {
 };
 
 export type FlexCollar = {
-  _type: "flexCollar";
+  _type: 'flexCollar';
   /**
    * Cards — `array`
    *
@@ -1464,7 +1492,7 @@ export type FlexCollar = {
 };
 
 export type FlexCollarCard = {
-  _type: "flexCollarCard";
+  _type: 'flexCollarCard';
   /**
    * Page — `pageInfo`
    *
@@ -1474,14 +1502,14 @@ export type FlexCollarCard = {
 };
 
 export type HeroBlock = {
-  _type: "heroBlock";
+  _type: 'heroBlock';
   /**
    * Hero Background Image — `image`
    *
    *
    */
   bgImage: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1503,7 +1531,7 @@ export type HeroBlock = {
 };
 
 export type HeroCard = {
-  _type: "heroCard";
+  _type: 'heroCard';
   /**
    * Eyebrow — `string`
    *
@@ -1527,7 +1555,7 @@ export type HeroCard = {
 };
 
 export type IntroBlock = {
-  _type: "introBlock";
+  _type: 'introBlock';
   /**
    * Body Text — `text`
    *
@@ -1551,14 +1579,14 @@ export type IntroBlock = {
 };
 
 export type LinkMenu = {
-  _type: "linkMenu";
+  _type: 'linkMenu';
   /**
    * Image — `image`
    *
    *
    */
   imgUrl?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1601,7 +1629,7 @@ export type LinkMenu = {
 };
 
 export type LinkMenuLink = {
-  _type: "linkMenuLink";
+  _type: 'linkMenuLink';
   /**
    * Link Title — `string`
    *
@@ -1618,7 +1646,7 @@ export type LinkMenuLink = {
 };
 
 export type OutcomesCarousel = {
-  _type: "outcomesCarousel";
+  _type: 'outcomesCarousel';
   /**
    * Title — `string`
    *
@@ -1634,14 +1662,14 @@ export type OutcomesCarousel = {
   cards: Array<SanityKeyed<TestimonialCard> | SanityKeyed<StatCard>>;
 };
 
-export type PageInfo = { _type: "pageInfo"; _ref: string };
+export type PageInfo = {_type: 'pageInfo'; _ref: string};
 
-export type ArticleInfo = { _type: "articleInfo"; _ref: string };
+export type ArticleInfo = {_type: 'articleInfo'; _ref: string};
 
-export type PageLink = { _type: "pageLink"; _ref: string };
+export type PageLink = {_type: 'pageLink'; _ref: string};
 
 export type PreFooter = {
-  _type: "preFooter";
+  _type: 'preFooter';
   /**
    * Pre-Footer Header — `string`
    *
@@ -1679,7 +1707,7 @@ export type PreFooter = {
 };
 
 export type Prose = {
-  _type: "prose";
+  _type: 'prose';
   /**
    * content — `array`
    *
@@ -1691,7 +1719,7 @@ export type Prose = {
 };
 
 export type TextAndImageBlock = {
-  _type: "textAndImageBlock";
+  _type: 'textAndImageBlock';
   /**
    * Main Header — `string`
    *
@@ -1719,7 +1747,7 @@ export type TextAndImageBlock = {
    *
    */
   desktopImage: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1731,7 +1759,7 @@ export type TextAndImageBlock = {
    * Optional alternate image to use for smaller(mobile) layouts
    */
   mobileImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1760,7 +1788,7 @@ export type TextAndImageBlock = {
 };
 
 export type ComboCard = {
-  _type: "comboCard";
+  _type: 'comboCard';
   /**
    * Combo Card Title — `string`
    *
@@ -1798,14 +1826,14 @@ export type ComboCard = {
 };
 
 export type ComboCardCards = {
-  _type: "comboCardCards";
+  _type: 'comboCardCards';
   /**
    * Combo Card Icon — `image`
    *
    * Icon is Optional
    */
   icon?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1827,7 +1855,7 @@ export type ComboCardCards = {
 };
 
 export type GenericEmbed = {
-  _type: "genericEmbed";
+  _type: 'genericEmbed';
   /**
    * Embed HTML — `text`
    *
@@ -1839,7 +1867,7 @@ export type GenericEmbed = {
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
 
 export type FooterConfig = {
-  _type: "footerConfig";
+  _type: 'footerConfig';
   /**
    * First Column — `array`
    *
@@ -1877,7 +1905,7 @@ export type FooterConfig = {
 };
 
 export type FooterLink = {
-  _type: "footerLink";
+  _type: 'footerLink';
   /**
    * Title — `string`
    *
@@ -1890,11 +1918,11 @@ export type FooterLink = {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: {_type: 'slug'; current: string};
 };
 
 export type InteriorHero = {
-  _type: "interiorHero";
+  _type: 'interiorHero';
   /**
    * Interior Hero Header — `string`
    *
@@ -1915,7 +1943,7 @@ export type InteriorHero = {
    * Image is optional
    */
   desktopImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1927,11 +1955,18 @@ export type InteriorHero = {
    * Optional alternate image to use for smaller(mobile) layouts
    */
   mobileImage?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text: string;
 
   /**
    * Interior Hero Video Source — `link`
@@ -1942,7 +1977,7 @@ export type InteriorHero = {
 };
 
 export type Link = {
-  _type: "link";
+  _type: 'link';
   /**
    * Internal Page — `pageLink`
    *
@@ -1959,7 +1994,7 @@ export type Link = {
 };
 
 export type Placeholder = {
-  _type: "placeholder";
+  _type: 'placeholder';
   /**
    * blockType — `string`
    *
@@ -1976,14 +2011,14 @@ export type Placeholder = {
 };
 
 export type PtImage = {
-  _type: "ptImage";
+  _type: 'ptImage';
   /**
    * Image asset — `image`
    *
    *
    */
   image?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -1994,14 +2029,14 @@ export type PtImage = {
    *
    *
    */
-  align?: "left" | "center" | "right";
+  align?: 'left' | 'center' | 'right';
 
   /**
    * Image width — `string`
    *
    *
    */
-  width?: "large" | "medium" | "small";
+  width?: 'large' | 'medium' | 'small';
 
   /**
    * Wrap content — `boolean`
@@ -2012,7 +2047,7 @@ export type PtImage = {
 };
 
 export type PtEmbed = {
-  _type: "ptEmbed";
+  _type: 'ptEmbed';
   /**
    * Embed HTML — `text`
    *
@@ -2022,7 +2057,7 @@ export type PtEmbed = {
 };
 
 export type StatCard = {
-  _type: "statCard";
+  _type: 'statCard';
   /**
    * Background Color — `string`
    *
@@ -2050,7 +2085,7 @@ export type StatCard = {
    *
    */
   icon: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -2058,7 +2093,7 @@ export type StatCard = {
 };
 
 export type TestimonialCard = {
-  _type: "testimonialCard";
+  _type: 'testimonialCard';
   /**
    * Quote — `string`
    *
@@ -2079,7 +2114,7 @@ export type TestimonialCard = {
    *
    */
   patient_photo_path: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -2087,7 +2122,7 @@ export type TestimonialCard = {
 };
 
 export type TextTestimonialCard = {
-  _type: "textTestimonialCard";
+  _type: 'textTestimonialCard';
   /**
    * Text Testimonial Card Header — `string`
    *
@@ -2136,7 +2171,7 @@ export type TextTestimonialCard = {
    * Patient Photo is Optional
    */
   patientPhotoPath?: {
-    _type: "image";
+    _type: 'image';
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -2158,7 +2193,7 @@ export type TextTestimonialCard = {
 };
 
 export type NavConfig = {
-  _type: "navConfig";
+  _type: 'navConfig';
   /**
    * navLists — `array`
    *
@@ -2168,7 +2203,7 @@ export type NavConfig = {
 };
 
 export type NavItem = {
-  _type: "navItem";
+  _type: 'navItem';
   /**
    * Label — `string`
    *
@@ -2192,7 +2227,7 @@ export type NavItem = {
 };
 
 export type NavList = {
-  _type: "navList";
+  _type: 'navList';
   /**
    * Label — `string`
    *

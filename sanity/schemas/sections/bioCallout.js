@@ -11,6 +11,9 @@ export const bioCalloutCards = {
       type: 'image',
       title: 'Image',
       description: 'Image is Optional',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'name',

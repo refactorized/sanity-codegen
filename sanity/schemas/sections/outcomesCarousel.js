@@ -27,6 +27,9 @@ export const testimonialCard = {
       title: 'Patient Photo',
       codegen: {required: true},
       validation: _required,
+      options: {
+        hotspot: true,
+      },
     },
   ],
 };
