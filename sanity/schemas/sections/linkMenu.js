@@ -35,6 +35,16 @@ const linkMenu = {
       type: 'image',
       title: 'Image',
       validation: _required,
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Alt Text',
+      codegen: {required: true},
+      validation: _required,
     },
     {
       name: 'header',
