@@ -12,7 +12,13 @@ export const navItem = {
       codegen: {required: true},
       validation: _required,
     },
-    {title: 'Url', type: 'link', name: 'url'},
+    {
+      title: 'Url',
+      type: 'link',
+      name: 'url',
+      codegen: {required: true},
+      validation: _required,
+    },
     {
       title: 'Sub-nav items',
       name: 'links',

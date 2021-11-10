@@ -912,20 +912,6 @@ export interface SiteConfig extends SanityDocument {
   email?: string;
 
   /**
-   * Featured Link Label — `string`
-   *
-   *
-   */
-  featuredLinkLabel?: string;
-
-  /**
-   * Feature Link Url — `link`
-   *
-   *
-   */
-  featuredLinkUrl?: Link;
-
-  /**
    * Log in Label — `string`
    *
    *
@@ -959,6 +945,20 @@ export interface SiteConfig extends SanityDocument {
    *
    */
   phoneNumber?: string;
+
+  /**
+   * Give to Riggs Label — `string`
+   *
+   *
+   */
+  featuredLinkLabel?: string;
+
+  /**
+   * Give to Riggs Url — `link`
+   *
+   *
+   */
+  featuredLinkUrl?: Link;
 
   /**
    * Nav Configuration — `navConfig`
@@ -2226,7 +2226,7 @@ export type NavItem = {
    *
    *
    */
-  url?: Link;
+  url: Link;
 
   /**
    * Sub-nav items — `array`
@@ -2250,7 +2250,7 @@ export type NavList = {
    *
    *
    */
-  url?: Link;
+  url: Link;
 
   /**
    * Sub-nav items — `array`

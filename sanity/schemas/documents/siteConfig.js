@@ -93,16 +93,6 @@ export default {
     ]),
     ...inFieldset('navigation', [
       {
-        name: 'featuredLinkLabel',
-        type: 'string',
-        title: 'Featured Link Label',
-      },
-      {
-        name: 'featuredLinkUrl',
-        type: 'link',
-        title: 'Feature Link Url',
-      },
-      {
         name: 'logInLinkLabel',
         type: 'string',
         title: 'Log in Label',
@@ -126,6 +116,16 @@ export default {
         name: 'phoneNumber',
         type: 'string',
         title: 'Phone Number',
+      },
+      {
+        name: 'featuredLinkLabel',
+        type: 'string',
+        title: 'Give to Riggs Label',
+      },
+      {
+        name: 'featuredLinkUrl',
+        type: 'link',
+        title: 'Give to Riggs Url',
       },
       {
         name: 'navConfig',
