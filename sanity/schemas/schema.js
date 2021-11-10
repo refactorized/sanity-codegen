@@ -27,7 +27,6 @@ import teamPage from './documents/teamPage';
 // page-builder sections (also called blocks)
 import admissionsCallout from './sections/admissionsCallout';
 import announcementBar from './sections/announcementBar';
-import carousel from './sections/carousel';
 import outcomesCarousel, {
   testimonialCard,
   statCard,
@@ -94,7 +93,6 @@ export default createSchema({
     calloutBand,
     bioCallout,
     bioCalloutCards,
-    carousel,
     imageCarousel,
     articleCarousel,
     imageSlide,

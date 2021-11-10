@@ -598,9 +598,9 @@ export interface Page extends SanityDocument {
    */
   blocks?: Array<
     | SanityKeyed<AdmissionsCallout>
-    | SanityKeyed<Carousel>
     | SanityKeyed<ImageCarousel>
     | SanityKeyed<ArticleCarousel>
+    | SanityKeyed<OutcomesCarousel>
     | SanityKeyed<FlexCollar>
     | SanityKeyed<IntroBlock>
     | SanityKeyed<LinkMenu>
@@ -1318,16 +1318,6 @@ export type BioCalloutCards = {
    *
    */
   bio: string;
-};
-
-export type Carousel = {
-  _type: "carousel";
-  /**
-   * blockType — `string`
-   *
-   *
-   */
-  blockType?: string;
 };
 
 export type ImageCarousel = {

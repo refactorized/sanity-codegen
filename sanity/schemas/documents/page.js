@@ -20,9 +20,9 @@ export default {
       // TODO: automate the population of this field via magic.js
       of: [
         {type: 'admissionsCallout'},
-        {type: 'carousel'},
         {type: 'imageCarousel'},
         {type: 'articleCarousel'},
+        {type: 'outcomesCarousel'},
         {type: 'flexCollar'},
         {type: 'introBlock'},
         {type: 'linkMenu'},
