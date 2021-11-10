@@ -13,6 +13,7 @@ import Image from 'next/image';
 import {Button} from '@components/Button/index';
 import {CircleArrow} from '@components/Arrow/index';
 import Block from '@components/Layout/Block';
+import {query} from '@theme/fn';
 
 interface linkMenuLink {
   title: string;
@@ -44,6 +45,7 @@ export const LinkMenuComponent = ({
         display="grid"
         gridTemplateColumns={['100%', null, null, '35% 1fr']}
         gridGap={['25px', '35px', null, '81px']}
+        overflow="visible"
       >
         <StyledImageContainer
           backgroundColor="navy"
@@ -51,7 +53,7 @@ export const LinkMenuComponent = ({
           display="block"
           width="100%"
         >
-          <Image src={imgUrl} width={450} height="responsive" />
+          <Image src={imgUrl} width={450} height={'auto'} objectFit="cover" />
         </StyledImageContainer>
         <StyledBox>
           <StyledBox maxWidth={['inherit', null, null, '660px']}>
@@ -156,13 +158,16 @@ const StyledImageContainer = styled.div`
   ${layout}
   ${grid}
   div {
-    height: 757px;
-    @media (max-width: 1024px) {
-      display: block !important;
+    height: 300px;
+    display: block !important;
+
+    @media screen and (${query.atLeast('desktop')}) {
       height: 355px;
     }
-    @media (max-width: 768px) {
-      height: 300px;
+
+    @media screen and (${query.atLeast('max')}) {
+      height: 757px;
+      display: inline-block;
     }
   }
 `;
@@ -188,6 +193,9 @@ const StyledLink = styled.a`
   ${border}
   ${shadow}
 
+  //This code at the bottom gets rid of weird CSS Column Box Shadow bug
+  display: inline-flex;
+  width: 100%;
   //Styled Systems Don't Support These Stylings
   /* Column Count Bug Resolution w/ Shadow */
   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
@@ -201,5 +209,9 @@ const StyledLink = styled.a`
   svg {
     position: absolute;
     right: 20px;
+  }
+
+  div {
+    display: contents;
   }
 `;

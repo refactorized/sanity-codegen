@@ -18,6 +18,7 @@ export const Container = styled.div<LayoutProps>`
   right: 0;
   left: 0;
   min-height: 100vh;
+  overflow: auto;
   ${({preview}) => {
     if (preview) {
       return {border: 'dashed orange 5px'};

@@ -26,7 +26,11 @@ export interface FlexCollarProps {
 export const FlexCollar = ({cards}: FlexCollarProps) => {
   return (
     <Block squish>
-      <StyledBox display="flex" flexDirection={['column', 'row', null, null]}>
+      <StyledBox
+        display="flex"
+        justifyContent="space-around"
+        flexDirection={['column', 'row', null, null]}
+      >
         {cards.map((card, index) => (
           <StyledBox
             display="flex"
