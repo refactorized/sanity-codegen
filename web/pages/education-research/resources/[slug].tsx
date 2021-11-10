@@ -135,17 +135,17 @@ const CTAText = styled.div`
 
 export const MappedArticleCarousel = (block: ResourceData) => {
   const props: ArticleCarouselProps = {
-    title: block.articleCarousel.title,
+    title: block.articleCarousel?.title || 'Related Resources',
     cards:
-      block.articleCarousel.selected_articles &&
-      block.articleCarousel.selected_articles.length > 0
+      block.articleCarousel?.selected_articles &&
+      block.articleCarousel?.selected_articles.length > 0
         ? block.articleCarousel.selected_articles.map((article) =>
             mapArticle(article),
           )
         : [],
     categories:
-      block.articleCarousel.categories &&
-      block.articleCarousel.categories.length > 0
+      block.articleCarousel?.categories &&
+      block.articleCarousel?.categories.length > 0
         ? block.articleCarousel.categories.map(function (category) {
             return category._id;
           })

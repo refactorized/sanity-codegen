@@ -56,7 +56,7 @@ import pageInfo from './objects/pageInfo';
 import articleInfo from './objects/articleInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
-import prose, {ptImage, ptEmbed} from './sections/prose';
+import prose, {ptImage, ptFile, ptEmbed} from './sections/prose';
 import navConfig, {navItem, navList} from './objects/config/navConfig';
 
 // Singletons, and co-located objects
@@ -126,6 +126,7 @@ export default createSchema({
     link,
     placeholder,
     ptImage,
+    ptFile,
     ptEmbed,
     statCard,
     testimonialCard,

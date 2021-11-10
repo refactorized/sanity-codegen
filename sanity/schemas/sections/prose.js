@@ -72,6 +72,19 @@ export const ptImage = {
   ],
 };
 
+export const ptFile = {
+  type: 'object',
+  name: 'ptFile',
+  title: 'File',
+  fields: [
+    {
+      name: 'file',
+      type: 'file',
+      title: 'File',
+    },
+  ],
+};
+
 export const ptEmbed = {
   type: 'object',
   name: 'ptEmbed',
@@ -97,6 +110,7 @@ export default {
       type: 'array',
       of: [
         {name: 'ptImage', type: 'ptImage'},
+        {name: 'ptFile', type: 'ptFile'},
         {name: 'ptEmbed', type: 'ptEmbed'},
         {
           type: 'block',

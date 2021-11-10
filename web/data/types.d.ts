@@ -9,6 +9,7 @@ import type {
   Category,
   Link as _Link,
   PtImage as _PtImage,
+  PtFile as _PtFile,
   PtEmbed as _PtEmbed,
   Page,
 } from '@schema/types';
@@ -76,11 +77,45 @@ export type ResolvedPageLink = {
   current: string;
 };
 
+export type ResolvedAsset = {
+  _createdAt: string; //       "2021-10-21T02:35:30Z"
+  _id: string; //              "file-243d8582c752f3cf4751449b8777c9099145fcf5-pdf"
+  _rev: string; //             "19n1LyYALxxMWkHWbYw1ju"
+  _type: string; //            "sanity.fileAsset"
+  _updatedAt: string; //       "2021-10-21T02:35:30Z"
+  assetId: string; //          "243d8582c752f3cf4751449b8777c9099145fcf5"
+  extension: string; //        "pdf"
+  mimeType: string; //         "application/pdf"
+  originalFilename: string; // "Hip-Hop-Beats.pdf"
+  path: string; //             "files/97aou580/production/243d8582c752f3cf4751449b8777c9099145fcf5.pdf"
+  sha1hash: string; //         "243d8582c752f3cf4751449b8777c9099145fcf5"
+  size: number; //             12345
+  uploadId: string; //         "h7miVTgbh8iuHG5TONa6mqnaL5ojxPhz"
+  url: string; //              "https://cdn.sanity.io/files/97aou580/production/243d8582c752f3cf4751449b8777c9099145fcf5.pdf"
+};
+
+// Special case, sanity-codegen gives us uncharacteristically useless types for
+// the sanity schema type `file`, which breaks our typical resolution, so we
+// will replace the tyoe outright. extending T here allows us to include extra
+// fields defined in the file object as defined by the schema.
+interface ResolvedSanityFile<T> extends T {
+  _type: 'file';
+  asset: ResolvedAsset;
+}
+
+// this will match the standard sanity file schema type
+interface MatchSanityFile<T> extends T {
+  _type: 'file';
+}
+
 // see: https://github.com/ricokahler/sanity-codegen/issues/175#issuecomment-900805132
 // recursively resolve sanity references for a given type
 export type ResolvedSanityReferences<T> =
-  // match `SanityKeyedReference` and unwrap via `infer U`
-  T extends SanityKeyedReference<infer U>
+  // match standard Files and explicitly resolve inner asset
+  T extends MatchSanityFile<infer U>
+    ? ResolvedSanityFile<U>
+    : // match `SanityKeyedReference` and unwrap via `infer U`
+    T extends SanityKeyedReference<infer U>
     ? ResolvedSanityReferences<U>
     : // match `SanityReference` and unwrap via `infer U`
     T extends SanityReference<infer U>
@@ -106,4 +141,5 @@ export type ResolvedSanityReferences<T> =
 
 export type Link = ResolvedSanityReferences<_Link>;
 export type PtImage = ResolvedSanityReferences<_PtImage>;
+export type PtFile = ResolvedSanityReferences<_PtFile>;
 export type PtEmbed = _PtEmbed; // no refs to resolve
