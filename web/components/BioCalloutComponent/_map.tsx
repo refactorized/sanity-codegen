@@ -1,11 +1,12 @@
 import {BioCalloutProps, BioCallout} from '.';
 import BioCalloutBlockData from '@data/blocks/BioCalloutBlockData';
+import getImageUrl from '@util/images';
 
 const _map = (block: BioCalloutBlockData) => {
   const props: BioCalloutProps = {
     headline: block.headline,
     cards: block.cards.map((card) => ({
-      image: card.image?.asset.url || null,
+      image: getImageUrl(card.image, 'crop', 160, 250),
       //Optional chaining operator,
       //Javascript is very Dynamic and Friendly
       //Problem comes when block.image, if image is undefined,

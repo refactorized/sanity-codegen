@@ -1,10 +1,11 @@
 import {LinkMenuComponent, LinkMenuComponentProps} from '.';
 import LinkMenuBlockData from '@data/blocks/LinkMenuBlockData';
 import {mapLink} from '@util/mapping/index';
+import getImageUrl from '@util/images';
 
 const _map = (block: LinkMenuBlockData) => {
   const props: LinkMenuComponentProps = {
-    imgUrl: block.imgUrl.asset.url,
+    imgUrl: getImageUrl(block.imgUrl, 'max'),
     header: block.header,
     description: block.description,
     btnText: block.btnText,

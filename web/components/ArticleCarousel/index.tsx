@@ -3,6 +3,7 @@ import Carousel from '@components/Carousel';
 import client, {bigFetch} from '@data/sanityClient';
 import BlockContent from '@sanity/block-content-to-react';
 import React from 'react';
+import getImageUrl from '@util/images';
 import {useEffect} from 'react';
 import groq from 'groq';
 import {useState} from 'react';
@@ -17,7 +18,7 @@ export const mapArticle = function (article) {
   switch (article._type) {
     case 'news':
       return {
-        image: article.image ? article.image.asset.url : '',
+        image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
         category: 'News',
@@ -26,7 +27,7 @@ export const mapArticle = function (article) {
       } as ArticleCardProps;
     case 'resource':
       return {
-        image: article.image ? article.image.asset.url : '',
+        image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
         category: 'Resource',
@@ -37,7 +38,7 @@ export const mapArticle = function (article) {
       } as ArticleCardProps;
     case 'event':
       return {
-        image: article.image ? article.image.asset.url : '',
+        image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
         category: 'Event',
@@ -58,10 +59,10 @@ export const ArticleCarousel = ({
   const [combinedArticles, setCombinedArticles] = useState(cards);
 
   useEffect(() => {
-    Promise.all(
-      categories.map((category) => {
-        console.log(category, 'category');
-        const query = groq`*[(_type== 'event' || _type== 'news' || _type== 'resource') && "${category}" in categories[]._ref][0...12] {
+    if (categories)
+      Promise.all(
+        categories.map((category) => {
+          const query = groq`*[(_type== 'event' || _type== 'news' || _type== 'resource') && "${category}" in categories[]._ref][0...12] {
           _type,
           slug,
           'image': coalesce(image, mainImage),
@@ -69,11 +70,11 @@ export const ArticleCarousel = ({
           'headline': coalesce(title, name),
           'description': shortDescription,
         }`;
-        return bigFetch(query);
-      }),
-    ).then((values) => {
-      setCategoryArticles(values);
-    });
+          return bigFetch(query);
+        }),
+      ).then((values) => {
+        setCategoryArticles(values);
+      });
   }, [categories, setCategoryArticles]);
 
   useEffect(() => {

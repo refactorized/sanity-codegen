@@ -1,6 +1,7 @@
 import {OutcomesCarousel, OutcomesCarouselProps} from '.';
 import OutcomesCarouselBlockData from '@data/blocks/OutcomesCarouselBlockData';
 import {StatCardProps, TestimonialCardProps} from '@components/Card';
+import getImageUrl from '@util/images';
 
 const _map = (block: OutcomesCarouselBlockData) => {
   const props: OutcomesCarouselProps = {
@@ -10,16 +11,19 @@ const _map = (block: OutcomesCarouselBlockData) => {
         return {
           testimonialText: card.testimonial_text,
           patientName: card.patient_name,
-          patientPhotoPath: card.patient_photo_path
-            ? card.patient_photo_path.asset.url
-            : '',
+          patientPhotoPath: getImageUrl(
+            card.patient_photo_path,
+            'crop',
+            40,
+            40,
+          ),
         } as TestimonialCardProps;
       else if (card._type == 'statCard') {
         return {
           backgroundColor: card.background_color,
           baselineText: card.baseline_text,
           statisticText: card.statistic_text,
-          iconPath: card.icon ? card.icon.asset.url : '',
+          iconPath: getImageUrl(card.icon, 'crop', 87, 87),
         } as StatCardProps;
       }
     }),

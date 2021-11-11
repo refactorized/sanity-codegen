@@ -2,6 +2,7 @@ import {TextAndImageBlock, TextAndImageBlockProps} from '.';
 import TextAndImageBlockData from '@data/blocks/TextAndImageBlockData';
 import {Link} from '@schema/types';
 import {mapLink} from '@util/mapping/index';
+import getImageUrl from '@util/images';
 
 const linkUrl = (link: Link) => {
   return '#'; //TODO: implement
@@ -15,8 +16,8 @@ const _map = (block: TextAndImageBlockData) => {
     btnText: block.buttonText || null,
     btnUrl: mapLink(block.buttonLink) || null,
     imgUrls: {
-      desktop: block.desktopImage.asset.url,
-      mobile: block.mobileImage?.asset.url || null,
+      desktop: getImageUrl(block.desktopImage, 'max'),
+      mobile: block.mobileImage ? getImageUrl(block.mobileImage, 'max') : null,
     },
     reverse: block.reverse,
   };
