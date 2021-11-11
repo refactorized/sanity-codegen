@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import {query} from '@theme/fn';
 import {Button} from '@components/Button';
 import {TestimonialCard} from '@components/Card';
-
+import {query, fontFamily} from '../../themes/fn';
 export interface TextTestimonialCardProps {
   header: string;
   description: string;
@@ -103,7 +102,7 @@ const StyledTestimonial = styled.div`
 `;
 
 const StyledHeadline = styled.h2`
-  font-family: Mrs Eaves XL Serif OT;
+  ${fontFamily('headline')};
   font-size: 30px;
   font-style: normal;
   font-weight: 400;

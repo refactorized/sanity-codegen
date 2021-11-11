@@ -214,7 +214,7 @@ export interface Event extends SanityDocument {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Slug — `slug`
@@ -428,7 +428,7 @@ export interface News extends SanityDocument {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Categories — `array`
@@ -695,7 +695,7 @@ export interface Resource extends SanityDocument {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Categories — `array`
@@ -1233,7 +1233,7 @@ export type AdmissionsCallout = {
    *
    *
    */
-  phoneNumber: string;
+  phoneNumber?: string;
 };
 
 export type CalloutBand = {
@@ -1373,7 +1373,7 @@ export type ImageSlide = {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Headline — `string`
@@ -1587,7 +1587,7 @@ export type LinkMenu = {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Link Menu Header — `string`
@@ -1966,7 +1966,7 @@ export type InteriorHero = {
    *
    *
    */
-  alt_text: string;
+  alt_text?: string;
 
   /**
    * Interior Hero Video Source — `link`

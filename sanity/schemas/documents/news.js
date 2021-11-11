@@ -60,8 +60,6 @@ export default {
       name: 'alt_text',
       type: 'string',
       title: 'Alt Text',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'categories',

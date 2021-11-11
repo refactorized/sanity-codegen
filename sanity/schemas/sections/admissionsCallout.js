@@ -67,8 +67,6 @@ const admissionsCallout = {
       name: 'phoneNumber',
       type: 'string',
       title: 'Admissions Callout Phone Number',
-      codegen: {required: true},
-      validation: _required,
     },
   ],
 };
