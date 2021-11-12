@@ -6,6 +6,13 @@ export const testimonialCard = {
   title: 'Testimonial Card',
   fields: [
     {
+      name: 'background_color',
+      // TODO: could we use a color picker
+      type: 'string',
+      title: 'Background Color',
+      description: 'in hex (#123456) or rgba (rgba(0,0,0,0.5) format',
+    },
+    {
       name: 'testimonial_text',
       type: 'string',
       title: 'Quote',
@@ -25,11 +32,23 @@ export const testimonialCard = {
       type: 'image',
       // TODO: don't know how this wires up compared to passing a static url
       title: 'Patient Photo',
-      codegen: {required: true},
-      validation: _required,
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'cta',
+      type: 'link',
+      title: 'CTA',
+      codegen: {required: true},
+      validation: _required,
+    },
+    {
+      name: 'cta_text',
+      type: 'string',
+      title: 'CTA Text',
+      codegen: {required: true},
+      validation: _required,
     },
   ],
 };

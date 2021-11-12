@@ -8,6 +8,13 @@ const textTestimonialCard = {
   icon: RiWindowFill,
   fields: [
     {
+      name: 'background_color',
+      // TODO: could we use a color picker
+      type: 'string',
+      title: 'Background Color',
+      description: 'in hex (#123456) or rgba (rgba(0,0,0,0.5) format',
+    },
+    {
       name: 'header',
       type: 'string',
       title: 'Text Testimonial Card Header',

@@ -30,6 +30,7 @@ export interface TestimonialCardProps {
   cardFullWidth: boolean;
   ctaLink: string;
   ctaText: string;
+  backgroundColor: string;
 }
 
 export interface ArticleCardProps {
@@ -261,10 +262,11 @@ export const TestimonialCard = ({
   cardFullWidth,
   ctaLink,
   ctaText,
+  backgroundColor = '#fff',
 }: TestimonialCardProps): JSX.Element => {
   return (
     <CardContainer
-      backgroundColor={'#fff'}
+      backgroundColor={backgroundColor}
       color={'#484848'}
       boxShadow={'0px 8px 15px 0px rgba(0, 0, 0, 0.1)'}
       fullWidth={cardFullWidth}
@@ -277,7 +279,9 @@ export const TestimonialCard = ({
       </RightQuoteDiv>
       <TestimonialText>{testimonialText + '"'}</TestimonialText>
       <PatientLine>
-        <PatientPhoto backgroundImage={patientPhotoPath}></PatientPhoto>
+        {patientPhotoPath != '' && (
+          <PatientPhoto backgroundImage={patientPhotoPath}></PatientPhoto>
+        )}
         <PatientName>- {patientName}</PatientName>
       </PatientLine>
       <MoreCTALink href={ctaLink}>

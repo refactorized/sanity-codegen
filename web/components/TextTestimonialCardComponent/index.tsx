@@ -12,6 +12,7 @@ export interface TextTestimonialCardProps {
   patientPhotoPath: string;
   boxCtaLink: string;
   boxCtaText: string;
+  backgroundColor?: string;
 }
 
 export const TextTestimonialCard = ({
@@ -24,6 +25,7 @@ export const TextTestimonialCard = ({
   patientPhotoPath = `../`,
   boxCtaLink = `https://google.com`,
   boxCtaText = `More Patient Outcomes`,
+  backgroundColor,
 }: TextTestimonialCardProps): JSX.Element => {
   return (
     <StyledContainer>
@@ -43,6 +45,7 @@ export const TextTestimonialCard = ({
         </StyledDescriptionContainer>
         <StyledTestimonial>
           <TestimonialCard
+            backgroundColor={backgroundColor}
             patientPhotoPath={patientPhotoPath}
             testimonialText={testimonialText}
             patientName={patientName}

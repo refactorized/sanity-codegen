@@ -13,6 +13,7 @@ const _map = (block: TextTestimonialCardBlockData) => {
     patientPhotoPath: block.patientPhotoPath?.asset.url || null,
     boxCtaLink: mapLink(block.boxCtaLink),
     boxCtaText: block.boxCtaText,
+    backgroundColor: block.background_color,
   };
   return <TextTestimonialCard key={block._key} {...props} />;
 };
