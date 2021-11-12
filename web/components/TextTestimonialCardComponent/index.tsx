@@ -9,7 +9,7 @@ export interface TextTestimonialCardProps {
   ctaUrl: string;
   testimonialText: string;
   patientName: string;
-  patientPhotoPath: string;
+  patientPhotoPath?: string;
   boxCtaLink: string;
   boxCtaText: string;
   backgroundColor?: string;

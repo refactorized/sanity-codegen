@@ -62,15 +62,11 @@ const linkMenu = {
       name: 'btnText',
       type: 'string',
       title: 'Link Menu Button Text',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'btnUrl',
       type: 'link',
       title: 'Link Menu Button Url',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'links',

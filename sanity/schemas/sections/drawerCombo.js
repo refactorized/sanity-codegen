@@ -53,15 +53,11 @@ const drawerCombo = {
       name: 'url',
       type: 'link',
       title: 'Drawer Combo Url',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'label',
       type: 'string',
       title: 'Drawer Combo Label',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'drawers',
