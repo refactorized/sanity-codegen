@@ -17,14 +17,18 @@ const mapSiteConfig = (siteConfig: SiteConfig) => {
       label: siteConfig.registerLink,
       url: mapLink(siteConfig.registerUrl),
     },
-    links: siteConfig.navConfig.navLists,
+    links: siteConfig.navConfig.navLists.map((link) => ({
+      label: link.label,
+      url: mapLink(link.url),
+      links:
+        link.links &&
+        link.links.map((link) => ({
+          label: link.label,
+          url: mapLink(link.url),
+        })),
+    })),
   };
   return <Navigation {...props} />;
 };
 
 export default mapSiteConfig;
-
-// links: siteConfig.navConfig.navList.map((link) => ({
-//   title: link.title,
-//   url: mapLink(link.link),
-// })),

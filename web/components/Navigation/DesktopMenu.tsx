@@ -9,6 +9,8 @@ import {color, space, query} from '../../themes/fn';
 
 import {NavigationProps} from './index';
 
+import {mapLink} from '@util/mapping/index';
+
 interface LinkObject {
   label: string;
   url: string;
