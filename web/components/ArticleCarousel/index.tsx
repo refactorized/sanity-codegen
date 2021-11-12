@@ -35,6 +35,7 @@ export const mapArticle = function (article) {
         url: article.slug
           ? `/education-research/resources/${article.slug.current}`
           : '#',
+        cardFullWidth: false,
       } as ArticleCardProps;
     case 'event':
       return {

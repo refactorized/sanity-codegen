@@ -135,11 +135,11 @@ export interface Event extends SanityDocument {
   ethosCourseYN?: boolean;
 
   /**
-   * Series — `reference`
+   * Event Category — `reference`
    *
-   * e.g. Virtual Rounds, Friday Night Guest Lecture, etc.
+   * e.g. Ongoing Educational Events, External Events, etc.
    */
-  series?: SanityReference<EventSeries>;
+  eventCategory?: SanityReference<EventCategory>;
 
   /**
    * Categories — `array`
@@ -191,11 +191,11 @@ export interface Event extends SanityDocument {
   registrationLink: string;
 
   /**
-   * Pricing — `blockContent`
+   * Pricing — `basicText`
    *
    * (optional) If you have pricing, please enter it here, with the cost in bold.
    */
-  pricingDescription?: BlockContent;
+  pricingDescription?: BasicText;
 
   /**
    * Image — `image`
@@ -224,18 +224,18 @@ export interface Event extends SanityDocument {
   slug?: {_type: 'slug'; current: string};
 
   /**
-   * Short Description — `blockContent`
+   * Short Description — `basicText`
    *
    * This appears below the event/course title.
    */
-  shortDescription: BlockContent;
+  shortDescription: BasicText;
 
   /**
-   * Description — `blockContent`
+   * Description — `prose`
    *
    * This appears below the event image.
    */
-  description?: BlockContent;
+  description?: Prose;
 
   /**
    * Participating Staff — `array`
@@ -252,39 +252,39 @@ export interface Event extends SanityDocument {
   speakersExternal?: Array<SanityKeyedReference<ExternalContributor>>;
 
   /**
-   * Schedule — `blockContent`
+   * Schedule — `prose`
    *
    * If you want to display a schedule, enter it here.
    */
-  schedule?: BlockContent;
+  schedule?: Prose;
 
   /**
-   * Contact — `blockContent`
+   * Contact — `prose`
    *
    * (optional) If you want to show contact information, enter that here.
    */
-  contact?: BlockContent;
+  contact?: Prose;
 
   /**
-   * Learning Objectives — `blockContent`
+   * Learning Objectives — `prose`
    *
    * (optional) If you want to show the learning objectives for an event, enter that here.
    */
-  learningObjectives?: BlockContent;
+  learningObjectives?: Prose;
 
   /**
-   * Continuing Education — `blockContent`
+   * Continuing Education — `prose`
    *
    * (optional) If there is CE information you want to show, enter that here.
    */
-  continuingEducation?: BlockContent;
+  continuingEducation?: Prose;
 
   /**
-   * Cancellation and Refund Policy — `blockContent`
+   * Cancellation and Refund Policy — `prose`
    *
    * (optional) If you have a cancellation and/or refund policy, enter that here.
    */
-  cancellationRefundPolicy?: BlockContent;
+  cancellationRefundPolicy?: Prose;
 }
 
 /**
@@ -308,6 +308,97 @@ export interface EventCategory extends SanityDocument {
    *
    */
   description?: string;
+}
+
+/**
+ * Event Page
+ *
+ *
+ */
+export interface EventPage extends SanityDocument {
+  _type: "eventPage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Meta Title — `string`
+   *
+   * This title populates meta-tags on the webpage
+   */
+  metatitle: string;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero — `interiorHero`
+   *
+   *
+   */
+  interiorHero?: InteriorHero;
+
+  /**
+   * Featured Event — `reference`
+   *
+   * Event displayed under the "Featured" section above the grid.
+   */
+  featuredEvent?: SanityReference<Event>;
+
+  /**
+   * Text and Image Block 1 — `textAndImageBlock`
+   *
+   *
+   */
+  textAndImageBlockOne?: TextAndImageBlock;
+
+  /**
+   * Text and Image Block 2 — `textAndImageBlock`
+   *
+   *
+   */
+  textAndImageBlockTwo?: TextAndImageBlock;
+
+  /**
+   * Pre-Footer — `preFooter`
+   *
+   *
+   */
+  preFooter?: PreFooter;
 }
 
 /**
@@ -2294,6 +2385,7 @@ export type Documents =
   | DepartmentTeam
   | Event
   | EventCategory
+  | EventPage
   | EventSeries
   | ExternalContributor
   | News

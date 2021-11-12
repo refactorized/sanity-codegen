@@ -11,6 +11,7 @@ import department from './documents/department';
 import departmentTeam from './documents/departmentTeam';
 import event from './documents/event';
 import eventCategory from './documents/eventCategory';
+import eventPage from './documents/eventPage';
 import eventSeries from './documents/eventSeries';
 import externalContributor from './documents/externalContributor';
 import page from './documents/page';
@@ -75,6 +76,7 @@ export default createSchema({
     departmentTeam,
     event,
     eventCategory,
+    eventPage,
     eventSeries,
     externalContributor,
     news,

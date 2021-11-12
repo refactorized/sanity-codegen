@@ -3,7 +3,7 @@ import {fontFamily, query, space} from '@theme/fn';
 import Link from 'next/link';
 import {GetStaticProps} from 'next';
 
-import {getResourcePageData, getAllResources} from '@data/resourcePage';
+import {getEventPageData, getAllEvents} from '@data/eventPage';
 import getSiteConfig from '@data/siteConfig';
 import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
@@ -21,18 +21,13 @@ import {
 } from '@components/TextAndImageBlock';
 import {PreFooterBlock, PreFooterBlockProps} from '@components/PreFooterBlock';
 import {CardGrid, CardGridProps} from '@components/CardGridComponent';
-import {
-  ArticleCarousel,
-  ArticleCarouselProps,
-  mapArticle,
-} from '@components/ArticleCarousel';
+import type {BasicText} from '@data/types';
 
-import {SanityKeyed, Resource, ResourcePage} from '@schema/types';
+import {SanityKeyed, Event, EventPage} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 // misc
 import log from '@util/logging';
-import {mapLink} from '@util/mapping';
 
 export interface slugPageContext {
   params: {
@@ -56,13 +51,13 @@ export const getStaticProps: GetStaticProps = async (
   // if params.slug is missing this is the root, re-map to home
 
   try {
-    const pageData = await getResourcePageData(preview);
+    const pageData = await getEventPageData(preview);
 
     if (!pageData) {
       return {notFound: true};
     }
 
-    const resources = await getAllResources();
+    const events = await getAllEvents();
 
     const siteConfig = await getSiteConfig();
     return {
@@ -70,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (
         page: pageData,
         siteConfig: siteConfig,
         preview: !!preview,
-        resources,
+        events,
       } as slugPageProps,
     };
   } catch (e) {
@@ -80,10 +75,10 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 // TYPES
-type ResourcePageData = SanityKeyed<ResolvedSanityReferences<ResourcePage>>;
-type ResourceData = SanityKeyed<ResolvedSanityReferences<Resource>>;
+type EventPageData = SanityKeyed<ResolvedSanityReferences<EventPage>>;
+type EventData = ResolvedSanityReferences<Event>;
 
-export const MappedInteriorHero = (block: ResourcePageData) => {
+export const MappedInteriorHero = (block: EventPageData) => {
   const props: InteriorHeroProps = {
     header: block.interiorHero.header,
     caption: block.interiorHero.caption,
@@ -92,29 +87,33 @@ export const MappedInteriorHero = (block: ResourcePageData) => {
   return <InteriorHero {...props} />;
 };
 
-export const MappedFeaturedResource = (block: ResourcePageData) => {
+export const MappedFeaturedEvent = (block: EventPageData) => {
   const props: TextAndImageBlockProps = {
     altBg: true,
     header: 'Featured',
-    subheader: block.featuredResource.resourceType.title,
-    secondHeader: block.featuredResource.title,
-    caption: block.featuredResource.shortDescription,
+    subheader: block.featuredEvent.eventCategory
+      ? block.featuredEvent.eventCategory.name
+      : 'Events',
+    secondHeader: block.featuredEvent.name,
+    caption: block.featuredEvent.shortDescription as BasicText,
     imgUrls: {
-      desktop: block.featuredResource.mainImage.asset.url,
+      desktop: block.featuredEvent.image
+        ? block.featuredEvent.image.asset.url
+        : '',
     },
     btnText: 'Read More',
-    btnUrl: mapLink(block.featuredResource.slug),
+    btnUrl: block.featuredEvent.slug.current,
     reverse: false,
   };
 
   return <TextAndImageBlock {...props} />;
 };
 
-export const MappedCardGrid = (props: {resources: ResourceData[]}) => {
-  let resourceTypes = props.resources
+export const MappedCardGrid = (props: {events: EventData[]}) => {
+  let eventTypes = props.events
     .map((t, i) => ({
       id: i + 1,
-      title: t.resourceType.title,
+      title: t.eventCategory ? t.eventCategory.name : 'Events',
       link: '#',
     }))
     .filter(
@@ -125,81 +124,71 @@ export const MappedCardGrid = (props: {resources: ResourceData[]}) => {
         ),
     );
 
-  resourceTypes.unshift({id: 0, title: 'All Resources', link: '#'});
+  eventTypes.unshift({id: 0, title: 'All Events', link: '#'});
   const propsToPass: CardGridProps = {
-    links: resourceTypes,
-    articleCardArr: props.resources.map((r) => ({
-      image: r.mainImage.asset.url,
-      category: r.resourceType.title,
-      headline: r.title,
-      date: r.publishedAt,
-      description: r.shortDescription,
-      url: `/education-research/resources/${r.slug?.current || ''}`,
+    links: eventTypes,
+    articleCardArr: props.events.map((e) => ({
+      image: e.image ? e.image.asset.url : '',
+      category: e.eventCategory ? e.eventCategory.name : 'Events',
+      headline: e.name,
+      date: e.eventStart,
+      description: e.shortDescription as BasicText,
+      url: e.slug ? `/events/${e.slug.current}` : `/events/`,
     })),
   };
 
+  console.log(propsToPass);
   return <CardGrid {...propsToPass} />;
 };
 
-export const MappedTextAndImageBlock = (block: ResourcePageData) => {
+export const MappedTextAndImageBlockOne = (block: EventPageData) => {
   const props: TextAndImageBlockProps = {
-    subheader: block.textAndImageBlock.subHeader,
-    caption: block.textAndImageBlock.body,
+    subheader: block.textAndImageBlockOne.subHeader,
+    caption: block.textAndImageBlockOne.body,
     imgUrls: {
-      desktop: block.textAndImageBlock.desktopImage.asset.url,
+      desktop: block.textAndImageBlockOne.desktopImage.asset.url,
     },
-    btnText: block.textAndImageBlock.buttonText,
-    btnUrl: mapLink(block.textAndImageBlock.buttonLink),
-    reverse: block.textAndImageBlock.reverse,
+    btnText: block.textAndImageBlockOne.buttonText,
+    btnUrl: block.textAndImageBlockOne.buttonLink.slug.current,
+    reverse: block.textAndImageBlockOne.reverse,
   };
 
   return <TextAndImageBlock {...props} />;
 };
 
-export const MappedArticleCarousel = (block: ResourcePageData) => {
-  const props: ArticleCarouselProps = {
-    title: block.articleCarousel.title,
-    cards:
-      block.articleCarousel.selected_articles &&
-      block.articleCarousel.selected_articles.length > 0
-        ? block.articleCarousel.selected_articles.map((article) =>
-            mapArticle(article),
-          )
-        : [],
-    categories:
-      block.articleCarousel.categories &&
-      block.articleCarousel.categories.length > 0
-        ? block.articleCarousel.categories.map(function (category) {
-            return category._id;
-          })
-        : [],
+export const MappedTextAndImageBlockTwo = (block: EventPageData) => {
+  const props: TextAndImageBlockProps = {
+    subheader: block.textAndImageBlockTwo.subHeader,
+    caption: block.textAndImageBlockTwo.body,
+    imgUrls: {
+      desktop: block.textAndImageBlockTwo.desktopImage.asset.url,
+    },
+    btnText: block.textAndImageBlockTwo.buttonText,
+    btnUrl: block.textAndImageBlockTwo.buttonLink.slug.current,
+    reverse: block.textAndImageBlockTwo.reverse,
   };
 
-  return <ArticleCarousel {...props} />;
+  return <TextAndImageBlock {...props} />;
 };
 
-export const MappedPreFooter = (block: ResourcePageData) => {
+export const MappedPreFooter = (block: EventPageData) => {
   const props: PreFooterBlockProps = {
     header: block.preFooter.header,
     description: block.preFooter.description,
     btnText: block.preFooter.btnText,
-    btnUrl: mapLink(block.preFooter.btnUrl),
+    btnUrl: block.preFooter.btnUrl.slug.current,
   };
   return <PreFooterBlock {...props} />;
 };
 
-const ResourceIndexPage = (props) => {
-  const {page, resources} = props;
+const EventIndexPage = (props) => {
+  const {page, events} = props;
 
   // BREADCRUMB DATA
   const breadcrumbPages = [
     {
-      title: 'Education & Training',
-      slug: {current: '/education-research'},
-    },
-    {
       title: page.title,
-      slug: {current: '/education-research/resources'},
+      slug: {current: '/events'},
     },
   ];
 
@@ -208,10 +197,10 @@ const ResourceIndexPage = (props) => {
       <Layout>
         <Breadcrumbs pages={breadcrumbPages} />
         <MappedInteriorHero {...page} />
-        <MappedFeaturedResource {...page} />
+        <MappedFeaturedEvent {...page} />
         <MappedCardGrid {...props} />
-        <MappedTextAndImageBlock {...page} />
-        <MappedArticleCarousel {...page} />
+        <MappedTextAndImageBlockOne {...page} />
+        <MappedTextAndImageBlockTwo {...page} />
         <MappedPreFooter {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
@@ -220,4 +209,4 @@ const ResourceIndexPage = (props) => {
   );
 };
 
-export default ResourceIndexPage;
+export default EventIndexPage;

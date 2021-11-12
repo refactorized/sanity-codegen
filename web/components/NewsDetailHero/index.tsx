@@ -11,13 +11,19 @@ import {
   lineHeight,
 } from '../../themes/fn';
 import {Dates} from '@components/Dates';
+import {BasicText} from '@data/types';
+import {RenderBasicText} from '@components/PortableText';
+import {Button} from '@components/Button';
 
 export interface NewsDetailHeroProps {
   category: string;
   header: string;
   date?: string;
   publishedDate?: string;
+  price?: BasicText;
+  description?: BasicText;
   authors?: string[];
+  registrationLink?: string;
   urlFacebook?: string;
   urlTwitter?: string;
   urlLinkedin?: string;
@@ -38,12 +44,11 @@ const Header = styled.h1`
   ${lineHeight('heading')};
   margin-top: 0;
   line-height: 1.25;
-
   margin-bottom: ${space('sm')};
 
   @media (${query.atLeast('tablet')}) {
-    margin-bottom: ${space('md')};
     ${fontSize('x6')};
+    margin-bottom: ${space('md')};
   }
 `;
 
@@ -61,18 +66,7 @@ const Eyebrow = styled.p`
   }
 `;
 
-const DateText = styled.p`
-  ${fontFamily('body')};
-  ${fontSize('sm')};
-  margin-top: 0;
-  margin-bottom: ${space('sm')};
-
-  @media (${query.atLeast('tablet')}) {
-    margin-bottom: ${space('md')};
-  }
-`;
-
-const InfoText = styled.p`
+const InfoText = styled.div`
   ${fontFamily('body')};
   ${fontSize('sm')};
   ${fontWeight('bold')};
@@ -86,19 +80,37 @@ const InfoText = styled.p`
   }
 
   span.author-name {
-    &::after {
-      display: block;
-      content: ' ';
-    }
-
-    &:last-child {
-      &::after {
-        display: none;
-      }
-    }
+    margin-right: 2px;
   }
 `;
 
+const DescriptionText = styled.div`
+  ${fontWeight('regular')};
+  ${fontFamily('body')};
+  ${fontSize('lg')};
+
+  @media (${query.atLeast('tablet')}) {
+    ${fontSize('xl')};
+  }
+`;
+const ButtonSocialWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (${query.atLeast('tablet')}) {
+    flex-direction: row;
+    align-items: center;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  margin-bottom: ${space('lg')};
+
+  @media (${query.atLeast('tablet')}) {
+    margin-right: ${space('x6')};
+    margin-bottom: 0;
+  }
+`;
 const SocialWrapper = styled.div`
   ${fontWeight('bold')};
   ${fontFamily('body')};
@@ -112,7 +124,7 @@ const SocialWrapper = styled.div`
   a {
     margin-right: ${space('sm')};
 
-    &:last-child {
+    &::last-child {
       margin-right: 0;
     }
   }
@@ -122,6 +134,9 @@ export const NewsDetailHero = ({
   category,
   header,
   date,
+  price,
+  registrationLink,
+  description,
   authors,
   publishedDate,
   urlFacebook,
@@ -145,6 +160,16 @@ export const NewsDetailHero = ({
             <Dates startDate={date} />
           </InfoText>
         )}
+        {price && (
+          <InfoText>
+            <RenderBasicText content={price} />
+          </InfoText>
+        )}
+        {description && (
+          <DescriptionText>
+            <RenderBasicText content={description} />
+          </DescriptionText>
+        )}
         {authors && (
           <InfoText>
             {authors.map((a) => (
@@ -154,35 +179,48 @@ export const NewsDetailHero = ({
             ))}
           </InfoText>
         )}
-        {hasSocialLink && (
-          <SocialWrapper>
-            <span>Share:</span>
-            {urlFacebook && (
-              <Facebook
-                color="#204568"
-                hoverColor="#204568"
-                link={urlFacebook}
-                size="23"
+        <ButtonSocialWrapper>
+          {registrationLink && (
+            <ButtonWrapper>
+              <Button
+                variant="solid"
+                label="Register Now"
+                arrow={true}
+                size="medium"
+                arrowColor="#fff"
               />
-            )}
-            {urlTwitter && (
-              <Twitter
-                color="#204568"
-                hoverColor="#204568"
-                link={urlTwitter}
-                size="23"
-              />
-            )}
-            {urlLinkedin && (
-              <LinkedIn
-                color="#204568"
-                hoverColor="#204568"
-                link={urlLinkedin}
-                size="23"
-              />
-            )}
-          </SocialWrapper>
-        )}
+            </ButtonWrapper>
+          )}
+          {hasSocialLink && (
+            <SocialWrapper>
+              <span>Share:</span>
+              {urlFacebook && (
+                <Facebook
+                  color="#204568"
+                  hoverColor="#204568"
+                  link={urlFacebook}
+                  size="23"
+                />
+              )}
+              {urlTwitter && (
+                <Twitter
+                  color="#204568"
+                  hoverColor="#204568"
+                  link={urlTwitter}
+                  size="23"
+                />
+              )}
+              {urlLinkedin && (
+                <LinkedIn
+                  color="#204568"
+                  hoverColor="#204568"
+                  link={urlLinkedin}
+                  size="23"
+                />
+              )}
+            </SocialWrapper>
+          )}
+        </ButtonSocialWrapper>
       </Wrapper>
     </Block>
   );

@@ -217,7 +217,6 @@ export const TextAndImageBlock = ({
   btnUrl,
   reverse,
 }: TextAndImageBlockProps): JSX.Element => {
-  console.log('TYPE OF CAPTION: ', typeof caption);
   return (
     <Container altBg={altBg}>
       <Block>

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import {fontFamily, query, space} from '@theme/fn';
+import {fontFamily, fontSize, fontWeight, query, space} from '@theme/fn';
 import Link from 'next/link';
 import {GetStaticProps} from 'next';
 
-import {getNewsPaths, getNewsDetailPageData} from '@data/newsPage';
+import {getEventPaths, getEventDetailPageData} from '@data/eventPage';
 import getSiteConfig from '@data/siteConfig';
 import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
@@ -17,17 +17,12 @@ import {Breadcrumbs} from '@components/Breadcrumbs';
 import {NewsDetailHero, NewsDetailHeroProps} from '@components/NewsDetailHero';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
 import {CircleArrow} from '@components/Arrow/index';
-import {
-  ArticleCarousel,
-  ArticleCarouselProps,
-  mapArticle,
-} from '@components/ArticleCarousel';
 
-import {News} from '@schema/types';
+import {Event} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 export async function getStaticPaths() {
-  const paths = (await getNewsPaths()).map((path) => ({
+  const paths = (await getEventPaths()).map((path) => ({
     params: {
       slug: path,
     },
@@ -63,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (
   // if params.slug is missing this is the root, re-map to home
   const slug = params.slug;
   try {
-    const pageData = await getNewsDetailPageData(slug, preview);
+    const pageData = await getEventDetailPageData(slug, preview);
 
     if (!pageData) {
       return {notFound: true};
@@ -84,40 +79,18 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 // TYPES
-type NewsData = ResolvedSanityReferences<News>;
+type EventData = ResolvedSanityReferences<Event>;
 
-export const MappedInteriorHero = (block: NewsData) => {
+export const MappedInteriorHero = (block: EventData) => {
   const props: InteriorHeroProps = {
     imgUrls: {
-      desktop: block.mainImage?.asset?.url || '',
-      mobile: block.mainImage?.asset?.url || '',
+      desktop: block.image ? block.image.asset.url : '',
+      mobile: block.image ? block.image.asset.url : '',
     },
     narrow: true,
   };
 
   return <InteriorHero {...props} />;
-};
-
-export const MappedArticleCarousel = (block: NewsData) => {
-  const props: ArticleCarouselProps = {
-    title: block.articleCarousel?.title || 'Related News',
-    cards:
-      block.articleCarousel?.selected_articles &&
-      block.articleCarousel?.selected_articles.length > 0
-        ? block.articleCarousel.selected_articles.map((article) =>
-            mapArticle(article),
-          )
-        : [],
-    categories:
-      block.articleCarousel?.categories &&
-      block.articleCarousel?.categories.length > 0
-        ? block.articleCarousel.categories.map(function (category) {
-            return category._id;
-          })
-        : [],
-  };
-
-  return <ArticleCarousel {...props} />;
 };
 
 // Back Button
@@ -135,47 +108,58 @@ const MoreCTALink = styled.a`
   }
 `;
 
+// Prose Section Headers
+const SectionHeader = styled.h3`
+  ${fontFamily('body')};
+  ${fontWeight('bold')};
+  ${fontSize('xl')};
+  text-align: left;
+`;
+
 const CTAText = styled.div`
   ${fontFamily('body')};
   margin-left: ${space('sm')};
 `;
 
 // Slugs to use
-const resourceCenterSlug = '/news';
+const eventsSlug = '/events';
 
-const NewsDetailPage = (props) => {
+const EventDetailPage = (props) => {
   const {page} = props;
 
   // BREADCRUMB DATA
   const breadcrumbPages = [
     {
-      title: 'News',
-      slug: {current: resourceCenterSlug},
+      title: 'Events',
+      slug: {current: eventsSlug},
     },
     {
-      title: page.title,
-      slug: {current: page.slug?.current},
+      title: page.name,
+      slug: {current: page.slug.current},
     },
   ];
 
   // SOCIAL MEDIA SHARE URLs
   const site = 'https://www.austenriggs.org/';
   const urlFacebook = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(
-    `${site}${page.slug?.current}`,
+    `${site}${page.slug.current}`,
   )}&[title]=${encodeURIComponent(page.title)}`;
   const urlTwitter = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    `${site}${page.slug?.current}`,
+    `${site}${page.slug.current}`,
   )}&text=${encodeURIComponent(page.title)}`;
   const urlLinkedin = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-    `${site}${page.slug?.current}`,
+    `${site}${page.slug.current}`,
   )}`;
 
   // MAPPED COMPONENTS
-  const MappedNewsDetailHero = (block: NewsData) => {
+  const MappedNewsDetailHero = (block: EventData) => {
     const props: NewsDetailHeroProps = {
-      category: 'News',
-      header: block.title,
-      date: block.publishedAt,
+      category: block.eventCategory ? block.eventCategory.name : 'Events',
+      header: block.name,
+      date: block.eventStart,
+      price: block.pricingDescription,
+      description: block.shortDescription,
+      registrationLink: block.registrationLink,
       urlFacebook,
       urlTwitter,
       urlLinkedin,
@@ -190,15 +174,56 @@ const NewsDetailPage = (props) => {
         <Breadcrumbs pages={breadcrumbPages} />
         <MappedNewsDetailHero {...page} />
         <MappedInteriorHero {...page} />
-        <ProseBlock block={page.body} />
+        {/* Description */}
+        <ProseBlock block={page.description} />
+        {
+          /* Schedule */
+          page.schedule && (
+            <>
+              <Block squish>
+                <SectionHeader>Schedule</SectionHeader>
+              </Block>
+              <ProseBlock block={page.schedule} />
+            </>
+          )
+        }
+        {
+          /* Schedule */
+          page.contact && (
+            <>
+              <Block squish>
+                <SectionHeader>Contact</SectionHeader>
+              </Block>
+              <ProseBlock block={page.contact} />
+            </>
+          )
+        }
+        {
+          /* Learning Objectives */
+          page.learningObjectives && (
+            <>
+              <Block squish>
+                <SectionHeader>Learning Objectives</SectionHeader>
+              </Block>
+              <ProseBlock block={page.learningObjectives} />
+            </>
+          )
+        }
+        {page.continuingEducation && (
+          <>
+            <Block squish>
+              <SectionHeader>Continuing Education</SectionHeader>
+            </Block>
+            <ProseBlock block={page.continuingEducation} />
+          </>
+        )}
         <Block>
-          <Link href={resourceCenterSlug}>
+          <Link href={eventsSlug}>
             <MoreCTALink>
-              <CircleArrow flip /> <CTAText>Back to Resource Center</CTAText>
+              <CircleArrow flip /> <CTAText>Back to Events</CTAText>
             </MoreCTALink>
           </Link>
         </Block>
-        <MappedArticleCarousel {...page} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
       </Layout>
@@ -206,4 +231,4 @@ const NewsDetailPage = (props) => {
   );
 };
 
-export default NewsDetailPage;
+export default EventDetailPage;

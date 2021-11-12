@@ -39,12 +39,19 @@ export default {
       initialValue: true,
     },
     {
-      name: 'series', // e.g. Virtual Rounds
-      title: 'Series',
+      name: 'eventCategory', // e.g. Ongoing Educational Events
+      title: 'Event Category',
       type: 'reference',
-      description: 'e.g. Virtual Rounds, Friday Night Guest Lecture, etc.',
-      to: {type: 'eventSeries'},
+      description: 'e.g. Ongoing Educational Events, External Events, etc.',
+      to: {type: 'eventCategory'},
     },
+    // {
+    //   name: 'series', // e.g. Virtual Rounds
+    //   title: 'Series',
+    //   type: 'reference',
+    //   description: 'e.g. Virtual Rounds, Friday Night Guest Lecture, etc.',
+    //   to: {type: 'eventSeries'},
+    // },
     {
       name: 'categories', // sitewide taxonomy
       title: 'Categories',
@@ -124,7 +131,7 @@ export default {
       title: 'Pricing',
       description:
         '(optional) If you have pricing, please enter it here, with the cost in bold.',
-      type: 'blockContent',
+      type: 'basicText',
     },
     {
       name: 'image',
@@ -154,7 +161,7 @@ export default {
       name: 'shortDescription', //
       title: 'Short Description',
       description: 'This appears below the event/course title.',
-      type: 'blockContent',
+      type: 'basicText',
       codegen: {required: true},
       validation: (Rule) => Rule.required(),
     },
@@ -162,7 +169,7 @@ export default {
       name: 'description', //
       title: 'Description',
       description: 'This appears below the event image.',
-      type: 'blockContent',
+      type: 'prose',
     },
     {
       name: 'speakers',
@@ -186,7 +193,7 @@ export default {
       name: 'schedule',
       title: 'Schedule',
       description: 'If you want to display a schedule, enter it here.',
-      type: 'blockContent',
+      type: 'prose',
       hidden: ({parent, value}) => !value && parent?.ethosCourseYN,
     },
     {
@@ -194,7 +201,7 @@ export default {
       title: 'Contact',
       description:
         '(optional) If you want to show contact information, enter that here.',
-      type: 'blockContent',
+      type: 'prose',
       hidden: ({parent, value}) => !value && parent?.ethosCourseYN,
     },
     {
@@ -202,7 +209,7 @@ export default {
       title: 'Learning Objectives',
       description:
         '(optional) If you want to show the learning objectives for an event, enter that here.',
-      type: 'blockContent',
+      type: 'prose',
       hidden: ({parent, value}) => !value && parent?.ethosCourseYN,
     },
     {
@@ -210,7 +217,7 @@ export default {
       title: 'Continuing Education',
       description:
         '(optional) If there is CE information you want to show, enter that here.',
-      type: 'blockContent',
+      type: 'prose',
       hidden: ({parent, value}) => !value && parent?.ethosCourseYN,
     },
     {
@@ -218,7 +225,7 @@ export default {
       title: 'Cancellation and Refund Policy',
       description:
         '(optional) If you have a cancellation and/or refund policy, enter that here.',
-      type: 'blockContent',
+      type: 'prose',
       hidden: ({parent, value}) => !value && parent?.ethosCourseYN,
     },
   ],

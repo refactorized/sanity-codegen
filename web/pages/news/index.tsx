@@ -84,17 +84,25 @@ export const MappedInteriorHero = (block: NewsPageData) => {
 };
 
 export const MappedCardGrid = (props: {news: NewsData[]}) => {
-  let postTypes = props.news.map((n, i) => ({
-    id: i + 1,
-    title: n.postType.title,
-    link: '#',
-  }));
+  let postTypes = props.news
+    .map((n, i) => ({
+      id: i + 1,
+      title: n.postType.title,
+      link: '#',
+    }))
+    .filter(
+      (thing, index, self) =>
+        index ===
+        self.findIndex(
+          (t) => t.title === thing.title && t.title === thing.title,
+        ),
+    );
 
   postTypes.unshift({id: 0, title: 'All News', link: '#'});
   const propsToPass: CardGridProps = {
     links: postTypes,
     articleCardArr: props.news.map((n) => ({
-      image: n.mainImage.asset.url,
+      image: n.mainImage?.asset?.url || '',
       category: n.postType.title,
       headline: n.title,
       date: n.publishedAt,

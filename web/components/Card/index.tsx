@@ -15,6 +15,8 @@ import {CircleArrow} from '../Arrow/index';
 import {SingleQuote} from './CardIcons';
 import {query} from '../../themes/fn';
 import {Dates} from '@components/Dates';
+import type {BasicText} from '@data/types';
+import {RenderBasicText} from '@components/PortableText';
 
 export interface StatCardProps {
   backgroundColor: string;
@@ -38,7 +40,7 @@ export interface ArticleCardProps {
   category: string;
   headline: string;
   date?: string;
-  description: string | JSX.Element;
+  description: BasicText | string | JSX.Element;
   cardFullWidth: boolean;
   url: string;
 }
@@ -349,17 +351,32 @@ export const ArticleCard = ({
         >
           <Dates startDate={date} />
         </StyledHeader>
-        <StyledHeader
-          fontSize={['14px', null, null, '16px']}
-          fontWeight="normal"
-          fontFamily="body"
-          letterSpacing={['-0.015em', null, null, '-0.015em']}
-          lineHeight={['26px', '16px', null, '26px']}
-          p={['5px 0', null, null, '7px 0']}
-          m="0"
-        >
-          {description}
-        </StyledHeader>
+
+        {typeof description === 'object' ? (
+          <StyledHeader
+            fontSize={['14px', null, null, '16px']}
+            fontWeight="normal"
+            fontFamily="body"
+            letterSpacing={['-0.015em', null, null, '-0.015em']}
+            lineHeight={['26px', '16px', null, '26px']}
+            p={['5px 0', null, null, '7px 0']}
+            m="0"
+          >
+            <RenderBasicText asFragment content={description as BasicText} />
+          </StyledHeader>
+        ) : (
+          <StyledHeader
+            fontSize={['14px', null, null, '16px']}
+            fontWeight="normal"
+            fontFamily="body"
+            letterSpacing={['-0.015em', null, null, '-0.015em']}
+            lineHeight={['26px', '16px', null, '26px']}
+            p={['5px 0', null, null, '7px 0']}
+            m="0"
+          >
+            {description}
+          </StyledHeader>
+        )}
       </StyledBox>
     </StyledContainer>
   );
