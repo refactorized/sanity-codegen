@@ -154,20 +154,20 @@ const NewsDetailPage = (props) => {
     },
     {
       title: page.title,
-      slug: {current: page.slug.current},
+      slug: {current: page.slug?.current},
     },
   ];
 
   // SOCIAL MEDIA SHARE URLs
   const site = 'https://www.austenriggs.org/';
   const urlFacebook = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(
-    `${site}${page.slug.current}`,
+    `${site}${page.slug?.current}`,
   )}&[title]=${encodeURIComponent(page.title)}`;
   const urlTwitter = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-    `${site}${page.slug.current}`,
+    `${site}${page.slug?.current}`,
   )}&text=${encodeURIComponent(page.title)}`;
   const urlLinkedin = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-    `${site}${page.slug.current}`,
+    `${site}${page.slug?.current}`,
   )}`;
 
   // MAPPED COMPONENTS

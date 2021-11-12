@@ -8,7 +8,7 @@ export const getPaths = async (): Promise<string[]> => {
   const pathQuery = groq`*[_type == "page"  && !(_id in path('drafts.**'))]`;
   const results = await client.fetch(pathQuery);
   return results
-    .filter((page) => page?.slug?.current)
+    .filter((page) => page.slug?.current)
     .map((page) => `${page.slug.current}`);
 };
 

@@ -32,6 +32,7 @@ import {ResolvedSanityReferences} from '@data/types';
 
 // misc
 import log from '@util/logging';
+import {mapLink} from '@util/mapping';
 
 export interface slugPageContext {
   params: {
@@ -102,7 +103,7 @@ export const MappedFeaturedResource = (block: ResourcePageData) => {
       desktop: block.featuredResource.mainImage.asset.url,
     },
     btnText: 'Read More',
-    btnUrl: block.featuredResource.slug.current,
+    btnUrl: mapLink(block.featuredResource.slug),
     reverse: false,
   };
 
@@ -125,7 +126,7 @@ export const MappedCardGrid = (props: {resources: ResourceData[]}) => {
       headline: r.title,
       date: r.publishedAt,
       description: r.shortDescription,
-      url: `/education-research/resources/${r.slug.current}`,
+      url: `/education-research/resources/${r.slug?.current || ''}`,
     })),
   };
 
@@ -140,7 +141,7 @@ export const MappedTextAndImageBlock = (block: ResourcePageData) => {
       desktop: block.textAndImageBlock.desktopImage.asset.url,
     },
     btnText: block.textAndImageBlock.buttonText,
-    btnUrl: block.textAndImageBlock.buttonLink.slug.current,
+    btnUrl: mapLink(block.textAndImageBlock.buttonLink),
     reverse: block.textAndImageBlock.reverse,
   };
 
@@ -174,7 +175,7 @@ export const MappedPreFooter = (block: ResourcePageData) => {
     header: block.preFooter.header,
     description: block.preFooter.description,
     btnText: block.preFooter.btnText,
-    btnUrl: block.preFooter.btnUrl.slug.current,
+    btnUrl: mapLink(block.preFooter.btnUrl),
   };
   return <PreFooterBlock {...props} />;
 };
