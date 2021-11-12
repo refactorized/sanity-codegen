@@ -14,6 +14,7 @@ import {Address} from './address';
 import {Facebook, Twitter, LinkedIn} from '../SocialComponents';
 import {Block} from '@components/Layout';
 import {SiteConfig} from '@data/types';
+import {mapLink} from '@util/mapping/index';
 
 interface FooterProps {
   siteConfig: SiteConfig;
@@ -53,7 +54,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
               letterSpacing="-0.015em"
               paddingBottom={['10px', '25px', null, 'initial']}
               color="text"
-              href={x.slug.current}
+              href={mapLink(x)}
               key={x._key}
             >
               {x.title}
@@ -67,7 +68,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
               letterSpacing="-0.015em"
               color="text"
               key={x._key}
-              href={x.slug.current}
+              href={mapLink(x)}
             >
               {x.title}
             </StyledLink>
@@ -112,7 +113,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                 letterSpacing="-0.015em"
                 paddingBottom={['10px', '25px', null, 'initial']}
                 color="text"
-                href={x.slug.current}
+                href={mapLink(x)}
                 key={x._key}
               >
                 {x.title}
@@ -150,7 +151,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                   paddingBottom={['10px', '25px', null, 'initial']}
                   m="0"
                   color="text"
-                  href={x[0].slug.current}
+                  href={mapLink(x[0])}
                   key={i}
                 >
                   {x[0].title}
@@ -168,7 +169,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                   paddingBottom={['10px', '25px', null, 'initial']}
                   m="0"
                   color="text"
-                  href={x.slug.current}
+                  href={mapLink(x)}
                   key={x._key}
                 >
                   {x.title}
