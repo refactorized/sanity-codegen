@@ -27,6 +27,7 @@ export interface LinkMenuComponentProps {
   description: string;
   btnText?: string;
   btnUrl?: string;
+  alt_text?: string;
   links: linkMenuLink[];
 }
 
@@ -36,6 +37,7 @@ export const LinkMenuComponent = ({
   description,
   btnText,
   btnUrl,
+  alt_text,
   links,
 }: LinkMenuComponentProps): JSX.Element => {
   return (
@@ -53,7 +55,13 @@ export const LinkMenuComponent = ({
           display="block"
           width="100%"
         >
-          <Image src={imgUrl} width={450} height={'auto'} objectFit="cover" />
+          <Image
+            alt={alt_text}
+            src={imgUrl}
+            width={450}
+            height={'auto'}
+            objectFit="cover"
+          />
         </StyledImageContainer>
         <StyledBox>
           <StyledBox maxWidth={['inherit', null, null, '660px']}>

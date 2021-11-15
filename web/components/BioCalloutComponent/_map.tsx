@@ -6,6 +6,7 @@ const _map = (block: BioCalloutBlockData) => {
   const props: BioCalloutProps = {
     headline: block.headline,
     cards: block.cards.map((card) => ({
+      alt_text: card.alt_text,
       image: getImageUrl(card.image, 'crop', 160, 250),
       //Optional chaining operator,
       //Javascript is very Dynamic and Friendly

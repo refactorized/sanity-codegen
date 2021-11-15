@@ -48,6 +48,11 @@ const textAndImageBlock = {
         'Optional alternate image to use for smaller(mobile) layouts',
     },
     {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Optional Image Alt Text',
+    },
+    {
       name: 'buttonText',
       type: 'string',
       title: 'CTA Button Text',

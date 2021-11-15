@@ -7,6 +7,7 @@ interface CardsProps {
   image?: string;
   credential?: string;
   name: string;
+  alt_text?: string;
   bio: string;
 }
 
@@ -26,6 +27,7 @@ export const BioCallout = ({headline, cards}: BioCalloutProps): JSX.Element => {
                 {card.image ? (
                   <ImageContainer>
                     <Image
+                      alt={card.alt_text}
                       src={card.image}
                       width={160}
                       height={250}
@@ -35,6 +37,7 @@ export const BioCallout = ({headline, cards}: BioCalloutProps): JSX.Element => {
                 ) : (
                   <ImageContainer>
                     <Image
+                      alt="default avatar"
                       src="/avatar.jpg"
                       width={160}
                       height={250}

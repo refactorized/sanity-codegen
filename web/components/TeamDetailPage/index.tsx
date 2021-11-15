@@ -14,6 +14,7 @@ interface TeamDetailPageProps {
   title2: string;
   department: string;
   bio: string;
+  alt_text?: string;
   //   prose editor
 }
 
@@ -28,6 +29,7 @@ export const TeamDetailPage = ({
   title2,
   department,
   bio,
+  alt_text,
 }: TeamDetailPageProps): JSX.Element => {
   return (
     <Container>
@@ -41,9 +43,21 @@ export const TeamDetailPage = ({
 
       <ContactContainer>
         {image ? (
-          <Image src={image} width={333} height={326} objectFit="cover" />
+          <Image
+            alt={alt_text}
+            src={image}
+            width={333}
+            height={326}
+            objectFit="cover"
+          />
         ) : (
-          <Image src="/avatar.jpg" width={333} height={326} objectFit="cover" />
+          <Image
+            alt="default image"
+            src="/avatar.jpg"
+            width={333}
+            height={326}
+            objectFit="cover"
+          />
         )}
         {phone ? (
           <Link href={'tel:' + phone}>

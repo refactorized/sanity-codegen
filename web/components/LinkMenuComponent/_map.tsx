@@ -8,6 +8,7 @@ const _map = (block: LinkMenuBlockData) => {
     imgUrl: getImageUrl(block.imgUrl, 'max'),
     header: block.header,
     description: block.description,
+    alt_text: block.alt_text,
     btnText: block.btnText,
     btnUrl: mapLink(block.btnUrl),
     links: block.links.map((link) => ({

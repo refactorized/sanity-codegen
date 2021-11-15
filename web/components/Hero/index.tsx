@@ -7,6 +7,7 @@ export interface HomepageHeroProps {
   imageUrl: string;
   title: string;
   heroCards: HeroCardData[];
+  alt_text?: string;
 }
 
 const Chevron = () => {
@@ -207,11 +208,12 @@ export const HomepageHero = ({
   imageUrl,
   title,
   heroCards,
+  alt_text,
 }: HomepageHeroProps): JSX.Element => {
   return (
     <Block full={true}>
       <HeroContainer>
-        <ImageContainer backgroundImage={imageUrl}>
+        <ImageContainer alt={alt_text} backgroundImage={imageUrl}>
           <ImageGradient />
         </ImageContainer>
         <Title>{title}</Title>

@@ -16,6 +16,11 @@ export const bioCalloutCards = {
       },
     },
     {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Optional Image Alt Text',
+    },
+    {
       name: 'name',
       type: 'string',
       title: 'Name',

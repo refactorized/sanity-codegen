@@ -47,6 +47,11 @@ const heroBlock = {
       validation: _required,
     },
     {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Optional Image Alt Text',
+    },
+    {
       name: 'title',
       type: 'string',
       title: 'Hero Title',

@@ -7,10 +7,10 @@ const _map = (block: FlexCollarBlockData) => {
       ({
         header: card.pageInfo.title,
         category: card.pageInfo.category?.title || 'Austen Riggs',
-        image: card.pageInfo.openGraphImage?.asset?.url || null
+        image: card.pageInfo.openGraphImage?.asset?.url || null,
       } as flexCollarCard),
   );
-  return <FlexCollar {...{key: block._key, cards}}  />;
+  return <FlexCollar {...{key: block._key, cards}} />;
 };
 
 export default _map;

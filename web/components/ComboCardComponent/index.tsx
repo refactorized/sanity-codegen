@@ -16,6 +16,7 @@ interface ComboCard {
   headline: string;
   description: string;
   icon: string;
+  alt_text?: string;
 }
 
 export interface ComboCardProps {
@@ -110,6 +111,7 @@ export const ComboCard = ({
                   pb="15px"
                 >
                   <Image
+                    alt={card.alt_text}
                     src={card.icon}
                     width="51px"
                     height="53px"

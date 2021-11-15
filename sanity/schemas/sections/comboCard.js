@@ -13,6 +13,11 @@ export const comboCardCards = {
       description: 'Icon is Optional',
     },
     {
+      name: 'alt_text',
+      type: 'string',
+      title: 'Optional Icon Alt Text',
+    },
+    {
       name: 'headline',
       type: 'string',
       title: 'Combo Card Headline',

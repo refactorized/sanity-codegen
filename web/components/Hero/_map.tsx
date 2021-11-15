@@ -5,6 +5,7 @@ import {Link} from '@schema/types';
 const _map = (block: HeroBlockData) => {
   const props: HomepageHeroProps = {
     imageUrl: block.bgImage.asset.url,
+    alt_text: block.alt_text,
     title: block.title,
     heroCards: block.hero_cards,
   };

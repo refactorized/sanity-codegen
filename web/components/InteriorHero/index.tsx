@@ -14,6 +14,7 @@ export interface InteriorHeroProps {
   header?: string;
   caption?: string;
   headerPadding?: boolean;
+  alt_text?: string;
   imgUrls?: {
     desktop: string;
     mobile: string;
@@ -75,6 +76,7 @@ const Video = styled.video`
 export const InteriorHero = ({
   header,
   caption,
+  alt_text,
   imgUrls,
   videoSrc,
   headerPadding = false,
@@ -91,6 +93,7 @@ export const InteriorHero = ({
         )}
         {imgUrls && imgUrls.desktop && (
           <Image
+            alt={alt_text}
             src={imgUrls.desktop}
             layout="responsive"
             height={'auto'}

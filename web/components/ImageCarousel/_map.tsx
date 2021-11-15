@@ -10,6 +10,7 @@ const _map = (block: ImageCarouselBlockData) => {
         backgroundImage: getImageUrl(slide.cover_image, 'max'),
         headline: slide.headline,
         description: slide.description,
+        alt_text: slide.alt_text,
         cta: {link: mapLink(slide.cta), text: slide.cta_text},
       } as ImageCarouselSlide;
     }),

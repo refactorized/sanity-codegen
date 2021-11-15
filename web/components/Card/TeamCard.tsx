@@ -22,6 +22,7 @@ interface DepartmentTeam extends Department {
 
 export interface TeamCardProps {
   image?: string;
+  alt_text?: string;
   name: string;
   title?: string;
   phone?: string;
@@ -104,6 +105,7 @@ const formatPhoneNumber = (phone: string): string => {
 
 export const TeamCard = ({
   image,
+  alt_text,
   name,
   title,
   phone,
@@ -116,7 +118,13 @@ export const TeamCard = ({
         <Link href={url}>
           <a>
             {image ? (
-              <Image src={image} layout="responsive" height={333} width={326} />
+              <Image
+                alt={alt_text}
+                src={image}
+                layout="responsive"
+                height={333}
+                width={326}
+              />
             ) : (
               <Image
                 src={'/team-placeholder.jpg'}
@@ -128,7 +136,13 @@ export const TeamCard = ({
           </a>
         </Link>
       ) : image ? (
-        <Image src={image} layout="responsive" height={333} width={326} />
+        <Image
+          alt={alt_text}
+          src={image}
+          layout="responsive"
+          height={333}
+          width={326}
+        />
       ) : (
         <Image
           src={'/team-placeholder.jpg'}

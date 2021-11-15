@@ -42,6 +42,7 @@ export interface ArticleCardProps {
   date?: string;
   description: BasicText | string | JSX.Element;
   cardFullWidth: boolean;
+  alt_text?: string;
   url: string;
 }
 
@@ -299,6 +300,7 @@ export const ArticleCard = ({
   category,
   headline,
   date,
+  alt_text,
   description,
   cardFullWidth,
   url,
@@ -306,6 +308,7 @@ export const ArticleCard = ({
   return (
     <StyledContainer fullWidth={cardFullWidth}>
       <Image
+        alt={alt_text}
         src={image}
         maxWidth="100%"
         height="auto"

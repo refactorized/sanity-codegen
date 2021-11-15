@@ -15,6 +15,7 @@ const _map = (block: TextAndImageBlockData) => {
     caption: block.body,
     btnText: block.buttonText || null,
     btnUrl: mapLink(block.buttonLink) || null,
+    alt_text: block.alt_text,
     imgUrls: {
       desktop: getImageUrl(block.desktopImage, 'max'),
       mobile: block.mobileImage ? getImageUrl(block.mobileImage, 'max') : null,

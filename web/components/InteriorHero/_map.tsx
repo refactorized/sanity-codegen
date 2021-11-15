@@ -7,6 +7,7 @@ const _map = (block: InteriorHeroData) => {
   const props: InteriorHeroProps = {
     header: block.header,
     caption: block.caption,
+    alt_text: block.alt_text,
     imgUrls: {
       desktop: getImageUrl(block.desktopImage, 'max'),
       mobile: getImageUrl(block.mobileImage, 'max'),

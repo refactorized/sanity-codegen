@@ -15,6 +15,7 @@ export interface ImageCarouselSlide {
   headline: string;
   description: string;
   cta: CTA;
+  alt_text?: string;
 }
 
 export interface ImageCarouselProps {
@@ -197,7 +198,10 @@ export const ImageCarousel = ({slides}: ImageCarouselProps): JSX.Element => {
 
   return (
     <CarouselContainer>
-      <CoverImage backgroundImage={currentSlide.backgroundImage} />
+      <CoverImage
+        alt={currentSlide.alt_text}
+        backgroundImage={currentSlide.backgroundImage}
+      />
       <LeftMobileArrow onClick={(e) => slideBackward(e)}>
         <Chevron />
       </LeftMobileArrow>

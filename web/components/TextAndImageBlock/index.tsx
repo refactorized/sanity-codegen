@@ -29,6 +29,7 @@ export interface TextAndImageBlockProps {
     desktop: string;
     mobile?: string;
   };
+  alt_text?: string;
   subheader?: string;
   secondHeader?: string;
   caption: BasicText | string;
@@ -210,6 +211,7 @@ export const TextAndImageBlock = ({
   altBg,
   header,
   imgUrls,
+  alt_text,
   subheader,
   secondHeader,
   caption,
@@ -241,6 +243,7 @@ export const TextAndImageBlock = ({
           />
         </Box> */}
           <Image
+            alt={alt_text}
             layout="responsive"
             src={imgUrls.desktop}
             width={'100%'}

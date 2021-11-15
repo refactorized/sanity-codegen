@@ -10,6 +10,7 @@ const _map = (block: ComboCardBlockData) => {
     ctaLink: mapLink(block.ctaLink),
     cards: block.cards.map((card) => ({
       icon: card.icon?.asset.url || null,
+      alt_text: card.alt_text,
       headline: card.headline,
       description: card.description,
     })),
