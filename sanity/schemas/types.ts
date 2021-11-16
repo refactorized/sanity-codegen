@@ -1604,6 +1604,13 @@ export type HeroBlock = {
   };
 
   /**
+   * Interior Hero Video Source — `file`
+   *
+   * Video is optional: upload video file in mp4 format
+   */
+  videoSrc?: { _type: "file"; asset: SanityReference<any> };
+
+  /**
    * Optional Image Alt Text — `string`
    *
    *
@@ -2088,11 +2095,11 @@ export type InteriorHero = {
   alt_text?: string;
 
   /**
-   * Interior Hero Video Source — `link`
+   * Interior Hero Video Source — `file`
    *
-   * Video is optional: Add video link to the Manual URL Link field if video is provided
+   * Video is optional: upload video file in mp4 format
    */
-  videoSrc?: Link;
+  videoSrc?: { _type: "file"; asset: SanityReference<any> };
 };
 
 export type Link = {

@@ -8,6 +8,7 @@ export interface HomepageHeroProps {
   title: string;
   heroCards: HeroCardData[];
   alt_text?: string;
+  videoSrc?: string;
 }
 
 const Chevron = () => {
@@ -52,7 +53,6 @@ const HeroContainer = styled.div`
   width: 100%;
   position: relative;
   box-sizing: border-box;
-  background-color: #000;
   padding-top: 140px;
   padding-bottom: 72px;
   display: flex;
@@ -100,7 +100,6 @@ const ImageGradient = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
 
   @media screen and (${query.atLeast('desktop')}) {
@@ -204,17 +203,33 @@ const Copy = styled.a`
   }
 `;
 
+const Video = styled.video`
+  height: 100%;
+  min-height: 100%;
+`;
+
 export const HomepageHero = ({
   imageUrl,
   title,
   heroCards,
   alt_text,
+  videoSrc,
 }: HomepageHeroProps): JSX.Element => {
   return (
     <Block full={true}>
       <HeroContainer>
         <ImageContainer alt={alt_text} backgroundImage={imageUrl}>
           <ImageGradient />
+          {videoSrc && (
+            <Video
+              {...{
+                muted: true,
+                src: videoSrc,
+                autoPlay: true,
+                loop: true,
+              }}
+            />
+          )}
         </ImageContainer>
         <Title>{title}</Title>
         <HeroCardList>

@@ -47,10 +47,10 @@ const interiorHero = {
     },
     {
       name: 'videoSrc',
-      type: 'link',
+      type: 'file',
       title: 'Interior Hero Video Source',
-      description:
-        'Video is optional: Add video link to the Manual URL Link field if video is provided',
+      accept: 'mp4',
+      description: 'Video is optional: upload video file in mp4 format',
     },
   ],
 };

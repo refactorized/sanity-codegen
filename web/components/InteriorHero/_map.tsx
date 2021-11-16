@@ -12,7 +12,7 @@ const _map = (block: InteriorHeroData) => {
       desktop: getImageUrl(block.desktopImage, 'max'),
       mobile: getImageUrl(block.mobileImage, 'max'),
     },
-    videoSrc: mapLink(block.videoSrc) || null,
+    videoSrc: block.videoSrc ? mapLink(block.videoSrc.asset) || null : null,
   };
   return <InteriorHero key={block._key} {...props} />;
 };

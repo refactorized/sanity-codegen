@@ -47,6 +47,13 @@ const heroBlock = {
       validation: _required,
     },
     {
+      name: 'videoSrc',
+      type: 'file',
+      title: 'Interior Hero Video Source',
+      accept: 'mp4',
+      description: 'Video is optional: upload video file in mp4 format',
+    },
+    {
       name: 'alt_text',
       type: 'string',
       title: 'Optional Image Alt Text',
