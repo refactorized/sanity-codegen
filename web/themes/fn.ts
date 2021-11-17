@@ -10,7 +10,6 @@ import {
   ThemeFontSizeName,
 } from './theme';
 import fontDefs, {FontDef, FontDefName} from './fontDefs';
-import facepaint from 'facepaint';
 
 // TODO: allow passing of theme for all these functions
 
@@ -59,6 +58,12 @@ export const fontStack = (names: FontDefName[]) => () => {
     lineHeight: defs.map((d) => d.lineHeight),
   });
 };
+
+// deprecate - using mq is easier.
+export const stack = (key: string, vals: string[]) => () =>
+  mq({
+    [key]: vals,
+  });
 
 const atLeast = (breakpoint: ThemeBreakpointName) => () =>
   queryObj.atLeast[breakpoint];

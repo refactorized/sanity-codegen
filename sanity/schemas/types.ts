@@ -1826,6 +1826,7 @@ export type Prose = {
     | SanityKeyed<PtImage>
     | SanityKeyed<PtFile>
     | SanityKeyed<PtEmbed>
+    | SanityKeyed<PtFloatBreak>
     | SanityKeyed<SanityBlock>
   >;
 };
@@ -2136,6 +2137,16 @@ export type Placeholder = {
   text?: string;
 };
 
+export type PtFloatBreak = {
+  _type: "ptFloatBreak";
+  /**
+   * stub — `string`
+   *
+   *
+   */
+  stub?: string;
+};
+
 export type PtImage = {
   _type: "ptImage";
   /**
@@ -2162,7 +2173,7 @@ export type PtImage = {
    *
    *
    */
-  width?: "large" | "medium" | "small";
+  width?: "full" | "large" | "medium" | "small";
 
   /**
    * Wrap content — `boolean`
@@ -2179,7 +2190,14 @@ export type PtFile = {
    *
    *
    */
-  file?: { _type: "file"; asset: SanityReference<any> };
+  file: { _type: "file"; asset: SanityReference<any> };
+
+  /**
+   * Display name — `string`
+   *
+   * Optional. Display this as the link text, instead of the filename.
+   */
+  title?: string;
 };
 
 export type PtEmbed = {

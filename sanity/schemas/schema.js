@@ -56,7 +56,8 @@ import pageInfo from './objects/pageInfo';
 import articleInfo from './objects/articleInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
-import prose, {ptImage, ptFile, ptEmbed} from './sections/prose';
+import {ptFloatBreak, ptImage, ptFile, ptEmbed} from './portableText';
+import prose from './sections/prose';
 import navConfig, {navItem, navList} from './objects/config/navConfig';
 
 // Singletons, and co-located objects
@@ -125,6 +126,7 @@ export default createSchema({
     interiorHero,
     link,
     placeholder,
+    ptFloatBreak,
     ptImage,
     ptFile,
     ptEmbed,

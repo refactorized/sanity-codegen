@@ -2,10 +2,11 @@ import BlockContent from '@sanity/block-content-to-react';
 import ProseBlockData from '../../data/blocks/ProseBlockData';
 import Block from '../Layout/Block';
 import log from '@util/logging';
-import {Link as LikeType, PtImage, PtFile, PtEmbed} from '@data/types';
-import {UnwrappedGenericEmbed} from '@components/GenericEmbed';
+import {Link as LikeType} from '@data/types';
 import Link from 'next/link';
-import Image from 'next/image';
+
+import {PtEmbed, PtImage, PtFile, PtFloatBreak} from '@components/PortableText';
+
 import styled from 'styled-components';
 import stylers from './stylers';
 import {fontFamily} from '@theme/fn';
@@ -18,18 +19,6 @@ interface propsLink extends propsSpan {
   mark: {
     link: LikeType;
   };
-}
-
-interface propsPtImage {
-  node: PtImage;
-}
-
-interface propsPtFile {
-  node: PtFile;
-}
-
-interface propsPtEmbed {
-  node: PtEmbed;
 }
 
 const BlockRenderer = (props) => {
@@ -61,28 +50,10 @@ const serializers = {
   },
   types: {
     block: BlockRenderer,
-    ptImage: (props: propsPtImage) => {
-      // log(`url: ${props?.node?.image?.asset?.url}`);
-      return (
-        <Image
-          src={props.node?.image.asset.url || ''}
-          width={props?.node?.image.asset.metadata.dimensions.width || 100}
-          height={props?.node?.image.asset.metadata.dimensions.height || 100}
-        />
-      );
-    },
-    ptFile: (props: propsPtFile) => {
-      const url = `${props.node.file.asset.url}?dl=`;
-      const fileName = `${props.node.file.asset.originalFilename}`;
-      return (
-        <a href={url} target="_blank">
-          {fileName}
-        </a>
-      );
-    },
-    ptEmbed: (props: propsPtEmbed) => (
-      <UnwrappedGenericEmbed markup={props.node.markup || ''} />
-    ),
+    ptImage: PtImage,
+    ptFile: PtFile,
+    ptEmbed: PtEmbed,
+    ptFloatBreak: PtFloatBreak,
   },
 };
 

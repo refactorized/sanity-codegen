@@ -1,6 +1,12 @@
 import {ReactNode} from 'react';
 import styled from 'styled-components';
-import {fontStack} from '@theme/fn';
+import {fontStack, stack} from '@theme/fn';
+
+const blockSpacing = {
+  sm: stack('margin', ['8px 0', '8px 0', '8px 0']),
+  md: stack('margin', ['16px 0', '16px 0', '16px 0']),
+  lg: stack('margin', ['24px 0', '24px 0', '24px 0']),
+};
 
 const DebugContainer = styled.pre`
   width: 100%;
@@ -21,15 +27,19 @@ interface propsStyler {
 
 const BodyMd = styled.div`
   ${fontStack(['med-body-regular', 'med-body-regular', 'sm-body-regular'])}
+  ${blockSpacing.md}
 `;
 const BodySm = styled.div`
   ${fontStack(['sm-body-regular', 'sm-body-regular', 'sm-body-regular'])}
+  ${blockSpacing.md}
 `;
 const BodyXs = styled.div`
   ${fontStack(['xs-body-regular', 'xs-body-regular', 'xxs-body-regular'])}
+  ${blockSpacing.sm}
 `;
 const Caption = styled.div`
   ${fontStack(['xs-body-regular', 'xs-body-regular', 'xxs-body-regular'])}
+  ${blockSpacing.md}
 `;
 
 const H2 = styled.h2`
@@ -38,6 +48,7 @@ const H2 = styled.h2`
     'lrg-headline-regular',
     'xl-headline-regular',
   ])}
+  ${blockSpacing.lg}
 `;
 
 const H3 = styled.h2`
@@ -46,6 +57,7 @@ const H3 = styled.h2`
     'med-headline-regular',
     'lrg-headline-regular',
   ])}
+  ${blockSpacing.lg}
 `;
 
 const H4 = styled.h2`
@@ -54,19 +66,23 @@ const H4 = styled.h2`
     'sm-headline-regular',
     'med-headline-regular',
   ])}
+  ${blockSpacing.md}
 `;
 
 const SubHead = styled.div`
   ${fontStack(['lrg-subhead-bold'])}
+  ${blockSpacing.md}
 `;
 
 const SubHeadSm = styled.div`
   ${fontStack(['sm-subhead-bold'])}
+  ${blockSpacing.md}
 `;
 
 const StyledQuoteSvg = styled.svg`
   width: 64px;
   height: 64px;
+  margin-left: -8px;
 `;
 
 const QuoteIcon = (props) => (
@@ -85,7 +101,7 @@ const QuoteIcon = (props) => (
 const StyledBlockquote = styled.blockquote`
   ${fontStack(['xs-body-regular', 'lrg-body-regular'])}
   font-style: italic;
-  padding: 0;
+  ${blockSpacing.md}
 `;
 
 const BlockQuote = ({children}: propsStyler) => (

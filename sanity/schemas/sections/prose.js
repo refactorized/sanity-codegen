@@ -26,80 +26,6 @@ const EditorBodyXS = styled.div`
   font-size: 0.8em;
 `;
 
-export const ptImage = {
-  type: 'object',
-  name: 'ptImage',
-  title: 'Image',
-  fields: [
-    {
-      name: 'image',
-      type: 'image',
-      title: 'Image asset',
-    },
-    {
-      name: 'align',
-      title: 'Image alignment',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Left', value: 'left'},
-          {title: 'Center', value: 'center'},
-          {title: 'Right', value: 'right'},
-        ],
-        layout: 'dropdown',
-      },
-    },
-    {
-      name: 'width',
-      title: 'Image width',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Large', value: 'large'},
-          {title: 'Medium', value: 'medium'},
-          {title: 'Small', value: 'small'},
-        ],
-        layout: 'dropdown',
-      },
-    },
-    {
-      name: 'wrap',
-      title: 'Wrap content',
-      description: 'wrap following content around this image?',
-      type: 'boolean',
-      title: 'Wrap content',
-    },
-  ],
-};
-
-export const ptFile = {
-  type: 'object',
-  name: 'ptFile',
-  title: 'File',
-  fields: [
-    {
-      name: 'file',
-      type: 'file',
-      title: 'File',
-    },
-  ],
-};
-
-export const ptEmbed = {
-  type: 'object',
-  name: 'ptEmbed',
-  title: 'Generic Embed',
-  fields: [
-    {
-      name: 'markup',
-      title: 'Embed HTML',
-      description:
-        'Paste code provided by third party here. Make sure you trust the source of this code.',
-      type: 'text',
-    },
-  ],
-};
-
 export default {
   type: 'object',
   name: 'prose',
@@ -112,6 +38,7 @@ export default {
         {name: 'ptImage', type: 'ptImage'},
         {name: 'ptFile', type: 'ptFile'},
         {name: 'ptEmbed', type: 'ptEmbed'},
+        {name: 'ptFloatBreak', type: 'ptFloatBreak'},
         {
           type: 'block',
           marks: {
