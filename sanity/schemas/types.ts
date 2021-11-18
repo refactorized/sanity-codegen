@@ -1261,6 +1261,14 @@ export type BlockContent = Array<
     }>
 >;
 
+export type ProseContent = Array<
+  | SanityKeyed<PtImage>
+  | SanityKeyed<PtFile>
+  | SanityKeyed<PtEmbed>
+  | SanityKeyed<PtFloatBreak>
+  | SanityKeyed<SanityBlock>
+>;
+
 export type AdmissionsCallout = {
   _type: "admissionsCallout";
   /**
@@ -1562,11 +1570,18 @@ export type DrawerComboDrawer = {
   title: string;
 
   /**
-   * Drawer Combo details — `text`
+   * (OLD) Drawer Combo details — `text`
+   *
+   * We are migrating data out of this section into "content".
+   */
+  details?: string;
+
+  /**
+   * Drawer Content — `proseContent`
    *
    *
    */
-  details: string;
+  content?: ProseContent;
 };
 
 export type FlexCollar = {
@@ -1818,17 +1833,11 @@ export type PreFooter = {
 export type Prose = {
   _type: "prose";
   /**
-   * content — `array`
+   * content — `proseContent`
    *
    *
    */
-  content?: Array<
-    | SanityKeyed<PtImage>
-    | SanityKeyed<PtFile>
-    | SanityKeyed<PtEmbed>
-    | SanityKeyed<PtFloatBreak>
-    | SanityKeyed<SanityBlock>
-  >;
+  content?: ProseContent;
 };
 
 export type TextAndImageBlock = {

@@ -148,7 +148,6 @@ const previewUrl = `${cfg.deploy.primeUrl}api/preview/`;
 const PagePreview = ({document}) => {
   const pageDoc = document.displayed as Page;
   const src = previewUrl + pageDoc.slug.current;
-  console.log(src);
   return (
     <iframe style={{width: '100%', height: '100%'}} src={src} frameBorder={0} />
   );

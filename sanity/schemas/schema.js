@@ -56,7 +56,13 @@ import pageInfo from './objects/pageInfo';
 import articleInfo from './objects/articleInfo';
 import pageLink from './objects/pageLink';
 import placeholder from './objects/placeholder';
-import {ptFloatBreak, ptImage, ptFile, ptEmbed} from './portableText';
+import {
+  proseContent,
+  ptFloatBreak,
+  ptImage,
+  ptFile,
+  ptEmbed,
+} from './portableText';
 import prose from './sections/prose';
 import navConfig, {navItem, navList} from './objects/config/navConfig';
 
@@ -84,6 +90,7 @@ export default createSchema({
     newsPage,
     page,
     postType,
+    proseContent,
     resource,
     resourcePage,
     resourceType,

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Component, useRef} from 'react';
+import {Component, ReactNode, useRef} from 'react';
 import React, {useState} from 'react';
 import {query} from '../../themes/fn';
 import {Button} from '../Button/index';
@@ -12,7 +12,8 @@ export interface CtaProps {
 export interface DrawerProps {
   icon?: string;
   title: string;
-  details: string;
+  details?: string; // TODO: remove after migration
+  content: ReactNode;
 }
 
 export interface DrawerComboProps {
@@ -129,7 +130,7 @@ const DrawerInsert = styled.div`
   border-top: 0.5px solid rgba(0, 0, 0, 0.1);
 `;
 
-const Drawer = ({icon, title, details}: DrawerProps) => {
+const Drawer = ({icon, title, details, content}: DrawerProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleDetails = () => {
@@ -146,7 +147,7 @@ const Drawer = ({icon, title, details}: DrawerProps) => {
         </DrawerToggle>
       </TopBar>
       <DrawerDetail isOpen={isOpen}>
-        <DrawerInsert>{details}</DrawerInsert>
+        <DrawerInsert>{content || details}</DrawerInsert>
       </DrawerDetail>
     </DrawerContainer>
   );

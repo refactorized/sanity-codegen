@@ -1,6 +1,6 @@
-import {PageSection} from '@data/types';
+import {Prose, SanityKeyed} from '@schema/types';
+import type {ResolvedSanityReferences} from '@data/types';
 
-export default interface ProseBlockData extends PageSection {
-  blockType: 'prose';
-  content: any[];
-}
+type ProseBlockData = SanityKeyed<ResolvedSanityReferences<Prose>>;
+
+export default ProseBlockData;

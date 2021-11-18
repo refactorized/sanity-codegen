@@ -137,7 +137,6 @@ export const MappedCardGrid = (props: {events: EventData[]}) => {
     })),
   };
 
-  console.log(propsToPass);
   return <CardGrid {...propsToPass} />;
 };
 

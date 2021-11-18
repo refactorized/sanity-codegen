@@ -22,9 +22,17 @@ export const drawerComboDrawer = {
     {
       name: 'details',
       type: 'text',
-      title: 'Drawer Combo details',
-      codegen: {required: true},
-      validation: _required,
+      readOnly: true,
+      title: '(OLD) Drawer Combo details',
+      description: 'We are migrating data out of this section into "content".',
+    },
+    {
+      name: 'content',
+      type: 'proseContent',
+      title: 'Drawer Content',
+      // TODO: enable validation after field migration
+      // codegen: {required: true},
+      // validation: _required,
     },
   ],
 };
