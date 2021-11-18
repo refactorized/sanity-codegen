@@ -13,7 +13,7 @@ const _map = (block: LinkMenuBlockData) => {
     btnUrl: mapLink(block.btnUrl),
     links: block.links.map((link) => ({
       title: link.title,
-      url: mapLink(block.btnUrl),
+      url: mapLink(link.url),
       _key: link._key,
     })),
   };
