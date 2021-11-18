@@ -264,14 +264,16 @@ export const TextAndImageBlock = ({
             ) : (
               <Text>{caption}</Text>
             )}
-            <Button
-              arrowColor="white"
-              arrow={true}
-              size="medium"
-              variant="solid"
-              url={btnUrl}
-              label={btnText}
-            />
+            {btnUrl && btnText && (
+              <Button
+                arrowColor="white"
+                arrow={true}
+                size="medium"
+                variant="solid"
+                url={btnUrl}
+                label={btnText}
+              />
+            )}
           </ContentContainer>
         </GridContainer>
       </Block>
