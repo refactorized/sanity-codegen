@@ -160,3 +160,53 @@ const StyledSVG = styled.svg`
       }
     `}
 `;
+
+export const Email = ({
+  color = '#204568',
+  hoverColor = 'black',
+  link = '',
+  size = '36',
+}: SocialComponentsProps): JSX.Element => {
+  return (
+    <>
+      {link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <span>
+            <StyledSVG
+              hoverColor={hoverColor}
+              color={color}
+              width={size}
+              height={size}
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 39 39"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M19.8 1A18.6 18.6 0 0 0 1 19.4c0 10.1 8.4 18.4 18.8 18.4s18.8-8.3 18.8-18.4C38.6 9.2 30.2 1 19.8 1zM9.4 11.4h20.8a.3.3 0 0 1 .2.6L21 17a2.4 2.4 0 0 1-2.3 0l-9.5-5a.3.3 0 0 1 .2-.6zm22.9 1.8a.8.8 0 0 1 .8.8v12a1.3 1.3 0 0 1-1.3 1.3h-24A1.3 1.3 0 0 1 6.5 26V14a.8.8 0 0 1 1.2-.7l11 6a2.4 2.4 0 0 0 2.3 0l11-6a.8.8 0 0 1 .3 0z"
+              />
+            </StyledSVG>
+          </span>
+        </a>
+      ) : (
+        <span>
+          <svg
+            width={size}
+            height={size}
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 37 36"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M19.8 1A18.6 18.6 0 0 0 1 19.4c0 10.1 8.4 18.4 18.8 18.4s18.8-8.3 18.8-18.4C38.6 9.2 30.2 1 19.8 1zM9.4 11.4h20.8a.3.3 0 0 1 .2.6L21 17a2.4 2.4 0 0 1-2.3 0l-9.5-5a.3.3 0 0 1 .2-.6zm22.9 1.8a.8.8 0 0 1 .8.8v12a1.3 1.3 0 0 1-1.3 1.3h-24A1.3 1.3 0 0 1 6.5 26V14a.8.8 0 0 1 1.2-.7l11 6a2.4 2.4 0 0 0 2.3 0l11-6a.8.8 0 0 1 .3 0z"
+              fill={color}
+            />
+          </svg>
+        </span>
+      )}
+    </>
+  );
+};

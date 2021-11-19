@@ -7,6 +7,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // documents
 import blockContent from './documents/blockContent';
 import category from './documents/category';
+import course from './documents/course';
+import coursePage from './documents/coursePage';
 import department from './documents/department';
 import departmentTeam from './documents/departmentTeam';
 import event from './documents/event';
@@ -79,6 +81,8 @@ export default createSchema({
     announcementBar,
     blockContent,
     category,
+    course,
+    coursePage,
     department,
     departmentTeam,
     event,

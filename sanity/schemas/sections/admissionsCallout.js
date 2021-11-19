@@ -25,15 +25,11 @@ const admissionsCallout = {
       name: 'boxlessbtnText',
       type: 'string',
       title: 'Admissions Callout Boxless Button Text',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'boxlessbtnUrl',
       type: 'link',
       title: 'Admissions Callout Boxless Button Url',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'contactHeader',

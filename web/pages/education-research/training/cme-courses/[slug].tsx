@@ -3,7 +3,7 @@ import {fontFamily, query, space} from '@theme/fn';
 import Link from 'next/link';
 import {GetStaticProps} from 'next';
 
-import {getNewsPaths, getNewsDetailPageData} from '@data/newsPage';
+import {getCoursePaths, getCourseDetailPageData} from '@data/coursePage';
 import getSiteConfig from '@data/siteConfig';
 import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
@@ -25,11 +25,11 @@ import {
   mapArticle,
 } from '@components/ArticleCarousel';
 
-import {News} from '@schema/types';
+import {Course} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
 
 export async function getStaticPaths() {
-  const paths = (await getNewsPaths()).map((path) => ({
+  const paths = (await getCoursePaths()).map((path) => ({
     params: {
       slug: path,
     },
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (
   // if params.slug is missing this is the root, re-map to home
   const slug = params.slug;
   try {
-    const pageData = await getNewsDetailPageData(slug, preview);
+    const pageData = await getCourseDetailPageData(slug, preview);
 
     if (!pageData) {
       return {notFound: true};
@@ -86,9 +86,9 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 // TYPES
-type NewsData = ResolvedSanityReferences<News>;
+type CourseData = ResolvedSanityReferences<Course>;
 
-export const MappedInteriorHero = (block: NewsData) => {
+export const MappedInteriorHero = (block: CourseData) => {
   const props: InteriorHeroProps = {
     imgUrls: {
       desktop: block.mainImage?.asset?.url || '',
@@ -100,9 +100,9 @@ export const MappedInteriorHero = (block: NewsData) => {
   return <InteriorHero {...props} />;
 };
 
-export const MappedArticleCarousel = (block: NewsData) => {
+export const MappedArticleCarousel = (block: CourseData) => {
   const props: ArticleCarouselProps = {
-    title: block.articleCarousel?.title || 'Related News',
+    title: block.articleCarousel?.title || 'Related Resources',
     cards:
       block.articleCarousel?.selected_articles &&
       block.articleCarousel?.selected_articles.length > 0
@@ -143,16 +143,16 @@ const CTAText = styled.div`
 `;
 
 // Slugs to use
-const resourceCenterSlug = '/news';
+const coursesSlug = '/education-research/training/cme-courses/';
 
-const NewsDetailPage = (props) => {
+const CourseDetailPage = (props) => {
   const {page} = props;
 
   // BREADCRUMB DATA
   const breadcrumbPages = [
     {
-      title: 'News',
-      slug: {current: resourceCenterSlug},
+      title: 'Courses',
+      slug: {current: coursesSlug},
     },
     {
       title: page.title,
@@ -171,16 +171,20 @@ const NewsDetailPage = (props) => {
   const urlLinkedin = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
     `${site}${page.slug?.current}`,
   )}`;
+  const urlEmail = `mailto:?subject=${encodeURIComponent(
+    page.title,
+  )}&body=${`${site}${page.slug?.current}}`}`;
+  console.log(urlEmail);
 
   // MAPPED COMPONENTS
-  const MappedNewsDetailHero = (block: NewsData) => {
+  const MappedNewsDetailHero = (block: CourseData) => {
     const props: NewsDetailHeroProps = {
-      category: block.postType?.title || 'News',
+      category: block.postType?.title || 'Courses',
       header: block.title,
-      date: block.publishedAt,
       urlFacebook,
       urlTwitter,
       urlLinkedin,
+      email: urlEmail,
       squish: true,
     };
 
@@ -196,9 +200,9 @@ const NewsDetailPage = (props) => {
         <MappedInteriorHero {...page} />
         <ProseBlock block={page.body} />
         <Block>
-          <Link href={resourceCenterSlug}>
+          <Link href={coursesSlug}>
             <MoreCTALink>
-              <CircleArrow flip /> <CTAText>Back to Resource Center</CTAText>
+              <CircleArrow flip /> <CTAText>Back to Courses</CTAText>
             </MoreCTALink>
           </Link>
         </Block>
@@ -210,4 +214,4 @@ const NewsDetailPage = (props) => {
   );
 };
 
-export default NewsDetailPage;
+export default CourseDetailPage;

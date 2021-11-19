@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Facebook, Twitter, LinkedIn} from '../SocialComponents';
+import {Facebook, Twitter, LinkedIn, Email} from '../SocialComponents';
 import Block from '@components/Layout/Block';
 import {
   color,
@@ -27,6 +27,7 @@ export interface NewsDetailHeroProps {
   urlFacebook?: string;
   urlTwitter?: string;
   urlLinkedin?: string;
+  email?: string;
   squish?: true;
 }
 
@@ -142,6 +143,7 @@ export const NewsDetailHero = ({
   urlFacebook,
   urlTwitter,
   urlLinkedin,
+  email,
   squish,
 }: NewsDetailHeroProps): JSX.Element => {
   const hasSocialLink = urlFacebook || urlTwitter || urlLinkedin;
@@ -150,14 +152,20 @@ export const NewsDetailHero = ({
       <Wrapper>
         <Eyebrow>{category}</Eyebrow>
         <Header>{header}</Header>
-        {publishedDate ? (
+        {(publishedDate || date) &&
+          (publishedDate ? (
+            <InfoText>
+              <span className="bold-span">Published on:</span>{' '}
+              <Dates startDate={date} />
+            </InfoText>
+          ) : (
+            <InfoText>
+              <Dates startDate={date} />
+            </InfoText>
+          ))}
+        {price && (
           <InfoText>
-            <span className="bold-span">Published on:</span>{' '}
-            <Dates startDate={date} />
-          </InfoText>
-        ) : (
-          <InfoText>
-            <Dates startDate={date} />
+            <RenderBasicText content={price} />
           </InfoText>
         )}
         {price && (
@@ -215,6 +223,14 @@ export const NewsDetailHero = ({
                   color="#204568"
                   hoverColor="#204568"
                   link={urlLinkedin}
+                  size="23"
+                />
+              )}
+              {email && (
+                <Email
+                  color="#204568"
+                  hoverColor="#204568"
+                  link={email}
                   size="23"
                 />
               )}

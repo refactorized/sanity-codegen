@@ -20,9 +20,9 @@ export interface AdmissionsCalloutProps {
   admissionDescription: string;
   btnText: string;
   btnUrl: string;
-  phoneNumber: string;
-  boxlessbtnText: string;
-  boxlessbtnUrl: string;
+  phoneNumber?: string;
+  boxlessbtnText?: string;
+  boxlessbtnUrl?: string;
 }
 
 export const AdmissionsCallout = ({
@@ -35,9 +35,9 @@ export const AdmissionsCallout = ({
   underlying issues, not just symptoms.`,
   btnText = `Contact Admissions`,
   btnUrl = `#`,
-  boxlessbtnText = `Learn More About Admissions`,
-  boxlessbtnUrl = `google.com`,
-  phoneNumber = '866-255-1921',
+  boxlessbtnText,
+  boxlessbtnUrl,
+  phoneNumber,
 }: AdmissionsCalloutProps): JSX.Element => {
   return (
     <Block>
@@ -72,28 +72,30 @@ export const AdmissionsCallout = ({
           >
             {admissionDescription}
           </StyledParagraph>
-          <StyledLink
-            href={boxlessbtnUrl}
-            display=" flex"
-            alignItems=" center"
-            color="text"
-            textDecorate="none"
-          >
-            <StyledBox
-              fontFamily="body"
-              fontSize="18px"
-              fontStyle="normal"
-              fontWeight="700"
-              lineHeight="19px"
-              letterSpacing="-0.015em"
-              textAlign="left"
+          {boxlessbtnText && boxlessbtnUrl && (
+            <StyledLink
+              href={boxlessbtnUrl}
+              display=" flex"
+              alignItems=" center"
+              color="text"
               textDecorate="none"
-              mr="10px"
             >
-              {boxlessbtnText}
-            </StyledBox>
-            <CircleArrow />
-          </StyledLink>
+              <StyledBox
+                fontFamily="body"
+                fontSize="18px"
+                fontStyle="normal"
+                fontWeight="700"
+                lineHeight="19px"
+                letterSpacing="-0.015em"
+                textAlign="left"
+                textDecorate="none"
+                mr="10px"
+              >
+                {boxlessbtnText}
+              </StyledBox>
+              <CircleArrow />
+            </StyledLink>
+          )}
         </StyledBox>
 
         <StyledBox

@@ -60,6 +60,188 @@ export interface Category extends SanityDocument {
 }
 
 /**
+ * Course
+ *
+ *
+ */
+export interface Course extends SanityDocument {
+  _type: "course";
+
+  /**
+   * Title — `string`
+   *
+   * Headline for the post, this will also appear as the page title and SEO title within search results. 100 character max recommended.
+   */
+  title: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click "generate" to create based on the title of the post
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Short Description — `string`
+   *
+   * The short description is used in the SEO page description as well as at the top of the post.
+   */
+  shortDescription: string;
+
+  /**
+   * Main image — `image`
+   *
+   * (optional) This appears between the resource metadata and body text
+   */
+  mainImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt_text?: string;
+
+  /**
+   * Categories — `array`
+   *
+   * e.g. treatment, personality disorders, etc.
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
+
+  /**
+   * Post Type — `reference`
+   *
+   * e.g. News, Announcements, Riggs Blog, etc.
+   */
+  postType?: SanityReference<Category>;
+
+  /**
+   * Credits — `prose`
+   *
+   * Displayed below title
+   */
+  credits?: Prose;
+
+  /**
+   * Instructor — `string`
+   *
+   * Instructor for course.
+   */
+  instructor?: string;
+
+  /**
+   * Body — `prose`
+   *
+   * This is the main body of the post
+   */
+  body: Prose;
+
+  /**
+   * Article Carousel — `articleCarousel`
+   *
+   *
+   */
+  articleCarousel?: ArticleCarousel;
+}
+
+/**
+ * Courses Page
+ *
+ *
+ */
+export interface CoursePage extends SanityDocument {
+  _type: "coursePage";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * slug — `slug`
+   *
+   *
+   */
+  slug: { _type: "slug"; current: string };
+
+  /**
+   * Category — `reference`
+   *
+   *
+   */
+  category?: SanityReference<Category>;
+
+  /**
+   * Meta Title — `string`
+   *
+   * This title populates meta-tags on the webpage
+   */
+  metatitle: string;
+
+  /**
+   * Description — `text`
+   *
+   * This description populates meta-tags on the webpage
+   */
+  description?: string;
+
+  /**
+   * Open Graph Image — `image`
+   *
+   * Image for sharing previews on Facebook, Twitter etc.
+   */
+  openGraphImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Hero — `interiorHero`
+   *
+   *
+   */
+  interiorHero?: InteriorHero;
+
+  /**
+   * Featured Course — `reference`
+   *
+   * Event displayed under the "Featured" section above the grid.
+   */
+  featuredCourse?: SanityReference<Course>;
+
+  /**
+   * Bottom text — `text`
+   *
+   *
+   */
+  bottomText?: string;
+
+  /**
+   * Course Callout — `admissionsCallout`
+   *
+   * Text and CTA with yellow background.
+   */
+  admissionsCallout?: AdmissionsCallout;
+
+  /**
+   * Pre-Footer — `preFooter`
+   *
+   *
+   */
+  preFooter?: PreFooter;
+}
+
+/**
  * Department
  *
  *
@@ -1297,14 +1479,14 @@ export type AdmissionsCallout = {
    *
    *
    */
-  boxlessbtnText: string;
+  boxlessbtnText?: string;
 
   /**
    * Admissions Callout Boxless Button Url — `link`
    *
    *
    */
-  boxlessbtnUrl: Link;
+  boxlessbtnUrl?: Link;
 
   /**
    * Admissions Callout Contact Header — `string`
@@ -2450,6 +2632,8 @@ export type NavList = {
 
 export type Documents =
   | Category
+  | Course
+  | CoursePage
   | Department
   | DepartmentTeam
   | Event

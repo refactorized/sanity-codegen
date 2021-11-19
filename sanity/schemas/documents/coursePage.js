@@ -1,9 +1,9 @@
 import commonPageFields from '../partials/commonPageFields';
 
 export default {
-  name: 'eventPage',
+  name: 'coursePage',
   type: 'document',
-  title: 'Event Page',
+  title: 'Courses Page',
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -18,22 +18,23 @@ export default {
       title: 'Hero',
     },
     {
-      name: 'featuredEvent',
-      title: 'Featured Event',
+      name: 'featuredCourse',
+      title: 'Featured Course',
       type: 'reference',
       description:
         'Event displayed under the "Featured" section above the grid.',
-      to: [{type: 'event'}],
+      to: [{type: 'course'}],
     },
     {
-      name: 'textAndImageBlockOne',
-      type: 'textAndImageBlock',
-      title: 'Text and Image Block 1',
+      name: 'bottomText',
+      type: 'text',
+      title: 'Bottom text',
     },
     {
-      name: 'textAndImageBlockTwo',
-      type: 'textAndImageBlock',
-      title: 'Text and Image Block 2',
+      name: 'admissionsCallout',
+      type: 'admissionsCallout',
+      title: 'Course Callout',
+      description: 'Text and CTA with yellow background.',
     },
     {
       name: 'preFooter',
