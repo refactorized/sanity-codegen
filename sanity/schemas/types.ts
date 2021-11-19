@@ -417,7 +417,7 @@ export interface Event extends SanityDocument {
    *
    * This appears below the event image.
    */
-  description?: Prose;
+  description: Prose;
 
   /**
    * Participating Staff — `array`

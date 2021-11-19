@@ -170,6 +170,8 @@ export default {
       title: 'Description',
       description: 'This appears below the event image.',
       type: 'prose',
+      codegen: {required: true},
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'speakers',

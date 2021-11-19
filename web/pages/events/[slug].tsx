@@ -197,7 +197,7 @@ const EventDetailPage = (props) => {
         <MappedNewsDetailHero {...page} />
         <MappedInteriorHero {...page} />
         {/* Description */}
-        <ProseBlock block={page.description} />
+        {page.description && <ProseBlock block={page.description} />}
         {page.speakers && <MappedBioCallout {...page} />}
         {
           /* Schedule */
