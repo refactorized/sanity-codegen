@@ -260,6 +260,8 @@ const StyledBox = styled.div`
 
 const StyledLink = styled.a`
   font-size: 20px;
+  text-indent: -1em;
+  padding-left: 1em;
   ${typography}
   ${space}
   ${color}
