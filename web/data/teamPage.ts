@@ -2,7 +2,7 @@ import client, {bigFetch} from './sanityClient';
 import {handler} from '../util/logging';
 import {PageDocument} from '@data/types';
 import groq from 'groq';
-import {maxNumberInPage} from 'pages/about/our-team/[[...slug]]';
+import {maxNumberInPage} from '@components/Pages/StaffIndex';
 
 export const getTeamPaths = () => {
   const pathQuery = `{
@@ -200,6 +200,15 @@ export const getDepartments = async () => {
 
   const pageData = bigFetch(query);
   return pageData;
+};
+
+export const getTeamDetailPageData = async (
+  slug: string[],
+  preview?: boolean,
+): Promise<PageDocument> => {
+  const query = groq`*[_type == "staff" && slug.current == "${slug}"] | order(_updatedAt desc)[0]`;
+  const pageData = await bigFetch(query, preview);
+  return pageData as PageDocument;
 };
 
 // MISC UTILS

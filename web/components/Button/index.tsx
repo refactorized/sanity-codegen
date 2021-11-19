@@ -1,4 +1,5 @@
 import {MouseEventHandler} from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import {color, space, typography, variant} from 'styled-system';
 import {
@@ -77,10 +78,12 @@ export const Button = ({
   return (
     <StyledWrapper>
       {url ? (
-        <StyledButtonLink href={url} variant={variant}>
-          <StyledSpan mr={arrow === true ? 2 : 0}>{label}</StyledSpan>
-          {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
-        </StyledButtonLink>
+        <Link href={url}>
+          <StyledButtonLink variant={variant}>
+            <StyledSpan mr={arrow === true ? 2 : 0}>{label}</StyledSpan>
+            {arrow && <RightArrowNoLine stroke={arrowColor} size={8} />}
+          </StyledButtonLink>
+        </Link>
       ) : (
         <StyledButton onClick={onClickHandler} variant={variant}>
           <StyledSpan mr={arrow === true ? 2 : 0}>{label}</StyledSpan>

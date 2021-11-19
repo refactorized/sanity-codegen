@@ -1150,11 +1150,18 @@ export interface Staff extends SanityDocument {
   email?: string;
 
   /**
-   * Bio — `blockContent`
+   * Bio — `basicText`
    *
    * (optional) staff biography
    */
-  bio?: BlockContent;
+  bio?: BasicText;
+
+  /**
+   * Article Carousel — `articleCarousel`
+   *
+   *
+   */
+  articleCarousel?: ArticleCarousel;
 }
 
 /**

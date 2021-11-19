@@ -5,13 +5,13 @@ import {GetStaticProps} from 'next';
 
 import {getEventPageData, getAllEvents} from '@data/eventPage';
 import getSiteConfig from '@data/siteConfig';
-import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
 import Stretch from '@components/Layout/Stretch';
 import Page from '@components/Page';
+import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
+import Navigation from '@components/Navigation/mapSiteConfig';
 import {Footer} from '@components/FooterComponent';
 import {PageDocument, SiteConfig} from '@data/types';
-import {Block} from '@components/Layout';
 
 import {Breadcrumbs} from '@components/Breadcrumbs';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
@@ -102,7 +102,7 @@ export const MappedFeaturedEvent = (block: EventPageData) => {
         : '',
     },
     btnText: 'Read More',
-    btnUrl: block.featuredEvent.slug.current,
+    btnUrl: `/events/${block.featuredEvent.slug.current}`,
     reverse: false,
   };
 
@@ -194,6 +194,8 @@ const EventIndexPage = (props) => {
   return (
     <Page>
       <Layout>
+        <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
+        <Navigation {...(props.siteConfig as SiteConfig)} />
         <Breadcrumbs pages={breadcrumbPages} />
         <MappedInteriorHero {...page} />
         <MappedFeaturedEvent {...page} />

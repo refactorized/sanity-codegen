@@ -5,13 +5,13 @@ import {GetStaticProps} from 'next';
 
 import {getResourcePageData, getAllResources} from '@data/resourcePage';
 import getSiteConfig from '@data/siteConfig';
-import ProseBlock from '@components/ProseBlock';
 import Layout from '@components/Layout/Layout';
 import Stretch from '@components/Layout/Stretch';
 import Page from '@components/Page';
+import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
+import Navigation from '@components/Navigation/mapSiteConfig';
 import {Footer} from '@components/FooterComponent';
 import {PageDocument, SiteConfig} from '@data/types';
-import {Block} from '@components/Layout';
 
 import {Breadcrumbs} from '@components/Breadcrumbs';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
@@ -206,6 +206,8 @@ const ResourceIndexPage = (props) => {
   return (
     <Page>
       <Layout>
+        <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
+        <Navigation {...(props.siteConfig as SiteConfig)} />
         <Breadcrumbs pages={breadcrumbPages} />
         <MappedInteriorHero {...page} />
         <MappedFeaturedResource {...page} />

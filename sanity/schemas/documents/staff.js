@@ -122,7 +122,12 @@ export default {
       name: 'bio',
       title: 'Bio',
       description: '(optional) staff biography',
-      type: 'blockContent',
+      type: 'basicText',
+    },
+    {
+      name: 'articleCarousel',
+      title: 'Article Carousel',
+      type: 'articleCarousel',
     },
   ],
   orderings: [
