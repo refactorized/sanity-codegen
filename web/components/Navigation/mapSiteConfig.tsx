@@ -25,6 +25,12 @@ const mapSiteConfig = (siteConfig: SiteConfig) => {
         link.links.map((link) => ({
           label: link.label,
           url: mapLink(link.url),
+          links: link.links
+            ? link.links.map((link) => ({
+                label: link.label,
+                url: mapLink(link.url),
+              }))
+            : [],
         })),
     })),
   };
