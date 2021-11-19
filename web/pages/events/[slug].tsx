@@ -18,10 +18,12 @@ import {Block} from '@components/Layout';
 import {Breadcrumbs} from '@components/Breadcrumbs';
 import {NewsDetailHero, NewsDetailHeroProps} from '@components/NewsDetailHero';
 import {InteriorHero, InteriorHeroProps} from '@components/InteriorHero';
+import {BioCallout, BioCalloutProps} from '@components/BioCalloutComponent';
 import {CircleArrow} from '@components/Arrow/index';
 
-import {Event} from '@schema/types';
+import {Event, SanityKeyed} from '@schema/types';
 import {ResolvedSanityReferences} from '@data/types';
+import getImageUrl from '@util/images';
 
 export async function getStaticPaths() {
   const paths = (await getEventPaths()).map((path) => ({
@@ -81,7 +83,7 @@ export const getStaticProps: GetStaticProps = async (
 };
 
 // TYPES
-type EventData = ResolvedSanityReferences<Event>;
+type EventData = SanityKeyed<ResolvedSanityReferences<Event>>;
 
 export const MappedInteriorHero = (block: EventData) => {
   const props: InteriorHeroProps = {
@@ -93,6 +95,21 @@ export const MappedInteriorHero = (block: EventData) => {
   };
 
   return <InteriorHero {...props} />;
+};
+
+const MappedBioCallout = (block: EventData) => {
+  const props: BioCalloutProps = {
+    headline: 'Speakers',
+    cards: block.speakers.map((s) => ({
+      image: s.image?.asset?.url || '',
+      credential: s.credentials,
+      name: `${s.firstName} ${s.lastName}`,
+      bio: s.bio,
+      alt_text: `${s.firstName} ${s.lastName}`,
+    })),
+  };
+
+  return <BioCallout {...props} />;
 };
 
 // Back Button
@@ -116,6 +133,7 @@ const SectionHeader = styled.h3`
   ${fontWeight('bold')};
   ${fontSize('xl')};
   text-align: left;
+  margin: 0;
 `;
 
 const CTAText = styled.div`
@@ -180,6 +198,7 @@ const EventDetailPage = (props) => {
         <MappedInteriorHero {...page} />
         {/* Description */}
         <ProseBlock block={page.description} />
+        {page.speakers && <MappedBioCallout {...page} />}
         {
           /* Schedule */
           page.schedule && (

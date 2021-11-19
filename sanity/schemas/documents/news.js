@@ -74,6 +74,8 @@ export default {
       type: 'reference',
       description: 'e.g. News, Announcements, Riggs Blog, etc.',
       to: {type: 'category'},
+      codegen: {required: true},
+      validation: (Rule) => Rule.required().error('Post must have a Type'),
     },
     {
       name: 'publishedAt',

@@ -459,11 +459,11 @@ export interface ExternalContributor extends SanityDocument {
   };
 
   /**
-   * Bio — `blockContent`
+   * Bio — `basicText`
    *
    *
    */
-  bio?: BlockContent;
+  bio?: BasicText;
 }
 
 /**
@@ -533,7 +533,7 @@ export interface News extends SanityDocument {
    *
    * e.g. News, Announcements, Riggs Blog, etc.
    */
-  postType?: SanityReference<Category>;
+  postType: SanityReference<Category>;
 
   /**
    * Published at — `datetime`
