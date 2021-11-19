@@ -28,7 +28,7 @@ export interface StatCardProps {
 export interface TestimonialCardProps {
   testimonialText: string;
   patientName: string;
-  patientPhotoPath: string;
+  patientPhotoPath?: string;
   cardFullWidth: boolean;
   ctaLink: string;
   ctaText: string;

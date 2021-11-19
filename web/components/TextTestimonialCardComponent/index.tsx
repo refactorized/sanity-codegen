@@ -22,7 +22,7 @@ export const TextTestimonialCard = ({
   ctaUrl = `google.com`,
   testimonialText = `I look at Riggs as the place that broke my fall. In giving me the space to discover my competency, I found my voice. I started by expressing my anger about almost everything. But this expression opened many doors for me. From there, I broke the downward spiral.`,
   patientName = `CJ, former patient`,
-  patientPhotoPath = `../`,
+  patientPhotoPath,
   boxCtaLink = `https://google.com`,
   boxCtaText = `More Patient Outcomes`,
   backgroundColor,
