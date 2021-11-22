@@ -1,6 +1,3 @@
-import styled from 'styled-components';
-import {fontFamily, query, space} from '@theme/fn';
-import Link from 'next/link';
 import {GetStaticProps} from 'next';
 
 import {getEventPageData, getAllEvents} from '@data/eventPage';
@@ -28,6 +25,7 @@ import {ResolvedSanityReferences} from '@data/types';
 
 // misc
 import log from '@util/logging';
+import {RenderBasicText} from '@components/PortableText';
 
 export interface slugPageContext {
   params: {
@@ -130,9 +128,13 @@ export const MappedCardGrid = (props: {events: EventData[]}) => {
     articleCardArr: props.events.map((e) => ({
       image: e.image ? e.image.asset.url : '',
       category: e.eventCategory ? e.eventCategory.name : 'Events',
-      headline: e.name,
-      date: e.eventStart,
-      description: e.shortDescription as BasicText,
+      headline: e.name ? e.name : 'Event Name',
+      date: e.eventStart ? e.eventStart : '',
+      description: e.shortDescription ? (
+        <RenderBasicText content={e.shortDescription} />
+      ) : (
+        ''
+      ),
       url: e.slug ? `/events/${e.slug.current}` : `/events/`,
     })),
   };

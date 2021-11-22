@@ -26,7 +26,7 @@ interface ArticleCardProps {
   category: string;
   headline: string;
   date: string;
-  description: string | BasicText;
+  description: BasicText | string | JSX.Element;
   url: string;
 }
 

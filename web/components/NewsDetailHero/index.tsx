@@ -168,11 +168,6 @@ export const NewsDetailHero = ({
             <RenderBasicText content={price} />
           </InfoText>
         )}
-        {price && (
-          <InfoText>
-            <RenderBasicText content={price} />
-          </InfoText>
-        )}
         {description && (
           <DescriptionText>
             <RenderBasicText content={description} />

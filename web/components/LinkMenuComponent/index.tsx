@@ -210,7 +210,7 @@ const StyledLink = styled.a`
   page-break-inside: avoid; /* Firefox */
   break-inside: avoid; /* IE 10+ */
   break-inside: avoid;
-  transform: translateZ(0);
+  transform: translateX(0);
   text-decoration: none;
   cursor: pointer;
 
