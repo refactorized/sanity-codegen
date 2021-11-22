@@ -71,7 +71,7 @@ const ProseBlock = ({block}: {block: ProseBlockData}) => {
   return (
     <Block squish>
       <Wrapper>
-        <BlockContent {...{blocks: block.content, serializers}} />
+        <BlockContent {...{blocks: block?.content || [], serializers}} />
       </Wrapper>
     </Block>
   );

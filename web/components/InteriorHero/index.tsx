@@ -9,6 +9,7 @@ import {
 } from '@theme/fn';
 import Image from 'next/image';
 import Block from '@components/Layout/Block';
+import AspectBox from '@components/Layout/AspectBox';
 
 export interface InteriorHeroProps {
   header?: string;
@@ -91,27 +92,27 @@ export const InteriorHero = ({
             {caption && <Caption>{caption}</Caption>}
           </HeaderCaptionWrapper>
         )}
-        {imgUrls && imgUrls.desktop && (
-          <Image
-            alt={alt_text}
-            src={imgUrls.desktop}
-            layout="responsive"
-            height={'auto'}
-            width={'100%'}
-            objectFit="cover"
-          />
-        )}
+        <AspectBox ratio={2.12}>
+          {imgUrls && imgUrls.desktop && (
+            <Image
+              alt={alt_text}
+              src={imgUrls.desktop}
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
 
-        {videoSrc && (
-          <Video
-            {...{
-              muted: true,
-              src: videoSrc,
-              autoPlay: true,
-              loop: true,
-            }}
-          />
-        )}
+          {videoSrc && (
+            <Video
+              {...{
+                muted: true,
+                src: videoSrc,
+                autoPlay: true,
+                loop: true,
+              }}
+            />
+          )}
+        </AspectBox>
       </Container>
     </Block>
   );
