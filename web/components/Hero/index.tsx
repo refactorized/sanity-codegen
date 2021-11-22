@@ -51,6 +51,7 @@ const MobileChevronDiv = styled(ChevronDiv)`
 
 const HeroContainer = styled.div`
   width: 100%;
+  background: #000;
   position: relative;
   box-sizing: border-box;
   padding-top: 140px;
@@ -80,7 +81,7 @@ const ImageContainer = styled.div`
   top: 0;
   bottom: 0;
   z-index: 0;
-  height: 295px;
+  min-height: 295px;
 
   background-image: ${(props) =>
     'url({0})'.replace('{0}', props.backgroundImage)};
@@ -195,8 +196,12 @@ const Eyebrow = styled.a`
 const Copy = styled.a`
   display: block;
   text-decoration: none;
-  color: #282828;
+  color: #fff;
   ${fontSize('xl')};
+
+  @media screen and (${query.atLeast('desktop')}) {
+    color: #282828;
+  }
 
   :visited {
     color: inherit;
@@ -206,6 +211,13 @@ const Copy = styled.a`
 const Video = styled.video`
   height: 100%;
   min-height: 100%;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    height: auto;
+    min-height: auto;
+    width: 100%;
+    min-width: 100%;
+  }
 `;
 
 export const HomepageHero = ({
@@ -218,7 +230,10 @@ export const HomepageHero = ({
   return (
     <Block full={true}>
       <HeroContainer>
-        <ImageContainer alt={alt_text} backgroundImage={imageUrl}>
+        <ImageContainer
+          alt={alt_text}
+          backgroundImage={videoSrc ? '' : imageUrl}
+        >
           <ImageGradient />
           {videoSrc && (
             <Video
