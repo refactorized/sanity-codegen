@@ -9,8 +9,10 @@ export const UnwrappedGenericEmbed = ({markup}: GenericEmbedProps) => (
   <div dangerouslySetInnerHTML={{__html: markup}} />
 );
 
-export default (props: GenericEmbedProps) => (
+const GenericEmbed = (props: GenericEmbedProps) => (
   <Block>
     <UnwrappedGenericEmbed {...props} />
   </Block>
 );
+
+export default GenericEmbed;

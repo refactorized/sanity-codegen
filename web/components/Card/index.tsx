@@ -15,8 +15,11 @@ import {CircleArrow} from '../Arrow/index';
 import {SingleQuote} from './CardIcons';
 import {query} from '../../themes/fn';
 import {Dates} from '@components/Dates';
+import AspectBox from '@components/Layout/AspectBox';
+import {default as NextImage} from 'next/image';
 import type {BasicText} from '@data/types';
 import {RenderBasicText} from '@components/PortableText';
+import React from 'react';
 
 export interface StatCardProps {
   backgroundColor: string;
@@ -44,6 +47,7 @@ export interface ArticleCardProps {
   cardFullWidth: boolean;
   alt_text?: string;
   url: string;
+  imageAspectRatio?: number | number[];
 }
 
 const QuoteDiv = styled.div`
@@ -304,17 +308,32 @@ export const ArticleCard = ({
   description,
   cardFullWidth,
   url,
+  imageAspectRatio,
 }: ArticleCardProps): JSX.Element => {
   return (
     <StyledContainer fullWidth={cardFullWidth}>
-      <Image
-        alt={alt_text}
-        src={image}
-        maxWidth="100%"
-        height="auto"
-        pb="13px"
-        borderRadius="4px"
-      />
+      {imageAspectRatio ? (
+        <AspectBox ratio={imageAspectRatio}>
+          {image && (
+            <StyledNextImage
+              alt={alt_text}
+              src={image}
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
+        </AspectBox>
+      ) : (
+        <Image
+          alt={alt_text}
+          src={image}
+          maxWidth="100%"
+          height="auto"
+          pb="13px"
+          borderRadius="4px"
+        />
+      )}
+
       <StyledBox>
         <StyledParagraph
           fontSize={['12px', '10px', null, '12px']}
@@ -363,7 +382,12 @@ export const ArticleCard = ({
           p={['5px 0', null, null, '7px 0']}
           m="0"
         >
-          {description}
+          {/* TODO: pass description in as an element and do rendering in mapping */}
+          {(description as BasicText).length != undefined ? (
+            <RenderBasicText content={description as BasicText} asFragment />
+          ) : (
+            description
+          )}
         </StyledHeader>
       </StyledBox>
     </StyledContainer>
@@ -400,6 +424,11 @@ const StyledBox = styled.div`
   ${space}
 `;
 
+// TODO: clean this up, add this padding elsewhere maybe?
+const StyledNextImage = styled(NextImage)`
+  padding-bottom: 13px;
+`;
+
 const Image = styled.img`
   ${typography}
   ${space}
@@ -414,6 +443,7 @@ const StyledLink = styled.a`
   cursor: pointer;
 `;
 
+// TODO: don't use h1, bad for SEO
 const StyledHeader = styled.h1`
   ${typography}
   ${space}

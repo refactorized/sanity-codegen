@@ -11,14 +11,17 @@ interface RenderBasicTextProps {
   debug?: true;
 }
 
+const StyledDiv = styled.div``;
+const StyledSpan = styled.span``;
+
 const getWrap = (props: RenderBasicTextProps) => {
   if (props.asFragment) {
     return Fragment;
   }
   if (props.asSpan) {
-    return styled.span``;
+    return StyledSpan;
   }
-  return styled.div``;
+  return StyledDiv;
 };
 
 /* Accepts an array of portable text blocks, via the `content` prop and renders

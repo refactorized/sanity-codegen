@@ -72,6 +72,7 @@ export const CardGrid = ({
                 selected === 'All News' ||
                 selected === 'All Resources'
               ) {
+                // TODO: the following 3 blocks are identical - dedupe
                 return (
                   <ArticleCard
                     key={ind}
@@ -82,6 +83,7 @@ export const CardGrid = ({
                     description={obj.description}
                     cardFullWidth={true}
                     url={obj.url}
+                    imageAspectRatio={1.618}
                   />
                 );
               } else if (selected === obj.category) {
@@ -95,6 +97,7 @@ export const CardGrid = ({
                     description={obj.description}
                     cardFullWidth={true}
                     url={obj.url}
+                    imageAspectRatio={1.618}
                   />
                 );
               }
@@ -109,6 +112,7 @@ export const CardGrid = ({
                   description={obj.description}
                   cardFullWidth={true}
                   url={obj.url}
+                  imageAspectRatio={1.618}
                 />
               );
             }

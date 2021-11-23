@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 import {FC} from 'react';
+import {mq} from '@theme/query';
+
+const paddingCss = ({ratio}: {ratio: number | number[]}) => {
+  if (typeof ratio === 'number') {
+    return {paddingTop: `${100 / ratio}%`};
+  } else {
+    return mq({
+      paddingTop: ratio.map((r) => `${100 / r}%`),
+    });
+  }
+};
 
 const SimpleAspectBox = styled.div`
   position: relative;
   padding: 0;
   height: 0;
   overflow: hidden;
-  padding-top: ${(props) => 100 / props.ratio}%;
+  ${paddingCss}
 
   & > * {
     position: absolute;
@@ -18,4 +29,4 @@ const SimpleAspectBox = styled.div`
   }
 `;
 
-export default SimpleAspectBox as FC<{ratio: number}>;
+export default SimpleAspectBox as FC<{ratio: number | number[]}>;

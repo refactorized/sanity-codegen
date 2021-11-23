@@ -225,7 +225,7 @@ export const ImageCarousel = ({slides}: ImageCarouselProps): JSX.Element => {
               slides.map(function (slide, index) {
                 return (
                   <Dot
-                    fill={index === currentSlideIndex}
+                    // fill={index === currentSlideIndex} // TODO: fix this - supposed to be a ternary prolly
                     onClick={(e) => changeSlide(e, index)}
                     key={'dot-' + index}
                   ></Dot>

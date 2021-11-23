@@ -92,7 +92,7 @@ export const InteriorHero = ({
             {caption && <Caption>{caption}</Caption>}
           </HeaderCaptionWrapper>
         )}
-        <AspectBox ratio={2.12}>
+        <AspectBox ratio={[1.4, 1.9, 2.12]}>
           {imgUrls && imgUrls.desktop && (
             <Image
               alt={alt_text}

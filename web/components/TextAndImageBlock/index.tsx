@@ -1,12 +1,5 @@
 import styled from 'styled-components';
-import {
-  typography,
-  flexbox,
-  layout,
-  grid,
-  size,
-  letterSpacing,
-} from 'styled-system';
+import {typography, flexbox, layout, grid, size} from 'styled-system';
 import {
   color,
   space,
@@ -19,6 +12,7 @@ import {
 import Image from 'next/image';
 import {Button} from '@components/Button/';
 import Block from '@components/Layout/Block';
+import AspectBox from '@components/Layout/AspectBox';
 import type {BasicText} from '@data/types';
 import {RenderBasicText} from '@components/PortableText';
 
@@ -129,6 +123,8 @@ const Eyebrow = styled.h3`
   @media screen and (${query.atLeast('desktop')}) {
     ${fontSize('sm')};
   }
+
+  margin-top: 0;
 `;
 
 {
@@ -141,7 +137,7 @@ const Eyebrow = styled.h3`
 }
 
 // For No Top Header Variant
-const InnerHeader = styled.h1`
+const InnerHeader = styled.h2`
   ${fontFamily('headline')};
   ${fontSize('x5')};
   margin: 0;
@@ -242,14 +238,14 @@ export const TextAndImageBlock = ({
             height={304}
           />
         </Box> */}
-          <Image
-            alt={alt_text}
-            layout="responsive"
-            src={imgUrls.desktop}
-            width={'100%'}
-            height={'auto'}
-            objectFit="cover"
-          />
+          <AspectBox ratio={[0.92, 1.66]}>
+            <Image
+              alt={alt_text}
+              layout="fill"
+              src={imgUrls.desktop}
+              objectFit="cover"
+            />
+          </AspectBox>
           <ContentContainer reverse={reverse}>
             {header ? (
               <Eyebrow>{subheader}</Eyebrow>

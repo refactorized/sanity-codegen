@@ -2,5 +2,8 @@
 // Handles mapping of pageLink items
 // to account for internal links, external links, and empty data.
 export const mapLink = (link?): string => {
-  return link?.slug ? `/${link.slug.current}` : link?.url || '';
+  return link?.slug
+    ? `/${link.slug.current}`
+    : (link?.url || '').replace('https://austen-riggs-center.netlify.app', '');
 };
+// TODO: HACK: Fix above, at least don't hard-code
