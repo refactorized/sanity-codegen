@@ -282,7 +282,7 @@ export const TestimonialCard = ({
       </RightQuoteDiv>
       <TestimonialText>{testimonialText + '"'}</TestimonialText>
       <PatientLine>
-        {patientPhotoPath != null && (
+        {patientPhotoPath != null && patientPhotoPath != '' && (
           <PatientPhoto backgroundImage={patientPhotoPath}></PatientPhoto>
         )}
         <PatientName>- {patientName}</PatientName>
