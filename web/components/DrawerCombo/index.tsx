@@ -161,15 +161,17 @@ const DrawerCombo = ({title, copy, cta, drawers}: DrawerComboProps) => {
           <ComboTextTitle>{title}</ComboTextTitle>
           <ComboTextCopy>{copy}</ComboTextCopy>
         </ComboText>
-        <ComboCTA>
-          <Button
-            {...cta}
-            arrowColor={'white'}
-            arrow={true}
-            variant={'solid'}
-            size={'medium'}
-          />
-        </ComboCTA>
+        {cta.url != '' && cta.url != null && (
+          <ComboCTA>
+            <Button
+              {...cta}
+              arrowColor={'white'}
+              arrow={true}
+              variant={'solid'}
+              size={'medium'}
+            />
+          </ComboCTA>
+        )}
       </DrawerContent>
       <Drawers>
         {drawers &&

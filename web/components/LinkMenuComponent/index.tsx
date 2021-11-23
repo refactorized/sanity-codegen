@@ -121,14 +121,16 @@ export const LinkMenuComponent = ({
               ))}
             </StyledBoxEdit>
           </StyledBox>
-          <Button
-            arrowColor="white"
-            arrow={true}
-            size="medium"
-            variant="solid"
-            url={btnUrl}
-            label={btnText}
-          />
+          {btnUrl && btnText && (
+            <Button
+              arrowColor="white"
+              arrow={true}
+              size="medium"
+              variant="solid"
+              url={btnUrl}
+              label={btnText}
+            />
+          )}
         </StyledBox>
       </StyledBox>
     </Block>
