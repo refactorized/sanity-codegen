@@ -1,7 +1,7 @@
 import {ArticleCard, ArticleCardProps} from '../Card';
 import Carousel from '@components/Carousel';
-import client, {bigFetch} from '@data/sanityClient';
-import BlockContent from '@sanity/block-content-to-react';
+import {bigFetch} from '@data/sanityClient';
+import {RenderBasicText} from '@components/PortableText';
 import React from 'react';
 import getImageUrl from '@util/images';
 import {useEffect} from 'react';
@@ -21,8 +21,8 @@ export const mapArticle = function (article) {
         image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
-        category: 'News',
-        description: <BlockContent blocks={article.description} />,
+        category: article.postType?.title || 'News',
+        description: article.description,
         url: article.slug ? `/news/${article.slug.current}` : '#',
       } as ArticleCardProps;
     case 'resource':
@@ -30,7 +30,7 @@ export const mapArticle = function (article) {
         image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
-        category: 'Resource',
+        category: article.postType?.title || 'Resource',
         description: article.description,
         url: article.slug
           ? `/education-research/resources/${article.slug.current}`
@@ -42,8 +42,8 @@ export const mapArticle = function (article) {
         image: getImageUrl(article.image, 'crop', 362, 221),
         headline: article.headline,
         date: article.date,
-        category: 'Event',
-        description: <BlockContent blocks={article.description} />,
+        category: article.postType?.name || 'Event',
+        description: <RenderBasicText content={article.description} />,
         url: article.slug ? `/events/${article.slug.current}` : '#',
       } as ArticleCardProps;
     default:
@@ -70,6 +70,7 @@ export const ArticleCarousel = ({
           'date': coalesce(publishedAt, eventStart),
           'headline': coalesce(title, name),
           'description': shortDescription,
+          'postType': coalesce(postType, resourceType, eventCategory) 
         }`;
           return bigFetch(query);
         }),

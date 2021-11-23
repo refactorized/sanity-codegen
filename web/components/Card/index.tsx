@@ -382,12 +382,7 @@ export const ArticleCard = ({
           p={['5px 0', null, null, '7px 0']}
           m="0"
         >
-          {/* TODO: pass description in as an element and do rendering in mapping */}
-          {(description as BasicText).length != undefined ? (
-            <RenderBasicText content={description as BasicText} asFragment />
-          ) : (
-            description
-          )}
+          {description}
         </StyledHeader>
       </StyledBox>
     </StyledContainer>
