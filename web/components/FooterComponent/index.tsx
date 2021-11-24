@@ -25,8 +25,10 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
     AddressLine1,
     AddressLine2,
     email,
-    phone,
-    fax,
+    phone1,
+    phone2,
+    phoneLabel1,
+    phoneLabel2,
     footerConfig,
     privatePolicy,
   } = siteConfig;
@@ -97,8 +99,10 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
             AddressLine1={AddressLine1}
             AddressLine2={AddressLine2}
             email={email}
-            phone={phone}
-            fax={fax}
+            phone1={phone1}
+            phone2={phone2}
+            phoneLabel1={phoneLabel1}
+            phoneLabel2={phoneLabel2}
           />
           {/* columnData iterates and renders Columns 1 - 4 */}
           {columnData(columnArr)}
@@ -131,8 +135,10 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
             AddressLine1={AddressLine1}
             AddressLine2={AddressLine2}
             email={email}
-            phone={phone}
-            fax={fax}
+            phone1={phone1}
+            phone2={phone2}
+            phoneLabel1={phoneLabel1}
+            phoneLabel2={phoneLabel2}
           />
           <StyledBox
             display={['grid', null, null, 'none']}

@@ -7,7 +7,10 @@ export default {
   _type: 'siteConfig',
   _updatedAt: '2021-06-30T21:31:38Z',
   email: 'info@austenriggs.org',
-  fax: '413.298.4020',
+  phone1: '866.255.1759',
+  phone2: '413.298.4020',
+  phoneLabel1: 'Admissions',
+  phoneLabel2: 'All other calls',
   footerConfig: {
     _type: 'footerConfig',
     col1: [
@@ -210,5 +213,4 @@ export default {
       },
     ],
   },
-  phone: '866.255.1759',
 };

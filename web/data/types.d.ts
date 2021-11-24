@@ -44,8 +44,10 @@ export type SiteConfig = ResolvedSanityReferences<{
   AddressLine1: string;
   AddressLine2: string;
   email: string;
-  phone: string;
-  fax: string;
+  phone1: string;
+  phone2: string;
+  phoneLabel1: string;
+  phoneLabel2: string;
   footerConfig: FooterConfig;
   featuredLinkLabel: string;
   featuredLinkUrl: Link;

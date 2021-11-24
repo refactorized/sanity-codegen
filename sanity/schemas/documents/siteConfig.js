@@ -1,4 +1,5 @@
 import {IoSettingsOutline} from 'react-icons/io5';
+const _required = (Rule) => Rule.required();
 
 const inFieldset = (name, fields) => {
   return fields.map((field) => ({...field, fieldset: name}));
@@ -68,27 +69,52 @@ export default {
         name: 'AddressLine1',
         type: 'string',
         title: 'Address Line 1',
+        codegen: {required: true},
+        validation: _required,
       },
       {
         name: 'AddressLine2',
         type: 'string',
         title: 'Address Line 1',
+        codegen: {required: true},
+        validation: _required,
       },
       {
-        name: 'phone',
+        name: 'phoneLabel1',
         type: 'string',
-        title: 'Default Phone Number',
+        title: 'First Line Phone Number Label',
+        codegen: {required: true},
+        validation: _required,
+      },
+      {
+        name: 'phone1',
+        type: 'string',
+        title: 'First Line Phone Number',
         description: 'this number may be altered by a service at runtime',
+        codegen: {required: true},
+        validation: _required,
       },
       {
-        name: 'fax',
+        name: 'phoneLabel2',
         type: 'string',
-        title: 'Fax Number',
+        title: 'Second Link Phone Number Label',
+        codegen: {required: true},
+        validation: _required,
+      },
+      {
+        name: 'phone2',
+        type: 'string',
+        title: 'Second Link Phone Number',
+        description: 'this number may be altered by a service at runtime',
+        codegen: {required: true},
+        validation: _required,
       },
       {
         name: 'email',
         type: 'string',
         title: 'General Information Email Address',
+        codegen: {required: true},
+        validation: _required,
       },
     ]),
     ...inFieldset('navigation', [

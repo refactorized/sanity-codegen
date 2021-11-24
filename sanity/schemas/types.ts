@@ -1155,35 +1155,49 @@ export interface SiteConfig extends SanityDocument {
    *
    *
    */
-  AddressLine1?: string;
+  AddressLine1: string;
 
   /**
    * Address Line 1 — `string`
    *
    *
    */
-  AddressLine2?: string;
+  AddressLine2: string;
 
   /**
-   * Default Phone Number — `string`
+   * First Line Phone Number Label — `string`
+   *
+   *
+   */
+  phoneLabel1: string;
+
+  /**
+   * First Line Phone Number — `string`
    *
    * this number may be altered by a service at runtime
    */
-  phone?: string;
+  phone1: string;
 
   /**
-   * Fax Number — `string`
+   * Second Link Phone Number Label — `string`
    *
    *
    */
-  fax?: string;
+  phoneLabel2: string;
+
+  /**
+   * Second Link Phone Number — `string`
+   *
+   * this number may be altered by a service at runtime
+   */
+  phone2: string;
 
   /**
    * General Information Email Address — `string`
    *
    *
    */
-  email?: string;
+  email: string;
 
   /**
    * Log in Label — `string`
