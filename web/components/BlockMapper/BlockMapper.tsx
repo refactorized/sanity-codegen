@@ -21,6 +21,7 @@ import mapInteriorHeroBlock from '@components/InteriorHero/_map';
 import mapBioCalloutBlock from '@components/BioCalloutComponent/_map';
 import mapTextTestimonialCardBlock from '@components/TextTestimonialCardComponent/_map';
 import mapGenericEmbedBlock from '@components/GenericEmbed/_map';
+import mapStickyCta from '@components/StickyCta/_map';
 
 // section types
 import AdmissionsCalloutBlockData from '@data/blocks/AdmissionsCalloutBlockData';
@@ -41,6 +42,7 @@ import InteriorHeroBlockData from '@data/blocks/InteriorHeroData';
 import BioCalloutBlockData from '@data/blocks/BioCalloutBlockData';
 import TextTestimonialCardBlockData from '@data/blocks/TextTestimonialCardBlockData';
 import GenericEmbedBlockData from '@data/blocks/GenericEmbedBlockData';
+import StickyCtaBlockData from '@data/blocks/StickyCtaBlockData';
 
 const MapComponents = ({blocks}: {blocks: any[]}) => {
   if (!blocks?.length) {
@@ -109,6 +111,9 @@ const MapComponents = ({blocks}: {blocks: any[]}) => {
     }
     if (block._type === 'genericEmbed') {
       return mapGenericEmbedBlock(block as GenericEmbedBlockData);
+    }
+    if (block._type === 'stickyCta') {
+      return mapStickyCta(block as StickyCtaBlockData);
     }
     return <div>{`unknown block type: ${(block as PageSection)._type}`}</div>;
   });

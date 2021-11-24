@@ -49,6 +49,7 @@ import comboCard, {comboCardCards} from './sections/comboCard';
 import interiorHero from './sections/interiorHero';
 import textTestimonialCard from './sections/textTestimonialCard';
 import genericEmbed from './sections/genericEmbed';
+import stickyCta from './sections/stickyCta';
 
 // objects
 import basicText from './objects/basicText';
@@ -129,6 +130,7 @@ export default createSchema({
     comboCard,
     comboCardCards,
     genericEmbed,
+    stickyCta,
 
     // objects
     basicText,

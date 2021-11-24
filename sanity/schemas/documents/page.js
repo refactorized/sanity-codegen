@@ -38,6 +38,7 @@ export default {
         {type: 'bioCallout'},
         {type: 'textTestimonialCard'},
         {type: 'genericEmbed'},
+        {type: 'stickyCta'},
       ],
     },
   ],

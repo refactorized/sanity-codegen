@@ -889,6 +889,7 @@ export interface Page extends SanityDocument {
     | SanityKeyed<BioCallout>
     | SanityKeyed<TextTestimonialCard>
     | SanityKeyed<GenericEmbed>
+    | SanityKeyed<StickyCta>
   >;
 }
 
@@ -2187,6 +2188,37 @@ export type GenericEmbed = {
    * Paste code provided by third party here. Make sure you trust the source of this code.
    */
   markup?: string;
+};
+
+export type StickyCta = {
+  _type: "stickyCta";
+  /**
+   * Display if CTA is visible or not — `boolean`
+   *
+   *
+   */
+  visible?: boolean;
+
+  /**
+   * Sticky CTA label — `string`
+   *
+   *
+   */
+  label: string;
+
+  /**
+   * Sticky CTA url — `link`
+   *
+   *
+   */
+  url: Link;
+
+  /**
+   * Sticky CTA Source — `string`
+   *
+   *
+   */
+  source?: string;
 };
 
 export type BasicText = Array<SanityKeyed<SanityBlock>>;
