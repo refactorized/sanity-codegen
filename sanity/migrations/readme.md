@@ -23,6 +23,11 @@ A simple document patch to illustrate how to set objects, and becau
 thought re-learning how to do this with code was prefereable to entering a
 handful of links and slugs into the cms.
 
+### `footerAddTypes.js` _(do not run)_
+
+we made a whoopsie and forgot to include the `_type` for footer liks in the site
+config. This script adds them.
+
 ### `siteConfigId` _(do not run)_
 
 Update the primary site data entry such that it has a known id. There should

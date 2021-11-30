@@ -5,6 +5,7 @@ import {SiteConfig} from '@data/types';
 
 const getSiteConfig = async (): Promise<SiteConfig> => {
   // matching in exact id also avoids drafts
+  // TODO: make this previewy
   const query = groq`*[_type == "siteConfig" && _id=="ID_SITE_CONFIG"]`;
 
   try {

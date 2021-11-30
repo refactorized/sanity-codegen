@@ -16,8 +16,6 @@ async function preFlight(schemaType) {
   return [false, 'multiple documents/drafts found.'];
 }
 
-// IMPORTANT: THIS ASSUMES TARGET IS FIRST ENTRY (which it _was_)
-// we did this already so this won't be executed below
 async function rename(id, newId) {
   const results = await client.fetch(`*[_id=="${id}"]`);
   const dupe = results[0];
