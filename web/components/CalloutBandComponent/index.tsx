@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {color, flexbox, typography, space, border, layout} from 'styled-system';
 import Block from '@components/Layout/Block';
 import {Button} from '@components/Button';
+import {fontStack} from '@theme/fn';
 export interface CalloutBandProps {
   header: string;
   description: string;
@@ -24,14 +25,7 @@ export const CalloutBand = ({
         color="primary"
       >
         <div>
-          <StyledHeadline
-            m={0}
-            fontSize={['30px', null, '44px']}
-            fontWeight="regular"
-            fontFamily="headline"
-            letterSpacing="-0.01em"
-            lineHeight={['34px', '24.5px', '51.39px']}
-          >
+          <StyledHeadline m={0} fontWeight="regular">
             {header}
           </StyledHeadline>
           <div>
@@ -86,6 +80,11 @@ const StyledBoxEdit = styled.div`
 const StyledHeadline = styled.h1`
   ${typography}
   ${space}
+  ${fontStack([
+    'med-headline-regular',
+    'med-headline-regular',
+    'xl-headline-regular',
+  ])}
 `;
 
 const StyledDescription = styled.h2`

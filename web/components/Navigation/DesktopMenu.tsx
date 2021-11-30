@@ -5,7 +5,7 @@ import {typography} from 'styled-system';
 import Link from 'next/link';
 import {Search, Phone} from '../MiscComponents/index';
 import {Logo} from '../Logo/index';
-import {color, space, query} from '../../themes/fn';
+import {color, space, query, fontDef} from '../../themes/fn';
 
 import {NavigationProps} from './index';
 
@@ -119,6 +119,10 @@ const StyledSubLink = styled.li`
   ${({header}) => header && `font-weight: 700;`}
   margin-bottom: ${space('md')};
   text-transform: none;
+
+  a {
+    ${fontDef('sm-subhead-bold')};
+  }
 
   ul {
     list-style-type: none;

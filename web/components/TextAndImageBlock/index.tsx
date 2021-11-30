@@ -8,6 +8,7 @@ import {
   fontSize,
   query,
   lineHeight,
+  fontDef,
 } from '@theme/fn';
 import Image from 'next/image';
 import {Button} from '@components/Button/';
@@ -96,13 +97,10 @@ const ContentContainer = styled.div`
 //           gridRow={reverse ? 1 : 'unset'}
 //         >
 const Header = styled.h1`
-  ${fontFamily('headline')};
   margin: 0 0 ${space('lg')};
   max-width: 743px;
-  ${fontWeight('regular')};
-  ${fontSize('x5')};
 
-  ${fontSize('xl')};
+  ${fontDef('lrg-headline-regular')};
 
   @media screen and (${query.atLeast('desktop')}) {
     margin-bottom: ${space('xl')};
@@ -112,9 +110,7 @@ const Header = styled.h1`
 
 const Eyebrow = styled.h3`
   text-transform: uppercase;
-  ${fontFamily('body')};
-  ${fontWeight('bold')};
-  ${fontSize('sm')};
+  ${fontDef('sm-eyebrow-bold')};
 
   @media screen and (${query.atLeast('tablet')}) {
     font-size: 10px;

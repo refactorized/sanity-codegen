@@ -8,6 +8,7 @@ import {
   grid,
   layout,
 } from 'styled-system';
+import {fontDef, fontStack} from '@theme/fn';
 import {CircleArrow} from '@components/Arrow/index';
 import {Phone} from '@components/PhoneComponent';
 import {Button} from '@components/Button';
@@ -53,25 +54,10 @@ export const AdmissionsCallout = ({
           justifySelf={['center', 'flex-end']}
           maxWidth="486px"
         >
-          <StyledHeadline2
-            fontSize={['30px', '30px', '43px']}
-            fontWeight="regular"
-            fontFamily="headline"
-            letterSpacing="-0.01em"
-            lineHeight={['36px', '51.39px']}
-            m=" 0"
-          >
+          <StyledHeadline2 m=" 0" fontWeight="regular">
             {admissionHeader}
           </StyledHeadline2>
-          <StyledParagraph
-            fontSize={['22px', '16px', '22px']}
-            fontWeight="regular"
-            fontFamily="body"
-            letterSpacing="-0.015em"
-            lineHeight={['32px', '26px', '32px']}
-          >
-            {admissionDescription}
-          </StyledParagraph>
+          <StyledParagraph>{admissionDescription}</StyledParagraph>
           {boxlessbtnText && boxlessbtnUrl && (
             <StyledLink
               href={boxlessbtnUrl}
@@ -125,15 +111,7 @@ export const AdmissionsCallout = ({
                   {contactHeader}
                 </StyledHeadline>
                 <div>
-                  <StyledHeadline2
-                    fontSize={['16px', '14px', '16px']}
-                    fontWeight="regular"
-                    fontFamily="body"
-                    letterSpacing="-0.015em"
-                    lineHeight={['26px', '20px', '26px']}
-                  >
-                    {contactDescription}
-                  </StyledHeadline2>
+                  <StyledHeadline3>{contactDescription}</StyledHeadline3>
                 </div>
               </div>
               <StyledBoxEdit
@@ -205,9 +183,21 @@ const StyledHeadline = styled.h1`
 const StyledHeadline2 = styled.h2`
   ${typography}
   ${space}
+  ${fontStack([
+    'med-headline-regular',
+    'med-headline-regular',
+    'xl-headline-regular',
+  ])}
+`;
+
+const StyledHeadline3 = styled.h2`
+  ${typography}
+  ${space}
+  ${fontDef('sm-body-regular')}
 `;
 
 const StyledParagraph = styled.p`
   ${typography}
   ${space}
+  ${fontDef('lrg-body-regular')}
 `;
