@@ -92,27 +92,29 @@ export const InteriorHero = ({
             {caption && <Caption>{caption}</Caption>}
           </HeaderCaptionWrapper>
         )}
-        <AspectBox ratio={[1.4, 1.9, 2.12]}>
-          {imgUrls && imgUrls.desktop && (
-            <Image
-              alt={alt_text}
-              src={imgUrls.desktop}
-              layout="fill"
-              objectFit="cover"
-            />
-          )}
+        {((imgUrls && imgUrls.desktop) || videoSrc) && (
+          <AspectBox ratio={[1.4, 1.9, 2.12]}>
+            {imgUrls && imgUrls.desktop && (
+              <Image
+                alt={alt_text}
+                src={imgUrls.desktop}
+                layout="fill"
+                objectFit="cover"
+              />
+            )}
 
-          {videoSrc && (
-            <Video
-              {...{
-                muted: true,
-                src: videoSrc,
-                autoPlay: true,
-                loop: true,
-              }}
-            />
-          )}
-        </AspectBox>
+            {videoSrc && (
+              <Video
+                {...{
+                  muted: true,
+                  src: videoSrc,
+                  autoPlay: true,
+                  loop: true,
+                }}
+              />
+            )}
+          </AspectBox>
+        )}
       </Container>
     </Block>
   );
