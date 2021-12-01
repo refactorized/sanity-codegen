@@ -13,6 +13,7 @@ import Layout from '@components/Layout/Layout';
 import Stretch from '@components/Layout/Stretch';
 import Page from '@components/Page';
 import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
+import StickyCta from '@components/StickyCta/mapSiteConfig';
 import Navigation from '@components/Navigation/mapSiteConfig';
 import {Footer} from '@components/FooterComponent';
 
@@ -87,6 +88,7 @@ const SlugPage = (props: slugPageProps) => {
     <Page {...props.page}>
       <Layout preview={props.preview}>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
+        <StickyCta {...(props.siteConfig as SiteConfig)} />
         <Navigation {...(props.siteConfig as SiteConfig)} />
         <MapComponents blocks={props.page.blocks} />
         <Stretch />

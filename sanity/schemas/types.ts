@@ -1151,6 +1151,34 @@ export interface SiteConfig extends SanityDocument {
   announcementBarCtaLink?: Link;
 
   /**
+   * Display if CTA is visible or not — `boolean`
+   *
+   * Displays CTA site-wide.
+   */
+  visible?: boolean;
+
+  /**
+   * Sticky CTA label — `string`
+   *
+   *
+   */
+  label: string;
+
+  /**
+   * Sticky CTA url — `link`
+   *
+   *
+   */
+  url: Link;
+
+  /**
+   * Sticky CTA Source — `string`
+   *
+   *
+   */
+  source?: string;
+
+  /**
    * Address Line 1 — `string`
    *
    *

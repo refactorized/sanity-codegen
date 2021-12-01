@@ -41,6 +41,10 @@ export type SiteConfig = ResolvedSanityReferences<{
   announcementBarMessage: string;
   announcementBarCtaText: string;
   announcementBarCtaLink: Link;
+  visible: boolean;
+  label: string;
+  url: string;
+  source: string;
   AddressLine1: string;
   AddressLine2: string;
   email: string;

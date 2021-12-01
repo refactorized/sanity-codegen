@@ -21,6 +21,14 @@ export default {
       },
     },
     {
+      name: 'stickyCta',
+      title: 'Sticky CTA',
+      options: {
+        collapsible: true, // Makes the whole fieldset collapsible
+        collapsed: true, // Defines if the fieldset should be collapsed by default or not
+      },
+    },
+    {
       name: 'general',
       title: 'General Sitewide Information',
       options: {
@@ -62,6 +70,33 @@ export default {
         type: 'link',
         title: 'CTA Link',
         description: 'Destination link for announcement bar CTA message.',
+      },
+    ]),
+    ...inFieldset('stickyCta', [
+      {
+        name: 'visible',
+        type: 'boolean',
+        title: 'Display if CTA is visible or not',
+        description: 'Displays CTA site-wide.',
+      },
+      {
+        name: 'label',
+        type: 'string',
+        title: 'Sticky CTA label',
+        codegen: {required: true},
+        validation: _required,
+      },
+      {
+        name: 'url',
+        type: 'link',
+        title: 'Sticky CTA url',
+        codegen: {required: true},
+        validation: _required,
+      },
+      {
+        name: 'source',
+        type: 'string',
+        title: 'Sticky CTA Source',
       },
     ]),
     ...inFieldset('general', [

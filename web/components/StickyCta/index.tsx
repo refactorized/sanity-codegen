@@ -35,7 +35,7 @@ const Container = styled.div`
   ${layout}
   ${grid}
   ${position}
-  
+  z-index: 1;
   pointer-events: none;
 `;
 

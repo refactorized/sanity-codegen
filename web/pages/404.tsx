@@ -9,6 +9,7 @@ import Stretch from '../components/Layout/Stretch';
 import Page from '../components/Page';
 import {Footer} from '../components/FooterComponent';
 import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig';
+import StickyCta from '@components/StickyCta/mapSiteConfig';
 import Navigation from '@components/Navigation/mapSiteConfig';
 import {Button} from '@components/Button';
 import {SiteConfig} from '@data/types';
@@ -27,6 +28,7 @@ const Error404Page = (props) => {
     <Page>
       <ErrorLayout>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
+        <StickyCta {...(props.siteConfig as SiteConfig)} />
         <Navigation {...(props.siteConfig as SiteConfig)} />
         <Stretch />
         <Block>
