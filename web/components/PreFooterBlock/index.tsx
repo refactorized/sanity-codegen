@@ -29,14 +29,13 @@ export const PreFooterBlock = ({
         borderRadius={['4px', '0px']}
         p={['22px', '25px 29px', '45px 60px']}
       >
-        <div>
+        <StyledBox display="flex" flexDirection="column">
           <StyledHeadline
             m={0}
             fontSize={['20px', '24px', '32px', '43px']}
             fontWeight="regular"
             fontFamily="headline"
             letterSpacing="-0.01em"
-            lineHeight={['24.5px', '51.39px']}
           >
             {header}
           </StyledHeadline>
@@ -46,19 +45,19 @@ export const PreFooterBlock = ({
               fontWeight="regular"
               fontFamily="body"
               letterSpacing="-0.015em"
-              lineHeight="26px"
               maxWidth={['300px', '280px', '370px', 'none']}
+              m="5px 0"
             >
               {description}
             </StyledDescription>
           </div>
-        </div>
+        </StyledBox>
         <StyledBoxEdit
           display="flex"
           flexDirection={['column', 'row']}
           alignItems={['flex-start', 'center']}
           gap="20px"
-          mt="20px"
+          mt={['20px', '0', null, null]}
         >
           <Button
             variant="solid"
@@ -104,4 +103,5 @@ const StyledHeadline = styled.h1`
 const StyledDescription = styled.h2`
   ${typography}
   ${layout}
+  ${space}
 `;

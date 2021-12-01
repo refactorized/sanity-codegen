@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {Button} from '@components/Button';
 import {TestimonialCard} from '@components/Card';
 import {query, fontFamily} from '../../themes/fn';
+import Block from '@components/Layout/Block';
 export interface TextTestimonialCardProps {
   header: string;
   description: string;
@@ -28,7 +29,7 @@ export const TextTestimonialCard = ({
   backgroundColor,
 }: TextTestimonialCardProps): JSX.Element => {
   return (
-    <StyledContainer>
+    <Block background="cream" narrow>
       <StyledContentContainer>
         <StyledDescriptionContainer>
           <StyledHeadline>{header}</StyledHeadline>
@@ -55,7 +56,7 @@ export const TextTestimonialCard = ({
           />
         </StyledTestimonial>
       </StyledContentContainer>
-    </StyledContainer>
+    </Block>
   );
 };
 
@@ -123,7 +124,7 @@ const StyledHeadline = styled.h2`
 `;
 
 const StyledParagraph = styled.p`
-  font-family: Proxima Nova;
+  ${fontFamily('body')};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
