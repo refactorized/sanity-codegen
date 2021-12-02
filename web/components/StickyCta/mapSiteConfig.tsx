@@ -6,7 +6,7 @@ const _map = (siteConfig: SiteConfig) => {
   const props: StickyCtaProps = {
     visible: siteConfig.visible,
     label: siteConfig.label,
-    url: mapLink(siteConfig.url),
+    url: mapLink({url: siteConfig.url}),
     source: siteConfig.source,
   };
   return <StickyCta {...props} />;

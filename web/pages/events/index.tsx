@@ -27,6 +27,7 @@ import {ResolvedSanityReferences} from '@data/types';
 // misc
 import log from '@util/logging';
 import {RenderBasicText} from '@components/PortableText';
+import {mapLink} from '@util/mapping';
 
 export interface slugPageContext {
   params: {
@@ -151,7 +152,7 @@ export const MappedTextAndImageBlockOne = (block: EventPageData) => {
       desktop: block.textAndImageBlockOne.desktopImage.asset.url,
     },
     btnText: block.textAndImageBlockOne.buttonText,
-    btnUrl: block.textAndImageBlockOne.buttonLink.slug.current,
+    btnUrl: mapLink(block.textAndImageBlockOne.buttonLink),
     reverse: block.textAndImageBlockOne.reverse,
   };
 
@@ -166,7 +167,7 @@ export const MappedTextAndImageBlockTwo = (block: EventPageData) => {
       desktop: block.textAndImageBlockTwo.desktopImage.asset.url,
     },
     btnText: block.textAndImageBlockTwo.buttonText,
-    btnUrl: block.textAndImageBlockTwo.buttonLink.slug.current,
+    btnUrl: mapLink(block.textAndImageBlockTwo.buttonLink),
     reverse: block.textAndImageBlockTwo.reverse,
   };
 
@@ -178,7 +179,7 @@ export const MappedPreFooter = (block: EventPageData) => {
     header: block.preFooter.header,
     description: block.preFooter.description,
     btnText: block.preFooter.btnText,
-    btnUrl: block.preFooter.btnUrl.slug.current,
+    btnUrl: mapLink(block.preFooter.btnUrl),
   };
   return <PreFooterBlock {...props} />;
 };

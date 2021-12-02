@@ -6,7 +6,7 @@ const _map = (block: IntroBlockData) => {
   const props: IntroBlockProps = {
     description: block.body,
     btnText: block.buttonText,
-    btnUrl: mapLink(block.buttonLink),
+    btnUrl: mapLink({slug: block.buttonLink}), // wrap to emulate new link type.
   };
   return <IntroBlock key={block._key} {...props} />;
 };

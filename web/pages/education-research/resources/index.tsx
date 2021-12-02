@@ -104,7 +104,7 @@ export const MappedFeaturedResource = (block: ResourcePageData) => {
       desktop: block.featuredResource.mainImage.asset.url,
     },
     btnText: 'Read More',
-    btnUrl: mapLink(block.featuredResource.slug),
+    btnUrl: mapLink({slug: block.featuredResource.slug}),
     reverse: false,
   };
 

@@ -7,7 +7,7 @@ const _map = (block: TextTestimonialCardBlockData) => {
     header: block.header,
     description: block.description,
     cta: block.cta,
-    ctaUrl: mapLink(block.cta),
+    ctaUrl: mapLink({url: block.cta}), // TODO: update link type
     testimonialText: block.testimonialText,
     patientName: block.patientName,
     patientPhotoPath: block.patientPhotoPath?.asset.url || null,
