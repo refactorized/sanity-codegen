@@ -13,7 +13,7 @@ const link = {
     {
       name: 'url',
       title: 'Manual URL link',
-      type: 'url',
+      type: 'string',
     },
   ],
   // TODO: actually validate maybe? (from adam, to adam)

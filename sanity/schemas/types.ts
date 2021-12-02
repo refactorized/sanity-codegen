@@ -2385,7 +2385,7 @@ export type Link = {
   slug?: PageLink;
 
   /**
-   * Manual URL link — `url`
+   * Manual URL link — `string`
    *
    *
    */
