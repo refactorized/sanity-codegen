@@ -31,10 +31,8 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      description: 'Please add an author to the post',
+      description: 'Add an author to the post',
       to: {type: 'staff'},
-      codegen: {required: true},
-      validation: (Rule) => Rule.required().error('Post must have an author'),
     },
     {
       name: 'shortDescription',

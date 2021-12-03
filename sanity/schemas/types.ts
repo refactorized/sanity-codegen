@@ -673,9 +673,9 @@ export interface News extends SanityDocument {
   /**
    * Author — `reference`
    *
-   * Please add an author to the post
+   * Add an author to the post
    */
-  author: SanityReference<Staff>;
+  author?: SanityReference<Staff>;
 
   /**
    * Short Description — `string`
