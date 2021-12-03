@@ -52,7 +52,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
               display="block"
               fontSize={[0, null, null, 1]}
               fontWeight="bold"
-              lineHeight={['22px', '24px', null, '30px']}
+              lineHeight={['12px', '14px', null, '20px']}
               letterSpacing="-0.015em"
               paddingBottom={['10px', '25px', null, 'initial']}
               color="text"
@@ -66,7 +66,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
               display="block"
               fontSize={1}
               fontWeight="regular"
-              lineHeight="30px"
+              lineHeight="20px"
               letterSpacing="-0.015em"
               color="text"
               key={x._key}
@@ -113,7 +113,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                 display="block"
                 fontSize={[0, null, null, 1]}
                 fontWeight="bold"
-                lineHeight={['22px', '24px', null, '30px']}
+                lineHeight={['12px', '14px', null, '20px']}
                 letterSpacing="-0.015em"
                 paddingBottom={['10px', '25px', null, 'initial']}
                 color="text"
@@ -152,7 +152,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                   display="block"
                   fontSize={[0, 1, null, null]}
                   fontWeight="bold"
-                  lineHeight={['22px', '24px', null, '30px']}
+                  lineHeight={['12px', '14px', null, '20px']}
                   letterSpacing="-0.015em"
                   paddingBottom={['10px', '25px', null, 'initial']}
                   m="0"
@@ -170,7 +170,7 @@ export const Footer: FC<FooterProps> = ({siteConfig}) => {
                   display="block"
                   fontSize={[0, 1, null, null]}
                   fontWeight="bold"
-                  lineHeight={['22px', '24px', null, '30px']}
+                  lineHeight={['12px', '14px', null, '20px']}
                   letterSpacing="-0.015em"
                   paddingBottom={['10px', '25px', null, 'initial']}
                   m="0"
@@ -266,8 +266,7 @@ const StyledBox = styled.div`
 
 const StyledLink = styled.a`
   font-size: 20px;
-  text-indent: -1em;
-  padding-left: 1em;
+  margin: 10px 0;
   ${typography}
   ${space}
   ${color}
