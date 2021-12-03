@@ -26,8 +26,8 @@ export const solid = {
     bg: 'backgroundDisabled',
   },
   fontWeight: 'bold',
-  px: [2, 2],
-  py: [1, 2],
+  px: [1, 2],
+  py: [2, 2],
   lineHeight: 'heading',
   whiteSpace: 'nowrap',
 };

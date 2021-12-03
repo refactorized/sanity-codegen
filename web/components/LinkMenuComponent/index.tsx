@@ -48,6 +48,7 @@ export const LinkMenuComponent = ({
         gridTemplateColumns={['100%', null, null, '35% 1fr']}
         gridGap={['25px', '35px', null, '81px']}
         overflow="visible"
+        mt={['20px', '0', null, null]}
       >
         <StyledImageContainer
           backgroundColor="navy"
@@ -63,7 +64,12 @@ export const LinkMenuComponent = ({
             objectFit="cover"
           />
         </StyledImageContainer>
-        <StyledBox>
+        <StyledBox
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-start"
+          justifyContent="center"
+        >
           <StyledBox maxWidth={['inherit', null, null, '660px']}>
             <StyledHeadline
               fontFamily="headline"
@@ -112,7 +118,7 @@ export const LinkMenuComponent = ({
                     letterSpacing="-0.015em"
                     p="0 20px"
                     m="0"
-                    maxWidth={['240px', '265px', null, null]}
+                    maxWidth={['240px', '265px', '273px', null]}
                   >
                     {x.title}
                   </StyledHeadline>

@@ -70,9 +70,9 @@ export const PreFooterBlock = ({
           <Phone
             tel={phoneNumber}
             fontSize={2}
-            fontWeight="regular"
+            fontWeight="700"
             fontColor="secondary"
-            hoverColor="black"
+            hoverColor="#1B76B0"
           />
         </StyledBoxEdit>
       </StyledBox>

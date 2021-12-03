@@ -22,6 +22,7 @@ export const IntroBlock = ({
         justifyContent="center"
         alignItems="center"
         textAlign="center"
+        mb={['28px', '0', null, null]}
       >
         <Text
           fontFamily="headline"

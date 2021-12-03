@@ -48,6 +48,7 @@ export const AnnouncementBar = ({
           display="grid"
           gridTemplateColumns="1fr 50px"
           alignItems="center"
+          p={['0', '0 65px']}
         >
           <StyledBox
             color="secondary"
@@ -93,6 +94,7 @@ const StyledContainer = styled.div`
   ${layout}
   ${color}
   ${grid}
+  ${space}
 `;
 
 const StyledBox = styled.div`
