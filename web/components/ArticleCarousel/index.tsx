@@ -100,5 +100,10 @@ export const ArticleCarousel = ({
     return <ArticleCard {...card} />;
   });
 
-  return <Carousel title={title} cards={cardElements} />;
+  // Hide carousel if no cards are provided
+  if (cards.length > 0) {
+    return <Carousel title={title} cards={cardElements} />;
+  } else {
+    return null;
+  }
 };
