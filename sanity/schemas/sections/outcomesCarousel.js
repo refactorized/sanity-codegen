@@ -40,15 +40,11 @@ export const testimonialCard = {
       name: 'cta',
       type: 'link',
       title: 'CTA',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'cta_text',
       type: 'string',
       title: 'CTA Text',
-      codegen: {required: true},
-      validation: _required,
     },
   ],
 };

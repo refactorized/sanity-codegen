@@ -291,10 +291,12 @@ export const TestimonialCard = ({
         )}
         <PatientName>- {patientName}</PatientName>
       </PatientLine>
-      <MoreCTALink href={ctaLink}>
-        <CTAText>{ctaText}</CTAText>
-        <CircleArrow />
-      </MoreCTALink>
+      {ctaLink && ctaText && (
+        <MoreCTALink href={ctaLink}>
+          <CTAText>{ctaText}</CTAText>
+          <CircleArrow />
+        </MoreCTALink>
+      )}
     </CardContainer>
   );
 };

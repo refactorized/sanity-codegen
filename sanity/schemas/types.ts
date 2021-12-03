@@ -2558,14 +2558,14 @@ export type TestimonialCard = {
    *
    *
    */
-  cta: Link;
+  cta?: Link;
 
   /**
    * CTA Text — `string`
    *
    *
    */
-  cta_text: string;
+  cta_text?: string;
 };
 
 export type TextTestimonialCard = {
@@ -2636,14 +2636,14 @@ export type TextTestimonialCard = {
    *
    *
    */
-  boxCtaLink: Link;
+  boxCtaLink?: Link;
 
   /**
    * Text Testimonial Card Box Cta text — `string`
    *
    *
    */
-  boxCtaText: string;
+  boxCtaText?: string;
 };
 
 export type NavConfig = {

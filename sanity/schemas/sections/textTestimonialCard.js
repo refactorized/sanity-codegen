@@ -66,15 +66,11 @@ const textTestimonialCard = {
       name: 'boxCtaLink',
       type: 'link',
       title: 'Text Testimonial Card Box Cta Link',
-      codegen: {required: true},
-      validation: _required,
     },
     {
       name: 'boxCtaText',
       type: 'string',
       title: 'Text Testimonial Card Box Cta text',
-      codegen: {required: true},
-      validation: _required,
     },
   ],
 };
