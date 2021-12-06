@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {query, color, fontSize} from '../../themes/fn';
+import {query, color, space, fontSize, lineHeight} from '../../themes/fn';
 import Block from '@components/Layout/Block';
 import {HeroCardData} from '@data/blocks/HomepageHeroData';
 
@@ -31,8 +31,13 @@ const Chevron = () => {
 };
 
 const ChevronDiv = styled.div`
-  width: 6px;
   height: 12px;
+  width: 7px;
+  margin-left: 5px;
+
+  @media screen and (${query.atLeast('desktop')}) {
+    width: 9px;
+  }
 `;
 
 const DesktopChevronDiv = styled(ChevronDiv)`
@@ -43,7 +48,7 @@ const DesktopChevronDiv = styled(ChevronDiv)`
 `;
 
 const MobileChevronDiv = styled(ChevronDiv)`
-  display: inline-block;
+  display: flex;
   @media screen and (${query.atLeast('desktop')}) {
     display: none;
   }
@@ -173,18 +178,22 @@ const SingleHeroCard = styled.div`
 `;
 
 const Eyebrow = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
   text-transform: uppercase;
   color: #fff;
   font-size: 14px;
   text-decoration: none;
+  margin-bottom: ${space('sm')};
 
   @media screen and (${query.atLeast('tablet')}) {
     font-size: 12px;
   }
 
   @media screen and (${query.atLeast('desktop')}) {
-    color: #204568;
+    color: ${color(
+      'navy',
+    )}; // I know this isn't ideal but for some reason styled-components isn't giving the eyebrows the same styles.
     font-size: 14px;
   }
 
@@ -198,6 +207,7 @@ const Copy = styled.a`
   text-decoration: none;
   color: #fff;
   ${fontSize('xl')};
+  ${lineHeight('heading')};
 
   @media screen and (${query.atLeast('desktop')}) {
     color: #282828;
