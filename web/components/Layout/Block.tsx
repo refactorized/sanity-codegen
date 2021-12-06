@@ -47,7 +47,7 @@ const Block = styled.div<BlockComponentProps>(
       },
       tablet: {
         x: `${full ? 0 : theme.space.marginTablet}px`,
-        y: `${full ? 0 : squish ? theme.space.md : theme.space.margin}px`,
+        y: `${full ? 0 : squish ? theme.space.lg : theme.space.margin}px`,
       },
       desktop: {
         x: `${
@@ -59,7 +59,7 @@ const Block = styled.div<BlockComponentProps>(
                 narrow ? theme.space.marginWide : theme.space.margin,
               )
         }`,
-        y: `${full ? 0 : squish ? theme.space.md : theme.space.margin}px`,
+        y: `${full ? 0 : squish ? theme.space.lg : theme.space.margin}px`,
       },
     };
 
