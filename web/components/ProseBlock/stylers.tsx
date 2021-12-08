@@ -1,11 +1,12 @@
 import {ReactNode} from 'react';
 import styled from 'styled-components';
-import {fontStack, stack} from '@theme/fn';
+import {fontStack} from '@theme/fn';
+import {mq} from '@theme/query';
 
 const blockSpacing = {
-  sm: stack('margin', ['8px 0', '8px 0', '8px 0']),
-  md: stack('margin', ['16px 0', '16px 0', '16px 0']),
-  lg: stack('margin', ['24px 0', '24px 0', '24px 0']),
+  sm: mq({margin: ['8px 0', '8px 0', '8px 0']}),
+  md: mq({margin: ['16px 0', '16px 0', '16px 0']}),
+  lg: mq({margin: ['24px 0', '24px 0', '24px 0']}),
 };
 
 const DebugContainer = styled.pre`

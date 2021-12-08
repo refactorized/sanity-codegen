@@ -59,12 +59,6 @@ export const fontStack = (names: FontDefName[]) => () => {
   });
 };
 
-// deprecate - using mq is easier.
-export const stack = (key: string, vals: string[]) => () =>
-  mq({
-    [key]: vals,
-  });
-
 const atLeast = (breakpoint: ThemeBreakpointName) => () =>
   queryObj.atLeast[breakpoint];
 

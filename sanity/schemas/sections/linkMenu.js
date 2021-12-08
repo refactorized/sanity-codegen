@@ -33,8 +33,18 @@ const linkMenu = {
     {
       name: 'imgUrl',
       type: 'image',
-      title: 'Image',
+      title: 'Image Desktop / Tablet',
+      description: 'Tall image to side of list. (640x1080p 16:27)',
       validation: _required,
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'imgMobile',
+      type: 'image',
+      title: 'Mobile Image',
+      description: 'Landscape image atop of list. (1080x420 18:7)',
       options: {
         hotspot: true,
       },

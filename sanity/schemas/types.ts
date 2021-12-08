@@ -1930,11 +1930,23 @@ export type IntroBlock = {
 export type LinkMenu = {
   _type: "linkMenu";
   /**
-   * Image — `image`
+   * Image Desktop / Tablet — `image`
    *
-   *
+   * Tall image to side of list. (640x1080p 16:27)
    */
   imgUrl?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Mobile Image — `image`
+   *
+   * Landscape image atop of list. (1080x420 18:7)
+   */
+  imgMobile?: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;

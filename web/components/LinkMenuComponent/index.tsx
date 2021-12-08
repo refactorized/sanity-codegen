@@ -9,7 +9,6 @@ import {
   border,
   shadow,
 } from 'styled-system';
-import Image from 'next/image';
 import {Button} from '@components/Button/index';
 import {CircleArrow} from '@components/Arrow/index';
 import Block from '@components/Layout/Block';
@@ -22,7 +21,7 @@ interface linkMenuLink {
 }
 
 export interface LinkMenuComponentProps {
-  imgUrl?: string;
+  accentElement: React.ReactNode;
   header: string;
   description: string;
   btnText?: string;
@@ -32,7 +31,7 @@ export interface LinkMenuComponentProps {
 }
 
 export const LinkMenuComponent = ({
-  imgUrl,
+  accentElement,
   header,
   description,
   btnText,
@@ -48,28 +47,15 @@ export const LinkMenuComponent = ({
         gridTemplateColumns={['100%', null, null, '35% 1fr']}
         gridGap={['25px', '35px', null, '81px']}
         overflow="visible"
-        mt={['20px', '0', null, null]}
       >
         <StyledImageContainer
-          backgroundColor="navy"
-          gridColumn={1}
-          display="block"
-          width="100%"
+        // gridColumn={1}
+        // display="block"
+        // width="100%"
         >
-          <Image
-            alt={alt_text}
-            src={imgUrl}
-            width={450}
-            height={'auto'}
-            objectFit="cover"
-          />
+          {accentElement}
         </StyledImageContainer>
-        <StyledBox
-          display="flex"
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="center"
-        >
+        <StyledBox>
           <StyledBox maxWidth={['inherit', null, null, '660px']}>
             <StyledHeadline
               fontFamily="headline"
@@ -118,7 +104,7 @@ export const LinkMenuComponent = ({
                     letterSpacing="-0.015em"
                     p="0 20px"
                     m="0"
-                    maxWidth={['240px', '265px', '273px', null]}
+                    maxWidth={['240px', '265px', null, null]}
                   >
                     {x.title}
                   </StyledHeadline>
@@ -169,11 +155,12 @@ const StyledBoxEdit = styled.div`
 `;
 
 const StyledImageContainer = styled.div`
-  ${typography}
-  ${space}
+  /* ${space}
   ${layout}
-  ${grid}
-  div {
+  ${grid} */
+  width: 100%;
+  position: relative;
+  & > div {
     height: 300px;
     display: block !important;
 

@@ -5,6 +5,8 @@ import type {
   SanityReference,
   SanitySlug,
   SanityImageAsset,
+  SanityImageCrop,
+  SanityImageHotspot,
   BasicText,
   Category,
   Link as _Link,
@@ -149,3 +151,10 @@ export type Link = ResolvedSanityReferences<_Link>;
 export type PtImage = ResolvedSanityReferences<_PtImage>;
 export type PtFile = ResolvedSanityReferences<_PtFile>;
 export type PtEmbed = _PtEmbed; // no refs to resolve
+
+export type ResolvedImageWithHotSpot = ResolvedSanityReferences<{
+  _type: 'image';
+  asset: SanityReference<SanityImageAsset>;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
+}>;
