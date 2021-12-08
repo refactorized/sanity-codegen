@@ -4,7 +4,7 @@ import {useRouter} from 'next/router';
 
 // data layer
 import {PageDocument, SiteConfig} from '@data/types';
-import {getPaths, getPageData} from '@data/page';
+import {getPaths, getPageData, Path} from '@data/page';
 import getSiteConfig from '@data/siteConfig';
 
 // components
@@ -16,7 +16,7 @@ import AnnouncementBar from '@components/AnnouncementBarComponent/mapSiteConfig'
 import StickyCta from '@components/StickyCta/mapSiteConfig';
 import Navigation from '@components/Navigation/mapSiteConfig';
 import {Footer} from '@components/FooterComponent';
-import {Breadcrumbs} from '@components/Breadcrumbs';
+import {Breadcrumbs, getBreadcrumbs} from '@components/Breadcrumbs';
 
 // misc
 import log from '@util/logging';
@@ -34,10 +34,12 @@ interface slugPageProps {
   page: PageDocument;
   siteConfig: SiteConfig;
   preview?: boolean;
+  paths: Path[];
 }
 
 export async function getStaticPaths() {
   const paths = (await getPaths())
+    .map((path) => path.current)
     .map((path) => (path === 'home' ? '' : path))
     .map((path) => ({
       params: {
@@ -64,49 +66,20 @@ export const getStaticProps: GetStaticProps = async (
     }
 
     const siteConfig = await getSiteConfig();
+    const paths = await getPaths();
+
     return {
       props: {
         page: pageData,
         siteConfig: siteConfig,
         preview: !!preview,
+        paths: paths,
       } as slugPageProps,
     };
   } catch (e) {
     log.error(e);
     throw e; // best way to get 500 page?
   }
-};
-
-const getBreadcrumbs = (page: PageDocument): any[] => {
-  if (page && page.slug) {
-    const fragments = page.slug?.current.split('/');
-    if (fragments.length <= 1) return []; // first level pages don't require breadcrumbs
-    return fragments
-      .filter((val) => val !== 'home') // filter out home links from breadcrumbs
-      .map((value, index, arr) => {
-        if (index < arr.length - 1) {
-          // build title and link from slug fragments
-          return {
-            title: value
-              .split('-')
-              .map((val) => val.charAt(0).toUpperCase() + val.slice(1))
-              .join(' '),
-            slug: {
-              current: arr.reduce((prev, curr, currIndex) =>
-                currIndex <= index ? prev + '/' + curr : prev,
-              ),
-            },
-          };
-        } else {
-          // For the last item, use the page title and slug
-          return {
-            title: page.title,
-            slug: {current: page.slug?.current},
-          };
-        }
-      });
-  }
-  return [];
 };
 
 const SlugPage = (props: slugPageProps) => {
@@ -123,7 +96,7 @@ const SlugPage = (props: slugPageProps) => {
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <StickyCta {...(props.siteConfig as SiteConfig)} />
         <Navigation {...(props.siteConfig as SiteConfig)} />
-        <Breadcrumbs pages={getBreadcrumbs(props.page)} />
+        <Breadcrumbs pages={getBreadcrumbs(props.page, props.paths)} />
         <MapComponents blocks={props.page.blocks} />
         <Stretch />
         <Footer siteConfig={props.siteConfig as SiteConfig} />
