@@ -101,7 +101,7 @@ const Header = styled.h1`
   max-width: 743px;
 
   ${fontDef('lrg-headline-regular')};
-
+  letter-spacing: -1%;
   @media screen and (${query.atLeast('desktop')}) {
     margin-bottom: ${space('xl')};
     ${fontSize('x6')}
@@ -153,10 +153,11 @@ const InnerHeader = styled.h2`
 
 const Text = styled.div`
   ${lineHeight('body')};
-  margin: ${space('md')} 0 ${space('xl')};
   ${fontSize('md')};
   ${fontFamily('body')};
+
   letter-spacing: 0;
+  margin: ${space('md')} 0 ${space('xl')};
 
   p {
     margin: 0;
@@ -169,7 +170,7 @@ const Text = styled.div`
 
   @media screen and (${query.atLeast('desktop')}) {
     margin: ${space('md')} 0 ${space('xl')};
-    ${fontSize('xl')};
+    ${fontDef('lrg-body-regular')}
   }
 `;
 

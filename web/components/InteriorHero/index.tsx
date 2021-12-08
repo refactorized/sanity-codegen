@@ -29,9 +29,16 @@ const Container = styled.div`
   ${({narrow}) => narrow && `max-width: 768px;`}
 `;
 // Margin right on span to simulate a space
-const HeaderCaptionWrapper = styled.div`
+const ContainerWrapper = styled.div`
+  padding-bottom: ${space('lg')};
   @media (${query.atLeast('desktop')}) {
-    padding: 0 ${({headerPadding}) => (headerPadding ? space('x10') : '0px')};
+    padding-bottom: ${space('x5')};
+  }
+`;
+
+const ContainerImageWrapper = styled.div`
+  @media (${query.atLeast('desktop')}) {
+    padding-bottom: ${space('lg')};
   }
 `;
 
@@ -87,34 +94,36 @@ export const InteriorHero = ({
     <Block squish>
       <Container narrow={narrow}>
         {(header || caption) && (
-          <HeaderCaptionWrapper headerPadding={headerPadding}>
+          <ContainerWrapper headerPadding={headerPadding}>
             {header && <Header>{header}</Header>}
             {caption && <Caption>{caption}</Caption>}
-          </HeaderCaptionWrapper>
+          </ContainerWrapper>
         )}
-        {((imgUrls && imgUrls.desktop) || videoSrc) && (
-          <AspectBox ratio={[1.4, 1.9, 2.12]}>
-            {imgUrls && imgUrls.desktop && (
-              <Image
-                alt={alt_text}
-                src={imgUrls.desktop}
-                layout="fill"
-                objectFit="cover"
-              />
-            )}
+        <ContainerImageWrapper>
+          {((imgUrls && imgUrls.desktop) || videoSrc) && (
+            <AspectBox ratio={[1.4, 1.9, 2.12]}>
+              {imgUrls && imgUrls.desktop && (
+                <Image
+                  alt={alt_text}
+                  src={imgUrls.desktop}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              )}
 
-            {videoSrc && (
-              <Video
-                {...{
-                  muted: true,
-                  src: videoSrc,
-                  autoPlay: true,
-                  loop: true,
-                }}
-              />
-            )}
-          </AspectBox>
-        )}
+              {videoSrc && (
+                <Video
+                  {...{
+                    muted: true,
+                    src: videoSrc,
+                    autoPlay: true,
+                    loop: true,
+                  }}
+                />
+              )}
+            </AspectBox>
+          )}
+        </ContainerImageWrapper>
       </Container>
     </Block>
   );

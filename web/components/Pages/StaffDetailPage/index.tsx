@@ -185,7 +185,6 @@ const StaffDetailPage = (props) => {
       </Block>
       <MappedArticleCarousel {...teamDetail} />
       <Stretch />
-      <Footer siteConfig={props.siteConfig as SiteConfig} />
     </>
   );
 };

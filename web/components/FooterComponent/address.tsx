@@ -25,7 +25,7 @@ export const Address = ({
     <div>
       <StyledBox
         display="block"
-        pb={['25px', '20px', null, '20px']}
+        p={['25px 0', '0 0 20px', null, null]}
         maxWidth={['300px', '250px', '200px', '300px']}
         lineHeight={['33px', '20px', '0px', '33px']}
       >
