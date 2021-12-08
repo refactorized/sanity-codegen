@@ -129,7 +129,6 @@ export const MappedCardGrid = (props: {courses: CourseData[]}) => {
       image: c.mainImage?.asset?.url || '',
       category: c.postType?.title || 'Courses',
       headline: c.title,
-      date: '',
       description: c.shortDescription,
       url: c.slug
         ? `/education-research/training/cme-courses/${c.slug.current}`

@@ -133,7 +133,6 @@ export const MappedCardGrid = (props: {resources: ResourceData[]}) => {
       image: r.mainImage.asset.url,
       category: r.resourceType.title,
       headline: r.title,
-      date: r.publishedAt,
       description: r.shortDescription,
       url: `/education-research/resources/${r.slug?.current || ''}`,
     })),

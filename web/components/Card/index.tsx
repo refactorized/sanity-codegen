@@ -363,18 +363,20 @@ export const ArticleCard = ({
             </StyledHeader>
           </StyledLink>
         </Link>
-        <StyledHeader
-          display={['none', null, null, 'inherit']}
-          fontSize={['14px', '10px', null, '14px']}
-          fontWeight="normal"
-          fontFamily="body"
-          letterSpacing={['-0.015em', null, null, '-0.015em']}
-          lineHeight={['26px', '16px', null, '26px']}
-          p={['5px 0', null, null, '7px 0']}
-          m="0"
-        >
-          <Dates startDate={date} />
-        </StyledHeader>
+        {date && (
+          <StyledHeader
+            display={['none', null, null, 'inherit']}
+            fontSize={['14px', '10px', null, '14px']}
+            fontWeight="normal"
+            fontFamily="body"
+            letterSpacing={['-0.015em', null, null, '-0.015em']}
+            lineHeight={['26px', '16px', null, '26px']}
+            p={['5px 0', null, null, '7px 0']}
+            m="0"
+          >
+            <Dates startDate={date} />
+          </StyledHeader>
+        )}
         <StyledHeader
           fontSize={['14px', null, null, '16px']}
           fontWeight="normal"

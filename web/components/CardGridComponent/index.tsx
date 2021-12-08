@@ -25,7 +25,7 @@ interface ArticleCardProps {
   image: string;
   category: string;
   headline: string;
-  date: string;
+  date?: string;
   description: BasicText | string | JSX.Element;
   url: string;
 }
@@ -79,7 +79,7 @@ export const CardGrid = ({
                     image={obj.image}
                     category={obj.category}
                     headline={obj.headline}
-                    // date={obj.headline}
+                    date={obj.date}
                     description={obj.description}
                     cardFullWidth={true}
                     url={obj.url}
@@ -93,7 +93,7 @@ export const CardGrid = ({
                     image={obj.image}
                     category={obj.category}
                     headline={obj.headline}
-                    // date={obj.headline}
+                    date={obj.date}
                     description={obj.description}
                     cardFullWidth={true}
                     url={obj.url}
@@ -108,7 +108,7 @@ export const CardGrid = ({
                   image={obj.image}
                   category={obj.category}
                   headline={obj.headline}
-                  // date={obj.headline}
+                  date={obj.date}
                   description={obj.description}
                   cardFullWidth={true}
                   url={obj.url}

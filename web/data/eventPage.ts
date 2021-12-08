@@ -11,7 +11,7 @@ export const getEventPaths = async (): Promise<string[]> => {
 };
 
 export const getAllEvents = async (): Promise<PageDocument> => {
-  const query = groq`*[_type == "event" && !(_id in path('drafts.**'))] | order(_updatedAt desc)`;
+  const query = groq`*[_type == "event" && !(_id in path('drafts.**'))] | order(eventStart asc)`;
   const resources = await bigFetch(query);
   return resources as PageDocument;
 };
