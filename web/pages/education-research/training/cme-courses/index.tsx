@@ -179,7 +179,15 @@ const CourseIndexPage = (props) => {
   // BREADCRUMB DATA
   const breadcrumbPages = [
     {
-      title: page.title,
+      title: 'Education & Research',
+      slug: {current: '/education-research'},
+    },
+    {
+      title: 'Education & Training',
+      slug: {current: '/education-research/training'},
+    },
+    {
+      title: 'Continuing Education Courses',
       slug: {current: '/education-research/training/cme-courses'},
     },
   ];

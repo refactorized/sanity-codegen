@@ -130,21 +130,12 @@ export const MappedPreFooter = (block: NewsPageData) => {
 const NewsIndexPage = (props) => {
   const {page, resources} = props;
 
-  // BREADCRUMB DATA
-  const breadcrumbPages = [
-    {
-      title: 'News',
-      slug: {current: '/news'},
-    },
-  ];
-
   return (
     <Page>
       <Layout>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <StickyCta {...(props.siteConfig as SiteConfig)} />
         <Navigation {...(props.siteConfig as SiteConfig)} />
-        <Breadcrumbs pages={breadcrumbPages} />
         <MappedInteriorHero {...page} />
         <MappedCardGrid {...props} />
         <MappedPreFooter {...page} />

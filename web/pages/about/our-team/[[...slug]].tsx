@@ -17,6 +17,7 @@ import {PageDocument, SiteConfig} from '@data/types';
 // age Components
 import StaffIndexPage from '@components/Pages/StaffIndex';
 import StaffDetailPage from '@components//Pages/StaffDetailPage';
+import {Breadcrumbs} from '@components/Breadcrumbs';
 
 export interface slugPageContext {
   params: {
@@ -66,12 +67,25 @@ export const getStaticProps = async (context: slugPageContext) => {
 };
 
 const TeamPage = (props) => {
+  // BREADCRUMB DATA
+  const breadcrumbPages = [
+    {
+      title: 'About',
+      slug: {current: '/about'},
+    },
+    {
+      title: 'Our Team',
+      slug: {current: '/about/our-team'},
+    },
+  ];
+
   return (
     <Page {...props.page}>
       <Layout>
         <AnnouncementBar {...(props.siteConfig as SiteConfig)} />
         <StickyCta {...(props.siteConfig as SiteConfig)} />
         <Navigation {...(props.siteConfig as SiteConfig)} />
+        <Breadcrumbs pages={breadcrumbPages} />
         {props.teamDetail ? (
           <StaffDetailPage {...props} />
         ) : (
