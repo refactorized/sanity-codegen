@@ -1,11 +1,10 @@
 {
-  "name": "@hzdg/sanity-codegen",
+  "name": "@refactorized/sanity-codegen",
   "version": "0.9.8-0",
-  "private": true,
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hzdg/sanity-codegen.git"
+    "url": "https://github.com/refactorized/sanity-codegen.git"
   },
   "license": "MIT",
   "author": {
